@@ -9,13 +9,15 @@ import {LoginComponent} from './components/login/login.component';
 import {CoreComponent} from './components/core/core.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {CoreRoutingModule} from './core-routing.module';
+import { DynamicContentAreaDirective } from '../../directives/dynamic-content-area.directive';
 
 @NgModule({
   declarations: [
     CoreComponent,
     NavigationComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DynamicContentAreaDirective
   ],
   imports: [
     BrowserModule,

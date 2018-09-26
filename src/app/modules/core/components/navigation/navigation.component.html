@@ -1,13 +1,13 @@
 <clr-header class="header-1">
   <div class="branding">
-    <div class="nav-link">
+    <a class="nav-link" [routerLink]="''">
       <clr-icon shape="line-chart"></clr-icon>
       <label>Carbulator</label>
-    </div>
+    </a>
   </div>
   <div class="header-nav" [clr-nav-level]="1">
-    <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
-    <a href="javascript://" class="nav-link nav-text">Communities</a>
+    <a [routerLink]="'dashboard'" class="active nav-link nav-text">Dashboard</a>
+    <a [routerLink]="'communities'" class="nav-link nav-text">Communities</a>
   </div>
   <div class="header-actions">
     <a href="javascript://" class="nav-link nav-icon">

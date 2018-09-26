@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from '../../../../services/core/auth.service';
 
 @Component({
   selector: 'cbl-root',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./core.component.scss']
 })
 export class CoreComponent {
+
+  constructor(public auth: AuthService) {
+  }
+
 }

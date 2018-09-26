@@ -1,7 +1,7 @@
 <clr-main-container>
-  <app-navigation></app-navigation>
+  <cbl-navigation *ngIf="auth.isLoggedIn"></cbl-navigation>
   <div class="content-container">
-    <div class="content-area">
+    <div class="content-area" cblDynamicContentArea>
       <router-outlet></router-outlet>
     </div>
   </div>
