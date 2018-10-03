@@ -55,7 +55,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "car-sharing-app-client:build"
+            "browserTarget": "car-sharing-app-client:build",
+            "port": 4300
           },
           "configurations": {
             "production": {

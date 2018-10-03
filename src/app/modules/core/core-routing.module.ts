@@ -6,6 +6,7 @@ import {IsLoggedOutGuard} from '../../guards/is-logged-out.guard';
 import {LoginComponent} from './components/login/login.component';
 import {DashboardModule} from '../dashboard/dashboard.module';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {RegisterComponent} from './components/register/register.component';
 
 const coreRoutes: Routes = [
   {
@@ -16,6 +17,11 @@ const coreRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [IsLoggedOutGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
     canActivate: [IsLoggedOutGuard]
   },
   {

@@ -1,0 +1,45 @@
+<div class="login-wrapper">
+  <form class="login" clrForm [formGroup]="registrationForm">
+    <section class="title">
+      Neu hier?
+      <h5 class="hint">Wähle einen Nutzernamen und Passwort um dich zu registrieren</h5>
+    </section>
+    <div class="login-group">
+
+      <clr-input-container>
+        <label>Nutzername</label>
+        <input placeholder="Nutzername" clrInput formControlName="username" name="username" required/>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'">Mindestlänge: 3 Zeichen</clr-control-error>
+        <clr-control-error *clrIfError="'username'">Erlaubte Zeichen: a-z, A-Z, 0-9</clr-control-error>
+      </clr-input-container>
+
+      <div formGroupName="passwords">
+
+        <clr-input-container>
+          <label>Passwort</label>
+          <input placeholder="Passwort" clrInput formControlName="password" name="password" type="password"
+                 required/>
+          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">Mindestlänge: 8 Zeichen</clr-control-error>
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Passwort bestätigen</label>
+          <input placeholder="Passwort bestätigen" clrInput formControlName="passwordConfirm"
+                 name="password-confirm" type="password" required/>
+          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">Mindestlänge: 8 Zeichen</clr-control-error>
+        </clr-input-container>
+
+      </div>
+
+      <div class="error" [ngClass]="{active: passwordsDontMatch()}" *ngIf="registerPressed">
+        Passwörter stimen nicht überein.
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="register()" [clrLoading]="loadingState">Registrieren</button>
+
+    </div>
+  </form>
+</div>

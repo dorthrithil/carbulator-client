@@ -1,3 +1,37 @@
+// A utility class to remove all padding
 .no-padding {
   padding: 0 !important;
+}
+
+// Styles for the login page
+.login-wrapper {
+  background-image: url("assets/login.jpg");
+  background-position: bottom;
+
+  .login-group {
+    padding-top: 1rem;
+  }
+
+  .error {
+    margin-top: 1rem !important;
+  }
+
+  .clr-control-container {
+
+    width: 100%;
+
+    .clr-input-wrapper {
+
+      width: 100%;
+
+      input {
+
+        width: 100%;
+
+      }
+
+    }
+
+  }
+
 }

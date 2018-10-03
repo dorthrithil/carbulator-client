@@ -1,3 +1,5 @@
+<cbl-app-level-alerts></cbl-app-level-alerts>
+
 <clr-main-container>
   <cbl-navigation *ngIf="auth.isLoggedIn"></cbl-navigation>
   <div class="content-container">
@@ -6,3 +8,5 @@
     </div>
   </div>
 </clr-main-container>
+
+<simple-notifications [options]="notificationOptions"></simple-notifications>

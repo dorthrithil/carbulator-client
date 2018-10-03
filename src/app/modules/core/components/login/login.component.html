@@ -1,30 +1,28 @@
 <div class="login-wrapper">
-  <form class="login">
+  <form class="login" clrForm [formGroup]="loginForm">
     <section class="title">
-      <h3 class="welcome">Welcome to the</h3>
+      <h3 class="welcome">Willkommen beim</h3>
       Carbulator
-      <h5 class="hint">Use your Company ID to sign in or create one now</h5>
+      <h5 class="hint">Logge dich mit deinem Nutzernamen ein oder registriere dich</h5>
     </section>
     <div class="login-group">
-      <div class="auth-source select">
-        <select id="login-auth-source-1">
-          <option>Local Users</option>
-          <option>Administrator</option>
-        </select>
-      </div>
-      <input class="username" type="text" id="login_username" placeholder="Username">
-      <input class="password" type="password" id="login_password" placeholder="Password">
-      <div class="checkbox">
-        <input type="checkbox" id="rememberme">
-        <label for="rememberme">
-          Remember me
-        </label>
-      </div>
-      <div class="error active">
-        Invalid user name or password
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="login()">NEXT</button>
-      <a href="javascript://" class="signup">Sign up for a Company ID</a>
+
+      <clr-input-container>
+        <label>Nutzername</label>
+        <input placeholder="Nutzername" clrInput formControlName="username" name="username" required/>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Passwort</label>
+        <input placeholder="Passwort" clrInput formControlName="password" name="password" type="password" required/>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+      </clr-input-container>
+
+      <button type="submit" class="btn btn-primary" (click)="login()" [clrLoading]="loadingState">Login</button>
+
+      <a [routerLink]="['/register']" class="signup">Registrieren</a>
+
     </div>
   </form>
 </div>

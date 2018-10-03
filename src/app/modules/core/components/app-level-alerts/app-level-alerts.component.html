@@ -1,0 +1,14 @@
+<clr-alerts>
+  <clr-alert [clrAlertType]="autoLogoutAlertType" [clrAlertAppLevel]="true" [clrAlertClosable]="false"
+             *ngIf="authService.isLoggedIn && showAutoLogoutWarning">
+    <div class="alert-item">
+            <span class="alert-text">
+                Deine Login Session läuft in {{authService.refreshTokenExpires | minutesRemaining}}
+                ab. Bitte logge dich erneut ein.
+            </span>
+      <div class="alert-actions">
+        <button class="btn alert-action" (click)="authService.logout()">Neu einloggen</button>
+      </div>
+    </div>
+  </clr-alert>
+</clr-alerts>

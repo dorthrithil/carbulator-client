@@ -19,7 +19,7 @@ export class DynamicContentAreaDirective implements OnInit {
    */
   ngOnInit() {
     this.noPaddingClass = !this.auth.isLoggedIn;
-    this.auth.loginStateChanges.subscribe(isLoggedIn => this.noPaddingClass = !isLoggedIn);
+    this.auth.onLoginStateChanges.subscribe(isLoggedIn => this.noPaddingClass = !isLoggedIn);
   }
 
 }

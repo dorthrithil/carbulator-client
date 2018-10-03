@@ -21,12 +21,16 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@clr/angular": "^0.13.2",
-    "core-js": "^2.5.4",
-    "rxjs": "~6.2.0",
-    "zone.js": "~0.8.26",
-    "@clr/ui": "^0.13.2",
     "@clr/icons": "^0.13.2",
-    "@webcomponents/custom-elements": "^1.0.0"
+    "@clr/ui": "^0.13.2",
+    "@types/jwt-decode": "^2.2.1",
+    "@webcomponents/custom-elements": "^1.0.0",
+    "angular2-notifications": "^1.0.4",
+    "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.22.2",
+    "rxjs": "~6.2.0",
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
