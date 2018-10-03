@@ -7,11 +7,17 @@ import {LoginComponent} from './components/login/login.component';
 import {DashboardModule} from '../dashboard/dashboard.module';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RegisterComponent} from './components/register/register.component';
+import {CommunitiesModule} from '../communities/communities.module';
 
 const coreRoutes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => DashboardModule,
+    canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'communities',
+    loadChildren: () => CommunitiesModule,
     canActivate: [IsLoggedInGuard]
   },
   {

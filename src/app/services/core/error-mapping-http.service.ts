@@ -38,4 +38,15 @@ export class ErrorMappingHttpService {
     );
   }
 
+  /**
+   * Performs a http get request.
+   * @param url Request URL.
+   * @return Observable of the body of type T.
+   */
+  public get<T>(url: string) {
+    return this.http.get<T>(url).pipe(
+      catchError(error => ErrorMappingHttpService.mapError(error))
+    );
+  }
+
 }

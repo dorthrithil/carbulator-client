@@ -27,7 +27,13 @@ export class ApiService {
     },
     logoutRefresh: (): string => {
       return `${this.apiHost}logout/refresh`;
-    },
+    }
+  };
+
+  public community = {
+    getCommunities: (): string => {
+      return `${this.apiHost}account/communities`;
+    }
   };
 
 }
