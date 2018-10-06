@@ -1,0 +1,38 @@
+<h1>Gruppen</h1>
+
+<clr-datagrid [clrDgLoading]="isLoading">
+
+  <clr-dg-action-bar>
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()" >
+        <clr-icon shape="plus"></clr-icon> Neue Gruppe
+      </button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-placeholder>Du bist noch in keiner Gruppe!</clr-dg-placeholder>
+
+  <clr-dg-column [clrDgField]="'id'">Gruppen ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeCreated'">
+    Erstellungsdatum
+    <clr-dg-filter [clrDgFilter]="timeCreatedFilter">
+      <cbl-time-created-filter #timeCreatedFilter></cbl-time-created-filter>
+    </clr-dg-filter>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let community of communities">
+    <clr-dg-cell>{{community.id}}</clr-dg-cell>
+    <clr-dg-cell>{{community.name}}</clr-dg-cell>
+    <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      von {{pagination.totalItems}} Gruppen
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<cbl-communities-wizard #communitiesWizard></cbl-communities-wizard>

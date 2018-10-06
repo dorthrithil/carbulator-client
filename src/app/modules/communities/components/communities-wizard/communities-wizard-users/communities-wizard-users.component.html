@@ -1,0 +1,24 @@
+<p>Suche nach Benutzern die du in deine Gruppe einladen möchtest:</p>
+
+<cbl-typeahead [selectedData]="selectedUsers"
+               [noMatchText]="'Keine Benutzer gefunden'"
+               [sourceDataStream]="userResource"
+               [searchKey]="'username'"
+               (searchStringChange)="refreshUserResource($event)"
+               [showAllSuggestionsWhenEmpty]="true"
+               [addToCollectionMode]="true">
+</cbl-typeahead>
+
+<div class="user-list">
+  <div class="user-list-row"  *ngFor="let user of selectedUsers">
+    <div>
+      <clr-icon shape="user" class="is-solid"></clr-icon>
+    </div>
+    <div>
+      {{user.username}}
+    </div>
+    <div class="close-icon" (click)="removeUser(user)">
+      <clr-icon shape="times"></clr-icon>
+    </div>
+  </div>
+</div>

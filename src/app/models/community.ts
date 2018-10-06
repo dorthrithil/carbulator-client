@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+import {Car} from './car';
 
 /**
  * Model of a community.
@@ -7,6 +8,7 @@ export class Community {
 
   id: number;
   name: string;
+  car: Car;
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
 
@@ -21,6 +23,7 @@ export class Community {
     community.name = src.name;
     community.timeCreated = moment(src.time_created);
     community.timeUpdated = moment(src.time_updated);
+    community.car = src.car ? Car.fromJson(src.car) : null;
     return community;
   }
 
@@ -31,7 +34,8 @@ export class Community {
    */
   public static toJson(src: Community): any {
     return {
-      name: src.name
+      name: src.name,
+      car: src.car.id
     };
   }
 

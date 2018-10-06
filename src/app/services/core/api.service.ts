@@ -33,6 +33,27 @@ export class ApiService {
   public community = {
     getCommunities: (): string => {
       return `${this.apiHost}account/communities`;
+    },
+    createCommunity: (): string => {
+      return `${this.apiHost}communities`;
+    }
+  };
+
+  public communityInvitation = {
+    inviteUser: (): string => {
+      return `${this.apiHost}communities/invitations`;
+    }
+  };
+
+  public user = {
+    searchUsers: (query: string): string => {
+      return `${this.apiHost}users/search?q=${query}`;
+    }
+  };
+
+  public car = {
+    createCar: (): string => {
+      return `${this.apiHost}cars`;
     }
   };
 

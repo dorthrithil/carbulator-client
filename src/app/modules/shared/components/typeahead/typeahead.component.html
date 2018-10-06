@@ -1,0 +1,48 @@
+<div class="typeahead" [ngClass]="{invalid: !isValid}" *ngIf="!selectOneMode || !selectOneModel">
+
+  <div class="input-holder">
+    <div class="caret"></div>
+    <label for="select2-input" aria-haspopup="true" role="tooltip"
+           class="tooltip tooltip-validation tooltip-sm tooltip-top-left" [ngClass]="{invalid: !isValid}">
+      <input type="text" [(ngModel)]="searchString" (ngModelChange)="searchStringChanged($event)"
+             [placeholder]="placeholder"
+             (focus)="checkShowDropdown()" (keyup.enter)="onEnterPress()" (blur)="hideDropdown()"
+             (keydown.arrowdown)="onArrowDownKeyDown($event)" autocomplete="off"
+             (keydown.arrowup)="onArrowUpKeyDown($event)" id="select2-input">
+      <span class="tooltip-content">
+        {{errorMessage}}
+      </span>
+    </label>
+  </div>
+
+  <div class="typeahead-dropdown" *ngIf="showDropdown">
+    <div class="dropdown open">
+      <div class="dropdown-menu" #optionButtonContainer>
+        <button type="button" class="dropdown-item no-hover" (mousedown)="createNewObject()"
+                *ngIf="createIfNotExists && searchString.length > 0 && !isFullMatch() &&
+                 (isNoCreateNewDuplicate() || !preventCreateNewDuplicates)" #optionButton>
+          <clr-icon shape="plus"></clr-icon>
+          <strong>{{searchString}}</strong> hinzufügen
+        </button>
+        <button type="button" class="dropdown-item" *ngFor="let match of matchedDatapoints"
+                (mousedown)="selectMatch(match)"
+                [innerHTML]="formatter(match.matchedObject, match.formattedString)" #optionButton>
+        </button>
+        <button type="button" class="dropdown-item no-hover" [disabled]="true"
+                *ngIf="(matchedDatapoints.length == 0 && !createIfNotExists && searchString.length > 0) ||
+                (!isNoCreateNewDuplicate() && preventCreateNewDuplicates)">
+          {{noMatchText}}
+        </button>
+        <div class="spinner-holder" *ngIf="loadingNewData">
+          <span class="spinner spinner-inline" *ngIf="loadingNewData"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<span class="label label-blue label-deletable" (click)="unselectOne()" *ngIf="selectOneModel">
+    {{selectOneModelFormatter(selectOneModel)}}
+    <clr-icon shape="window-close" class="label-icon"></clr-icon>
+</span>

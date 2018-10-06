@@ -1,0 +1,9 @@
+<form clrForm [formGroup]="nameForm">
+  <clr-input-container>
+    <label>Name</label>
+    <input placeholder="Name" clrInput formControlName="name" name="name" />
+    <clr-control-helper>Mit diesem Namen wird deine Gruppe im System angezeigt</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">Mindestlänge: 3 Zeichen</clr-control-error>
+  </clr-input-container>
+</form>

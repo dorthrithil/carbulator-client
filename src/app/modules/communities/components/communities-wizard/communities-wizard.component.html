@@ -1,0 +1,32 @@
+<clr-wizard #wizard
+            *ngIf="isOpen"
+            [(clrWizardOpen)]="isOpen"
+            [clrWizardSize]="'lg'"
+            [clrWizardPreventNavigation]="isLoading"
+            [clrWizardForceForwardNavigation]="true">
+
+  <clr-wizard-title>Gruppe erstellen</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Abbrechen</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Zurück</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Weiter</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Fertigstellen</clr-wizard-button>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="!name.isValid">
+    <ng-template clrPageTitle>Name</ng-template>
+    <cbl-communities-wizard-name #name></cbl-communities-wizard-name>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="!car.isValid">
+    <ng-template clrPageTitle>Auto</ng-template>
+    <cbl-communities-wizard-car #car></cbl-communities-wizard-car>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPagePreventDefault]="true"
+                   (clrWizardPageOnCommit)="save()">
+    <ng-template clrPageTitle>Mitglieder</ng-template>
+    <cbl-communities-wizard-users #users [hidden]="isLoading"></cbl-communities-wizard-users>
+    <div class="spinner" *ngIf="isLoading">Loading...</div>
+  </clr-wizard-page>
+
+</clr-wizard>
