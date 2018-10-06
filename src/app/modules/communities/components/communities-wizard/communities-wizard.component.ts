@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {CarService} from '../../../../services/crud/car.service';
 import {CommunitiesWizardCarComponent} from './communities-wizard-car/communities-wizard-car.component';
 import {mergeMap} from 'rxjs/operators';
@@ -8,6 +8,7 @@ import {CommunitiesWizardUsersComponent} from './communities-wizard-users/commun
 import {forkJoin, of} from 'rxjs';
 import {ClrWizard} from '@clr/angular';
 import {NotificationsService} from 'angular2-notifications';
+import {Community} from '../../../../models/community';
 
 /**
  * A community invitation.
@@ -29,12 +30,15 @@ export class CommunitiesWizardComponent {
   @ViewChild('users') usersPage: CommunitiesWizardUsersComponent;
   @ViewChild('wizard') wizard: ClrWizard;
 
+  @Output('communityCreated') communityCreated: EventEmitter<Community>;
+
   public isOpen = false;
   public isLoading = false;
 
   constructor(private carService: CarService,
               private notificationsService: NotificationsService,
               private communityService: CommunityService) {
+    this.communityCreated = new EventEmitter<Community>();
   }
 
   /**
@@ -66,7 +70,9 @@ export class CommunitiesWizardComponent {
       community.car = car;
       return this.communityService.createCommunity(community);
     }));
+    let newCommunity: Community;
     const invitationRequestCollection = communityRequest.pipe(mergeMap(community => {
+      newCommunity = community;
       const invitationRequests = [of(null)]; // Add one dummy request so we don't get stuck here if there are no invitations
       this.usersPage.getUsernames().map(username => {
         invitationRequests.push(this.communityService.inviteUser({
@@ -78,6 +84,7 @@ export class CommunitiesWizardComponent {
     }));
     invitationRequestCollection.subscribe(() => {
       this.isLoading = false;
+      this.communityCreated.emit(newCommunity);
       this.notificationsService.success('Gruppe erstellt', 'Deine Gruppe wurde erfolgreich erstellt!');
       this.closeAndReset();
     });
