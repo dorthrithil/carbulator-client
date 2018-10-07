@@ -49,4 +49,15 @@ export class ErrorMappingHttpService {
     );
   }
 
+  /**
+   * Performs a http delete request.
+   * @param url Request URL.
+   * @return Observable of the body of type T.
+   */
+  public delete<T>(url: string) {
+    return this.http.delete<T>(url).pipe(
+      catchError(error => ErrorMappingHttpService.mapError(error))
+    );
+  }
+
 }

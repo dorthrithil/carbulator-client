@@ -46,6 +46,15 @@ export class CommunityService {
   }
 
   /**
+   * Deletes the given community from the database.
+   * @param community Community to delete.
+   * @return Observable that resolves to a MessageResponse.
+   */
+  public deleteCommunity(community: Community): Observable<MessageResponse> {
+    return this.http.delete<MessageResponse>(this.api.community.deleteCommunity(community.id));
+  }
+
+  /**
    * Invites a user to a community.
    * @param invitation Community invitation object holding community id and username.
    * @return Observable that resolves to a MessageResponse.

@@ -4,8 +4,9 @@
 
   <clr-dg-action-bar>
     <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()" >
-        <clr-icon shape="plus"></clr-icon> Neue Gruppe
+      <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()">
+        <clr-icon shape="plus"></clr-icon>
+        Neue Gruppe
       </button>
     </div>
   </clr-dg-action-bar>
@@ -22,6 +23,12 @@
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let community of communities">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="deleteCommunity(community)" *ngIf="community.isDeletable">
+        <clr-icon shape="trash"></clr-icon>
+        Löschen
+      </button>
+    </clr-dg-action-overflow>
     <clr-dg-cell>{{community.id}}</clr-dg-cell>
     <clr-dg-cell>{{community.name}}</clr-dg-cell>
     <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
@@ -36,3 +43,12 @@
 </clr-datagrid>
 
 <cbl-communities-wizard #communitiesWizard (communityCreated)="addNewCommunity($event)"></cbl-communities-wizard>
+
+<cbl-confirm-modal [(isOpen)]="confirmDeletionModalOpen" [action]="deleteCommunityRequest">
+  <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
+  <ng-template cblConfirmModalText>Die Gruppe wird gelöscht und alle Mitglieder daraus entfernt. Dies kann nicht
+    rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>

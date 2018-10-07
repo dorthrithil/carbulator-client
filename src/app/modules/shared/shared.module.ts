@@ -5,6 +5,11 @@ import { TimeCreatedFilterComponent } from '../../utility/datagrid-filters/time-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule, ClrFormsNextModule} from '@clr/angular';
 import {TypeaheadComponent} from './components/typeahead/typeahead.component';
+import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
+import {ConfirmModalTextDirective} from './components/confirm-modal/confirm-modal-text.directive';
+import {ConfirmModalTitleDirective} from './components/confirm-modal/confirm-modal-title.directive';
+import {ConfirmModalCancelButtonTextDirective} from './components/confirm-modal/confirm-modal-cancel-button-text.directive';
+import {ConfirmModalOKButtonTextDirective} from './components/confirm-modal/confirm-modal-ok-button-text.directive';
 
 @NgModule({
   imports: [
@@ -17,7 +22,12 @@ import {TypeaheadComponent} from './components/typeahead/typeahead.component';
   declarations: [
     MomentPipe,
     TimeCreatedFilterComponent,
-    TypeaheadComponent
+    TypeaheadComponent,
+    ConfirmModalComponent,
+    ConfirmModalTextDirective,
+    ConfirmModalTitleDirective,
+    ConfirmModalCancelButtonTextDirective,
+    ConfirmModalOKButtonTextDirective
   ],
   exports: [
     MomentPipe,
@@ -26,7 +36,12 @@ import {TypeaheadComponent} from './components/typeahead/typeahead.component';
     ReactiveFormsModule,
     ClarityModule,
     ClrFormsNextModule,
-    TypeaheadComponent
+    TypeaheadComponent,
+    ConfirmModalComponent,
+    ConfirmModalTextDirective,
+    ConfirmModalTitleDirective,
+    ConfirmModalCancelButtonTextDirective,
+    ConfirmModalOKButtonTextDirective
   ]
 })
 export class SharedModule { }

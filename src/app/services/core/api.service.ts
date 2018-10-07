@@ -36,6 +36,9 @@ export class ApiService {
     },
     createCommunity: (): string => {
       return `${this.apiHost}communities`;
+    },
+    deleteCommunity: (id: number): string => {
+      return `${this.apiHost}communities/${id}`;
     }
   };
 

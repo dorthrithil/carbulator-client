@@ -1,0 +1,16 @@
+<clr-modal [(clrModalOpen)]="isOpen">
+  <h3 class="modal-title">
+    <ng-template [ngTemplateOutlet]="title"></ng-template>
+  </h3>
+  <div class="modal-body">
+    <ng-template [ngTemplateOutlet]="text"></ng-template>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="cancelModal()">
+      <ng-template [ngTemplateOutlet]="cancelButtonText"></ng-template>
+    </button>
+    <button type="button" class="btn btn-primary" (click)="confirmModal()" [clrLoading]="isLoading">
+      <ng-template [ngTemplateOutlet]="okButtonText"></ng-template>
+    </button>
+  </div>
+</clr-modal>

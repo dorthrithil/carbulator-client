@@ -11,6 +11,8 @@ export class Community {
   car: Car;
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
+  isEditable: boolean;
+  isDeletable: boolean;
 
   /**
    * Creates a community from a JSON representation.
@@ -21,6 +23,8 @@ export class Community {
     const community = new Community();
     community.id = src.id;
     community.name = src.name;
+    community.isEditable = src.is_editable;
+    community.isDeletable = src.is_deletable;
     community.timeCreated = moment(src.time_created);
     community.timeUpdated = moment(src.time_updated);
     community.car = src.car ? Car.fromJson(src.car) : null;

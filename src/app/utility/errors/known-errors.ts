@@ -41,5 +41,9 @@ export const knownErrors: ErrorDictionary = {
   USERNAME_INVALID: {
     title: 'Nutzername ungültig',
     description: 'Erlaube Zeichen: a-z, A-Z, 0-9.'
+  },
+  UNAUTHORIZED: {
+    title: 'Nicht autorisiert',
+    description: 'Für diese Aktion fehlen dir die nötigen Rechte.'
   }
 };
