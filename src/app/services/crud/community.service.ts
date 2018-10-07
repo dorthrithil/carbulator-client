@@ -55,6 +55,20 @@ export class CommunityService {
   }
 
   /**
+   * Renames the given community.
+   * @param community Community to rename.
+   * @param newName New name for the community.
+   * @return Observable that resolves to a Community.
+   */
+  public renameCommunity(community: Community, newName: string): Observable<Community> {
+    return this.http.put(this.api.community.renameCommunity(community.id), {name: newName}).pipe(
+      map(communityJson => {
+        return Community.fromJson(communityJson);
+      })
+    );
+  }
+
+  /**
    * Invites a user to a community.
    * @param invitation Community invitation object holding community id and username.
    * @return Observable that resolves to a MessageResponse.

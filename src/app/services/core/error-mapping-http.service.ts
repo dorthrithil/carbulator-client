@@ -39,6 +39,18 @@ export class ErrorMappingHttpService {
   }
 
   /**
+   * Performs a http put request.
+   * @param url Request URL.
+   * @param body Request body.
+   * @return Observable of the body of type T.
+   */
+  public put<T>(url: string, body: any) {
+    return this.http.put<T>(url, body).pipe(
+      catchError(error => ErrorMappingHttpService.mapError(error))
+    );
+  }
+
+  /**
    * Performs a http get request.
    * @param url Request URL.
    * @return Observable of the body of type T.

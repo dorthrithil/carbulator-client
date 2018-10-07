@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {Community} from '../../../../models/community';
 import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
 import {tap} from 'rxjs/operators';
 import {NotificationsService} from 'angular2-notifications';
+import {CommunitiesRenameModalComponent} from '../communities-rename-modal/communities-rename-modal.component';
 
 @Component({
   selector: 'cbl-communities-list',
@@ -12,6 +13,8 @@ import {NotificationsService} from 'angular2-notifications';
   styleUrls: ['./communities-list.component.scss']
 })
 export class CommunitiesListComponent implements OnInit {
+
+  @ViewChild('renameModal') renameModal: CommunitiesRenameModalComponent;
 
   public communities: Community[] = [];
   public isLoading = true;
@@ -50,6 +53,14 @@ export class CommunitiesListComponent implements OnInit {
       this.notifications.success('Gruppe gelöscht', 'Die Gruppe wurde erfolgreich gelöscht.');
       this.communities.splice(this.communities.indexOf(community), 1);
     }));
+  }
+
+  /**
+   * Opens the community rename modal.
+   * @param community Community that should get renamed.
+   */
+  renameCommunity(community: Community) {
+    this.renameModal.open(community);
   }
 
 }

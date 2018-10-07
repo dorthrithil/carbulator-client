@@ -28,6 +28,10 @@
         <clr-icon shape="trash"></clr-icon>
         Löschen
       </button>
+      <button class="action-item" (click)="renameCommunity(community)" *ngIf="community.isEditable">
+        <clr-icon shape="pencil"></clr-icon>
+        Umbenennen
+      </button>
     </clr-dg-action-overflow>
     <clr-dg-cell>{{community.id}}</clr-dg-cell>
     <clr-dg-cell>{{community.name}}</clr-dg-cell>
@@ -52,3 +56,5 @@
   <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
   <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
 </cbl-confirm-modal>
+
+<cbl-communities-rename-modal #renameModal></cbl-communities-rename-modal>

@@ -1,0 +1,24 @@
+<clr-modal [(clrModalOpen)]="isOpen">
+  <h3 class="modal-title">
+    Gruppe umbenennen
+  </h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="communityForm" *ngIf="isOpen">
+      <clr-input-container>
+        <label>Name</label>
+        <input placeholder="Name" clrInput formControlName="name" name="name" />
+        <clr-control-helper>Mit diesem Namen wird deine Gruppe im System angezeigt</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'">Mindestlänge: 3 Zeichen</clr-control-error>
+      </clr-input-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="cancel()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="rename()" [clrLoading]="isLoading">
+      Umbenennen
+    </button>
+  </div>
+</clr-modal>
