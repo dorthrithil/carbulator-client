@@ -24,17 +24,21 @@
 
   <clr-dg-row *clrDgItems="let community of communities">
     <clr-dg-action-overflow>
-      <button class="action-item" (click)="deleteCommunity(community)" *ngIf="community.isDeletable">
+      <button class="action-item" (click)="deleteModal.deleteCommunity(community)" *ngIf="community.isDeletable">
         <clr-icon shape="trash"></clr-icon>
         Löschen
       </button>
-      <button class="action-item" (click)="renameCommunity(community)" *ngIf="community.isEditable">
+      <button class="action-item" (click)="renameModal.open(community)" *ngIf="community.isEditable">
         <clr-icon shape="pencil"></clr-icon>
         Umbenennen
       </button>
+      <button class="action-item" [routerLink]="['/communities',community.id]" *ngIf="community.isEditable">
+        <clr-icon shape="eye"></clr-icon>
+        Details
+      </button>
     </clr-dg-action-overflow>
     <clr-dg-cell>{{community.id}}</clr-dg-cell>
-    <clr-dg-cell>{{community.name}}</clr-dg-cell>
+    <clr-dg-cell><a [routerLink]="['/communities',community.id]">{{community.name}}</a></clr-dg-cell>
     <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
   </clr-dg-row>
 
@@ -58,3 +62,5 @@
 </cbl-confirm-modal>
 
 <cbl-communities-rename-modal #renameModal></cbl-communities-rename-modal>
+
+<cbl-communities-delete-modal #deleteModal (deleted)="onCommunityDeleted($event)"></cbl-communities-delete-modal>

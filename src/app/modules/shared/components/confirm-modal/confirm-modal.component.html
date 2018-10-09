@@ -9,7 +9,8 @@
     <button type="button" class="btn btn-outline" (click)="cancelModal()">
       <ng-template [ngTemplateOutlet]="cancelButtonText"></ng-template>
     </button>
-    <button type="button" class="btn btn-primary" (click)="confirmModal()" [clrLoading]="isLoading">
+    <button type="button" class="btn" (click)="confirmModal()" [clrLoading]="isLoading"
+            [ngClass]="{'btn-danger': confirmButtonIsDanger, 'btn-primary': !confirmButtonIsDanger}" >
       <ng-template [ngTemplateOutlet]="okButtonText"></ng-template>
     </button>
   </div>

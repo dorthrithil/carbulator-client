@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import {Car} from './car';
+import {User} from './user';
 
 /**
  * Model of a community.
@@ -13,6 +14,7 @@ export class Community {
   timeUpdated: moment.Moment;
   isEditable: boolean;
   isDeletable: boolean;
+  users: User[];
 
   /**
    * Creates a community from a JSON representation.
@@ -28,6 +30,7 @@ export class Community {
     community.timeCreated = moment(src.time_created);
     community.timeUpdated = moment(src.time_updated);
     community.car = src.car ? Car.fromJson(src.car) : null;
+    community.users = src.users ? src.users.map(user => User.fromJson(user)) : null;
     return community;
   }
 

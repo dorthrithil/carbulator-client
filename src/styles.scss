@@ -37,6 +37,43 @@
 }
 
 // Remove h1 margin top
-h1{
+h1 {
   margin-top: 0;
+}
+
+// Datagrid links
+clr-dg-cell {
+
+  a {
+
+    &:link, &:visited, &:active, &:hover {
+
+      font-weight: bold;
+      color: #0079b8;
+
+    }
+
+  }
+
+}
+
+// Flat danger button
+.btn-danger.btn-link {
+  color: #E62700;
+
+  &:hover {
+    color: #C92100;
+  }
+}
+
+// Responsive utilities
+@media (max-width: 767px) {
+  .hide-md {
+    display: none;
+  }
+}
+
+// Make notifications appear over everything
+.simple-notification-wrapper {
+  z-index: 9001 !important;
 }

@@ -7,8 +7,13 @@ import {SharedModule} from '../shared/shared.module';
 import {CommunitiesWizardComponent} from './components/communities-wizard/communities-wizard.component';
 import {CommunitiesWizardNameComponent} from './components/communities-wizard/communities-wizard-name/communities-wizard-name.component';
 import {CommunitiesWizardCarComponent} from './components/communities-wizard/communities-wizard-car/communities-wizard-car.component';
-import {CommunitiesWizardUsersComponent} from './components/communities-wizard/communities-wizard-users/communities-wizard-users.component';
 import {CommunitiesRenameModalComponent} from './components/communities-rename-modal/communities-rename-modal.component';
+import { CommunitiesDetailComponent } from './components/communities-detail/communities-detail.component';
+import { CommunityMemberCardComponent } from './components/community-member-card/community-member-card.component';
+import { CommunityInfoCardComponent } from './components/community-info-card/community-info-card.component';
+import { CommunitiesDeleteModalComponent } from './components/communities-delete-modal/communities-delete-modal.component';
+import { CommunitiesInviteUserModalComponent } from './components/communities-invite-user-modal/communities-invite-user-modal.component';
+import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
 
 @NgModule({
   imports: [
@@ -22,8 +27,13 @@ import {CommunitiesRenameModalComponent} from './components/communities-rename-m
     CommunitiesWizardComponent,
     CommunitiesWizardNameComponent,
     CommunitiesWizardCarComponent,
-    CommunitiesWizardUsersComponent,
-    CommunitiesRenameModalComponent
+    CommunitiesUserSearchComponent,
+    CommunitiesRenameModalComponent,
+    CommunitiesDetailComponent,
+    CommunityMemberCardComponent,
+    CommunityInfoCardComponent,
+    CommunitiesDeleteModalComponent,
+    CommunitiesInviteUserModalComponent
   ]
 })
 export class CommunitiesModule {

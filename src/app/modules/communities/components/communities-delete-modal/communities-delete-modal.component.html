@@ -1,0 +1,10 @@
+<cbl-confirm-modal [(isOpen)]="confirmDeletionModalOpen"
+                   [action]="deleteCommunityRequest"
+                   [confirmButtonIsDanger]="true">
+  <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
+  <ng-template cblConfirmModalText>Die Gruppe wird gelöscht und alle Mitglieder daraus entfernt. Dies kann nicht
+    rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>

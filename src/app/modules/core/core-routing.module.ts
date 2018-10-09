@@ -8,6 +8,7 @@ import {DashboardModule} from '../dashboard/dashboard.module';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RegisterComponent} from './components/register/register.component';
 import {CommunitiesModule} from '../communities/communities.module';
+import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
 
 const coreRoutes: Routes = [
   {
@@ -33,6 +34,10 @@ const coreRoutes: Routes = [
   {
     path: '404',
     component: NotFoundComponent,
+  },
+  {
+    path: '401',
+    component: UnauthorizedComponent,
   },
   {
     path: '',

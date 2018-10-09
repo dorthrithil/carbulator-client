@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommunitiesWizardUsersComponent } from './communities-wizard-users.component';
+import { CommunitiesUserSearchComponent } from './communities-wizard-users.component';
 
 describe('CommunitiesWizardUsersComponent', () => {
-  let component: CommunitiesWizardUsersComponent;
-  let fixture: ComponentFixture<CommunitiesWizardUsersComponent>;
+  let component: CommunitiesUserSearchComponent;
+  let fixture: ComponentFixture<CommunitiesUserSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommunitiesWizardUsersComponent ]
+      declarations: [ CommunitiesUserSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommunitiesWizardUsersComponent);
+    fixture = TestBed.createComponent(CommunitiesUserSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,11 +4,11 @@ import {CommunitiesWizardCarComponent} from './communities-wizard-car/communitie
 import {mergeMap} from 'rxjs/operators';
 import {CommunitiesWizardNameComponent} from './communities-wizard-name/communities-wizard-name.component';
 import {CommunityService} from '../../../../services/crud/community.service';
-import {CommunitiesWizardUsersComponent} from './communities-wizard-users/communities-wizard-users.component';
 import {forkJoin, of} from 'rxjs';
 import {ClrWizard} from '@clr/angular';
 import {NotificationsService} from 'angular2-notifications';
 import {Community} from '../../../../models/community';
+import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
 
 /**
  * A community invitation.
@@ -27,7 +27,7 @@ export class CommunitiesWizardComponent {
 
   @ViewChild('car') carPage: CommunitiesWizardCarComponent;
   @ViewChild('name') namePage: CommunitiesWizardNameComponent;
-  @ViewChild('users') usersPage: CommunitiesWizardUsersComponent;
+  @ViewChild('users') usersPage: CommunitiesUserSearchComponent;
   @ViewChild('wizard') wizard: ClrWizard;
 
   @Output('communityCreated') communityCreated: EventEmitter<Community>;

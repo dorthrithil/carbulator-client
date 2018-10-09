@@ -16,7 +16,11 @@ export class MomentPipe implements PipeTransform {
    * @return Formatted moment.
    */
   transform(value: moment.Moment, formattingString: string): string {
-    return value.format(formattingString);
+    if (value) {
+      return value.format(formattingString);
+    } else {
+      return '';
+    }
   }
 
 }

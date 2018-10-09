@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    Über die Gruppe
+  </div>
+  <div class="card-block">
+    <ul class="list-unstyled">
+      <li><strong>Name:</strong> {{community?.name}}</li>
+      <li><strong>Mitglieder:</strong> {{community?.users.length}}</li>
+      <li><strong>Gruppe erstellt am:</strong> {{community?.timeCreated | moment: 'DD.MM.YYYY'}}</li>
+    </ul>
+  </div>
+
+  <div class="card-footer" *ngIf="community?.isEditable || community?.isDeletable">
+    <a class="btn btn-sm btn-link" (click)="renameModal.open(community)"
+       *ngIf="community?.isEditable">
+      Umbenennen
+    </a>
+    <a class="btn btn-sm btn-danger btn-link" (click)="deleteModal.deleteCommunity(community)"
+       *ngIf="community?.isDeletable">
+      Löschen
+    </a>
+  </div>
+</div>
+
+<cbl-communities-rename-modal #renameModal></cbl-communities-rename-modal>
+
+<cbl-communities-delete-modal #deleteModal (deleted)="navigateToCommunities()"></cbl-communities-delete-modal>

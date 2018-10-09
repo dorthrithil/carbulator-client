@@ -2,6 +2,7 @@
  * A description of an eror.
  */
 interface ErrorDescription {
+  message: string;
   title: string;
   description: string;
 }
@@ -19,30 +20,37 @@ interface ErrorDictionary {
  */
 export const knownErrors: ErrorDictionary = {
   USER_ALREADY_EXISTS: {
+    message: 'USER_ALREADY_EXISTS',
     title: 'Nutzername bereits vergeben',
     description: 'Dieser Nutzername wird im System bereits verwendet.'
   },
   USER_DOESNT_EXIST: {
+    message: 'USER_DOESNT_EXIST',
     title: 'Ungültige Kombination',
     description: 'Die Kombination von Nutzername und Passwort existiert nicht.'
   },
   WRONG_CREDENTIALS: {
+    message: 'WRONG_CREDENTIALS',
     title: 'Ungültige Kombination',
     description: 'Die Kombination von Nutzername und Passwort existiert nicht.'
   },
   USERNAME_TOO_SHORT: {
+    message: 'USERNAME_TOO_SHORT',
     title: 'Nutzername zu kurz',
     description: 'Der Nutzername muss mindestens 3 Zeichen haben.'
   },
   PASSWORD_TOO_SHORT: {
+    message: 'PASSWORD_TOO_SHORT',
     title: 'Passwort zu kurz',
     description: 'Das Passwort muss mindestens 8 Zeichen haben.'
   },
   USERNAME_INVALID: {
+    message: 'USERNAME_INVALID',
     title: 'Nutzername ungültig',
     description: 'Erlaube Zeichen: a-z, A-Z, 0-9.'
   },
   UNAUTHORIZED: {
+    message: 'UNAUTHORIZED',
     title: 'Nicht autorisiert',
     description: 'Für diese Aktion fehlen dir die nötigen Rechte.'
   }

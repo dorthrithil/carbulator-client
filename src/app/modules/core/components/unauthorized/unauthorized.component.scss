@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  height: 100%;
+}
+
+.unautorized-container {
+
+  margin-top: 2rem;
+  flex: 1 1 auto;
+
+  h1 {
+
+    font-size: 2.5rem;
+
+  }
+
+  .error {
+    color: #C92100;
+    font-size: 1.5rem;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  .gandalf {
+
+    background-image: url("../../../../../assets/gandalf.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .buttons {
+    margin: 1rem 0 0 0;
+  }
+
+}

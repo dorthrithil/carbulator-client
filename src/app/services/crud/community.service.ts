@@ -33,6 +33,17 @@ export class CommunityService {
   }
 
   /**
+   * Fetches a community from the server.
+   * @param id ID of the community.
+   * @return Observable that resolves to a community.
+   */
+  public getCommunity(id: number): Observable<Community> {
+    return this.http.get(this.api.community.getCommunity(id)).pipe(
+      map(community => Community.fromJson(community))
+    );
+  }
+
+  /**
    * Persists the given community on the server.
    * @param community Community to persist.
    * @return Observable that resolves to a Community.

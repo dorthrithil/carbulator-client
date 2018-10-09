@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    Mitglieder
+  </div>
+  <div class="card-block">
+    <div *ngFor="let member of community?.users">
+      <clr-icon shape="user"></clr-icon>
+      {{member.username}}
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-sm btn-link" (click)="inviteUserModal.open()">Neue Mitglieder einladen</a>
+  </div>
+</div>
+
+<cbl-communities-invite-user-modal [community]="community" #inviteUserModal></cbl-communities-invite-user-modal>

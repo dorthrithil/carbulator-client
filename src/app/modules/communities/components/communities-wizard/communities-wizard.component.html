@@ -25,7 +25,7 @@
   <clr-wizard-page [clrWizardPagePreventDefault]="true"
                    (clrWizardPageOnCommit)="save()">
     <ng-template clrPageTitle>Mitglieder</ng-template>
-    <cbl-communities-wizard-users #users [hidden]="isLoading"></cbl-communities-wizard-users>
+    <cbl-communities-user-search #users [hidden]="isLoading"></cbl-communities-user-search>
     <div class="spinner" *ngIf="isLoading">Loading...</div>
   </clr-wizard-page>
 

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from '../dashboard/components/dashboard/dashboard.component';
 import {CommunitiesListComponent} from './components/communities-list/communities-list.component';
+import {CommunitiesDetailComponent} from './components/communities-detail/communities-detail.component';
 
 const communitiesRoutes: Routes = [
   {
     path: '',
     component: CommunitiesListComponent,
+  },
+  {
+    path: ':id',
+    component: CommunitiesDetailComponent,
   },
   {
     path: '**',

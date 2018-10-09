@@ -34,6 +34,9 @@ export class ApiService {
     getCommunities: (): string => {
       return `${this.apiHost}account/communities`;
     },
+    getCommunity: (id: number): string => {
+      return `${this.apiHost}communities/${id}`;
+    },
     createCommunity: (): string => {
       return `${this.apiHost}communities`;
     },
@@ -54,6 +57,9 @@ export class ApiService {
   public user = {
     searchUsers: (query: string): string => {
       return `${this.apiHost}users/search?q=${query}`;
+    },
+    searchUninvitedUsers: (query: string, communityId: number): string => {
+      return `${this.apiHost}users/search?q=${query}&only-uninvited=true&community=${communityId}`;
     }
   };
 

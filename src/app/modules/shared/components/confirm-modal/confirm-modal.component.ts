@@ -4,7 +4,6 @@ import {ConfirmModalCancelButtonTextDirective} from './confirm-modal-cancel-butt
 import {ConfirmModalTextDirective} from './confirm-modal-text.directive';
 import {ConfirmModalTitleDirective} from './confirm-modal-title.directive';
 import {Observable, of} from 'rxjs';
-import {delay} from 'rxjs/operators';
 
 /**
  * A modal wrapper for displaying a simple confirmation message.
@@ -23,6 +22,7 @@ export class ConfirmModalComponent {
 
   @Input() isOpen: boolean;
   @Input() action: Observable<any> = of(null);
+  @Input() confirmButtonIsDanger = false;
 
   @ContentChild(ConfirmModalTextDirective) public cblConfirmModalText: ConfirmModalTextDirective;
   @ContentChild(ConfirmModalTitleDirective) public cblConfirmModalTitle: ConfirmModalTitleDirective;

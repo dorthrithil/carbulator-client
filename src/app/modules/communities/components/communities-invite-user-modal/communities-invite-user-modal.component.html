@@ -1,0 +1,17 @@
+<clr-modal [(clrModalOpen)]="isOpen">
+  <h3 class="modal-title">
+    Neue Mitglieder einladen
+  </h3>
+  <div class="modal-body">
+    <cbl-communities-user-search #userSearch *ngIf="community"
+                                 [excludeAlreadyInvitedUsers]="community"></cbl-communities-user-search>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="invite()" [clrLoading]="isLoading">
+      Einladen
+    </button>
+  </div>
+</clr-modal>

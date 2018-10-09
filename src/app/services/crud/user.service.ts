@@ -6,6 +6,9 @@ import {map} from 'rxjs/operators';
 import {ApiService} from '../core/api.service';
 import {User} from '../../models/user';
 
+/**
+ * CRUD service for users.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +25,20 @@ export class UserService {
    */
   public searchUsers(query: string): Observable<User[]> {
     return this.http.get(this.api.user.searchUsers(query)).pipe(
+      map(users => {
+        return users.map(user => User.fromJson(user));
+      })
+    );
+  }
+
+  /**
+   * Searches for users by the given query string. Also excludes users that are already invited in the given community.
+   * @param query Query string for the search.
+   * @param community From this community all already invited users are excluded.
+   * @return Observable that resolves to an array of users.
+   */
+  public searchUninvitedUsers(query: string, community: Community): Observable<User[]> {
+    return this.http.get(this.api.user.searchUninvitedUsers(query, community.id)).pipe(
       map(users => {
         return users.map(user => User.fromJson(user));
       })

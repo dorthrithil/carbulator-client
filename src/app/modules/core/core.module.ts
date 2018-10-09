@@ -20,6 +20,7 @@ import {MinutesRemainingPipe} from '../../pipes/minutes-remaining.pipe';
 import {RegisterComponent} from './components/register/register.component';
 import {ErrorHandlerInterceptor} from '../../utility/http-interceptors/error.interceptor';
 import {SharedModule} from '../shared/shared.module';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {SharedModule} from '../shared/shared.module';
     AppLevelAlertsComponent,
     MinutesRemainingPipe,
     RegisterComponent,
+    UnauthorizedComponent,
   ],
   providers: [
     {
