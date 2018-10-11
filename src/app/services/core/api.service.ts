@@ -45,7 +45,10 @@ export class ApiService {
     },
     deleteCommunity: (id: number): string => {
       return `${this.apiHost}communities/${id}`;
-    }
+    },
+    getTours: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tours`;
+    },
   };
 
   public communityInvitation = {

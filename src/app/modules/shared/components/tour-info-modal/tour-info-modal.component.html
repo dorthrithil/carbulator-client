@@ -1,0 +1,107 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen" [clrModalSize]="'lg'">
+  <h3 class="modal-title">
+    Fahrt Details
+  </h3>
+  <div class="modal-body">
+
+    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false" *ngIf="tour.isForceFinished">
+      <div class="alert-item">
+        <span class="alert-text">
+          Diese Fahrt wurde nicht ordnungsgemäß als beendet eingetragen.
+          <strong>{{tour.forceFinishedBy.username}}</strong> hat die
+          Fahrt für <strong>{{tour.owner.username}}</strong> als beendet markiert.
+        </span>
+      </div>
+    </clr-alert>
+
+    <h5>Infos</h5>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-compact table-noborder">
+          <tbody>
+          <tr>
+            <td class="left">
+              <strong>Fahrer:</strong>
+            </td>
+            <td class="left">
+              {{tour.owner.username}}
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Beginn:</strong>
+            </td>
+            <td class="left">
+              {{tour.startTime | moment: 'DD.MM.YYYY HH:mm'}}
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Ende:</strong>
+            </td>
+            <td class="left">
+              {{tour.endTime | moment: 'DD.MM.YYYY HH:mm'}}
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Abgerechnet:</strong>
+            </td>
+            <td class="left">
+              <ng-container *ngIf="tour.isOpen">Nein</ng-container>
+              <ng-container *ngIf="!tour.isOpen">Ja</ng-container>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-compact table-noborder">
+          <tbody>
+          <tr>
+            <td class="left">
+              <strong>Gefahrene Kilometer:</strong>
+            </td>
+            <td class="left">
+              {{tour.totalKm}} km
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Kilometerstand Start:</strong>
+            </td>
+            <td class="left">
+              {{tour.startKm}} km
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Kilometerstand Ende:</strong>
+            </td>
+            <td class="left">
+              {{tour.endKm}} km
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ng-container *ngIf="tour.parkingPosition.length > 0">
+      <h5>Parkplatz</h5>
+      <cbl-parking-position-map [deferredRenderingTime]="200" [rawParkingPosition]="tour.parkingPosition">
+      </cbl-parking-position-map>
+    </ng-container>
+
+    <ng-container *ngIf="tour.comment.length > 0">
+      <h5>Kommentar</h5>
+      {{tour.comment}}
+    </ng-container>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>

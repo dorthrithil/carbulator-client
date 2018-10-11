@@ -12,6 +12,7 @@ import {knownErrors} from '../../../../utility/errors/known-errors';
 export class CommunitiesDetailComponent implements OnInit {
 
   public community: Community;
+  public communityId: number;
   public loadingCommunity = true;
 
   constructor(private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class CommunitiesDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params['id'];
       if (Number(id)) {
+        this.communityId = id;
         this.communityService.getCommunity(id).subscribe(community => {
           this.community = community;
           this.loadingCommunity = false;

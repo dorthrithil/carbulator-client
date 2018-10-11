@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    Letzte Fahrten
+  </div>
+  <div class="card-block">
+    <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-sm btn-link">Neue Fahrt</a>
+  </div>
+</div>

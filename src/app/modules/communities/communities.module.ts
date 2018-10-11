@@ -14,6 +14,7 @@ import { CommunityInfoCardComponent } from './components/community-info-card/com
 import { CommunitiesDeleteModalComponent } from './components/communities-delete-modal/communities-delete-modal.component';
 import { CommunitiesInviteUserModalComponent } from './components/communities-invite-user-modal/communities-invite-user-modal.component';
 import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
+import { CommunityTourCardComponent } from './components/community-tour-card/community-tour-card.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {CommunitiesUserSearchComponent} from './components/communities-user-sear
     CommunityMemberCardComponent,
     CommunityInfoCardComponent,
     CommunitiesDeleteModalComponent,
-    CommunitiesInviteUserModalComponent
+    CommunitiesInviteUserModalComponent,
+    CommunityTourCardComponent
   ]
 })
 export class CommunitiesModule {

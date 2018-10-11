@@ -1,0 +1,31 @@
+<div class="tour-box" [style.borderRightColor]="getKmSeverityBorderColor()" (click)="tourInfoModal.open()">
+  <div class="tour-box-col">
+    <div>
+      <clr-icon shape="event"></clr-icon>
+      {{tour.endTime | moment: 'DD.MM.YYYY HH:mm'}}
+    </div>
+    <div>
+      <clr-icon shape="user"></clr-icon>
+      {{tour.owner.username}}
+    </div>
+  </div>
+  <div class="tour-box-col distance">
+    <div>{{tour.totalKm}} km</div>
+    <div>
+      <div class="payed" *ngIf="!tour.isOpen">
+        <clr-icon shape="euro"></clr-icon>
+      </div>
+      <div class="parking-spot" *ngIf="tour.parkingPosition.length > 0">
+        <clr-icon shape="map-marker"></clr-icon>
+      </div>
+      <div class="comment" *ngIf="tour.comment.length > 0">
+        <clr-icon shape="chat-bubble"></clr-icon>
+      </div>
+      <div class="force-finished" *ngIf="tour.isForceFinished">
+        <clr-icon shape="warning-standard"></clr-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cbl-tour-info-modal #tourInfoModal [tour]="tour"></cbl-tour-info-modal>

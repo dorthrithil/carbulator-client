@@ -10,6 +10,10 @@ import {ConfirmModalTextDirective} from './components/confirm-modal/confirm-moda
 import {ConfirmModalTitleDirective} from './components/confirm-modal/confirm-modal-title.directive';
 import {ConfirmModalCancelButtonTextDirective} from './components/confirm-modal/confirm-modal-cancel-button-text.directive';
 import {ConfirmModalOKButtonTextDirective} from './components/confirm-modal/confirm-modal-ok-button-text.directive';
+import { TourBoxComponent } from './components/tour-box/tour-box.component';
+import { TourInfoModalComponent } from './components/tour-info-modal/tour-info-modal.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { ParkingPositionMapComponent } from './components/parking-position-map/parking-position-map.component';
 
 @NgModule({
   imports: [
@@ -18,6 +22,7 @@ import {ConfirmModalOKButtonTextDirective} from './components/confirm-modal/conf
     ReactiveFormsModule,
     ClarityModule,
     ClrFormsNextModule,
+    LeafletModule
   ],
   declarations: [
     MomentPipe,
@@ -27,7 +32,10 @@ import {ConfirmModalOKButtonTextDirective} from './components/confirm-modal/conf
     ConfirmModalTextDirective,
     ConfirmModalTitleDirective,
     ConfirmModalCancelButtonTextDirective,
-    ConfirmModalOKButtonTextDirective
+    ConfirmModalOKButtonTextDirective,
+    TourBoxComponent,
+    TourInfoModalComponent,
+    ParkingPositionMapComponent
   ],
   exports: [
     MomentPipe,
@@ -41,7 +49,9 @@ import {ConfirmModalOKButtonTextDirective} from './components/confirm-modal/conf
     ConfirmModalTextDirective,
     ConfirmModalTitleDirective,
     ConfirmModalCancelButtonTextDirective,
-    ConfirmModalOKButtonTextDirective
+    ConfirmModalOKButtonTextDirective,
+    TourBoxComponent,
+    TourInfoModalComponent
   ]
 })
 export class SharedModule { }
