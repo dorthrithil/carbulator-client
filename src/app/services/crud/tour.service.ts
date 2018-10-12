@@ -30,4 +30,27 @@ export class TourService {
     );
   }
 
+  /**
+   * Fetches the latest tour for a community from the server.
+   * @param communityId The id of the community to fetch the tour for.
+   * @return Observable that resolves to a tour.
+   */
+  public getLatestCommunityTour(communityId: number): Observable<Tour> {
+    return this.http.get(this.api.community.getLatestCommunityTour(communityId)).pipe(
+      map(tour => Tour.fromJson(tour))
+    );
+  }
+
+  /**
+   * Persists a tour on the server.
+   * @param communityId The id of the community in which to start the tour.
+   * @param tour Tour to persist.
+   * @return Observable that resolves to a tour.
+   */
+  public createTour(communityId: number, tour: Tour): Observable<Tour> {
+    return this.http.post(this.api.community.createTour(communityId), Tour.toJson(tour)).pipe(
+      map(tourJson => Tour.fromJson(tourJson))
+    );
+  }
+
 }

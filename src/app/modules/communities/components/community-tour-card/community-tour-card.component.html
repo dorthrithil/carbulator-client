@@ -7,6 +7,8 @@
   </div>
 
   <div class="card-footer">
-    <a class="btn btn-sm btn-link">Neue Fahrt</a>
+    <a class="btn btn-sm btn-link" (click)="startTourModal.open()">Neue Fahrt</a>
   </div>
 </div>
+
+<cbl-start-tour-modal [communityId]="communityId" #startTourModal></cbl-start-tour-modal>

@@ -49,4 +49,16 @@ export class Tour {
     return tour;
   }
 
+  /**
+   * Creates a JSON ready representation of the given tour as it is expected from the server.
+   * @param src Tour to get a representation for.
+   * @return Tour representation.
+   */
+  public static toJson(src: Tour): any {
+    return {
+      start_time: src.startTime,
+      start_km: src.startKm
+    };
+  }
+
 }

@@ -77,3 +77,9 @@ clr-dg-cell {
 .simple-notification-wrapper {
   z-index: 9001 !important;
 }
+
+// Utility for wrapping spinners so they appear centered
+.centered-spinner {
+  display: block;
+  text-align: center;
+}

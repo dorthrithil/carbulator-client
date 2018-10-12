@@ -53,5 +53,20 @@ export const knownErrors: ErrorDictionary = {
     message: 'UNAUTHORIZED',
     title: 'Nicht autorisiert',
     description: 'Für diese Aktion fehlen dir die nötigen Rechte.'
+  },
+  CANT_START_TOUR_WHEN_HAVING_UNFINISHED_TOURS_IN_COMMUNITY: {
+    message: 'CANT_START_TOUR_WHEN_HAVING_UNFINISHED_TOURS_IN_COMMUNITY',
+    title: 'Nicht möglich',
+    description: 'Eine neue Fahrt kann erst begonnen werden, wenn die vorherige abgeschlossen ist.'
+  },
+  START_KM_MUST_BE_GEQ_LAST_END_KM: {
+    message: 'START_KM_MUST_BE_GEQ_LAST_END_KM',
+    title: 'Kilometerstand zu niedrig',
+    description: 'Der Kilometerstand der letzten Fahrt ist höher als der angegebene. Dies ist nciht möglich.'
+  },
+  COMMUNIY_DOESNT_EXIST: {
+    message: 'COMMUNIY_DOESNT_EXIST',
+    title: 'Gruppe existiert nicht',
+    description: 'Die angegebene Gruppe existiert nicht im System.'
   }
 };

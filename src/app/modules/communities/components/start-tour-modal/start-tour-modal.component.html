@@ -1,0 +1,33 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen">
+  <h3 class="modal-title">
+    Neue Fahrt starten
+  </h3>
+  <div class="modal-body">
+
+    <div class="centered-spinner" *ngIf="lastTourLoading">
+      <span class="spinner">Loading...</span>
+    </div>
+
+    <form clrForm [formGroup]="startTourForm" *ngIf="!lastTourLoading">
+      <clr-input-container>
+        <label>Kilometerstand</label>
+        <input placeholder="Kilometerstand" clrInput formControlName="startKm" name="startKm"/>
+        <clr-control-helper>Der aktuelle Kilometerstand des Autos</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'startKm'">Kann nicht niedriger als der letzte
+          Kilometerstand sein ({{lastEndKm}} km)
+        </clr-control-error>
+      </clr-input-container>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="addTour()" [clrLoading]="isLoading"
+            [disabled]="!startTourForm?.valid">
+      Los fahren
+    </button>
+  </div>
+</clr-modal>

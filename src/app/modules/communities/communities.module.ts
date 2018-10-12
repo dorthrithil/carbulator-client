@@ -15,6 +15,7 @@ import { CommunitiesDeleteModalComponent } from './components/communities-delete
 import { CommunitiesInviteUserModalComponent } from './components/communities-invite-user-modal/communities-invite-user-modal.component';
 import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
 import { CommunityTourCardComponent } from './components/community-tour-card/community-tour-card.component';
+import { StartTourModalComponent } from './components/start-tour-modal/start-tour-modal.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { CommunityTourCardComponent } from './components/community-tour-card/com
     CommunityInfoCardComponent,
     CommunitiesDeleteModalComponent,
     CommunitiesInviteUserModalComponent,
-    CommunityTourCardComponent
+    CommunityTourCardComponent,
+    StartTourModalComponent
   ]
 })
 export class CommunitiesModule {
