@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {startKmValidator} from '../../../../utility/validators/start-km.validator';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
+import {NotificationsService} from 'angular2-notifications';
 
 /**
  * A modal for starting a tour.
@@ -31,7 +32,9 @@ export class StartTourModalComponent {
   public lastEndKm: number;
   public lastTourLoading = true;
 
-  constructor(private fb: FormBuilder, private tourService: TourService) {
+  constructor(private fb: FormBuilder,
+              private notifications: NotificationsService,
+              private tourService: TourService) {
   }
 
 
@@ -81,6 +84,7 @@ export class StartTourModalComponent {
       this.tourService.createTour(this.communityId, newTour).subscribe(tour => {
         this.tourStarted.emit(tour);
         this.close();
+        this.notifications.success('Fahrt gestartet', 'Deine Fahrt wurde als gestartet eingetragen.');
       }, () => {
         this.isOpen = false;
         this.close();

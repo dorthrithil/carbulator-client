@@ -42,6 +42,19 @@ export class TourService {
   }
 
   /**
+   * Fetches all running tours od a community from the server.
+   * @param communityId The id of the community to fetch the tours for.
+   * @return Observable that resolves to an array of tours.
+   */
+  public getRunningCommunityTours(communityId: number): Observable<Tour[]> {
+    return this.http.get(this.api.community.getRunningTours(communityId)).pipe(
+      map(tours => {
+        return tours.map(tour => Tour.fromJson(tour));
+      })
+    );
+  }
+
+  /**
    * Persists a tour on the server.
    * @param communityId The id of the community in which to start the tour.
    * @param tour Tour to persist.

@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import * as JWT from 'jwt-decode';
 import {NotificationsService} from 'angular2-notifications';
 import {bigIntTimer} from '../../utility/observables/bigint-timer';
+import {User} from '../../models/user';
 
 /**
  * A JSON Web Token.
@@ -38,6 +39,7 @@ export class AuthService {
   private onRefreshTokenAboutToExpireSubject: Subject<number>;
   private onLogoutSubject: Subject<boolean>;
   private onLoginSubject: Subject<boolean>;
+  private loggedInUser: User;
 
   public onLoginStateChanges: Observable<boolean>;
   public onRefreshTokenAboutToExpire: Observable<number>;
@@ -99,7 +101,7 @@ export class AuthService {
   public login(username: string, password: string): Observable<boolean> {
     return this.authCrud.login(username, password).pipe(
       map((response: LoginResponse) => {
-        this.afterLoginOrResitrationSuccess(response);
+        this.afterLoginOrRegistrationSuccess(response);
         this.notificationsService.success('Login erfolgreich', 'Du bist jetzt eingelogt.');
         return true;
       }),
@@ -118,7 +120,7 @@ export class AuthService {
   public register(username: string, password: string): Observable<boolean> {
     return this.authCrud.register(username, password).pipe(
       map((response: LoginResponse) => {
-        this.afterLoginOrResitrationSuccess(response);
+        this.afterLoginOrRegistrationSuccess(response);
         this.notificationsService.success('Registrierung erfolgreich', 'Du bist jetzt eingelogt.');
         return true;
       }),
@@ -132,7 +134,7 @@ export class AuthService {
    * Performs necessary actions after successful login or registration.
    * @param response Login/Registration response form the server.
    */
-  private afterLoginOrResitrationSuccess(response: LoginResponse) {
+  private afterLoginOrRegistrationSuccess(response: LoginResponse) {
     this.unpackLoginResponse(response);
     this._isLoggedIn = true;
     this.loginStateChangesSubject.next(this.isLoggedIn);
@@ -174,6 +176,7 @@ export class AuthService {
       this.accessTokenExpires = moment.unix(accessTokenDecoded.exp);
       this.startRefreshTimer();
     }
+    this.loggedInUser = loginResponse.user;
     this.persistTokens();
   }
 
@@ -184,6 +187,7 @@ export class AuthService {
     const autoLoginObject: LoginResponse = {
       access_token: this._accessToken,
       refresh_token: this._refreshToken,
+      user: this.loggedInUser,
       message: ''
     };
     localStorage.setItem('CarbulatorAuth', JSON.stringify(autoLoginObject));
@@ -261,6 +265,15 @@ export class AuthService {
     ).subscribe(() => {
       this.logout(true);
     });
+  }
+
+  /**
+   * Check if the given user is the logged in user.
+   * @param user The user to check the identity for.
+   * @return True if the given user is the same as the logged in user.
+   */
+  public isLoggedInUser(user: User): boolean {
+    return this.loggedInUser.username === user.username;
   }
 
 }

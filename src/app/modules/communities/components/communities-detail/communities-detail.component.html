@@ -1,5 +1,27 @@
 <h1>{{community?.name}}</h1>
 
+<clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
+  <div class="alert-item">
+    <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
+      <strong>{{runningTour.owner.username}}</strong> fährt gerade!
+    </span>
+    <span class="alert-text" *ngIf="isLoggedInUser(runningTour.owner)">
+      Du fährst gerade!
+    </span>
+    <div class="alert-actions">
+      <clr-dropdown>
+        <button class="dropdown-toggle" clrDropdownTrigger>
+          Aktionen
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-right">
+          <div class="dropdown-item" clrDropdownItem>Fahrt beenden</div>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </div>
+</clr-alert>
+
 <div class="row">
 
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">

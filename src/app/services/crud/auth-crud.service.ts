@@ -4,12 +4,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../core/api.service';
 import {HttpBackendClientService} from '../core/http-backend-client.service';
 import {ErrorMappingHttpService} from '../core/error-mapping-http.service';
+import {User} from '../../models/user';
 
 /**
  * A login response from the server. Refresh token may be null for some routes.
  */
 export interface LoginResponse {
   message: string;
+  user: User;
   access_token: string;
   refresh_token: string;
 }

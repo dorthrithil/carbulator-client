@@ -3,6 +3,10 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Community} from '../../../../models/community';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {knownErrors} from '../../../../utility/errors/known-errors';
+import {TourService} from '../../../../services/crud/tour.service';
+import {Tour} from '../../../../models/tour';
+import {AuthService} from '../../../../services/core/auth.service';
+import {User} from '../../../../models/user';
 
 @Component({
   selector: 'cbl-communities-detail',
@@ -14,9 +18,12 @@ export class CommunitiesDetailComponent implements OnInit {
   public community: Community;
   public communityId: number;
   public loadingCommunity = true;
+  public runningTour: Tour;
 
   constructor(private route: ActivatedRoute,
+              private auth: AuthService,
               private router: Router,
+              private tourService: TourService,
               private communityService: CommunityService) {
   }
 
@@ -37,10 +44,22 @@ export class CommunitiesDetailComponent implements OnInit {
             this.router.navigate(['/401']);
           }
         });
+        this.tourService.getRunningCommunityTours(this.communityId).subscribe(runningTours => {
+          this.runningTour = runningTours[0];
+        });
       } else {
         this.router.navigate(['/404']);
       }
     });
+  }
+
+  /**
+   * Returns true if the given user is the logged in user.
+   * @param user User to check the identity for.
+   * @return True if the given user is the logged in user.
+   */
+  public isLoggedInUser(user: User): boolean {
+    return this.auth.isLoggedInUser(user);
   }
 
 }
