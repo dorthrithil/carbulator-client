@@ -67,6 +67,9 @@ export class ApiService {
     searchUsers: (query: string): string => {
       return `${this.apiHost}users/search?q=${query}`;
     },
+    getInvitedUsers: (communityId: number): string => {
+      return `${this.apiHost}communities/${communityId}/users/invited`;
+    },
     searchUninvitedUsers: (query: string, communityId: number): string => {
       return `${this.apiHost}users/search?q=${query}&only-uninvited=true&community=${communityId}`;
     }

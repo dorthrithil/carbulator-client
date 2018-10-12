@@ -4,6 +4,13 @@
   </div>
   <div class="card-block">
     <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
+    <clr-alert [clrAlertType]="'info'" *ngIf="tours?.length == 0" [clrAlertClosable]="false">
+      <div class="alert-item">
+        <span class="alert-text">
+          Es wurden noch keine Fahrten in dieser Gruppe eingetragen.
+        </span>
+      </div>
+    </clr-alert>
   </div>
 
   <div class="card-footer">

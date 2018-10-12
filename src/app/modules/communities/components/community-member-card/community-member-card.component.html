@@ -7,6 +7,13 @@
       <clr-icon shape="user"></clr-icon>
       {{member.username}}
     </div>
+    <ng-container *ngIf="invitedUsers.length > 0">
+      <h6>Warte auf Einladungsbestätigung:</h6>
+      <div *ngFor="let user of invitedUsers">
+        <clr-icon shape="user"></clr-icon>
+        {{user.username}}
+      </div>
+    </ng-container>
   </div>
 
   <div class="card-footer">
@@ -14,4 +21,5 @@
   </div>
 </div>
 
-<cbl-communities-invite-user-modal [community]="community" #inviteUserModal></cbl-communities-invite-user-modal>
+<cbl-communities-invite-user-modal [community]="community" #inviteUserModal (invitationsSent)="updateInvitedUsers()">
+</cbl-communities-invite-user-modal>

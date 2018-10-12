@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Community} from '../../../../models/community';
 import {mergeMap} from 'rxjs/operators';
 import {forkJoin, of} from 'rxjs';
@@ -20,6 +20,11 @@ export class CommunitiesInviteUserModalComponent {
    * The community to which to invite the new members.
    */
   @Input() community: Community;
+
+  /**
+   * Emits after the invitations have been sent.
+   */
+  @Output() invitationsSent: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('userSearch') userSearch: CommunitiesUserSearchComponent;
 
@@ -62,6 +67,7 @@ export class CommunitiesInviteUserModalComponent {
         this.isLoading = false;
         this.notifications.success('User eingeladen', 'Die ausgewählten User wurden erfolgreich eingeladen!');
         this.close();
+        this.invitationsSent.emit(true);
       });
     } else {
       this.notifications.error('Keine User ausgewählt', 'Du hast keine User zum Einladen ausgewählt!');

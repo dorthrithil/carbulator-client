@@ -37,7 +37,7 @@ import { StartTourModalComponent } from './components/start-tour-modal/start-tou
     CommunitiesDeleteModalComponent,
     CommunitiesInviteUserModalComponent,
     CommunityTourCardComponent,
-    StartTourModalComponent
+    StartTourModalComponent,
   ]
 })
 export class CommunitiesModule {
