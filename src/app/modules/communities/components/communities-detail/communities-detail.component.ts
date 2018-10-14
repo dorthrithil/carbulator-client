@@ -62,4 +62,21 @@ export class CommunitiesDetailComponent implements OnInit {
     return this.auth.isLoggedInUser(user);
   }
 
+  /**
+   * Removes the running tour.
+   */
+  public clearRunningTour() {
+    this.runningTour = null;
+  }
+
+  /**
+   * Adds the given tour as a running tour.
+   * @param tour Tour to set as running tour.
+   */
+  public addRunningTour(tour: Tour) {
+    if (tour.endKm === null || typeof tour.endKm === 'undefined') {
+      this.runningTour = tour;
+    }
+  }
+
 }

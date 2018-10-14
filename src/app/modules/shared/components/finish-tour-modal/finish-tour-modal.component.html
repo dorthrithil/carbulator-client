@@ -1,0 +1,51 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen">
+  <h3 class="modal-title">
+    Fahrt beenden
+  </h3>
+  <div class="modal-body">
+
+    <form clrForm [formGroup]="finishTourForm">
+
+      <clr-input-container>
+        <label>Kilometerstand</label>
+        <input placeholder="Kilometerstand" clrInput formControlName="endKm" name="endKm"/>
+        <clr-control-helper>Der aktuelle Kilometerstand des Autos</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'startKm'">Kann nicht niedriger als der
+          Anfangs-Kilometerstand sein ({{tour.startKm}} km)
+        </clr-control-error>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Kommentar</label>
+        <textarea clrTextarea formControlName="comment" name="comment"></textarea>
+      </clr-textarea-container>
+
+      <div class="fake-control-container" *ngIf="geoLocationLoading">
+        <span class="clr-control-label">Parkplatz</span>
+        <div>
+          <span class="spinner spinner-inline">Loading...</span> Lade Geodaten...
+        </div>
+      </div>
+      <clr-input-container *ngIf="!geoLocationLoading">
+        <label>Parkplatz</label>
+        <input placeholder="Latitude, Longitude" clrInput formControlName="parkingPosition" name="parkingPosition"/>
+        <clr-control-helper>Latitude, Longitude</clr-control-helper>
+        <clr-control-error *clrIfError="'latlong'">Koordinaten im Format "Latitude, Longitude" angeben
+          (z.B. 123.45, 67.89)
+        </clr-control-error>
+      </clr-input-container>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="finishTour()" [clrLoading]="isLoading"
+            [disabled]="!finishTourForm?.valid || geoLocationLoading">
+      Speichern
+    </button>
+  </div>
+</clr-modal>

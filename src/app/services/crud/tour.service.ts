@@ -66,4 +66,15 @@ export class TourService {
     );
   }
 
+  /**
+   * Marks a tour as finished on the server.
+   * @param tour Tour to mark as finished.
+   * @return Observable that resolves to a tour.
+   */
+  public finishTour(tour: Tour): Observable<Tour> {
+    return this.http.put(this.api.community.finishTour(tour.community.id, tour.id), Tour.toJson(tour)).pipe(
+      map(tourJson => Tour.fromJson(tourJson))
+    );
+  }
+
 }

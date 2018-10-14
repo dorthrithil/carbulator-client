@@ -55,6 +55,9 @@ export class ApiService {
     createTour: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours`;
     },
+    finishTour: (communityId: number, id: number): string => {
+      return `${this.apiHost}communities/${communityId}/tours/${id}/finish`;
+    },
     getRunningTours: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/running`;
     }

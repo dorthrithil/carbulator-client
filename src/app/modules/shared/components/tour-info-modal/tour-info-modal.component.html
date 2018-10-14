@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <ng-container *ngIf="tour.parkingPosition.length > 0">
+    <ng-container *ngIf="tour.parkingPosition != null && tour.parkingPosition.length > 0">
       <h5>Parkplatz</h5>
       <p>
         <cbl-parking-position-map [deferredRenderingTime]="200" [rawParkingPosition]="tour.parkingPosition">
@@ -95,7 +95,7 @@
       </p>
     </ng-container>
 
-    <ng-container *ngIf="tour.comment.length > 0">
+    <ng-container *ngIf="tour.comment != null && tour.comment.length > 0">
       <h5>Kommentar</h5>
       <p>
         {{tour.comment}}

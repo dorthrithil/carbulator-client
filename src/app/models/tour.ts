@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import {Car} from './car';
 import {User} from './user';
 import {Community} from './community';
+import {s} from '@angular/core/src/render3';
 
 /**
  * Model of a tour.
@@ -56,8 +57,10 @@ export class Tour {
    */
   public static toJson(src: Tour): any {
     return {
-      start_time: src.startTime,
-      start_km: src.startKm
+      start_km: src.startKm,
+      end_km: src.endKm,
+      comment: src.comment,
+      parking_position: src.parkingPosition
     };
   }
 

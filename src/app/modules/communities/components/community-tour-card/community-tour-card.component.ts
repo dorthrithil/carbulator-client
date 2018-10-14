@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
 
@@ -17,6 +17,11 @@ export class CommunityTourCardComponent implements OnInit {
    */
   @Input() communityId: number;
 
+  /**
+   * Emits newly started tours.
+   */
+  @Output() tourStarted: EventEmitter<Tour> = new EventEmitter();
+
   public tours: Tour[];
 
   constructor(private tourService: TourService) {
@@ -29,6 +34,14 @@ export class CommunityTourCardComponent implements OnInit {
     this.tourService.getCommunityTours(this.communityId).subscribe(tours => {
       this.tours = tours;
     });
+  }
+
+  /**
+   * Adds a tour to the list of tours.
+   * @param tour Tour to add to the list.
+   */
+  public addTour(tour: Tour) {
+    this.tours.unshift(tour);
   }
 
 }

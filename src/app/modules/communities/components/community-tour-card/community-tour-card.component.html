@@ -3,7 +3,9 @@
     Letzte Fahrten
   </div>
   <div class="card-block">
-    <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
+    <div class="tour-box-container" *ngIf="tours?.length > 0">
+      <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
+    </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="tours?.length == 0" [clrAlertClosable]="false">
       <div class="alert-item">
         <span class="alert-text">
@@ -18,4 +20,5 @@
   </div>
 </div>
 
-<cbl-start-tour-modal [communityId]="communityId" #startTourModal></cbl-start-tour-modal>
+<cbl-start-tour-modal [communityId]="communityId" #startTourModal (tourStarted)="tourStarted.emit($event)">
+</cbl-start-tour-modal>

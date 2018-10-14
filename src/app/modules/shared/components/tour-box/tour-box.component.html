@@ -15,10 +15,10 @@
       <div class="payed" *ngIf="!tour.isOpen">
         <clr-icon shape="euro"></clr-icon>
       </div>
-      <div class="parking-spot" *ngIf="tour.parkingPosition.length > 0">
+      <div class="parking-spot" *ngIf="tour.parkingPosition != null && tour.parkingPosition.length > 0">
         <clr-icon shape="map-marker"></clr-icon>
       </div>
-      <div class="comment" *ngIf="tour.comment.length > 0">
+      <div class="comment" *ngIf="tour.comment != null && tour.comment.length > 0">
         <clr-icon shape="chat-bubble"></clr-icon>
       </div>
       <div class="force-finished" *ngIf="tour.isForceFinished">

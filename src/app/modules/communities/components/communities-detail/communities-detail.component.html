@@ -15,17 +15,21 @@
           <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu clrPosition="bottom-right">
-          <div class="dropdown-item" clrDropdownItem>Fahrt beenden</div>
+          <div class="dropdown-item" clrDropdownItem (click)="finishTourModal.open(runningTour)">Fahrt beenden</div>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
   </div>
 </clr-alert>
 
+<cbl-finish-tour-modal #finishTourModal
+                       (tourFinished)="toursCard.addTour($event); clearRunningTour()"></cbl-finish-tour-modal>
+
 <div class="row">
 
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-    <cbl-community-tour-card [communityId]="communityId"></cbl-community-tour-card>
+    <cbl-community-tour-card [communityId]="communityId" #toursCard (tourStarted)="addRunningTour($event)">
+    </cbl-community-tour-card>
   </div>
 
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
