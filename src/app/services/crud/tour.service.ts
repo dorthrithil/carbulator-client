@@ -77,4 +77,16 @@ export class TourService {
     );
   }
 
+  /**
+   * Marks a tour as finished on the server. This is the variant that is callable even if the calling user is not the tour owner.
+   * Force finishing a tour will mark it as force finished which will display a warning on the website.
+   * @param tour Tour to mark as (force) finished.
+   * @return Observable that resolves to a tour.
+   */
+  public forceFinishTour(tour: Tour): Observable<Tour> {
+    return this.http.put(this.api.community.forceFinishTour(tour.community.id, tour.id), Tour.toJson(tour)).pipe(
+      map(tourJson => Tour.fromJson(tourJson))
+    );
+  }
+
 }

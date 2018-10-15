@@ -4,6 +4,15 @@
   </h3>
   <div class="modal-body">
 
+    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false" *ngIf="!isOwner()">
+      <clr-alert-item>
+        <span class="alert-text">
+          Diese Fahrt wurde von <strong>{{tour.owner.username}}</strong> gestartet. Beende sie nur wenn du dir sicher
+          bist, dass <strong>{{tour.owner.username}}</strong> vergessen hat die Fahrt als beendet zu markieren.
+        </span>
+      </clr-alert-item>
+    </clr-alert>
+
     <form clrForm [formGroup]="finishTourForm">
 
       <clr-input-container>
@@ -35,6 +44,9 @@
           (z.B. 123.45, 67.89)
         </clr-control-error>
       </clr-input-container>
+      <button class="btn btn-sm btn-primary-outline" (click)="getGeoLocation()" *ngIf="!geoLocationLoading">
+        Aktualisieren
+      </button>
 
     </form>
 

@@ -7,7 +7,7 @@ import {AbstractControl, ValidatorFn} from '@angular/forms';
  */
 export function latlongValidator(allowEmpty = false): ValidatorFn {
   return (ctrl: AbstractControl): { [key: string]: any } => {
-    if (allowEmpty && (ctrl.valid === null || ctrl.value === '')) {
+    if (allowEmpty && (ctrl.value === null || ctrl.value === '')) {
       return null;
     }
     const regexp = new RegExp(/^(\-?\d+(\.\d+)?), (\-?\d+(\.\d+)?)$/);

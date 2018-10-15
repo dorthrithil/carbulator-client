@@ -5,6 +5,8 @@ import {NotificationsService} from 'angular2-notifications';
 import {TourService} from '../../../../services/crud/tour.service';
 import {startKmValidator} from '../../../../utility/validators/start-km.validator';
 import {latlongValidator} from '../../../../utility/validators/latlong.validator';
+import {AuthService} from '../../../../services/core/auth.service';
+import {Observable} from 'rxjs';
 
 /**
  * A modal to finish a tour.
@@ -28,6 +30,7 @@ export class FinishTourModalComponent {
   public geoLocationLoading: boolean;
 
   constructor(private fb: FormBuilder,
+              private auth: AuthService,
               private notifications: NotificationsService,
               private tourService: TourService) {
   }
@@ -59,7 +62,7 @@ export class FinishTourModalComponent {
   /**
    * Reads the geo location from the browser.
    */
-  private getGeoLocation() {
+  public getGeoLocation() {
     if (navigator.geolocation) {
       this.geoLocationLoading = true;
       navigator.geolocation.getCurrentPosition(position => {
@@ -95,15 +98,28 @@ export class FinishTourModalComponent {
       this.tour.endKm = this.finishTourForm.get('endKm').value;
       this.tour.comment = this.finishTourForm.get('comment').value;
       this.tour.parkingPosition = this.finishTourForm.get('parkingPosition').value;
-      this.tourService.finishTour(this.tour).subscribe(tour => {
+      let finishRequest: Observable<Tour>;
+      if(this.isOwner()){
+        finishRequest = this.tourService.finishTour(this.tour);
+      } else {
+        finishRequest = this.tourService.forceFinishTour(this.tour);
+      }
+      finishRequest.subscribe(tour => {
         this.tourFinished.emit(tour);
         this.close();
-        this.notifications.success('Fahrt beendet', 'Die Fahrt wurde ergolreich als beendet eingetragen.');
+        this.notifications.success('Fahrt beendet', 'Die Fahrt wurde erfolgreich als beendet eingetragen.');
       }, () => {
         this.isOpen = false;
         this.close();
       });
     }
+  }
+
+  /**
+   * Check if the owner of the tour is the logged in user.
+   */
+  public isOwner(): boolean {
+    return this.auth.isLoggedInUser(this.tour.owner);
   }
 
 }
