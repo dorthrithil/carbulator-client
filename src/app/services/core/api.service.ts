@@ -52,6 +52,9 @@ export class ApiService {
     getRefuels: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
+    createRefuel: (id: number): string => {
+      return `${this.apiHost}communities/${id}/refuels`;
+    },
     getLatestCommunityTour: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/latest`;
     },

@@ -17,6 +17,7 @@ import { ParkingPositionMapComponent } from './components/parking-position-map/p
 import { FinishTourModalComponent } from './components/finish-tour-modal/finish-tour-modal.component';
 import { RefuelBoxComponent } from './components/refuel-box/refuel-box.component';
 import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-info-modal.component';
+import { CreateRefuelModalComponent } from './components/create-refuel-modal/create-refuel-modal.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-
     ParkingPositionMapComponent,
     FinishTourModalComponent,
     RefuelBoxComponent,
-    RefuelInfoModalComponent
+    RefuelInfoModalComponent,
+    CreateRefuelModalComponent
   ],
   exports: [
     MomentPipe,
@@ -59,7 +61,8 @@ import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-
     TourBoxComponent,
     TourInfoModalComponent,
     FinishTourModalComponent,
-    RefuelBoxComponent
+    RefuelBoxComponent,
+    CreateRefuelModalComponent
   ]
 })
 export class SharedModule { }

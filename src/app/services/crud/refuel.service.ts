@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Tour} from '../../models/tour';
 import {map} from 'rxjs/operators';
@@ -15,7 +15,8 @@ import {ApiService} from '../core/api.service';
 export class RefuelService {
 
   constructor(private http: ErrorMappingHttpService,
-              private api: ApiService) { }
+              private api: ApiService) {
+  }
 
   /**
    * Fetches all refuels for a community from the server.
@@ -27,6 +28,18 @@ export class RefuelService {
       map(refuels => {
         return refuels.map(refuel => Refuel.fromJson(refuel));
       })
+    );
+  }
+
+  /**
+   * Persists a refuel on the server.
+   * @param communityId The id of the community in which to add the refuel.
+   * @param refuel Refuel to persist.
+   * @return Observable that resolves to a refuel.
+   */
+  public createRefuel(communityId: number, refuel: Refuel): Observable<Refuel> {
+    return this.http.post(this.api.community.createRefuel(communityId), Refuel.toJson(refuel)).pipe(
+      map(refuelJson => Refuel.fromJson(refuelJson))
     );
   }
 

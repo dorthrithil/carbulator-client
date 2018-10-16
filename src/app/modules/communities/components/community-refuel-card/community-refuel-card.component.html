@@ -16,6 +16,9 @@
   </div>
 
   <div class="card-footer">
-    <a class="btn btn-sm btn-link">Neue Tankfüllung</a>
+    <a class="btn btn-sm btn-link" (click)="createRefuelModal.open()">Neue Tankfüllung</a>
   </div>
 </div>
+
+<cbl-create-refuel-modal #createRefuelModal (refuelAdded)="addRefuel($event)" [communityId]="communityId">
+</cbl-create-refuel-modal>

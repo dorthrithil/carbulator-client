@@ -37,6 +37,14 @@
           {{refuel.liters}} Liter
         </td>
       </tr>
+      <tr *ngIf="refuel.gasStationName && refuel.gasStationName.length > 0">
+        <td class="left">
+          <strong>Tankstelle:</strong>
+        </td>
+        <td class="left">
+          {{refuel.gasStationName}}
+        </td>
+      </tr>
       <tr>
         <td class="left">
           <strong>Abgerechnet:</strong>
@@ -44,14 +52,6 @@
         <td class="left">
           <ng-container *ngIf="refuel.isOpen">Nein</ng-container>
           <ng-container *ngIf="!refuel.isOpen">Ja</ng-container>
-        </td>
-      </tr>
-      <tr *ngIf="refuel.gasStationName && refuel.gasStationName.length > 0">
-        <td class="left">
-          <strong>Tankstelle:</strong>
-        </td>
-        <td class="left">
-          {{refuel.gasStationName}}
         </td>
       </tr>
       </tbody>

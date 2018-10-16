@@ -1,0 +1,40 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen">
+  <h3 class="modal-title">
+    Neue Tankfüllung eintragen
+  </h3>
+  <div class="modal-body">
+
+    <form clrForm [formGroup]="refuelForm">
+
+      <clr-input-container>
+        <label>Kosten</label>
+        <input placeholder="Kosten" clrInput formControlName="costs" name="costs"/>
+        <clr-control-helper>Die Kosten der Tankfüllung</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Liter</label>
+        <input placeholder="Liter" clrInput formControlName="liters" name="liters"/>
+        <clr-control-helper>Getankte Liter</clr-control-helper>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Tankstelle</label>
+        <input placeholder="Tankstelle" clrInput formControlName="gasStationName" name="gasStationName"/>
+        <clr-control-helper>Der Name der Tankstelle</clr-control-helper>
+      </clr-input-container>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="addRefuel()" [clrLoading]="isLoading"
+            [disabled]="!refuelForm?.valid">
+      Speichern
+    </button>
+  </div>
+</clr-modal>
