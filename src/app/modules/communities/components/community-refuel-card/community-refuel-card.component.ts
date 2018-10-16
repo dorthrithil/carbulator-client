@@ -3,6 +3,9 @@ import {Tour} from '../../../../models/tour';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
+import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
+import {sortTours} from '../../../../utility/sorting/sort-tours';
+import {sortRefuels} from '../../../../utility/sorting/sort-refuels';
 
 /**
  * A card that shows the last refuels.
@@ -30,6 +33,7 @@ export class CommunityRefuelCardComponent implements OnInit {
   ngOnInit() {
     this.refuelService.getCommunityRefuels(this.communityId).subscribe(refuels => {
       this.refuels = refuels;
+      sortAndLimit(this.refuels, sortRefuels, 5, 'DESC');
     });
   }
 
@@ -39,6 +43,7 @@ export class CommunityRefuelCardComponent implements OnInit {
    */
   public addRefuel(refuel: Refuel) {
     this.refuels.unshift(refuel);
+    sortAndLimit(this.refuels, sortRefuels, 5, 'DESC');
   }
 
 }

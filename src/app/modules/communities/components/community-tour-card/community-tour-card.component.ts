@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
+import {sortTours} from '../../../../utility/sorting/sort-tours';
+import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 
 /**
  * A card that displays tours of a community.
@@ -33,6 +35,7 @@ export class CommunityTourCardComponent implements OnInit {
   ngOnInit() {
     this.tourService.getCommunityTours(this.communityId).subscribe(tours => {
       this.tours = tours;
+      sortAndLimit(this.tours, sortTours, 5, 'DESC');
     });
   }
 
@@ -41,7 +44,8 @@ export class CommunityTourCardComponent implements OnInit {
    * @param tour Tour to add to the list.
    */
   public addTour(tour: Tour) {
-    this.tours.unshift(tour);
+    this.tours.push(tour);
+    sortAndLimit(this.tours, sortTours, 5, 'DESC');
   }
 
 }
