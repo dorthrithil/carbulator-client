@@ -15,6 +15,8 @@ import { TourInfoModalComponent } from './components/tour-info-modal/tour-info-m
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import { ParkingPositionMapComponent } from './components/parking-position-map/parking-position-map.component';
 import { FinishTourModalComponent } from './components/finish-tour-modal/finish-tour-modal.component';
+import { RefuelBoxComponent } from './components/refuel-box/refuel-box.component';
+import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-info-modal.component';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { FinishTourModalComponent } from './components/finish-tour-modal/finish-
     TourBoxComponent,
     TourInfoModalComponent,
     ParkingPositionMapComponent,
-    FinishTourModalComponent
+    FinishTourModalComponent,
+    RefuelBoxComponent,
+    RefuelInfoModalComponent
   ],
   exports: [
     MomentPipe,
@@ -54,7 +58,8 @@ import { FinishTourModalComponent } from './components/finish-tour-modal/finish-
     ConfirmModalOKButtonTextDirective,
     TourBoxComponent,
     TourInfoModalComponent,
-    FinishTourModalComponent
+    FinishTourModalComponent,
+    RefuelBoxComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    Letzte Tankfüllungen
+  </div>
+  <div class="card-block">
+    <div class="refuel-box-container" *ngIf="refuels?.length > 0">
+      <cbl-refuel-box *ngFor="let refuel of refuels" [refuel]="refuel"></cbl-refuel-box>
+    </div>
+    <clr-alert [clrAlertType]="'info'" *ngIf="refuels?.length == 0" [clrAlertClosable]="false">
+      <div class="alert-item">
+        <span class="alert-text">
+          Es wurden noch keine Tankfüllungen in dieser Gruppe eingetragen.
+        </span>
+      </div>
+    </clr-alert>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-sm btn-link">Neue Tankfüllung</a>
+  </div>
+</div>

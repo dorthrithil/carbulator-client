@@ -13,7 +13,7 @@ import {Tour} from '../../../../models/tour';
 export class CommunityTourCardComponent implements OnInit {
 
   /**
-   * Id of the community to fetch the tour for.
+   * Id of the community to fetch the tours for.
    */
   @Input() communityId: number;
 

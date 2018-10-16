@@ -1,0 +1,28 @@
+<div class="refuel-box" (click)="refuelInfoModal.open()">
+  <div class="refuel-box-col">
+    <div>
+      <clr-icon shape="event"></clr-icon>
+      {{refuel.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+    </div>
+    <div>
+      <clr-icon shape="user"></clr-icon>
+      {{refuel.owner.username}}
+    </div>
+  </div>
+  <div class="refuel-box-col costs">
+    <div>{{refuel.costs}} €</div>
+    <div>
+      <div class="gas-station" *ngIf="refuel.gasStationName && refuel.gasStationName.length > 0">
+        <clr-icon shape="map-marker"></clr-icon>
+      </div>
+      <div class="liters" *ngIf="refuel.liters">
+        <clr-icon shape="volume"></clr-icon>
+      </div>
+      <div class="payed" *ngIf="!refuel.isOpen">
+        <clr-icon shape="euro"></clr-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
+<cbl-refuel-info-modal #refuelInfoModal [refuel]="refuel" ></cbl-refuel-info-modal>

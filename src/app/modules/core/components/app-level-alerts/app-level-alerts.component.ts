@@ -4,9 +4,6 @@ import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import * as moment from 'moment';
 
-
-// TODO minutes to expiry updated sich nicht
-
 @Component({
   selector: 'cbl-app-level-alerts',
   templateUrl: './app-level-alerts.component.html',

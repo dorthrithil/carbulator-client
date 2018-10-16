@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
+import {initCustomIcons} from '../../../../utility/icons/icon-config';
 
 @Component({
   selector: 'cbl-root',
@@ -16,6 +17,7 @@ export class CoreComponent implements OnInit {
   };
 
   constructor(public auth: AuthService) {
+    initCustomIcons();
   }
 
   /**

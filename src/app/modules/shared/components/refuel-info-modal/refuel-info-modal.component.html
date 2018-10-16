@@ -1,0 +1,65 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen" [clrModalSize]="'md'">
+  <h3 class="modal-title">
+    Tankfüllung Details
+  </h3>
+  <div class="modal-body">
+    <table class="table table-compact table-noborder">
+      <tbody>
+      <tr>
+        <td class="left">
+          <strong>Fahrer:</strong>
+        </td>
+        <td class="left">
+          {{refuel.owner.username}}
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          <strong>Datum:</strong>
+        </td>
+        <td class="left">
+          {{refuel.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          <strong>Kosten:</strong>
+        </td>
+        <td class="left">
+          {{refuel.costs}} €
+        </td>
+      </tr>
+      <tr *ngIf="refuel.liters">
+        <td class="left">
+          <strong>Menge:</strong>
+        </td>
+        <td class="left">
+          {{refuel.liters}} Liter
+        </td>
+      </tr>
+      <tr>
+        <td class="left">
+          <strong>Abgerechnet:</strong>
+        </td>
+        <td class="left">
+          <ng-container *ngIf="refuel.isOpen">Nein</ng-container>
+          <ng-container *ngIf="!refuel.isOpen">Ja</ng-container>
+        </td>
+      </tr>
+      <tr *ngIf="refuel.gasStationName && refuel.gasStationName.length > 0">
+        <td class="left">
+          <strong>Tankstelle:</strong>
+        </td>
+        <td class="left">
+          {{refuel.gasStationName}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>
