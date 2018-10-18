@@ -1,0 +1,30 @@
+.debt-box {
+  border: 1px solid #DDDDDD;
+  margin: .5rem 0 .5rem 0;
+  border-radius: .125rem;
+  display: grid;
+  grid-template-columns: auto 4.5rem;
+  border-right: .25rem solid;
+
+  .debt-box-col {
+    background-color: #FAFAFA;
+    padding: .25rem;
+  }
+
+}
+
+.costs {
+  font-weight: bold;
+  text-align: right;
+}
+
+.settled {
+  display: inline-block;
+  margin-left: .25rem;
+  color: #266900;
+
+  clr-icon {
+    margin-right: .25rem;
+  }
+
+}

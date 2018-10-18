@@ -78,6 +78,12 @@ export class ApiService {
     }
   };
 
+  public payoffs = {
+    getPayoff: (id: number): string => {
+      return `${this.apiHost}payoffs/${id}`;
+    }
+  };
+
   public communityInvitation = {
     inviteUser: (): string => {
       return `${this.apiHost}communities/invitations`;

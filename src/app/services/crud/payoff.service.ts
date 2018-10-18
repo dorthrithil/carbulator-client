@@ -40,4 +40,15 @@ export class PayoffService {
     );
   }
 
+  /**
+   * Gets a payoffs from the server.
+   * @param payoffId The id of the payoff to get.
+   * @return Observable that resolves to a payoff.
+   */
+  public getPayoff(payoffId: number): Observable<Payoff> {
+    return this.http.get(this.api.payoffs.getPayoff(payoffId)).pipe(
+      map(payoff => Payoff.fromJson(payoff))
+    );
+  }
+
 }

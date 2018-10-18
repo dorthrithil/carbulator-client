@@ -19,6 +19,7 @@ import { RefuelBoxComponent } from './components/refuel-box/refuel-box.component
 import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-info-modal.component';
 import { CreateRefuelModalComponent } from './components/create-refuel-modal/create-refuel-modal.component';
 import { PayoffBoxComponent } from './components/payoff-box/payoff-box.component';
+import { DebtBoxComponent } from './components/debt-box/debt-box.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { PayoffBoxComponent } from './components/payoff-box/payoff-box.component
     RefuelBoxComponent,
     RefuelInfoModalComponent,
     CreateRefuelModalComponent,
-    PayoffBoxComponent
+    PayoffBoxComponent,
+    DebtBoxComponent
   ],
   exports: [
     MomentPipe,
@@ -65,7 +67,8 @@ import { PayoffBoxComponent } from './components/payoff-box/payoff-box.component
     FinishTourModalComponent,
     RefuelBoxComponent,
     CreateRefuelModalComponent,
-    PayoffBoxComponent
+    PayoffBoxComponent,
+    DebtBoxComponent
   ]
 })
 export class SharedModule { }

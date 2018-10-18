@@ -9,11 +9,17 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RegisterComponent} from './components/register/register.component';
 import {CommunitiesModule} from '../communities/communities.module';
 import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
+import {FinancesModule} from '../finances/finances.module';
 
 const coreRoutes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => DashboardModule,
+    canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'finances',
+    loadChildren: () => FinancesModule,
     canActivate: [IsLoggedInGuard]
   },
   {

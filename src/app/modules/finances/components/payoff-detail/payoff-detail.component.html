@@ -1,0 +1,9 @@
+<h1>Abrechnung vom {{payoff?.timeCreated | moment : 'DD.MM.YYYY'}}</h1>
+
+<div class="row" *ngIf="!loadingPayoff">
+
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    <cbl-payoff-debt-card [payoff]="payoff"></cbl-payoff-debt-card>
+  </div>
+
+</div>
