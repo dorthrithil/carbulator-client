@@ -1,0 +1,18 @@
+<div class="payoff-box">
+  <div class="payoff-box-col">
+    <div>
+      <clr-icon shape="event"></clr-icon>
+      {{payoff.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+    </div>
+    <div>
+      <ng-container *ngIf="getNumberOfOpenDebts() > 0">
+        <clr-icon shape="two-way-arrows"></clr-icon>
+        {{getNumberOfOpenDebts()}} offene Transaktion<ng-container *ngIf="getNumberOfOpenDebts() > 1">en</ng-container>
+      </ng-container>
+      <ng-container *ngIf="getNumberOfOpenDebts() == 0">
+        <clr-icon shape="check"></clr-icon>
+        Alle Schulden beglichen
+      </ng-container>
+    </div>
+  </div>
+</div>

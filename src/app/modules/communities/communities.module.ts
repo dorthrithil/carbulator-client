@@ -17,6 +17,7 @@ import {CommunitiesUserSearchComponent} from './components/communities-user-sear
 import { CommunityTourCardComponent } from './components/community-tour-card/community-tour-card.component';
 import { StartTourModalComponent } from './components/start-tour-modal/start-tour-modal.component';
 import { CommunityRefuelCardComponent } from './components/community-refuel-card/community-refuel-card.component';
+import { CommunityPayoffCardComponent } from './components/community-payoff-card/community-payoff-card.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { CommunityRefuelCardComponent } from './components/community-refuel-card
     CommunityTourCardComponent,
     StartTourModalComponent,
     CommunityRefuelCardComponent,
+    CommunityPayoffCardComponent,
   ]
 })
 export class CommunitiesModule {

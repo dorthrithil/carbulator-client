@@ -52,6 +52,9 @@ export class ApiService {
     getRefuels: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
+    getPayoffs: (id: number): string => {
+      return `${this.apiHost}communities/${id}/payoffs`;
+    },
     createRefuel: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
@@ -60,6 +63,9 @@ export class ApiService {
     },
     createTour: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours`;
+    },
+    createPayoff: (id: number): string => {
+      return `${this.apiHost}communities/${id}/payoffs`;
     },
     finishTour: (communityId: number, id: number): string => {
       return `${this.apiHost}communities/${communityId}/tours/${id}/finish`;

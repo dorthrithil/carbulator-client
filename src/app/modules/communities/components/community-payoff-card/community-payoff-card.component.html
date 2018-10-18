@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    Letzte Abrechnungen
+  </div>
+  <div class="card-block">
+    <div class="payoff-box-container" *ngIf="payoffs?.length > 0">
+      <cbl-payoff-box *ngFor="let payoff of payoffs" [payoff]="payoff"></cbl-payoff-box>
+    </div>
+    <clr-alert [clrAlertType]="'info'" *ngIf="payoffs?.length == 0" [clrAlertClosable]="false">
+      <div class="alert-item">
+        <span class="alert-text">
+          Es wurden noch keine Abrechnungen in dieser Gruppe gemacht.
+        </span>
+      </div>
+    </clr-alert>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-sm btn-link" (click)="createPayoff()">Abrechnung</a>
+  </div>
+</div>

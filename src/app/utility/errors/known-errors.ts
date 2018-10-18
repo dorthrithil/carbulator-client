@@ -68,5 +68,15 @@ export const knownErrors: ErrorDictionary = {
     message: 'COMMUNIY_DOESNT_EXIST',
     title: 'Gruppe existiert nicht',
     description: 'Die angegebene Gruppe existiert nicht im System.'
+  },
+  CANT_CREATE_PAYOFF_WITHOUT_REFUELS_AND_TOURS: {
+    message: 'CANT_CREATE_PAYOFF_WITHOUT_REFUELS_AND_TOURS',
+    title: 'Abrechnung nicht möglich',
+    description: 'Eine Abrechnung ohne Fahrten und Tankfüllungen ist nicht möglich.'
+  },
+  CANT_CREATE_PAYOFF_WHEN_UNFINISHED_TOURS_EXIST: {
+    message: 'CANT_CREATE_PAYOFF_WHEN_UNFINISHED_TOURS_EXIST',
+    title: 'Abrechnung nicht möglich',
+    description: 'Bitte beende alle Fahrten bevor du eine Abrechnung erstellst.'
   }
 };

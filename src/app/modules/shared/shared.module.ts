@@ -18,6 +18,7 @@ import { FinishTourModalComponent } from './components/finish-tour-modal/finish-
 import { RefuelBoxComponent } from './components/refuel-box/refuel-box.component';
 import { RefuelInfoModalComponent } from './components/refuel-info-modal/refuel-info-modal.component';
 import { CreateRefuelModalComponent } from './components/create-refuel-modal/create-refuel-modal.component';
+import { PayoffBoxComponent } from './components/payoff-box/payoff-box.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { CreateRefuelModalComponent } from './components/create-refuel-modal/cre
     FinishTourModalComponent,
     RefuelBoxComponent,
     RefuelInfoModalComponent,
-    CreateRefuelModalComponent
+    CreateRefuelModalComponent,
+    PayoffBoxComponent
   ],
   exports: [
     MomentPipe,
@@ -62,7 +64,8 @@ import { CreateRefuelModalComponent } from './components/create-refuel-modal/cre
     TourInfoModalComponent,
     FinishTourModalComponent,
     RefuelBoxComponent,
-    CreateRefuelModalComponent
+    CreateRefuelModalComponent,
+    PayoffBoxComponent
   ]
 })
 export class SharedModule { }
