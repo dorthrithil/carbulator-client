@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    Tankfüllungen
+  </div>
+  <div class="card-block">
+    <div class="debt-box-container" *ngIf="payoff.refuels?.length > 0">
+      <cbl-refuel-box *ngFor="let refuel of payoff.refuels" [refuel]="refuel"></cbl-refuel-box>
+    </div>
+    <clr-alert [clrAlertType]="'info'" *ngIf="payoff.refuels?.length == 0" [clrAlertClosable]="false">
+      <div class="alert-item">
+        <span class="alert-text">
+          In dieser Abrechnung sind keine Tankfüllungen vorhanden.
+        </span>
+      </div>
+    </clr-alert>
+  </div>
+</div>

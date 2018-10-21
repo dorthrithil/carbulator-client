@@ -1,20 +1,27 @@
 <div class="debt-box" [ngClass]="{'is-settled': debt.isSettled, 'is-not-settled': !debt.isSettled}">
   <div class="debt-box-col">
     <div>
-      {{debt.debtee.username}} <clr-icon shape="arrow" dir="right"></clr-icon> {{debt.recepient.username}}
+      {{debt.debtee.username}}
+      <clr-icon shape="arrow" dir="right"></clr-icon>
+      {{debt.recepient.username}}
     </div>
     <div>
-      <button class="btn btn-sm btn-link" *ngIf="!debt.isSettled && isDebteeOrReceiver()" (click)="settleDebtModalOpen = true">Bezahlen</button>
+      <button class="btn btn-sm btn-link" *ngIf="!debt.isSettled && isDebteeOrReceiver()"
+              (click)="settleDebtModalOpen = true">
+        Bezahlen
+      </button>
     </div>
   </div>
   <div class="debt-box-col costs">
     <div>{{debt.amount}} €</div>
     <div>
       <div class="settled" *ngIf="debt.isSettled">
-        <clr-icon shape="coin-bag"></clr-icon> <strong>Bezahlt</strong>
+        <clr-icon shape="coin-bag"></clr-icon>
+        <strong>Bezahlt</strong>
       </div>
       <div class="not-settled" *ngIf="!debt.isSettled">
-        <clr-icon shape="coin-bag"></clr-icon> <strong>Nicht bezahlt</strong>
+        <clr-icon shape="coin-bag"></clr-icon>
+        <strong>Nicht bezahlt</strong>
       </div>
     </div>
   </div>
