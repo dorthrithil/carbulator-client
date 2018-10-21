@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotificationsService} from 'angular2-notifications';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
+import {numberValidator} from '../../../../utility/validators/number.validator';
 
 /**
  * A modal for creating refuels.
@@ -38,8 +39,8 @@ export class CreateRefuelModalComponent {
    */
   private buildForm() {
     this.refuelForm = this.fb.group({
-      costs: [0, [Validators.required]],
-      liters: [0],
+      costs: [0, [Validators.required, numberValidator()]],
+      liters: [0, [numberValidator()]],
       gasStationName: [''],
     });
   }
@@ -67,8 +68,8 @@ export class CreateRefuelModalComponent {
     if (this.refuelForm.valid) {
       this.isLoading = true;
       const newRefuel = new Refuel();
-      newRefuel.costs = this.refuelForm.get('costs').value;
-      newRefuel.liters = this.refuelForm.get('liters').value;
+      newRefuel.costs = this.refuelForm.get('costs').value.replace(',', '.');
+      newRefuel.liters = this.refuelForm.get('liters').value.replace(',', '.');
       newRefuel.gasStationName = this.refuelForm.get('gasStationName').value;
       this.refuelService.createRefuel(this.communityId, newRefuel).subscribe(refuel => {
         this.refuelAdded.emit(refuel);

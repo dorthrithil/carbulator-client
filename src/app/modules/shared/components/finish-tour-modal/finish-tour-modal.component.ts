@@ -7,6 +7,7 @@ import {startKmValidator} from '../../../../utility/validators/start-km.validato
 import {latlongValidator} from '../../../../utility/validators/latlong.validator';
 import {AuthService} from '../../../../services/core/auth.service';
 import {Observable} from 'rxjs';
+import {numberValidator} from '../../../../utility/validators/number.validator';
 
 /**
  * A modal to finish a tour.
@@ -41,7 +42,7 @@ export class FinishTourModalComponent {
    */
   private buildForm() {
     this.finishTourForm = this.fb.group({
-      endKm: [this.tour.startKm, [Validators.required, startKmValidator(this.tour.startKm)]],
+      endKm: [this.tour.startKm, [Validators.required, numberValidator(), startKmValidator(this.tour.startKm)]],
       comment: [''],
       parkingPosition: [null, [latlongValidator(true)]]
     });
@@ -95,7 +96,7 @@ export class FinishTourModalComponent {
   public finishTour() {
     if (this.finishTourForm.valid) {
       this.isLoading = true;
-      this.tour.endKm = this.finishTourForm.get('endKm').value;
+      this.tour.endKm = this.finishTourForm.get('endKm').value.replace(',', '.');
       this.tour.comment = this.finishTourForm.get('comment').value;
       this.tour.parkingPosition = this.finishTourForm.get('parkingPosition').value;
       let finishRequest: Observable<Tour>;

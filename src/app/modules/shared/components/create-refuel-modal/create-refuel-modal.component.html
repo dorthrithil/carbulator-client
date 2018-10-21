@@ -9,14 +9,18 @@
       <clr-input-container>
         <label>Kosten</label>
         <input placeholder="Kosten" clrInput formControlName="costs" name="costs"/>
-        <clr-control-helper>Die Kosten der Tankfüllung</clr-control-helper>
+        <clr-control-helper>Die Kosten der Tankfüllung in €</clr-control-helper>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
+        </clr-control-error>
       </clr-input-container>
 
       <clr-input-container>
         <label>Liter</label>
         <input placeholder="Liter" clrInput formControlName="liters" name="liters"/>
         <clr-control-helper>Getankte Liter</clr-control-helper>
+        <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
+        </clr-control-error>
       </clr-input-container>
 
       <clr-input-container>
