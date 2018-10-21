@@ -4,7 +4,7 @@
       <clr-icon shape="line-chart"></clr-icon>
       <label>
         Carbulator
-        <span class="beta">BETA</span>
+        <span class="beta"> ALPHA</span>
       </label>
     </a>
   </div>
@@ -20,6 +20,9 @@
         <clr-icon shape="caret down"></clr-icon>
       </div>
       <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+        <button type="button" clrDropdownItem [routerLink]="'imprint'">Impressum</button>
+        <button type="button" clrDropdownItem [routerLink]="'data-privacy-statement'">Datenschutz</button>
+        <div class="dropdown-divider"></div>
         <button type="button" clrDropdownItem (click)="logout()">Logout</button>
       </clr-dropdown-menu>
     </clr-dropdown>

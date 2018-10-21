@@ -1,0 +1,10 @@
+<clr-modal [(clrModalOpen)]="isOpen" [clrModalSize]="'xl'">
+  <div class="modal-body">
+    <ng-template [ngTemplateOutlet]="text"></ng-template>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="closeModal()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>

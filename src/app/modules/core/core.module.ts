@@ -21,6 +21,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {ErrorHandlerInterceptor} from '../../utility/http-interceptors/error.interceptor';
 import {SharedModule} from '../shared/shared.module';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { DataPrivacyStatementComponent } from './components/data-privacy-statement/data-privacy-statement.component';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     MinutesRemainingPipe,
     RegisterComponent,
     UnauthorizedComponent,
+    ImprintComponent,
+    DataPrivacyStatementComponent,
   ],
   providers: [
     {

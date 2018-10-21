@@ -10,6 +10,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {CommunitiesModule} from '../communities/communities.module';
 import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
 import {FinancesModule} from '../finances/finances.module';
+import {ImprintComponent} from './components/imprint/imprint.component';
+import {DataPrivacyStatementComponent} from './components/data-privacy-statement/data-privacy-statement.component';
 
 const coreRoutes: Routes = [
   {
@@ -36,6 +38,16 @@ const coreRoutes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [IsLoggedOutGuard]
+  },
+  {
+    path: 'imprint',
+    component: ImprintComponent,
+    canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'data-privacy-statement',
+    component: DataPrivacyStatementComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path: '404',

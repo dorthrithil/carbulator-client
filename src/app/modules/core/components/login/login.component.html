@@ -23,6 +23,23 @@
 
       <a [routerLink]="['/register']" class="signup">Registrieren</a>
 
+      <div class="info-links">
+        <button class="btn btn-link btn-sm" (click)="imprintModal.isOpen = true">Impressum</button>
+        <button class="btn btn-link btn-sm" (click)="dataPrivacyStatementModal.isOpen = true">Datenschutz</button>
+      </div>
+
     </div>
   </form>
 </div>
+
+<cbl-info-modal #imprintModal>
+  <ng-template cblInfoModalText>
+    <cbl-imprint></cbl-imprint>
+  </ng-template>
+</cbl-info-modal>
+
+<cbl-info-modal #dataPrivacyStatementModal>
+  <ng-template cblInfoModalText>
+    <cbl-data-privacy-statement></cbl-data-privacy-statement>
+  </ng-template>
+</cbl-info-modal>
