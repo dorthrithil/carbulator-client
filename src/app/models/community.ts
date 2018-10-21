@@ -27,8 +27,8 @@ export class Community {
     community.name = src.name;
     community.isEditable = src.is_editable;
     community.isDeletable = src.is_deletable;
-    community.timeCreated = moment(src.time_created);
-    community.timeUpdated = moment(src.time_updated);
+    community.timeCreated = moment.utc(src.time_created);
+    community.timeUpdated = moment.utc(src.time_updated);
     community.car = src.car ? Car.fromJson(src.car) : null;
     community.users = src.users ? src.users.map(user => User.fromJson(user)) : null;
     return community;

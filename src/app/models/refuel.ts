@@ -26,8 +26,8 @@ export class Refuel {
   public static fromJson(src: any): Refuel {
     const refuel = new Refuel();
     refuel.id = src.id;
-    refuel.timeCreated = moment(src.time_created);
-    refuel.timeUpdated = moment(src.time_updated);
+    refuel.timeCreated = moment.utc(src.time_created);
+    refuel.timeUpdated = moment.utc(src.time_updated);
     refuel.owner = User.fromJson(src.owner);
     refuel.isOpen = src.is_open;
     refuel.costs = src.costs;

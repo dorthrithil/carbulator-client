@@ -28,8 +28,8 @@ export class Payoff {
   public static fromJson(src: any): Payoff {
     const payoff = new Payoff();
     payoff.id = src.id;
-    payoff.timeCreated = moment(src.time_created);
-    payoff.timeUpdated = moment(src.time_updated);
+    payoff.timeCreated = moment.utc(src.time_created);
+    payoff.timeUpdated = moment.utc(src.time_updated);
     payoff.debts = src.debts.map(debt => Debt.fromJson(debt));
     payoff.isSettled = src.is_settled;
     payoff.refuels = src.refuels ? src.refuels.map(refuel => Refuel.fromJson(refuel)) : null;
