@@ -75,12 +75,18 @@ export class ApiService {
     },
     getRunningTours: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/running`;
-    }
+    },
   };
 
   public payoffs = {
     getPayoff: (id: number): string => {
       return `${this.apiHost}payoffs/${id}`;
+    }
+  };
+
+  public debts = {
+    settleDebt: (id: number): string => {
+      return `${this.apiHost}debts/${id}/settle`;
     }
   };
 

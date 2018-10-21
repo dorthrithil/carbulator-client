@@ -15,7 +15,7 @@ import {Observable, of} from 'rxjs';
 })
 export class ConfirmModalComponent {
 
-  @Output() confirm: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() confirm: EventEmitter<any> = new EventEmitter<any>();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() isOpenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() actionError: EventEmitter<any> = new EventEmitter<any>();
@@ -36,11 +36,11 @@ export class ConfirmModalComponent {
    */
   confirmModal() {
     this.isLoading = true;
-    this.action.subscribe(() => {
+    this.action.subscribe(res => {
       this.isLoading = false;
       this.isOpen = false;
       this.isOpenChange.emit(this.isOpen);
-      this.confirm.emit();
+      this.confirm.emit(res);
     }, err => {
       this.isLoading = false;
       this.isOpen = false;

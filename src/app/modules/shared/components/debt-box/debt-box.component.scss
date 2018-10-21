@@ -3,12 +3,20 @@
   margin: .5rem 0 .5rem 0;
   border-radius: .125rem;
   display: grid;
-  grid-template-columns: auto 4.5rem;
+  grid-template-columns: auto 5.5rem;
   border-right: .25rem solid;
 
   .debt-box-col {
     background-color: #FAFAFA;
     padding: .25rem;
+  }
+
+  &.is-settled{
+    border-right-color: #266900;
+  }
+
+  &.is-not-settled{
+    border-right-color: #C92100;
   }
 
 }
@@ -22,6 +30,17 @@
   display: inline-block;
   margin-left: .25rem;
   color: #266900;
+
+  clr-icon {
+    margin-right: .25rem;
+  }
+
+}
+
+.not-settled {
+  display: inline-block;
+  margin-left: .25rem;
+  color: #C92100;
 
   clr-icon {
     margin-right: .25rem;
