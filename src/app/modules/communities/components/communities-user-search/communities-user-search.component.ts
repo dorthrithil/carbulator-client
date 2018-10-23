@@ -33,7 +33,7 @@ export class CommunitiesUserSearchComponent implements OnInit {
    * Refreshes the user resource observable that feeds the typeahead.
    * @param query Query string for the typeahead
    */
-  private refreshUserResource(query: string) {
+  public refreshUserResource(query: string) {
     if (this.excludeAlreadyInvitedUsers !== null) {
       this.userResource = this.userService.searchUninvitedUsers(query, this.excludeAlreadyInvitedUsers);
     } else {

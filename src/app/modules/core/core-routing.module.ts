@@ -16,17 +16,17 @@ import {DataPrivacyStatementComponent} from './components/data-privacy-statement
 const coreRoutes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: () => DashboardModule,
+    loadChildren: '../dashboard/dashboard.module#DashboardModule',
     canActivate: [IsLoggedInGuard]
   },
   {
     path: 'finances',
-    loadChildren: () => FinancesModule,
+    loadChildren: '../finances/finances.module#FinancesModule',
     canActivate: [IsLoggedInGuard]
   },
   {
     path: 'communities',
-    loadChildren: () => CommunitiesModule,
+    loadChildren: '../communities/communities.module#CommunitiesModule',
     canActivate: [IsLoggedInGuard]
   },
   {
