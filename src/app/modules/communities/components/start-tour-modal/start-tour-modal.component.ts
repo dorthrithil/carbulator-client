@@ -44,7 +44,7 @@ export class StartTourModalComponent {
    */
   private buildForm() {
     this.startTourForm = this.fb.group({
-      startKm: [this.lastEndKm, [Validators.required, numberValidator(), startKmValidator(this.lastEndKm)]]
+      startKm: [String(this.lastEndKm), [Validators.required, numberValidator(), startKmValidator(this.lastEndKm)]]
     });
   }
 
