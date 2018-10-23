@@ -20,6 +20,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/.htaccess",
               "src/assets",
               {
                 "glob": "**/*",
