@@ -9,3 +9,17 @@
   }
 
 }
+
+clr-input-container {
+  display: block;
+}
+
+.login-wrapper {
+
+  max-height: 100%;
+
+  form {
+    overflow: scroll;
+  }
+
+}
