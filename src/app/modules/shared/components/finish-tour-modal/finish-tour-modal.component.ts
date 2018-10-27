@@ -8,6 +8,7 @@ import {latlongValidator} from '../../../../utility/validators/latlong.validator
 import {AuthService} from '../../../../services/core/auth.service';
 import {Observable} from 'rxjs';
 import {numberValidator} from '../../../../utility/validators/number.validator';
+import {stringToNumber} from '../../../../utility/conversion/string-to-number';
 
 /**
  * A modal to finish a tour.
@@ -96,11 +97,11 @@ export class FinishTourModalComponent {
   public finishTour() {
     if (this.finishTourForm.valid) {
       this.isLoading = true;
-      this.tour.endKm = this.finishTourForm.get('endKm').value.replace(',', '.');
+      this.tour.endKm = stringToNumber(this.finishTourForm.get('endKm').value);
       this.tour.comment = this.finishTourForm.get('comment').value;
       this.tour.parkingPosition = this.finishTourForm.get('parkingPosition').value;
       let finishRequest: Observable<Tour>;
-      if(this.isOwner()){
+      if (this.isOwner()) {
         finishRequest = this.tourService.finishTour(this.tour);
       } else {
         finishRequest = this.tourService.forceFinishTour(this.tour);
