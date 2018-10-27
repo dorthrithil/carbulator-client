@@ -7,6 +7,6 @@ import {toNumber} from '../conversion/to-number';
  */
 export function startKmValidator(lastEndKm: number): ValidatorFn {
   return (ctrl: AbstractControl): { [key: string]: any } => {
-    return Number(toNumber(ctrl.value) >= lastEndKm) ? null : {'startKm': true};
+    return Number(toNumber(ctrl.value) > lastEndKm) ? null : {'startKm': true};
   };
 }
