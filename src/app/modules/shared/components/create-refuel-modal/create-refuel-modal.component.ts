@@ -4,7 +4,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {numberValidator} from '../../../../utility/validators/number.validator';
-import {stringToNumber} from '../../../../utility/conversion/string-to-number';
+import {toNumber} from '../../../../utility/conversion/to-number';
 
 /**
  * A modal for creating refuels.
@@ -69,8 +69,8 @@ export class CreateRefuelModalComponent {
     if (this.refuelForm.valid) {
       this.isLoading = true;
       const newRefuel = new Refuel();
-      newRefuel.costs = stringToNumber(this.refuelForm.get('costs').value);
-      newRefuel.liters = stringToNumber(this.refuelForm.get('liters').value);
+      newRefuel.costs = toNumber(this.refuelForm.get('costs').value);
+      newRefuel.liters = toNumber(this.refuelForm.get('liters').value);
       newRefuel.gasStationName = this.refuelForm.get('gasStationName').value;
       this.refuelService.createRefuel(this.communityId, newRefuel).subscribe(refuel => {
         this.refuelAdded.emit(refuel);

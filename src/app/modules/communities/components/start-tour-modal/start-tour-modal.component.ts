@@ -6,7 +6,7 @@ import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
 import {NotificationsService} from 'angular2-notifications';
 import {numberValidator} from '../../../../utility/validators/number.validator';
-import {stringToNumber} from '../../../../utility/conversion/string-to-number';
+import {toNumber} from '../../../../utility/conversion/to-number';
 
 /**
  * A modal for starting a tour.
@@ -82,7 +82,7 @@ export class StartTourModalComponent {
     if (this.startTourForm.valid) {
       this.isLoading = true;
       const newTour = new Tour();
-      newTour.startKm = stringToNumber(this.startTourForm.get('startKm').value);
+      newTour.startKm = toNumber(this.startTourForm.get('startKm').value);
       this.tourService.createTour(this.communityId, newTour).subscribe(tour => {
         this.tourStarted.emit(tour);
         this.close();
