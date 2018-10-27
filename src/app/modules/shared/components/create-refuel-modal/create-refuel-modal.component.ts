@@ -40,7 +40,7 @@ export class CreateRefuelModalComponent {
    */
   private buildForm() {
     this.refuelForm = this.fb.group({
-      costs: [0, [Validators.required, numberValidator()]],
+      costs: [0, [Validators.required, numberValidator(), Validators.min(0.01)]],
       liters: [0, [numberValidator()]],
       gasStationName: [''],
     });
