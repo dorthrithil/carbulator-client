@@ -9,6 +9,7 @@ import {AuthService} from '../../../../services/core/auth.service';
 import {Observable} from 'rxjs';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
+import {endKmValidator} from '../../../../utility/validators/end-km.validator';
 
 /**
  * A modal to finish a tour.
@@ -43,7 +44,7 @@ export class FinishTourModalComponent {
    */
   private buildForm() {
     this.finishTourForm = this.fb.group({
-      endKm: [this.tour.startKm, [Validators.required, numberValidator(), startKmValidator(this.tour.startKm)]],
+      endKm: [this.tour.startKm, [Validators.required, numberValidator(), endKmValidator(this.tour.startKm)]],
       comment: [''],
       parkingPosition: [null, [latlongValidator(true)]]
     });
