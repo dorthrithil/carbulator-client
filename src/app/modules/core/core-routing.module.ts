@@ -12,6 +12,7 @@ import {UnauthorizedComponent} from './components/unauthorized/unauthorized.comp
 import {FinancesModule} from '../finances/finances.module';
 import {ImprintComponent} from './components/imprint/imprint.component';
 import {DataPrivacyStatementComponent} from './components/data-privacy-statement/data-privacy-statement.component';
+import {AboutComponent} from './components/about/about.component';
 
 const coreRoutes: Routes = [
   {
@@ -47,6 +48,11 @@ const coreRoutes: Routes = [
   {
     path: 'data-privacy-statement',
     component: DataPrivacyStatementComponent,
+    canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
     canActivate: [IsLoggedInGuard]
   },
   {

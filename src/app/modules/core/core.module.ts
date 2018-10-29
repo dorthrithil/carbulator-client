@@ -23,6 +23,7 @@ import {SharedModule} from '../shared/shared.module';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { DataPrivacyStatementComponent } from './components/data-privacy-statement/data-privacy-statement.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { DataPrivacyStatementComponent } from './components/data-privacy-stateme
     UnauthorizedComponent,
     ImprintComponent,
     DataPrivacyStatementComponent,
+    AboutComponent,
   ],
   providers: [
     {
