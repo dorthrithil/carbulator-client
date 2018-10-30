@@ -1,25 +1,49 @@
-.branding{
+cbl-navigation {
 
-  label{
-    font-size: 18px;
-    cursor: pointer;
+  .branding {
 
-    .beta{
-      line-height: 18px;
-      font-size: 12px;
-      vertical-align: bottom;
-      color: #ff8400;
+    label {
+      font-size: 18px;
+      cursor: pointer;
+
+      .beta {
+        line-height: 18px;
+        font-size: 12px;
+        vertical-align: bottom;
+        color: #ff8400;
+      }
+
+    }
+
+    .carbulator-logo {
+      background-image: url(../../../../../assets/carbulator_logo.png);
+    }
+
+    .nav-link {
+      color: #ffffff;
+      cursor: pointer;
     }
 
   }
 
-  .carbulator-logo{
-    background-image: url(../../../../../assets/carbulator_logo.png);
-  }
+}
 
-  .nav-link{
-    color: #ffffff;
-    cursor: pointer;
+// Make app title readable in open hamburger menu
+.open-hamburger-menu {
+
+  .branding {
+
+    a {
+
+      label {
+
+        color: #565656;
+
+      }
+
+    }
+
   }
 
 }
+

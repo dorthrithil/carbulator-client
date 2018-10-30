@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 
 /**
@@ -7,7 +7,8 @@ import {AuthService} from '../../../../services/core/auth.service';
 @Component({
   selector: 'cbl-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavigationComponent {
 
