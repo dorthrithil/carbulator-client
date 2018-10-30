@@ -83,3 +83,14 @@ clr-dg-cell {
   display: block;
   text-align: center;
 }
+
+// Utility for hiding elements on mobile screens
+@media screen and (max-width: 768px) {
+
+  .hide-on-mobile{
+
+    display: none;
+
+  }
+
+}
