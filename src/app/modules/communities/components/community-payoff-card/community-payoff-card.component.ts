@@ -4,6 +4,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {Payoff} from '../../../../models/payoff';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortPayoffs} from '../../../../utility/sorting/sort-payoffs';
+import {Router} from '@angular/router';
 
 /**
  * Component that shows a list of payoffs in a card.
@@ -23,6 +24,7 @@ export class CommunityPayoffCardComponent implements OnInit {
   public payoffs: Payoff[];
 
   constructor(private payoffService: PayoffService,
+              private router: Router,
               private notifications: NotificationsService) {
   }
 
@@ -52,6 +54,7 @@ export class CommunityPayoffCardComponent implements OnInit {
     this.payoffService.createPayoff(this.communityId).subscribe(payoff => {
       this.addPayoff(payoff);
       this.notifications.success('Abrechnung fertig', 'Alle offenen Fahrten und Tankfüllungen wurden verrechnet.');
+      this.router.navigate(['finances', 'payoffs', payoff.id]);
     });
   }
 
