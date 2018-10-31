@@ -19,7 +19,7 @@
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
       </clr-input-container>
 
-      <button type="submit" class="btn btn-primary" (click)="login()" [clrLoading]="loadingState">Login</button>
+      <button type="submit" class="btn btn-primary btn-login" (click)="login()" [clrLoading]="loadingState">Login</button>
 
       <a [routerLink]="['/register']" class="signup">Registrieren</a>
 
