@@ -58,10 +58,12 @@ const coreRoutes: Routes = [
   {
     path: '404',
     component: NotFoundComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path: '401',
     component: UnauthorizedComponent,
+    canActivate: [IsLoggedInGuard]
   },
   {
     path: '',
