@@ -9,6 +9,7 @@ import {ClrWizard} from '@clr/angular';
 import {NotificationsService} from 'angular2-notifications';
 import {Community} from '../../../../models/community';
 import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A community invitation.
@@ -36,7 +37,7 @@ export class CommunitiesWizardComponent {
   public isLoading = false;
 
   constructor(private carService: CarService,
-              private notificationsService: NotificationsService,
+              private notificationsService: CblNotificationsService,
               private communityService: CommunityService) {
     this.communityCreated = new EventEmitter<Community>();
   }

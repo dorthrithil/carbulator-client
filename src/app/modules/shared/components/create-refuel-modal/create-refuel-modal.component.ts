@@ -5,6 +5,7 @@ import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A modal for creating refuels.
@@ -30,7 +31,7 @@ export class CreateRefuelModalComponent {
   public isLoading = false;
 
   constructor(private fb: FormBuilder,
-              private notifications: NotificationsService,
+              private notifications: CblNotificationsService,
               private refuelService: RefuelService) {
   }
 

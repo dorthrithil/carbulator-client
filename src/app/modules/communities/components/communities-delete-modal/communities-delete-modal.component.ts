@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A component that shows a modal for confirming deletion of a community.
@@ -25,7 +26,7 @@ export class CommunitiesDeleteModalComponent {
   public deleteCommunityRequest: Observable<MessageResponse> = null;
 
   constructor(private communityService: CommunityService,
-              private notifications: NotificationsService) {
+              private notifications: CblNotificationsService) {
   }
 
   /**

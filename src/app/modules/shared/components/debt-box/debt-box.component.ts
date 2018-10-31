@@ -4,6 +4,7 @@ import {PayoffService} from '../../../../services/crud/payoff.service';
 import {Observable} from 'rxjs';
 import {NotificationsService} from 'angular2-notifications';
 import {AuthService} from '../../../../services/core/auth.service';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A card that displays a debt.
@@ -29,7 +30,7 @@ export class DebtBoxComponent implements OnInit {
 
   constructor(private payoffService: PayoffService,
               private auth: AuthService,
-              private notifications: NotificationsService) {
+              private notifications: CblNotificationsService) {
   }
 
   /**

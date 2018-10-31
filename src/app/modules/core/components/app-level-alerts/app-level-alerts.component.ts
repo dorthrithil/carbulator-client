@@ -3,6 +3,7 @@ import {AuthService} from '../../../../services/core/auth.service';
 import {timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 @Component({
   selector: 'cbl-app-level-alerts',
@@ -16,7 +17,7 @@ export class AppLevelAlertsComponent implements OnInit {
   public showCookieAlert = true;
 
   constructor(public authService: AuthService,
-              private notifications: NotificationsService) {
+              private notifications: CblNotificationsService) {
   }
 
   /**

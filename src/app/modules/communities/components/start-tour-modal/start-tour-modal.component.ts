@@ -7,6 +7,7 @@ import {Tour} from '../../../../models/tour';
 import {NotificationsService} from 'angular2-notifications';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A modal for starting a tour.
@@ -35,7 +36,7 @@ export class StartTourModalComponent {
   public lastTourLoading = true;
 
   constructor(private fb: FormBuilder,
-              private notifications: NotificationsService,
+              private notifications: CblNotificationsService,
               private tourService: TourService) {
   }
 

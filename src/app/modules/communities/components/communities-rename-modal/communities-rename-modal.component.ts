@@ -3,6 +3,7 @@ import {Community} from '../../../../models/community';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A modal for renaming a community.
@@ -21,7 +22,7 @@ export class CommunitiesRenameModalComponent {
   public communityForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private notifications: NotificationsService,
+              private notifications: CblNotificationsService,
               private communityService: CommunityService) {
   }
 

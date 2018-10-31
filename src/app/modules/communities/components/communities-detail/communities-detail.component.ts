@@ -9,6 +9,7 @@ import {AuthService} from '../../../../services/core/auth.service';
 import {User} from '../../../../models/user';
 import {PayoffService} from '../../../../services/crud/payoff.service';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A component that shows community details in cards.
@@ -29,7 +30,7 @@ export class CommunitiesDetailComponent implements OnInit {
               private auth: AuthService,
               private router: Router,
               private tourService: TourService,
-              private notifications: NotificationsService,
+              private notifications: CblNotificationsService,
               private communityService: CommunityService) {
   }
 

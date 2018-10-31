@@ -5,6 +5,7 @@ import {Payoff} from '../../../../models/payoff';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortPayoffs} from '../../../../utility/sorting/sort-payoffs';
 import {Router} from '@angular/router';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * Component that shows a list of payoffs in a card.
@@ -25,7 +26,7 @@ export class CommunityPayoffCardComponent implements OnInit {
 
   constructor(private payoffService: PayoffService,
               private router: Router,
-              private notifications: NotificationsService) {
+              private notifications: CblNotificationsService) {
   }
 
   /**

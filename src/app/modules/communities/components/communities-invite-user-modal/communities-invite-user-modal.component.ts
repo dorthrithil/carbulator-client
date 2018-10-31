@@ -5,6 +5,7 @@ import {forkJoin, of} from 'rxjs';
 import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A modal for inviting users to a community.
@@ -32,7 +33,7 @@ export class CommunitiesInviteUserModalComponent {
   public isLoading = false;
 
   constructor(private communityService: CommunityService,
-              private notifications: NotificationsService) {
+              private notifications: CblNotificationsService) {
   }
 
   /**

@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {endKmValidator} from '../../../../utility/validators/end-km.validator';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A modal to finish a tour.
@@ -34,7 +35,7 @@ export class FinishTourModalComponent {
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
-              private notifications: NotificationsService,
+              private notifications: CblNotificationsService,
               private tourService: TourService) {
   }
 
@@ -76,10 +77,10 @@ export class FinishTourModalComponent {
       }, err => {
         console.error(err);
         this.geoLocationLoading = false;
-        this.notifications.error('GPS gestützte Positionsermittlung fehlgeschlagen.');
+        this.notifications.error('Fehler', 'GPS gestützte Positionsermittlung fehlgeschlagen.');
       }, {timeout: 10000});
     } else {
-      this.notifications.error('Dein Browser unterstützt keine GPS gestützte Positionsermittlung.');
+      this.notifications.error('Fehler', 'Dein Browser unterstützt keine GPS gestützte Positionsermittlung.');
       this.geoLocationLoading = false;
     }
   }

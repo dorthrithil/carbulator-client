@@ -18,6 +18,7 @@ import {
 } from '@angular/core';
 import {Observable} from 'rxjs';
 import {NotificationsService} from 'angular2-notifications';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 interface Match {
   score: number;
@@ -193,7 +194,7 @@ export class TypeaheadComponent implements OnChanges, DoCheck, OnInit {
 
   constructor(private cdr: ChangeDetectorRef,
               private renderer: Renderer2,
-              private notificationsService: NotificationsService,
+              private notificationsService: CblNotificationsService,
               private iterableDiffers: IterableDiffers) {
     this.iterableDiffer = this.iterableDiffers.find([]).create(null);
   }

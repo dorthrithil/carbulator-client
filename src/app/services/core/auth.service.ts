@@ -8,6 +8,7 @@ import * as JWT from 'jwt-decode';
 import {NotificationsService} from 'angular2-notifications';
 import {bigIntTimer} from '../../utility/observables/bigint-timer';
 import {User} from '../../models/user';
+import {CblNotificationsService} from './cbl-notifications.service';
 
 /**
  * A JSON Web Token.
@@ -47,7 +48,7 @@ export class AuthService {
   public onLogin: Observable<boolean>;
 
   constructor(private router: Router,
-              private notificationsService: NotificationsService,
+              private notificationsService: CblNotificationsService,
               private authCrud: AuthCrudService) {
     this.loginStateChangesSubject = new Subject<boolean>();
     this.onLoginStateChanges = this.loginStateChangesSubject.asObservable();
