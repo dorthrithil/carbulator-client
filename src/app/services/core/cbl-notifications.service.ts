@@ -21,7 +21,7 @@ export class CblNotificationsService {
    * @param content Notification content.
    */
   public success(title: any, content: any) {
-    if (this.isMobile()) {
+    if (!this.isMobile()) {
       this.notifications.success(title, content);
     }
   }
@@ -41,7 +41,7 @@ export class CblNotificationsService {
    * @param content Notification content.
    */
   public info(title: any, content: any) {
-    if (this.isMobile()) {
+    if (!this.isMobile()) {
       this.notifications.info(title, content);
     }
   }
