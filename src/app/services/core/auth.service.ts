@@ -5,7 +5,6 @@ import {AuthCrudService, LoginResponse} from '../crud/auth-crud.service';
 import {catchError, map, takeUntil, takeWhile} from 'rxjs/operators';
 import * as moment from 'moment';
 import * as JWT from 'jwt-decode';
-import {NotificationsService} from 'angular2-notifications';
 import {bigIntTimer} from '../../utility/observables/bigint-timer';
 import {User} from '../../models/user';
 import {CblNotificationsService} from './cbl-notifications.service';
@@ -201,11 +200,15 @@ export class AuthService {
     const autoLoginObject: LoginResponse = JSON.parse(localStorage.getItem('CarbulatorAuth'));
     if (autoLoginObject !== null) {
       this.unpackLoginResponse(autoLoginObject);
-      if (this.checkTokenValidity()) {
-        this._isLoggedIn = true;
-        this.loginStateChangesSubject.next(this.isLoggedIn);
-        this.onLoginSubject.next(true);
-        this.startRefreshTokenAboutToExpireTimer();
+      if (this.checkRefreshTokenValidity()) {
+        this.authCrud.loginRefresh(this.refreshToken).subscribe(response => {
+          this.unpackLoginResponse(response);
+          this._isLoggedIn = true;
+          this.loginStateChangesSubject.next(this.isLoggedIn);
+          this.onLoginSubject.next(true);
+          this.startRefreshTokenAboutToExpireTimer();
+          this.router.navigate(['']);
+        });
       } else {
         localStorage.setItem('CarbulatorAuth', null);
       }
@@ -216,9 +219,10 @@ export class AuthService {
    * Checks if access and refresh token are valid.
    * @return Returns True if both are valid, False otherwise.
    */
-  private checkTokenValidity(): boolean {
+  private checkRefreshTokenValidity(): boolean {
     const now = moment();
-    return !(this._refreshTokenExpires.isBefore(now) || this.accessTokenExpires.isBefore(now));
+    // We remove one minute as the login request also takes some time. The token shouldn't expire during that time
+    return this._refreshTokenExpires.isAfter(now.subtract(1, 'm'));
   }
 
   /**
@@ -227,7 +231,7 @@ export class AuthService {
   public logout(isAutoLogout = false) {
     const logoutAccess = this.authCrud.logoutAccess(this.accessToken);
     const logoutRefresh = this.authCrud.logoutRefresh(this.refreshToken);
-    forkJoin([logoutAccess, logoutRefresh]).subscribe(([accessResponse, refreshResponse]) => {
+    forkJoin([logoutAccess, logoutRefresh]).subscribe(() => {
       localStorage.setItem('CarbulatorAuth', null);
       this._isLoggedIn = false;
       this.loginStateChangesSubject.next(this.isLoggedIn);
