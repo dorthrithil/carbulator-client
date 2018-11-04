@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable, of, Subject, timer} from 'rxjs';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthCrudService, LoginResponse} from '../crud/auth-crud.service';
 import {catchError, map, takeUntil, takeWhile} from 'rxjs/operators';
 import * as moment from 'moment';
@@ -207,7 +207,9 @@ export class AuthService {
           this.loginStateChangesSubject.next(this.isLoggedIn);
           this.onLoginSubject.next(true);
           this.startRefreshTokenAboutToExpireTimer();
-          this.router.navigate(['']);
+          if (this.router.url === '/login') {
+            this.router.navigate(['']);
+          }
         });
       } else {
         localStorage.setItem('CarbulatorAuth', null);
