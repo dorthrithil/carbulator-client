@@ -1,0 +1,16 @@
+<h1>Benachrichtigungen</h1>
+
+<ng-container *ngFor="let notification of notifications">
+  <cbl-community-invitation-notification [invitation]="notification"
+                                         *ngIf="notification.type == notificationTypes.COMMUNITY_INVITATION
+                                         && notification.isOpen">
+  </cbl-community-invitation-notification>
+</ng-container>
+
+<clr-alert [clrAlertClosable]="false" class="no-notifications" *ngIf="noOpenNotifications()">
+  <clr-alert-item>
+    <span class="alert-text">
+      Keine neuen Benachrichtigungen.
+    </span>
+  </clr-alert-item>
+</clr-alert>

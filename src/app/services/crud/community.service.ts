@@ -88,4 +88,22 @@ export class CommunityService {
     return this.http.post<MessageResponse>(this.api.communityInvitation.inviteUser(), invitation);
   }
 
+  /**
+   * Accepts an invitation to the given community.
+   * @param community Community to accept invitation for.
+   * @return Observable that resolves to a MessageResponse
+   */
+  public acceptCommunityInvitation(community: Community): Observable<any> {
+    return this.http.put<MessageResponse>(this.api.communityInvitation.accept(community.id), {});
+  }
+
+  /**
+   * Declines an invitation to the given community.
+   * @param community Community to decline invitation for.
+   * @return Observable that resolves to a MessageResponse
+   */
+  public declineCommunityInvitation(community: Community): Observable<any> {
+    return this.http.delete<MessageResponse>(this.api.communityInvitation.declineOrDelete(community.id));
+  }
+
 }

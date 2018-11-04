@@ -93,6 +93,12 @@ export class ApiService {
   public communityInvitation = {
     inviteUser: (): string => {
       return `${this.apiHost}communities/invitations`;
+    },
+    accept: (id: number): string => {
+      return `${this.apiHost}communities/invitations/${id}`;
+    },
+    declineOrDelete: (id: number): string => {
+      return `${this.apiHost}communities/invitations/${id}`;
     }
   };
 
@@ -111,6 +117,12 @@ export class ApiService {
   public car = {
     createCar: (): string => {
       return `${this.apiHost}cars`;
+    }
+  };
+
+  public account = {
+    getOpenCommunityInvitations: (): string => {
+      return `${this.apiHost}account/invitations`;
     }
   };
 

@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
+import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 
 /**
  * Component for the apps top navbar.
@@ -12,7 +13,8 @@ import {AuthService} from '../../../../services/core/auth.service';
 })
 export class NavigationComponent {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              public navNotifications: NavNotificationsService) {
   }
 
   /**

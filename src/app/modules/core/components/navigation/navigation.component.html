@@ -14,6 +14,9 @@
     <a [routerLink]="'finances'" routerLinkActive="active" class="nav-link nav-text">Finanzen</a>
   </div>
   <div class="header-actions">
+    <a class="nav-link nav-icon" [routerLink]="['account', 'notifications']">
+      <clr-icon shape="bell" class="is-solid" [ngClass]="{'has-badge': navNotifications.count > 0}"></clr-icon>
+    </a>
     <clr-dropdown>
       <div class="nav-icon" clrDropdownTrigger>
         <clr-icon shape="cog"></clr-icon>

@@ -26,6 +26,11 @@ const coreRoutes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   {
+    path: 'account',
+    loadChildren: '../account/account.module#AccountModule',
+    canActivate: [IsLoggedInGuard]
+  },
+  {
     path: 'communities',
     loadChildren: '../communities/communities.module#CommunitiesModule',
     canActivate: [IsLoggedInGuard]

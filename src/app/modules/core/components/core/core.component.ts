@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {initCustomIcons} from '../../../../utility/icons/icon-config';
+import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 
+/**
+ * The core component of the application.
+ */
 @Component({
   selector: 'cbl-root',
   templateUrl: './core.component.html',
@@ -16,7 +20,7 @@ export class CoreComponent implements OnInit {
     timeOut: 5000,
   };
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private navNotifications: NavNotificationsService) {
     initCustomIcons();
   }
 
