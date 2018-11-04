@@ -6,6 +6,7 @@ import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortPayoffs} from '../../../../utility/sorting/sort-payoffs';
 import {Router} from '@angular/router';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {Observable} from 'rxjs';
 
 /**
  * Component that shows a list of payoffs in a card.
@@ -23,6 +24,8 @@ export class CommunityPayoffCardComponent implements OnInit {
   @Input() communityId: number;
 
   public payoffs: Payoff[];
+  public confirmPayoffModalOpen = false;
+  public createPayoffRequest: Observable<Payoff>;
 
   constructor(private payoffService: PayoffService,
               private router: Router,
@@ -49,14 +52,21 @@ export class CommunityPayoffCardComponent implements OnInit {
   }
 
   /**
-   * Creates a new payoff on the server.
+   * Opens the confirmation modal for creating a payoff.
    */
-  createPayoff() {
-    this.payoffService.createPayoff(this.communityId).subscribe(payoff => {
-      this.addPayoff(payoff);
-      this.notifications.success('Abrechnung fertig', 'Alle offenen Fahrten und Tankfüllungen wurden verrechnet.');
-      this.router.navigate(['finances', 'payoffs', payoff.id]);
-    });
+  public createPayoff() {
+    this.createPayoffRequest = this.payoffService.createPayoff(this.communityId);
+    this.confirmPayoffModalOpen = true;
+  }
+
+  /**
+   * Processes a successfully creates payoff.
+   * @param payoff Created payoff.
+   */
+  public onPayoffConfirm(payoff) {
+    this.addPayoff(payoff);
+    this.notifications.success('Abrechnung fertig', 'Alle offenen Fahrten und Tankfüllungen wurden verrechnet.');
+    this.router.navigate(['finances', 'payoffs', payoff.id]);
   }
 
 }

@@ -19,3 +19,13 @@
     <a class="btn btn-sm btn-link" (click)="createPayoff()">Abrechnung</a>
   </div>
 </div>
+
+<cbl-confirm-modal [(isOpen)]="confirmPayoffModalOpen"
+                   (confirm)="onPayoffConfirm($event)"
+                   [action]="createPayoffRequest">
+  <ng-template cblConfirmModalTitle>Abrechnung erstellen?</ng-template>
+  <ng-template cblConfirmModalText>Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Fortfahren</ng-template>
+</cbl-confirm-modal>
