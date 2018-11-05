@@ -6,6 +6,7 @@ import {SharedModule} from '../shared/shared.module';
 import { PayoffDebtCardComponent } from './components/payoff-debt-card/payoff-debt-card.component';
 import { PayoffTourCardComponent } from './components/payoff-tour-card/payoff-tour-card.component';
 import { PayoffRefuelCardComponent } from './components/payoff-refuel-card/payoff-refuel-card.component';
+import { FinancesComponent } from './components/finances/finances.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { PayoffRefuelCardComponent } from './components/payoff-refuel-card/payof
     PayoffDetailComponent,
     PayoffDebtCardComponent,
     PayoffTourCardComponent,
-    PayoffRefuelCardComponent
+    PayoffRefuelCardComponent,
+    FinancesComponent
   ]
 })
 export class FinancesModule { }

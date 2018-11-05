@@ -36,6 +36,11 @@ const coreRoutes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   {
+    path: 'changelog',
+    loadChildren: '../changelog/changelog.module#ChangelogModule',
+    canActivate: [IsLoggedInGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [IsLoggedOutGuard]

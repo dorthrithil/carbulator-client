@@ -1,0 +1,96 @@
+[
+  {
+    "minor": "0.1",
+    "patches": [
+      {
+        "patch": "0.1.3",
+        "releaseDate": "05.11.2018",
+        "changes": {
+          "added": [
+            "Changelog hinzugefügt.",
+            "Möglichkeit zum abbrechen laufender Fahrten hinzugefügt."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
+        "patch": "0.1.2",
+        "releaseDate": "04.11.2018",
+        "changes": {
+          "added": [
+            "Es ist nun über App Benachrichtigungen in der Menüleiste möglich Gruppeneinladungen anzunehmen oder abzulehnen."
+          ],
+          "changed": [
+            "Auto Login: Es wird nun zur ursprünglichen Route navigiert, nicht immer zum Dashboard.",
+            "Es muss nun ein Dialog bestätigt werden bevor man eine Abrechnung macht."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
+        "patch": "0.1.1",
+        "releaseDate": "31.10.2018",
+        "changes": {
+          "added": [
+            "\"Über\"-Seite hinzugefügt.",
+            "Carbulator Logo hinzugefügt."
+          ],
+          "changed": [
+            "Notifications werden auf mobilen Geräten nur noch angezeigt, falls diese einen Fehler anzeigen.",
+            "Nachdem man eine Abrechnung erstellt hat, wird man nun direkt zu Detailansicht weitergeleitet.",
+            "Tabellenansichten für Mobilgetäte optimiert.",
+            "Tankfüllungen mit 0€ Kosten sind nun nicht mehr möglich einzutragen."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler beim Autologin behoben.",
+            "Farbe des Appnamens in mobiler Navigation verbessert.",
+            "Fehler bei Kilometerstand Validierung behoben.",
+            "Fehler bei der Formularvalidierung von Fahrten behoben.",
+            "Überlappende UI Elemente von Login und Registrierungsformular behoben."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
+        "patch": "0.1.0",
+        "releaseDate": "22.10.2018",
+        "changes": {
+          "added": [
+            "Erste Version der App."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  }
+]
