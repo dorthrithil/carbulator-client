@@ -76,6 +76,9 @@ export class ApiService {
     getRunningTours: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/running`;
     },
+    deleteTour: (communityId: number, tourId: number): string => {
+      return `${this.apiHost}communities/${communityId}/tours/${tourId}`;
+    }
   };
 
   public payoffs = {

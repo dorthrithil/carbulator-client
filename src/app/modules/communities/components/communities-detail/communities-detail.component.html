@@ -16,6 +16,7 @@
         </button>
         <clr-dropdown-menu clrPosition="bottom-right">
           <div class="dropdown-item" clrDropdownItem (click)="finishTourModal.open(runningTour)">Fahrt beenden</div>
+          <div class="dropdown-item" clrDropdownItem (click)="openCancelTourModal()">Fahrt abbrechen</div>
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
@@ -24,6 +25,15 @@
 
 <cbl-finish-tour-modal #finishTourModal
                        (tourFinished)="toursCard.addTour($event); clearRunningTour()"></cbl-finish-tour-modal>
+
+<cbl-confirm-modal [(isOpen)]="cancelTourModalOpen" [action]="deleteTourRequest" [confirmButtonIsDanger]="true"
+                   (confirm)="onRunningTourCanceled()">
+  <ng-template cblConfirmModalTitle>Wirklich abbrechen?</ng-template>
+  <ng-template cblConfirmModalText>Die Fahrt wird gelöscht. Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>
 
 <div class="row">
 

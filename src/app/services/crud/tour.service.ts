@@ -4,6 +4,7 @@ import {ApiService} from '../core/api.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Tour} from '../../models/tour';
+import {MessageResponse} from './auth-crud.service';
 
 /**
  * CRUD service for tours.
@@ -87,6 +88,14 @@ export class TourService {
     return this.http.put(this.api.community.forceFinishTour(tour.community.id, tour.id), Tour.toJson(tour)).pipe(
       map(tourJson => Tour.fromJson(tourJson))
     );
+  }
+
+  /**
+   * Deletes the given tour.
+   * @param tour The tour that should get deleted.
+   */
+  public deleteTour(tour: Tour): Observable<MessageResponse> {
+    return this.http.delete<MessageResponse>(this.api.community.deleteTour(tour.community.id, tour.id));
   }
 
 }

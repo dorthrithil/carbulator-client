@@ -7,9 +7,9 @@ import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
 import {AuthService} from '../../../../services/core/auth.service';
 import {User} from '../../../../models/user';
-import {PayoffService} from '../../../../services/crud/payoff.service';
-import {NotificationsService} from 'angular2-notifications';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {Observable} from 'rxjs';
+import {MessageResponse} from '../../../../services/crud/auth-crud.service';
 
 /**
  * A component that shows community details in cards.
@@ -25,6 +25,8 @@ export class CommunitiesDetailComponent implements OnInit {
   public communityId: number;
   public loadingCommunity = true;
   public runningTour: Tour;
+  public cancelTourModalOpen = false;
+  public deleteTourRequest: Observable<MessageResponse>;
 
   constructor(private route: ActivatedRoute,
               private auth: AuthService,
@@ -53,6 +55,9 @@ export class CommunitiesDetailComponent implements OnInit {
         });
         this.tourService.getRunningCommunityTours(this.communityId).subscribe(runningTours => {
           this.runningTour = runningTours[0];
+          if (this.runningTour) {
+            this.deleteTourRequest = this.tourService.deleteTour(this.runningTour);
+          }
         });
       } else {
         this.router.navigate(['/404']);
@@ -83,7 +88,22 @@ export class CommunitiesDetailComponent implements OnInit {
   public addRunningTour(tour: Tour) {
     if (tour.endKm === null || typeof tour.endKm === 'undefined') {
       this.runningTour = tour;
+      this.deleteTourRequest = this.tourService.deleteTour(this.runningTour);
     }
+  }
+
+  /**
+   * Opebs the cancel tour modal.
+   */
+  public openCancelTourModal() {
+    this.cancelTourModalOpen = true;
+  }
+
+  /**
+   * Removes the current running tour.
+   */
+  public onRunningTourCanceled() {
+    this.runningTour = null;
   }
 
 }
