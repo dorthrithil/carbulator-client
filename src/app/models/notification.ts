@@ -4,7 +4,8 @@ import * as moment from 'moment';
  * Types of notifications.
  */
 export enum NotificationType {
-  COMMUNITY_INVITATION = 'COMMUNITY_INVITATION'
+  COMMUNITY_INVITATION = 'COMMUNITY_INVITATION',
+  RUNNING_TOUR = 'RUNNING_TOUR'
 }
 
 /**

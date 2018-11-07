@@ -7,6 +7,7 @@ import {ClarityModule} from '@clr/angular';
 import {SharedModule} from '../shared/shared.module';
 import { AccountComponent } from './components/account/account.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { RunningTourNotificationComponent } from './components/running-tour-notification/running-tour-notification.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     CommunityInvitationNotificationComponent,
     NotificationsListComponent,
     AccountComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RunningTourNotificationComponent
   ]
 })
 export class AccountModule { }

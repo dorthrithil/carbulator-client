@@ -43,7 +43,7 @@ export class TourService {
   }
 
   /**
-   * Fetches all running tours od a community from the server.
+   * Fetches all running tours of a community from the server.
    * @param communityId The id of the community to fetch the tours for.
    * @return Observable that resolves to an array of tours.
    */

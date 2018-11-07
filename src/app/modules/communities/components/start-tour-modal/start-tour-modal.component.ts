@@ -8,6 +8,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 
 /**
  * A modal for starting a tour.
@@ -37,6 +38,7 @@ export class StartTourModalComponent {
 
   constructor(private fb: FormBuilder,
               private notifications: CblNotificationsService,
+              private navNotifications: NavNotificationsService,
               private tourService: TourService) {
   }
 
@@ -88,6 +90,7 @@ export class StartTourModalComponent {
         this.tourStarted.emit(tour);
         this.close();
         this.notifications.success('Fahrt gestartet', 'Deine Fahrt wurde als gestartet eingetragen.');
+        this.navNotifications.loadNotifications();
       }, () => {
         this.isOpen = false;
         this.close();

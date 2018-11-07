@@ -129,6 +129,9 @@ export class ApiService {
     },
     changePassword: (): string => {
       return `${this.apiHost}account/change-password`;
+    },
+    getRunningTours: (): string => {
+      return `${this.apiHost}account/tours/running/`;
     }
   };
 
