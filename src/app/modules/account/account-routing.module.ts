@@ -3,15 +3,24 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PayoffDetailComponent} from '../finances/components/payoff-detail/payoff-detail.component';
 import {NotificationsListComponent} from './components/notifications-list/notifications-list.component';
+import {ChangelogComponent} from '../changelog/changelog.component';
+import {ChangelogEntryComponent} from '../changelog/changelog-entry/changelog-entry.component';
+import {AccountComponent} from './components/account/account.component';
 
 const accountRoutes: Routes = [
   {
-    path: 'notifications',
-    component: NotificationsListComponent,
-  },
-  {
-    path: '**',
-    redirectTo: '/404'
+    path: '',
+    component: AccountComponent,
+    children: [
+      {
+        path: 'notifications',
+        component: NotificationsListComponent,
+      },
+      {
+        path: '**',
+        redirectTo: '/404'
+      }
+    ]
   }
 ];
 

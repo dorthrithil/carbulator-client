@@ -1,0 +1,18 @@
+<div class="content-area">
+  <router-outlet></router-outlet>
+</div>
+
+<clr-vertical-nav [clrVerticalNavCollapsible]="true" [clr-nav-level]="2">
+  <a clrVerticalNavLink [routerLink]="'/changelog'" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    Aktuelle Version ({{latestVersion | async}})
+  </a>
+  <clr-vertical-nav-group routerLinkActive="active" *ngFor="let minorVersion of versions | async">
+    {{minorVersion.minor}} Changelogs
+    <clr-vertical-nav-group-children>
+      <a clrVerticalNavLink *ngFor="let patchVersion of minorVersion.patches"
+         [routerLink]="'/changelog/' + patchVersion.patch" routerLinkActive="active">
+        {{patchVersion.patch}}
+      </a>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+</clr-vertical-nav>

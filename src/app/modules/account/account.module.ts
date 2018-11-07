@@ -5,6 +5,7 @@ import {AccountRoutingModule} from './account-routing.module';
 import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
 import {ClarityModule} from '@clr/angular';
 import {SharedModule} from '../shared/shared.module';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {SharedModule} from '../shared/shared.module';
   ],
   declarations: [
     CommunityInvitationNotificationComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    AccountComponent
   ]
 })
 export class AccountModule { }

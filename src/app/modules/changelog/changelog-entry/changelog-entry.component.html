@@ -1,0 +1,111 @@
+<div *ngIf="version">
+
+  <h1 class="component-heading">{{version.patch}} Changelog
+    <span class="release-date">vom {{version.releaseDate}}</span>
+  </h1>
+
+  <div class="row">
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.added.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Neu
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let addition of version.changes.added">{{addition}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.changed.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Änderungen
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let change of version.changes.changed">{{change}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.deprecated.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Wird bald entfernt
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let deprecations of version.changes.deprecated">{{deprecations}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.removed.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Entfernt
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let removes of version.changes.removed">{{removes}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.fixed.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Behobene Fehler
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let fix of version.changes.fixed">{{fix}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.security.length > 0">
+      <div class="card">
+        <div class="card-header">
+          Sicherheit
+        </div>
+        <div class="card-block">
+          <div class="card-text">
+            <ul>
+              <li *ngFor="let sec of version.changes.security">{{sec}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="loadingError">
+  <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false">
+    <div class="alert-item">
+        <span class="alert-text">
+            Changelog konnte nicht geladen werden.
+        </span>
+    </div>
+  </clr-alert>
+</div>
