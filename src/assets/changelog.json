@@ -3,6 +3,25 @@
     "minor": "0.1",
     "patches": [
       {
+        "patch": "0.1.4",
+        "releaseDate": "TODO.11.2018",
+        "changes": {
+          "added": [
+            "Möglichkeit zum Ändern des Passworts hinzugefügt."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.1.3",
         "releaseDate": "05.11.2018",
         "changes": {
