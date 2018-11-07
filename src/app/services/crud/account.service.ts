@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Community} from '../../models/community';
 import {map} from 'rxjs/operators';
 import {Notification, NotificationType} from '../../models/notification';
+import {MessageResponse} from './auth-crud.service';
 
 /**
  * Service for performing CRUD actions on account resources.
@@ -34,6 +35,18 @@ export class AccountService {
         });
       })
     );
+  }
+
+  /**
+   * Changes a users password.
+   * @param oldPassword The old password.
+   * @param newPassword The new password.
+   */
+  public changePassword(oldPassword: string, newPassword: string): Observable<MessageResponse> {
+    return this.http.put<MessageResponse>(this.api.account.changePassword(), {
+      'old_password': oldPassword,
+      'new_password': newPassword
+    });
   }
 
 }

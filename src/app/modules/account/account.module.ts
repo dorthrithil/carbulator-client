@@ -6,6 +6,8 @@ import { NotificationsListComponent } from './components/notifications-list/noti
 import {ClarityModule} from '@clr/angular';
 import {SharedModule} from '../shared/shared.module';
 import { AccountComponent } from './components/account/account.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+
 
 @NgModule({
   imports: [
@@ -17,7 +19,8 @@ import { AccountComponent } from './components/account/account.component';
   declarations: [
     CommunityInvitationNotificationComponent,
     NotificationsListComponent,
-    AccountComponent
+    AccountComponent,
+    ChangePasswordComponent
   ]
 })
 export class AccountModule { }

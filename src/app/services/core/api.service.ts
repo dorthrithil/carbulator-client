@@ -126,6 +126,9 @@ export class ApiService {
   public account = {
     getOpenCommunityInvitations: (): string => {
       return `${this.apiHost}account/invitations`;
+    },
+    changePassword: (): string => {
+      return `${this.apiHost}account/change-password`;
     }
   };
 

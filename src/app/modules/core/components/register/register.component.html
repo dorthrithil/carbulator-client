@@ -35,7 +35,7 @@
       </div>
 
       <div class="error" [ngClass]="{active: passwordsDontMatch()}" *ngIf="registerPressed">
-        Passwörter stimen nicht überein.
+        Passwörter stimmen nicht überein.
       </div>
 
       <button type="submit" class="btn btn-primary btn-register" (click)="register()" [clrLoading]="loadingState">

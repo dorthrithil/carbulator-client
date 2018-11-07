@@ -78,5 +78,10 @@ export const knownErrors: ErrorDictionary = {
     message: 'CANT_CREATE_PAYOFF_WHEN_UNFINISHED_TOURS_EXIST',
     title: 'Abrechnung nicht möglich',
     description: 'Bitte beende alle Fahrten bevor du eine Abrechnung erstellst.'
+  },
+  OLD_PASSWORD_INCORRECT: {
+    message: 'OLD_PASSWORD_INCORRECT',
+    title: 'Altes Passwort falsch',
+    description: 'Das alte Passwort ist nicht korrekt.'
   }
 };

@@ -28,6 +28,7 @@
         <button type="button" clrDropdownItem [routerLink]="'imprint'">Impressum</button>
         <button type="button" clrDropdownItem [routerLink]="'data-privacy-statement'">Datenschutz</button>
         <div class="dropdown-divider"></div>
+        <button type="button" clrDropdownItem [routerLink]="['account', 'change-password']">Passwort ändern</button>
         <button type="button" clrDropdownItem (click)="logout()">Logout</button>
       </clr-dropdown-menu>
     </clr-dropdown>
