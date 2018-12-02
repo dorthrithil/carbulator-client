@@ -27,6 +27,12 @@ export class ApiService {
     },
     logoutRefresh: (): string => {
       return `${this.apiHost}logout/refresh`;
+    },
+    forgotPassword: (): string => {
+      return `${this.apiHost}forgot-password`;
+    },
+    resetPassword: (): string => {
+      return `${this.apiHost}reset-password`;
     }
   };
 

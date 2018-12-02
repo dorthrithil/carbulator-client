@@ -29,6 +29,11 @@ export const knownErrors: ErrorDictionary = {
     title: 'Ungültige Kombination',
     description: 'Die Kombination von Nutzername und Passwort existiert nicht.'
   },
+  USER_NOT_FOUND: {
+    message: 'USER_NOT_FOUND',
+    title: 'Nutzer nicht gefunden',
+    description: 'Es konnte kein Nutzer für die angegebenen Daten gefunden werden.'
+  },
   WRONG_CREDENTIALS: {
     message: 'WRONG_CREDENTIALS',
     title: 'Ungültige Kombination',
@@ -83,5 +88,10 @@ export const knownErrors: ErrorDictionary = {
     message: 'OLD_PASSWORD_INCORRECT',
     title: 'Altes Passwort falsch',
     description: 'Das alte Passwort ist nicht korrekt.'
+  },
+  RESET_PASSWORD_HASH_INVALID: {
+    message: 'RESET_PASSWORD_HASH_INVALID',
+    title: 'Link abgelaufen',
+    description: 'Der Link zum Zurücksetzen des Passworts ist ungültig oder abgelaufen.'
   }
 };

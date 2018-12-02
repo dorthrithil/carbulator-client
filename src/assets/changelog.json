@@ -8,6 +8,7 @@
         "changes": {
           "added": [
             "Möglichkeit zum Ändern des Passworts hinzugefügt.",
+            "Möglichkeit zum Zurücksetzen des Passworts hinzugefügt (Passwort vergessen).",
             "Es ist nun über App Benachrichtigungen in der Menüleiste möglich laufende Fahrten angezeigt zu bekommen."
           ],
           "changed": [
