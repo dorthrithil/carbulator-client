@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Tour} from '../../../../models/tour';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NotificationsService} from 'angular2-notifications';
 import {TourService} from '../../../../services/crud/tour.service';
-import {startKmValidator} from '../../../../utility/validators/start-km.validator';
 import {latlongValidator} from '../../../../utility/validators/latlong.validator';
 import {AuthService} from '../../../../services/core/auth.service';
 import {Observable} from 'rxjs';

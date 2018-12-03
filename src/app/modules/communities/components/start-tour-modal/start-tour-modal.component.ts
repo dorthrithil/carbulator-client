@@ -1,10 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Community} from '../../../../models/community';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {startKmValidator} from '../../../../utility/validators/start-km.validator';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
-import {NotificationsService} from 'angular2-notifications';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
@@ -35,6 +32,8 @@ export class StartTourModalComponent {
   public isLoading = false;
   public lastEndKm: number;
   public lastTourLoading = true;
+  public startKmInconsistent = false;
+  public startKmInconsistencyChecked = false;
 
   constructor(private fb: FormBuilder,
               private notifications: CblNotificationsService,
@@ -48,7 +47,7 @@ export class StartTourModalComponent {
    */
   private buildForm() {
     this.startTourForm = this.fb.group({
-      startKm: [String(this.lastEndKm), [Validators.required, numberValidator(), startKmValidator(this.lastEndKm)]]
+      startKm: [String(this.lastEndKm), [Validators.required, numberValidator()]]
     });
   }
 
@@ -76,6 +75,19 @@ export class StartTourModalComponent {
   public close() {
     this.isOpen = false;
     this.lastTourLoading = true;
+  }
+
+  /**
+   * Checks the consistency of the start km field. It is assumed to be consistent if it is exactly the same as the last end km.
+   * If no inconsistency is found, the next step (sending the form) is performed automatically. Else a warning is shown and the
+   * user must confirm the inconsistency.
+   */
+  public checkStartKmConsistency() {
+    this.startKmInconsistent = toNumber(this.startTourForm.get('startKm').value) !== toNumber(this.lastEndKm);
+    this.startKmInconsistencyChecked = true;
+    if (!this.startKmInconsistent) {
+      this.addTour();
+    }
   }
 
   /**
