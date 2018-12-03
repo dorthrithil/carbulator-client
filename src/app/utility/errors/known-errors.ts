@@ -93,5 +93,10 @@ export const knownErrors: ErrorDictionary = {
     message: 'RESET_PASSWORD_HASH_INVALID',
     title: 'Link abgelaufen',
     description: 'Der Link zum Zurücksetzen des Passworts ist ungültig oder abgelaufen.'
+  },
+  EMAIL_INVALID: {
+    message: 'EMAIL_INVALID',
+    title: 'Ungültige E-Mail Adresse',
+    description: 'Die verwendete E-Mail Adresse ist nicht gültig.'
   }
 };

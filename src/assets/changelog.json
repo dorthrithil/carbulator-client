@@ -9,7 +9,8 @@
           "added": [
             "Möglichkeit zum Ändern des Passworts hinzugefügt.",
             "Möglichkeit zum Zurücksetzen des Passworts hinzugefügt (Passwort vergessen).",
-            "Es ist nun über App Benachrichtigungen in der Menüleiste möglich laufende Fahrten angezeigt zu bekommen."
+            "Es ist nun über App Benachrichtigungen in der Menüleiste möglich laufende Fahrten angezeigt zu bekommen.",
+            "Für die Registrierung ist nun die Hinterlegung einer E-Mail Adresse zwecks Benachrichtigungen und Supportfeatures wie dem Zurücksetzen von Passwörtern erforderlich."
           ],
           "changed": [
           ],

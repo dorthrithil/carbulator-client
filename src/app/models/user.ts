@@ -7,6 +7,7 @@ export class User {
 
   id: number;
   username: string;
+  email: string;
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
 
@@ -19,6 +20,7 @@ export class User {
     const user = new User();
     user.id = src.id;
     user.username = src.username;
+    user.email = src.email;
     user.timeCreated = moment.utc(src.time_created);
     user.timeUpdated = moment.utc(src.time_updated);
     return user;

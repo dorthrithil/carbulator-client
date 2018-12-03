@@ -90,11 +90,12 @@ export class AuthCrudService {
   /**
    * Registers a user on the server.
    * @param username Username of the new user.
+   * @param email Email address of the new user.
    * @param password Password of the new user.
    * @return Returns an observable that resolves to a login response.
    */
-  public register(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.api.auth.register(), {username: username, password: password});
+  public register(username: string, email: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.api.auth.register(), {username: username, email: email, password: password});
   }
 
   /**

@@ -114,11 +114,12 @@ export class AuthService {
   /**
    * Registers a user to the application. On successful registration he is automatically logged in.
    * @param username Username to log in with.
+   * @param email Email address of the user.
    * @param password Password to log in with.
    * @return Resolves to an Observable of true on success. Of false otherwise.
    */
-  public register(username: string, password: string): Observable<boolean> {
-    return this.authCrud.register(username, password).pipe(
+  public register(username: string, email: string, password: string): Observable<boolean> {
+    return this.authCrud.register(username, email, password).pipe(
       map((response: LoginResponse) => {
         this.afterLoginOrRegistrationSuccess(response);
         this.notificationsService.success('Registrierung erfolgreich', 'Du bist jetzt eingelogt.');
