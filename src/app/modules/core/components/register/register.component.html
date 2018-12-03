@@ -14,6 +14,14 @@
         <clr-control-error *clrIfError="'username'">Erlaubte Zeichen: a-z, A-Z, 0-9</clr-control-error>
       </clr-input-container>
 
+      <clr-input-container>
+        <label>E-Mail</label>
+        <input placeholder="E-Mail" clrInput formControlName="email" name="email" required/>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'pattern'">Bitte eine gültige E-Mail Adresse eingeben. Beispiel
+          <em>test@example.com</em></clr-control-error>
+      </clr-input-container>
+
       <div formGroupName="passwords">
 
         <clr-input-container>
@@ -35,7 +43,7 @@
       </div>
 
       <div class="error" [ngClass]="{active: passwordsDontMatch()}" *ngIf="registerPressed">
-        Passwörter stimen nicht überein.
+        Passwörter stimmen nicht überein.
       </div>
 
       <button type="submit" class="btn btn-primary btn-register" (click)="register()" [clrLoading]="loadingState">

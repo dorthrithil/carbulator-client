@@ -16,10 +16,12 @@ import {MinutesRemainingPipe} from '../../pipes/minutes-remaining.pipe';
 import {RegisterComponent} from './components/register/register.component';
 import {ErrorHandlerInterceptor} from '../../utility/http-interceptors/error.interceptor';
 import {SharedModule} from '../shared/shared.module';
-import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { ImprintComponent } from './components/imprint/imprint.component';
-import { DataPrivacyStatementComponent } from './components/data-privacy-statement/data-privacy-statement.component';
-import { AboutComponent } from './components/about/about.component';
+import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
+import {ImprintComponent} from './components/imprint/imprint.component';
+import {DataPrivacyStatementComponent} from './components/data-privacy-statement/data-privacy-statement.component';
+import {AboutComponent} from './components/about/about.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import { AboutComponent } from './components/about/about.component';
     ImprintComponent,
     DataPrivacyStatementComponent,
     AboutComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   providers: [
     {

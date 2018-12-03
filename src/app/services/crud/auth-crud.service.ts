@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
 import {ApiService} from '../core/api.service';
 import {HttpBackendClientService} from '../core/http-backend-client.service';
 import {ErrorMappingHttpService} from '../core/error-mapping-http.service';
@@ -90,11 +90,32 @@ export class AuthCrudService {
   /**
    * Registers a user on the server.
    * @param username Username of the new user.
+   * @param email Email address of the new user.
    * @param password Password of the new user.
    * @return Returns an observable that resolves to a login response.
    */
-  public register(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.api.auth.register(), {username: username, password: password});
+  public register(username: string, email: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.api.auth.register(), {username: username, email: email, password: password});
+  }
+
+  /**
+   * Requests a reset password mail.
+   * @param identification Username or email to identify the user with
+   * @return Returns an Observable that resolves to a message response.
+   */
+  public forgotPassword(identification: string): Observable<MessageResponse> {
+    return this.http.post<MessageResponse>(this.api.auth.forgotPassword(), {identification: identification});
+  }
+
+  /**
+   * Requests a reset password mail.
+   * @param newPassword New password for the user.
+   * @param resetPasswordHash Hash to validate that the user actually requested to reset the password.
+   * @return Returns an Observable that resolves to a login response.
+   */
+  public resetPassword(newPassword: string, resetPasswordHash: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.api.auth.resetPassword(),
+      {newPassword: newPassword, resetPasswordHash: resetPasswordHash});
   }
 
 }

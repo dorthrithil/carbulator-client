@@ -3,8 +3,8 @@ import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {usernameValidator} from '../../../../utility/validators/username.validator';
 import {passwordsValidator} from '../../../../utility/validators/passwords.validator';
-import {b} from '@angular/core/src/render3';
 import {ClrLoadingState} from '@clr/angular';
+import {emailRegex} from '../../../../utility/regex/common';
 
 /**
  * Component that shows a registration screen.
@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   private buildForm() {
     this.registrationForm = this.fb.group({
       'username': ['', [Validators.required, Validators.minLength(3), usernameValidator()]],
+      'email': ['', [Validators.required, Validators.pattern(emailRegex)]],
       'passwords': this.fb.group({
         'password': ['', [Validators.required, Validators.minLength(8)]],
         'passwordConfirm': ['', [Validators.required, Validators.minLength(8)]]
@@ -54,6 +55,7 @@ export class RegisterComponent implements OnInit {
       this.loadingState = ClrLoadingState.LOADING;
       this.auth.register(
         this.registrationForm.get('username').value,
+        this.registrationForm.get('email').value,
         this.registrationForm.get('passwords.password').value
       ).subscribe(() => {
         this.loadingState = ClrLoadingState.DEFAULT;

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable, of, Subject, timer} from 'rxjs';
-import {ActivatedRoute, Router, RouterStateSnapshot} from '@angular/router';
+import {Router} from '@angular/router';
 import {AuthCrudService, LoginResponse} from '../crud/auth-crud.service';
 import {catchError, map, takeUntil, takeWhile} from 'rxjs/operators';
 import * as moment from 'moment';
@@ -114,11 +114,12 @@ export class AuthService {
   /**
    * Registers a user to the application. On successful registration he is automatically logged in.
    * @param username Username to log in with.
+   * @param email Email address of the user.
    * @param password Password to log in with.
    * @return Resolves to an Observable of true on success. Of false otherwise.
    */
-  public register(username: string, password: string): Observable<boolean> {
-    return this.authCrud.register(username, password).pipe(
+  public register(username: string, email: string, password: string): Observable<boolean> {
+    return this.authCrud.register(username, email, password).pipe(
       map((response: LoginResponse) => {
         this.afterLoginOrRegistrationSuccess(response);
         this.notificationsService.success('Registrierung erfolgreich', 'Du bist jetzt eingelogt.');
@@ -281,6 +282,25 @@ export class AuthService {
    */
   public isLoggedInUser(user: User): boolean {
     return this.loggedInUser.username === user.username;
+  }
+
+  /**
+   * Resets the password. On successful reset the user is automatically logged in.
+   * @param newPassword New password for the user.
+   * @param resetPasswordHash Hash to validate that the user actually requested to reset the password.
+   * @return Resolves to an Observable of true on success. Of false otherwise.
+   */
+  public resetPassword(newPassword: string, resetPasswordHash: string): Observable<boolean> {
+    return this.authCrud.resetPassword(newPassword, resetPasswordHash).pipe(
+      map((response: LoginResponse) => {
+        this.afterLoginOrRegistrationSuccess(response);
+        this.notificationsService.success('Passwort zurückgesetzt', 'Dein Passwort wurde erfolgreich geändert.');
+        return true;
+      }),
+      catchError(() => {
+        return of(false);
+      })
+    );
   }
 
 }

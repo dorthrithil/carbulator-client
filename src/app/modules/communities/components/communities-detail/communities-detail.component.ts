@@ -10,6 +10,7 @@ import {User} from '../../../../models/user';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
+import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 
 /**
  * A component that shows community details in cards.
@@ -33,6 +34,7 @@ export class CommunitiesDetailComponent implements OnInit {
               private router: Router,
               private tourService: TourService,
               private notifications: CblNotificationsService,
+              private navNotifications: NavNotificationsService,
               private communityService: CommunityService) {
   }
 
@@ -104,6 +106,7 @@ export class CommunitiesDetailComponent implements OnInit {
    */
   public onRunningTourCanceled() {
     this.runningTour = null;
+    this.navNotifications.loadNotifications();
   }
 
 }

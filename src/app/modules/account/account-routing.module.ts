@@ -6,6 +6,7 @@ import {NotificationsListComponent} from './components/notifications-list/notifi
 import {ChangelogComponent} from '../changelog/changelog.component';
 import {ChangelogEntryComponent} from '../changelog/changelog-entry/changelog-entry.component';
 import {AccountComponent} from './components/account/account.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
 
 const accountRoutes: Routes = [
   {
@@ -15,6 +16,10 @@ const accountRoutes: Routes = [
       {
         path: 'notifications',
         component: NotificationsListComponent,
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
       },
       {
         path: '**',

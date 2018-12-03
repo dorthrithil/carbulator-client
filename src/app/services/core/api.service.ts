@@ -27,6 +27,12 @@ export class ApiService {
     },
     logoutRefresh: (): string => {
       return `${this.apiHost}logout/refresh`;
+    },
+    forgotPassword: (): string => {
+      return `${this.apiHost}forgot-password`;
+    },
+    resetPassword: (): string => {
+      return `${this.apiHost}reset-password`;
     }
   };
 
@@ -126,6 +132,12 @@ export class ApiService {
   public account = {
     getOpenCommunityInvitations: (): string => {
       return `${this.apiHost}account/invitations`;
+    },
+    changePassword: (): string => {
+      return `${this.apiHost}account/change-password`;
+    },
+    getRunningTours: (): string => {
+      return `${this.apiHost}account/tours/running/`;
     }
   };
 

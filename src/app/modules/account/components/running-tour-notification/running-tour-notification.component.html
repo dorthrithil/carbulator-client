@@ -1,0 +1,27 @@
+<div class="notification-box">
+  <div class="notification-box-col">
+    <div class="icon-text-cell">
+      <div>
+        <clr-icon shape="bell"></clr-icon>
+      </div>
+      <div>
+        <strong>{{runningTour.subject.community.name}}:</strong> Laufende Fahrt
+      </div>
+    </div>
+    <div class="icon-text-cell">
+      <div>
+        <clr-icon shape="event"></clr-icon>
+      </div>
+      <div>
+        {{runningTour.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+      </div>
+    </div>
+  </div>
+  <div class="notification-box-col actions">
+    <button class="btn btn-sm btn-primary" (click)="finishTourModal.open(runningTour.subject)">Fahrt beenden</button>
+  </div>
+</div>
+
+<cbl-finish-tour-modal #finishTourModal
+                       (tourFinished)="onTourFinished()">
+</cbl-finish-tour-modal>

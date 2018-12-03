@@ -4,15 +4,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {IsLoggedInGuard} from '../../guards/is-logged-in.guard';
 import {IsLoggedOutGuard} from '../../guards/is-logged-out.guard';
 import {LoginComponent} from './components/login/login.component';
-import {DashboardModule} from '../dashboard/dashboard.module';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RegisterComponent} from './components/register/register.component';
-import {CommunitiesModule} from '../communities/communities.module';
 import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
-import {FinancesModule} from '../finances/finances.module';
 import {ImprintComponent} from './components/imprint/imprint.component';
 import {DataPrivacyStatementComponent} from './components/data-privacy-statement/data-privacy-statement.component';
 import {AboutComponent} from './components/about/about.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
 
 const coreRoutes: Routes = [
   {
@@ -43,6 +42,16 @@ const coreRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [IsLoggedOutGuard]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    canActivate: [IsLoggedOutGuard]
+  },
+  {
+    path: 'reset-password/:hash',
+    component: ResetPasswordComponent,
     canActivate: [IsLoggedOutGuard]
   },
   {

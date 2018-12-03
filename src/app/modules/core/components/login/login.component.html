@@ -19,9 +19,13 @@
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
       </clr-input-container>
 
-      <button type="submit" class="btn btn-primary btn-login" (click)="login()" [clrLoading]="loadingState">Login</button>
+      <button type="submit" class="btn btn-primary btn-login" (click)="login()" [clrLoading]="loadingState">Login
+      </button>
 
-      <a [routerLink]="['/register']" class="signup">Registrieren</a>
+      <div class="signup">
+        <a [routerLink]="['/register']">Registrieren</a> |
+        <a [routerLink]="['/forgot-password']">Passwort vergessen</a>
+      </div>
 
       <div class="info-links">
         <button class="btn btn-link btn-sm" (click)="imprintModal.isOpen = true">Impressum</button>
