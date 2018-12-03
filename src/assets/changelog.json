@@ -13,6 +13,7 @@
             "Für die Registrierung ist nun die Hinterlegung einer E-Mail Adresse zwecks Benachrichtigungen und Supportfeatures wie dem Zurücksetzen von Passwörtern erforderlich."
           ],
           "changed": [
+            "Überprüfung der Konsistenz von Start und End Kilometerständen aufeinanderfolgender Fahrten entfernt. Es ist nun möglich Fahrten einzutragen welche überlappend zu anderen Fahrten sind, bzw. Fahrten einzutragen welche eine Lücke in den Kilometerständen erzeugt. Es wird eine Warnung angezeigt falls eine solche Inkonsistenz entdeckt wird - dem Benutzer wird aber die Freiheit gelassen solche Fahrten einzutragen."
           ],
           "deprecated": [
           ],
