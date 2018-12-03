@@ -20,6 +20,7 @@
           "removed": [
           ],
           "fixed": [
+            "Fehler in der Abrechnungslogik behoben."
           ],
           "security": [
           ]
