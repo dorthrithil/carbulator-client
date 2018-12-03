@@ -4,7 +4,7 @@
     "patches": [
       {
         "patch": "0.1.4",
-        "releaseDate": "TODO.11.2018",
+        "releaseDate": "03.12.2018",
         "changes": {
           "added": [
             "Möglichkeit zum Ändern des Passworts hinzugefügt.",

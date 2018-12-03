@@ -64,11 +64,6 @@ export const knownErrors: ErrorDictionary = {
     title: 'Nicht möglich',
     description: 'Eine neue Fahrt kann erst begonnen werden, wenn die vorherige abgeschlossen ist.'
   },
-  START_KM_MUST_BE_GEQ_LAST_END_KM: {
-    message: 'START_KM_MUST_BE_GEQ_LAST_END_KM',
-    title: 'Kilometerstand zu niedrig',
-    description: 'Der Kilometerstand der letzten Fahrt ist höher als der angegebene. Dies ist nciht möglich.'
-  },
   COMMUNIY_DOESNT_EXIST: {
     message: 'COMMUNIY_DOESNT_EXIST',
     title: 'Gruppe existiert nicht',

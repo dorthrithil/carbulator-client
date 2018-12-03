@@ -14,22 +14,33 @@
         <input placeholder="Kilometerstand" clrInput formControlName="startKm" name="startKm"/>
         <clr-control-helper>Der aktuelle Kilometerstand des Autos</clr-control-helper>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-        <clr-control-error *clrIfError="'startKm'">Kann nicht niedriger als der letzte
-          Kilometerstand sein ({{lastEndKm}} km)
-        </clr-control-error>
         <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
         </clr-control-error>
       </clr-input-container>
     </form>
+
+    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false"
+               *ngIf="startKmInconsistencyChecked && startKmInconsistent">
+      <clr-alert-item>
+        <span class="alert-text">
+            Der Kilometerstand ist ungleich dem zuletzt eingetragenen Endkilometerstand ({{lastEndKm}} km). Bitte
+          bestätige, dass dies beabsichtigt ist um deine Fahrt zu starten.
+        </span>
+      </clr-alert-item>
+    </clr-alert>
 
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="close()">
       Abbrechen
     </button>
-    <button type="button" class="btn btn-primary" (click)="addTour()" [clrLoading]="isLoading"
-            [disabled]="!startTourForm?.valid">
+    <button type="button" class="btn btn-primary" (click)="checkStartKmConsistency()" [clrLoading]="isLoading"
+            [disabled]="!startTourForm?.valid" *ngIf="!startKmInconsistencyChecked">
       Los fahren
+    </button>
+    <button type="button" class="btn btn-danger" (click)="addTour()" [clrLoading]="isLoading"
+            [disabled]="!startTourForm?.valid" *ngIf="startKmInconsistencyChecked">
+      Bestätigen und speichern
     </button>
   </div>
 </clr-modal>
