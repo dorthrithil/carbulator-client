@@ -9,6 +9,7 @@
     </div>
 
     <form clrForm [formGroup]="startTourForm" *ngIf="!lastTourLoading">
+
       <clr-input-container>
         <label>Kilometerstand</label>
         <input placeholder="Kilometerstand" clrInput formControlName="startKm" name="startKm"/>
@@ -17,7 +18,11 @@
         <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
         </clr-control-error>
       </clr-input-container>
+
+      <cbl-passenger-selector [passengers]="passengers" [communityId]="communityId"></cbl-passenger-selector>
+
     </form>
+
 
     <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false"
                *ngIf="startKmInconsistencyChecked && startKmInconsistent">
@@ -35,11 +40,11 @@
       Abbrechen
     </button>
     <button type="button" class="btn btn-primary" (click)="checkStartKmConsistency()" [clrLoading]="isLoading"
-            [disabled]="!startTourForm?.valid" *ngIf="!startKmInconsistencyChecked">
+            [disabled]="!startTourForm?.valid" *ngIf="!startKmInconsistencyChecked || !startKmInconsistent">
       Los fahren
     </button>
     <button type="button" class="btn btn-danger" (click)="addTour()" [clrLoading]="isLoading"
-            [disabled]="!startTourForm?.valid" *ngIf="startKmInconsistencyChecked">
+            [disabled]="!startTourForm?.valid" *ngIf="startKmInconsistencyChecked && startKmInconsistent">
       Bestätigen und speichern
     </button>
   </div>

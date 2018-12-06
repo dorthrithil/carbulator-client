@@ -70,6 +70,9 @@ export class ApiService {
     createTour: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours`;
     },
+    getCommunityUsers: (id: number): string => {
+      return `${this.apiHost}communities/${id}/users`;
+    },
     createPayoff: (id: number): string => {
       return `${this.apiHost}communities/${id}/payoffs`;
     },

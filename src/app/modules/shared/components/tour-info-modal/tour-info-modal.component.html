@@ -45,11 +45,15 @@
           </tr>
           <tr>
             <td class="left">
-              <strong>Abgerechnet:</strong>
+              <strong>Mitfahrer:</strong>
             </td>
             <td class="left">
-              <ng-container *ngIf="tour.isOpen">Nein</ng-container>
-              <ng-container *ngIf="!tour.isOpen">Ja</ng-container>
+              <ng-container *ngIf="tour.passengers.length > 0">
+                {{tour.passengers | commaSeparatedObjectProperty : 'username'}}
+              </ng-container>
+              <ng-container *ngIf="tour.passengers.length == 0">
+                Nein
+              </ng-container>
             </td>
           </tr>
           </tbody>
@@ -80,6 +84,15 @@
             </td>
             <td class="left">
               {{tour.endKm}} km
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Abgerechnet:</strong>
+            </td>
+            <td class="left">
+              <ng-container *ngIf="tour.isOpen">Nein</ng-container>
+              <ng-container *ngIf="!tour.isOpen">Ja</ng-container>
             </td>
           </tr>
           </tbody>

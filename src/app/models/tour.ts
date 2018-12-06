@@ -1,8 +1,6 @@
 import * as moment from 'moment';
-import {Car} from './car';
 import {User} from './user';
 import {Community} from './community';
-import {s} from '@angular/core/src/render3';
 
 /**
  * Model of a tour.
@@ -24,6 +22,7 @@ export class Tour {
   forceFinishedBy: User;
   isOpen: boolean;
   totalKm: number;
+  passengers: User[] = [];
 
   /**
    * Creates a tour from a JSON representation.
@@ -46,6 +45,7 @@ export class Tour {
     tour.isForceFinished = src.is_force_finished;
     tour.forceFinishedBy = tour.isForceFinished ? User.fromJson(src.force_finished_by) : null;
     tour.isOpen = src.is_open;
+    tour.passengers = src.passengers.map(passenger => User.fromJson(passenger));
     tour.totalKm = tour.endKm !== null ? Number((tour.endKm - tour.startKm).toFixed(2)) : null;
     return tour;
   }
@@ -60,7 +60,8 @@ export class Tour {
       start_km: src.startKm,
       end_km: src.endKm,
       comment: src.comment,
-      parking_position: src.parkingPosition
+      parking_position: src.parkingPosition,
+      passengers: src.passengers.map(passenger => passenger.id)
     };
   }
 

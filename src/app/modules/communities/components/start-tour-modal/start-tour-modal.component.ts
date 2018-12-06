@@ -6,6 +6,7 @@ import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
+import {User} from '../../../../models/user';
 
 /**
  * A modal for starting a tour.
@@ -34,6 +35,7 @@ export class StartTourModalComponent {
   public lastTourLoading = true;
   public startKmInconsistent = false;
   public startKmInconsistencyChecked = false;
+  public passengers: User[] = [];
 
   constructor(private fb: FormBuilder,
               private notifications: CblNotificationsService,
@@ -75,6 +77,9 @@ export class StartTourModalComponent {
   public close() {
     this.isOpen = false;
     this.lastTourLoading = true;
+    this.passengers = [];
+    this.startKmInconsistencyChecked = false;
+    this.startKmInconsistent = false;
   }
 
   /**
@@ -98,13 +103,16 @@ export class StartTourModalComponent {
       this.isLoading = true;
       const newTour = new Tour();
       newTour.startKm = toNumber(this.startTourForm.get('startKm').value);
+      newTour.passengers = this.passengers;
       this.tourService.createTour(this.communityId, newTour).subscribe(tour => {
         this.tourStarted.emit(tour);
         this.close();
         this.notifications.success('Fahrt gestartet', 'Deine Fahrt wurde als gestartet eingetragen.');
         this.navNotifications.loadNotifications();
+        this.isLoading = false;
       }, () => {
         this.isOpen = false;
+        this.isLoading = false;
         this.close();
       });
     }
