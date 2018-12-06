@@ -5,8 +5,11 @@
       {{tour.endTime | moment: 'DD.MM.YYYY HH:mm'}}
     </div>
     <div>
-      <clr-icon shape="user"></clr-icon>
+      <clr-icon shape="user" *ngIf="tour.passengers.length == 0"></clr-icon>
+      <clr-icon shape="users" *ngIf="tour.passengers.length > 0"></clr-icon>
       {{tour.owner.username}}
+      <span
+        *ngIf="tour.passengers.length > 0">(mit {{tour.passengers | commaSeparatedObjectProperty : 'username' }})</span>
     </div>
   </div>
   <div class="tour-box-col distance">

@@ -39,7 +39,7 @@ export class AuthService {
   private onRefreshTokenAboutToExpireSubject: Subject<number>;
   private onLogoutSubject: Subject<boolean>;
   private onLoginSubject: Subject<boolean>;
-  private loggedInUser: User;
+  private _loggedInUser: User;
 
   public onLoginStateChanges: Observable<boolean>;
   public onRefreshTokenAboutToExpire: Observable<number>;
@@ -177,7 +177,7 @@ export class AuthService {
       this.accessTokenExpires = moment.unix(accessTokenDecoded.exp);
       this.startRefreshTimer();
     }
-    this.loggedInUser = loginResponse.user;
+    this._loggedInUser = loginResponse.user;
     this.persistTokens();
   }
 
@@ -188,7 +188,7 @@ export class AuthService {
     const autoLoginObject: LoginResponse = {
       access_token: this._accessToken,
       refresh_token: this._refreshToken,
-      user: this.loggedInUser,
+      user: this._loggedInUser,
       message: ''
     };
     localStorage.setItem('CarbulatorAuth', JSON.stringify(autoLoginObject));
@@ -281,7 +281,7 @@ export class AuthService {
    * @return True if the given user is the same as the logged in user.
    */
   public isLoggedInUser(user: User): boolean {
-    return this.loggedInUser.username === user.username;
+    return this._loggedInUser.username === user.username;
   }
 
   /**
@@ -301,6 +301,14 @@ export class AuthService {
         return of(false);
       })
     );
+  }
+
+  /**
+   * Getter for the logged in user.
+   * @return Logges in user.
+   */
+  get loggedInUser(): User {
+    return this._loggedInUser;
   }
 
 }

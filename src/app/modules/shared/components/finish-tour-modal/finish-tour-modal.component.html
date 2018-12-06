@@ -27,6 +27,9 @@
         </clr-control-error>
       </clr-input-container>
 
+      <cbl-passenger-selector [passengers]="tour.passengers" [communityId]="tour.community.id"
+                              *ngIf="isOwner()"></cbl-passenger-selector>
+
       <clr-textarea-container>
         <label>Kommentar</label>
         <textarea clrTextarea formControlName="comment" name="comment"></textarea>

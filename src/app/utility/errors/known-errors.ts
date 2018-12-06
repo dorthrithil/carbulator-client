@@ -1,5 +1,5 @@
 /**
- * A description of an eror.
+ * A description of an error.
  */
 interface ErrorDescription {
   message: string;

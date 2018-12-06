@@ -45,6 +45,19 @@ export class UserService {
   }
 
   /**
+   * Get users that are part of the given community.
+   * @param communityId ID of the community to retrieve members for.
+   * @return Observable that resolves to an array of users.
+   */
+  public getCommunityUsers(communityId: number): Observable<User[]> {
+    return this.http.get(this.api.community.getCommunityUsers(communityId)).pipe(
+      map(users => {
+        return users.map(user => User.fromJson(user));
+      })
+    );
+  }
+
+  /**
    * Searches for users by the given query string. Also excludes users that are already invited in the given community.
    * @param query Query string for the search.
    * @param community From this community all already invited users are excluded.

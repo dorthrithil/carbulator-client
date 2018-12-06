@@ -3,6 +3,25 @@
     "minor": "0.1",
     "patches": [
       {
+        "patch": "0.1.5",
+        "releaseDate": "06.12.2018",
+        "changes": {
+          "added": [
+            "Möglichkeit zum hinzufügen von Mitfahrern hinzugefügt: Es können nun Gruppenmitglieder als Mitfahrer einer Fahrt hinzugefügt werden, die entstehenden Kosten der Fahrt werden gleichmäßig auf Fahrer und Mitfahrer verteilt."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.1.4",
         "releaseDate": "03.12.2018",
         "changes": {
