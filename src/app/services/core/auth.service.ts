@@ -39,7 +39,9 @@ export class AuthService {
   private onRefreshTokenAboutToExpireSubject: Subject<number>;
   private onLogoutSubject: Subject<boolean>;
   private onLoginSubject: Subject<boolean>;
+  private autoLoginResult: Subject<boolean>;
   private _loggedInUser: User;
+  private triedAutoLogin = false;
 
   public onLoginStateChanges: Observable<boolean>;
   public onRefreshTokenAboutToExpire: Observable<number>;
@@ -51,21 +53,26 @@ export class AuthService {
               private authCrud: AuthCrudService) {
     this.loginStateChangesSubject = new Subject<boolean>();
     this.onLoginStateChanges = this.loginStateChangesSubject.asObservable();
-    this.loginStateChangesSubject.next(this.isLoggedIn);
+    this.loginStateChangesSubject.next(this._isLoggedIn);
     this.onRefreshTokenAboutToExpireSubject = new Subject();
     this.onRefreshTokenAboutToExpire = this.onRefreshTokenAboutToExpireSubject.asObservable();
     this.onLoginSubject = new Subject<boolean>();
     this.onLogin = this.onLoginSubject.asObservable();
     this.onLogoutSubject = new Subject<boolean>();
     this.onLogout = this.onLogoutSubject.asObservable();
+    this.autoLoginResult = new Subject<boolean>();
   }
 
   /**
-   * Returns true if the user is logged in.
-   * @return True if the user is logged in.
+   * Returns an observable holding the logged in state.
+   * @return Observable that resolves to true if the user is logged in.
    */
-  get isLoggedIn(): boolean {
-    return this._isLoggedIn;
+  public getIsLoggedIn(): Observable<boolean> {
+    if (this.triedAutoLogin) {
+      return of(this._isLoggedIn);
+    } else {
+      return this.autoLoginResult;
+    }
   }
 
   /**
@@ -138,7 +145,7 @@ export class AuthService {
   private afterLoginOrRegistrationSuccess(response: LoginResponse) {
     this.unpackLoginResponse(response);
     this._isLoggedIn = true;
-    this.loginStateChangesSubject.next(this.isLoggedIn);
+    this.loginStateChangesSubject.next(this._isLoggedIn);
     this.onLoginSubject.next(true);
     this.router.navigate(['']);
     this.startRefreshTokenAboutToExpireTimer();
@@ -154,7 +161,7 @@ export class AuthService {
     if (validityDelta > 0) {
       timer(Math.round(2 / 3 * validityDelta))
         .pipe(
-          takeWhile(() => this.isLoggedIn)
+          takeWhile(() => this._isLoggedIn)
         ).subscribe(() => {
         this.authCrud.loginRefresh(this.refreshToken).subscribe(response => this.unpackLoginResponse(response));
       });
@@ -205,16 +212,23 @@ export class AuthService {
         this.authCrud.loginRefresh(this.refreshToken).subscribe(response => {
           this.unpackLoginResponse(response);
           this._isLoggedIn = true;
-          this.loginStateChangesSubject.next(this.isLoggedIn);
+          this.loginStateChangesSubject.next(this._isLoggedIn);
           this.onLoginSubject.next(true);
           this.startRefreshTokenAboutToExpireTimer();
           if (this.router.url === '/login') {
             this.router.navigate(['']);
           }
+          this.triedAutoLogin = true;
+          this.autoLoginResult.next(this._isLoggedIn);
         });
       } else {
         localStorage.setItem('CarbulatorAuth', null);
+        this.triedAutoLogin = true;
+        this.autoLoginResult.next(this._isLoggedIn);
       }
+    } else {
+      this.triedAutoLogin = true;
+      this.autoLoginResult.next(this._isLoggedIn);
     }
   }
 
@@ -237,7 +251,7 @@ export class AuthService {
     forkJoin([logoutAccess, logoutRefresh]).subscribe(() => {
       localStorage.setItem('CarbulatorAuth', null);
       this._isLoggedIn = false;
-      this.loginStateChangesSubject.next(this.isLoggedIn);
+      this.loginStateChangesSubject.next(this._isLoggedIn);
       this.onLogoutSubject.next(true);
       this.router.navigate(['login']);
       if (!isAutoLogout) {

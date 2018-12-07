@@ -1,6 +1,7 @@
 <clr-alerts>
+  <!--todo does this async && work?-->
   <clr-alert [clrAlertType]="autoLogoutAlertType" [clrAlertAppLevel]="true" [clrAlertClosable]="false"
-             *ngIf="authService.isLoggedIn && showAutoLogoutWarning">
+             *ngIf="(authService.getIsLoggedIn() | async) && showAutoLogoutWarning">
     <div class="alert-item">
             <span class="alert-text">
                 Deine Login Session läuft in {{authService.refreshTokenExpires | minutesRemaining}}

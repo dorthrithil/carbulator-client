@@ -1,7 +1,7 @@
 <cbl-app-level-alerts></cbl-app-level-alerts>
 
 <clr-main-container>
-  <cbl-navigation *ngIf="auth.isLoggedIn"></cbl-navigation>
+  <cbl-navigation *ngIf="auth.getIsLoggedIn() | async"></cbl-navigation>
   <router-outlet></router-outlet>
 </clr-main-container>
 

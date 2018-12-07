@@ -15,7 +15,8 @@
           "removed": [
           ],
           "fixed": [
-            "Fehler auf der Benachrichtigungsseite behoben, welcher dazu geführt hat, dass sich geöffnete Modale regelmäßig selbst geschlossen haben."
+            "Fehler auf der Benachrichtigungsseite behoben, welcher dazu geführt hat, dass sich geöffnete Modale regelmäßig selbst geschlossen haben.",
+            "Fehler behoben, welcher einen Nutzer fälschlicherweise als nicht eingeloggt klassifiziert hat."
           ],
           "security": [
           ]
