@@ -1,5 +1,4 @@
-<clr-alerts>
-  <!--todo does this async && work?-->
+<clr-alerts>a
   <clr-alert [clrAlertType]="autoLogoutAlertType" [clrAlertAppLevel]="true" [clrAlertClosable]="false"
              *ngIf="(authService.getIsLoggedIn() | async) && showAutoLogoutWarning">
     <div class="alert-item">
