@@ -1,5 +1,29 @@
 [
   {
+    "minor": "0.2",
+    "patches": [
+      {
+        "patch": "0.2.0",
+        "releaseDate": "TODO",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler auf der Benachrichtigungsseite behoben, welcher dazu geführt hat, dass sich geöffnete Modale regelmäßig selbst geschlossen haben."
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  },
+  {
     "minor": "0.1",
     "patches": [
       {
