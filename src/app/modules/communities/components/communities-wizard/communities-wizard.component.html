@@ -12,14 +12,16 @@
   <clr-wizard-button [type]="'next'">Weiter</clr-wizard-button>
   <clr-wizard-button [type]="'finish'">Fertigstellen</clr-wizard-button>
 
-  <clr-wizard-page [clrWizardPageNextDisabled]="!name.isValid">
+  <clr-wizard-page #namePage (clrWizardPageNext)="tryNextPage()"
+                   [clrWizardPagePreventDefaultNext]="true">
     <ng-template clrPageTitle>Name</ng-template>
-    <cbl-communities-wizard-name #name></cbl-communities-wizard-name>
+    <cbl-communities-wizard-name #name [isActiveForm]="wizard.currentPage == namePage"></cbl-communities-wizard-name>
   </clr-wizard-page>
 
-  <clr-wizard-page [clrWizardPageNextDisabled]="!car.isValid">
+  <clr-wizard-page #carPage (clrWizardPageNext)="tryNextPage()"
+                   [clrWizardPagePreventDefaultNext]="true">
     <ng-template clrPageTitle>Auto</ng-template>
-    <cbl-communities-wizard-car #car></cbl-communities-wizard-car>
+    <cbl-communities-wizard-car #car [isActiveForm]="wizard.currentPage == carPage"></cbl-communities-wizard-car>
   </clr-wizard-page>
 
   <clr-wizard-page [clrWizardPagePreventDefault]="true"

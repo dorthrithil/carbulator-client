@@ -1,8 +1,4 @@
 import * as moment from 'moment';
-import {Car} from './car';
-import {User} from './user';
-import {Community} from './community';
-import {s} from '@angular/core/src/render3';
 import {Debt} from './debt';
 import {Tour} from './tour';
 import {Refuel} from './refuel';

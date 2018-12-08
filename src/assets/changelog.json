@@ -1,5 +1,33 @@
 [
   {
+    "minor": "0.2",
+    "patches": [
+      {
+        "patch": "0.2.0",
+        "releaseDate": "08.12.2018",
+        "changes": {
+          "added": [
+            "Formularvalidierung findet nun auch bei komplett unausgefüllten Formularen statt falls man versucht diese Abzuschicken."
+          ],
+          "changed": [
+            "Migration zu Angular 7 und Clarity 1.0.0."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler auf der Benachrichtigungsseite behoben, welcher dazu geführt hat, dass sich geöffnete Modale regelmäßig selbst geschlossen haben.",
+            "Fehler behoben, welcher Kilometerstände fälschlicherweise runden konnte."
+          ],
+          "security": [
+            "Fehler behoben, welcher einen Nutzer fälschlicherweise als nicht eingeloggt klassifiziert hat."
+          ]
+        }
+      }
+    ]
+  },
+  {
     "minor": "0.1",
     "patches": [
       {

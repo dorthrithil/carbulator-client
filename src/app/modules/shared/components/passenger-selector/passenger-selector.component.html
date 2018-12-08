@@ -1,0 +1,25 @@
+<label class="clr-control-label">Mitfahrer</label>
+
+<cbl-typeahead [selectedData]="passengers"
+               [noMatchText]="'Keine Gruppenmitglieder gefunden'"
+               [sourceDataStream]="passengerResource"
+               [searchKey]="'username'"
+               [showAllSuggestionsWhenEmpty]="true"
+               [addToCollectionMode]="true">
+</cbl-typeahead>
+
+<label class="hint">Wähle zahlende Mitfahrer aus der Gruppe</label>
+
+<div class="user-list">
+  <div class="user-list-row" *ngFor="let passenger of passengers">
+    <div>
+      <clr-icon shape="user" class="is-solid"></clr-icon>
+    </div>
+    <div>
+      {{passenger.username}}
+    </div>
+    <div class="close-icon" (click)="removePassenger(passenger)">
+      <clr-icon shape="times"></clr-icon>
+    </div>
+  </div>
+</div>

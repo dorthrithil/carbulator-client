@@ -7,11 +7,11 @@
       <cbl-refuel-box *ngFor="let refuel of refuels" [refuel]="refuel"></cbl-refuel-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="refuels?.length == 0" [clrAlertClosable]="false">
-      <div class="alert-item">
+      <clr-alert-item>
         <span class="alert-text">
           Es wurden noch keine Tankfüllungen in dieser Gruppe eingetragen.
         </span>
-      </div>
+      </clr-alert-item>
     </clr-alert>
   </div>
 

@@ -3,7 +3,7 @@
     Gruppe umbenennen
   </h3>
   <div class="modal-body">
-    <form clrForm [formGroup]="communityForm" *ngIf="isOpen">
+    <form [formGroup]="communityForm" *ngIf="isOpen" clrForm clrLayout="vertical">
       <clr-input-container>
         <label>Name</label>
         <input placeholder="Name" clrInput formControlName="name" name="name" />

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AccountService} from '../crud/account.service';
 import {Notification} from '../../models/notification';
-import {forkJoin, interval, Observable, Subject, Subscription, timer} from 'rxjs';
+import {forkJoin, Subject, Subscription, timer} from 'rxjs';
 import {sortNotifications} from '../../utility/sorting/sort-notifications';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
@@ -27,7 +27,7 @@ export class NavNotificationsService {
       if (isLoggedIn) {
         this.timerSubscription = timer(0, 20000).subscribe(() => {
             // Don't reload if on notifications page to prevent rerendering
-            if (this.router.url !== '/account/notications') {
+          if (this.router.url !== '/account/notifications') {
               this.loadNotifications();
             }
           }

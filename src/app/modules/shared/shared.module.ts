@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MomentPipe} from '../../pipes/moment.pipe';
 import {TimeCreatedFilterComponent} from '../../utility/datagrid-filters/time-created-filter/time-created-filter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ClarityModule, ClrFormsNextModule} from '@clr/angular';
+import {ClarityModule} from '@clr/angular';
 import {TypeaheadComponent} from './components/typeahead/typeahead.component';
 import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
 import {ConfirmModalTextDirective} from './components/confirm-modal/confirm-modal-text.directive';
@@ -31,7 +31,6 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     FormsModule,
     ReactiveFormsModule,
     ClarityModule,
-    ClrFormsNextModule,
     LeafletModule
   ],
   declarations: [
@@ -63,7 +62,6 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     FormsModule,
     ReactiveFormsModule,
     ClarityModule,
-    ClrFormsNextModule,
     TypeaheadComponent,
     ConfirmModalComponent,
     ConfirmModalTextDirective,

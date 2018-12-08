@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {Car} from '../../../../../models/car';
+import {ClrForm} from '@clr/angular';
 
 @Component({
   selector: 'cbl-communities-wizard-car',
@@ -10,6 +11,16 @@ import {Car} from '../../../../../models/car';
   styleUrls: ['./communities-wizard-car.component.scss']
 })
 export class CommunitiesWizardCarComponent implements OnInit, OnDestroy {
+
+  /**
+   * If this wizard form is currently the active form, this input will be true.
+   */
+  @Input() isActiveForm: boolean;
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   private onDestroy: Subject<any>;
 

@@ -7,11 +7,11 @@
       <cbl-payoff-box *ngFor="let payoff of payoffs" [payoff]="payoff"></cbl-payoff-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="payoffs?.length == 0" [clrAlertClosable]="false">
-      <div class="alert-item">
+      <clr-alert-item>
         <span class="alert-text">
           Es wurden noch keine Abrechnungen in dieser Gruppe gemacht.
         </span>
-      </div>
+      </clr-alert-item>
     </clr-alert>
   </div>
 

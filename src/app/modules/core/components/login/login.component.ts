@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrLoadingState} from '@clr/angular';
+import {ClrForm, ClrLoadingState} from '@clr/angular';
 
 /**
  * Component that shows a login screen.
@@ -9,9 +9,15 @@ import {ClrLoadingState} from '@clr/angular';
 @Component({
   selector: 'cbl-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   public loginForm: FormGroup;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -48,6 +54,8 @@ export class LoginComponent implements OnInit {
       ).subscribe(() => {
         this.loadingState = ClrLoadingState.DEFAULT;
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Community} from '../../../../../models/community';
+import {ClrForm} from '@clr/angular';
 
 @Component({
   selector: 'cbl-communities-wizard-name',
@@ -10,6 +11,16 @@ import {Community} from '../../../../../models/community';
   styleUrls: ['./communities-wizard-name.component.scss']
 })
 export class CommunitiesWizardNameComponent implements OnInit, OnDestroy {
+
+  /**
+   * If this wizard form is currently the active form, this input will be true.
+   */
+  @Input() isActiveForm: boolean;
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   private onDestroy: Subject<any>;
 

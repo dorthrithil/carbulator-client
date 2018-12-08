@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrLoadingState} from '@clr/angular';
+import {ClrForm, ClrLoadingState} from '@clr/angular';
 import {passwordsValidator} from '../../../../utility/validators/passwords.validator';
 import {AccountService} from '../../../../services/crud/account.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
@@ -14,6 +14,11 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   public changePasswordForm: FormGroup;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -62,6 +67,8 @@ export class ChangePasswordComponent implements OnInit {
       }, () => {
         this.loadingState = ClrLoadingState.DEFAULT;
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 
