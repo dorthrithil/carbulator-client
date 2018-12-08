@@ -1,7 +1,7 @@
 <h1>{{community?.name}}</h1>
 
 <clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
-  <div class="alert-item">
+  <clr-alert-item>
     <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
       <strong>{{runningTour.owner.username}}</strong> fährt gerade!
     </span>
@@ -20,7 +20,7 @@
         </clr-dropdown-menu>
       </clr-dropdown>
     </div>
-  </div>
+  </clr-alert-item>
 </clr-alert>
 
 <cbl-finish-tour-modal #finishTourModal

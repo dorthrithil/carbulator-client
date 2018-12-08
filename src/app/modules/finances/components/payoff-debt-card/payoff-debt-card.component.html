@@ -7,11 +7,11 @@
       <cbl-debt-box *ngFor="let debt of payoff.debts" [debt]="debt"></cbl-debt-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="payoff.debts?.length == 0" [clrAlertClosable]="false">
-      <div class="alert-item">
+      <clr-alert-item>
         <span class="alert-text">
           In dieser Abrechnung sind keine Schulden zu begleichen.
         </span>
-      </div>
+      </clr-alert-item>
     </clr-alert>
   </div>
 </div>

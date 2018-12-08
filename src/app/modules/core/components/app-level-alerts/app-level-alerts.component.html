@@ -1,7 +1,7 @@
 <clr-alerts>a
   <clr-alert [clrAlertType]="autoLogoutAlertType" [clrAlertAppLevel]="true" [clrAlertClosable]="false"
              *ngIf="(authService.getIsLoggedIn() | async) && showAutoLogoutWarning">
-    <div class="alert-item">
+    <clr-alert-item>
             <span class="alert-text">
                 Deine Login Session läuft in {{authService.refreshTokenExpires | minutesRemaining}}
                 ab. Bitte logge dich erneut ein.
@@ -9,11 +9,11 @@
       <div class="alert-actions">
         <button class="btn alert-action" (click)="authService.logout()">Neu einloggen</button>
       </div>
-    </div>
+    </clr-alert-item>
   </clr-alert>
   <clr-alert [clrAlertType]="'info'" [clrAlertAppLevel]="true" [clrAlertClosable]="false"
              *ngIf="showCookieAlert">
-    <div class="alert-item">
+    <clr-alert-item>
             <span class="alert-text">
                 Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir
               Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere
@@ -22,6 +22,6 @@
       <div class="alert-actions">
         <button class="btn alert-action" (click)="allowCookies()">Bestätigen</button>
       </div>
-    </div>
+    </clr-alert-item>
   </clr-alert>
 </clr-alerts>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
@@ -7,6 +7,7 @@ import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 import {User} from '../../../../models/user';
+import {ClrForm} from '@clr/angular';
 
 /**
  * A modal for starting a tour.
@@ -17,6 +18,11 @@ import {User} from '../../../../models/user';
   styleUrls: ['./start-tour-modal.component.scss']
 })
 export class StartTourModalComponent {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   /**
    * The id of the community in which to create a tour.
@@ -115,6 +121,8 @@ export class StartTourModalComponent {
         this.isLoading = false;
         this.close();
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

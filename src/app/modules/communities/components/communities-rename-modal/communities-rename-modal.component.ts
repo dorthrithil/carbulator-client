@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Community} from '../../../../models/community';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommunityService} from '../../../../services/crud/community.service';
-import {NotificationsService} from 'angular2-notifications';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {ClrForm} from '@clr/angular';
 
 /**
  * A modal for renaming a community.
@@ -14,6 +14,11 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
   styleUrls: ['./communities-rename-modal.component.scss']
 })
 export class CommunitiesRenameModalComponent {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   private community: Community;
 
@@ -57,6 +62,8 @@ export class CommunitiesRenameModalComponent {
         this.isOpen = false;
         this.notifications.success('Gruppe umbenannt', 'Deine Gruppe wurde erfolgreich umbenannt.');
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {Tour} from '../../../../models/tour';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TourService} from '../../../../services/crud/tour.service';
@@ -9,6 +9,7 @@ import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {endKmValidator} from '../../../../utility/validators/end-km.validator';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {ClrForm} from '@clr/angular';
 
 /**
  * A modal to finish a tour.
@@ -19,6 +20,11 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
   styleUrls: ['./finish-tour-modal.component.scss']
 })
 export class FinishTourModalComponent {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   /**
    * Emits the finished tour.
@@ -89,6 +95,7 @@ export class FinishTourModalComponent {
   public close() {
     this.isOpen = false;
     this.tour = null;
+    this.isLoading = false;
   }
 
   /**
@@ -111,9 +118,10 @@ export class FinishTourModalComponent {
         this.close();
         this.notifications.success('Fahrt beendet', 'Die Fahrt wurde erfolgreich als beendet eingetragen.');
       }, () => {
-        this.isOpen = false;
         this.close();
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

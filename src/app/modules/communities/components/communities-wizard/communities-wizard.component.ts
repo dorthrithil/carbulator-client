@@ -1,12 +1,11 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {CarService} from '../../../../services/crud/car.service';
 import {CommunitiesWizardCarComponent} from './communities-wizard-car/communities-wizard-car.component';
 import {mergeMap} from 'rxjs/operators';
 import {CommunitiesWizardNameComponent} from './communities-wizard-name/communities-wizard-name.component';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {forkJoin, of} from 'rxjs';
-import {ClrWizard} from '@clr/angular';
-import {NotificationsService} from 'angular2-notifications';
+import {ClrWizard, ClrWizardPage} from '@clr/angular';
 import {Community} from '../../../../models/community';
 import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
@@ -26,10 +25,12 @@ export interface CommunityInvitation {
 })
 export class CommunitiesWizardComponent {
 
-  @ViewChild('car') carPage: CommunitiesWizardCarComponent;
-  @ViewChild('name') namePage: CommunitiesWizardNameComponent;
-  @ViewChild('users') usersPage: CommunitiesUserSearchComponent;
+  @ViewChild('car') car: CommunitiesWizardCarComponent;
+  @ViewChild('name') name: CommunitiesWizardNameComponent;
+  @ViewChild('users') user: CommunitiesUserSearchComponent;
   @ViewChild('wizard') wizard: ClrWizard;
+  @ViewChild('namePage') namePage: ClrWizardPage;
+  @ViewChild('carPage') carPage: ClrWizardPage;
 
   @Output('communityCreated') communityCreated: EventEmitter<Community>;
 
@@ -65,9 +66,9 @@ export class CommunitiesWizardComponent {
    */
   public save() {
     this.isLoading = true;
-    const carRequest = this.carService.createCar(this.carPage.getCar());
+    const carRequest = this.carService.createCar(this.car.getCar());
     const communityRequest = carRequest.pipe(mergeMap(car => {
-      const community = this.namePage.getCommunity();
+      const community = this.name.getCommunity();
       community.car = car;
       return this.communityService.createCommunity(community);
     }));
@@ -75,7 +76,7 @@ export class CommunitiesWizardComponent {
     const invitationRequestCollection = communityRequest.pipe(mergeMap(community => {
       newCommunity = community;
       const invitationRequests = [of(null)]; // Add one dummy request so we don't get stuck here if there are no invitations
-      this.usersPage.getUsernames().map(username => {
+      this.user.getUsernames().map(username => {
         invitationRequests.push(this.communityService.inviteUser({
           user: username,
           community: community.id
@@ -89,6 +90,23 @@ export class CommunitiesWizardComponent {
       this.notificationsService.success('Gruppe erstellt', 'Deine Gruppe wurde erfolgreich erstellt!');
       this.closeAndReset();
     });
+  }
+
+  /**
+   * Tries to enter the next page. This will succeed if the current form is valid. Else the form will be marked as dirty.
+   */
+  public tryNextPage() {
+    if (this.namePage === this.wizard.currentPage) {
+      this.name.clrForm.markAsDirty();
+      if (this.name.isValid) {
+        this.wizard.next();
+      }
+    } else if (this.carPage === this.wizard.currentPage) {
+      this.car.clrForm.markAsDirty();
+      if (this.car.isValid) {
+        this.wizard.next();
+      }
+    }
   }
 
 }

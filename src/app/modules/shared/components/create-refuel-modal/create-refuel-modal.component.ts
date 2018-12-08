@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {NotificationsService} from 'angular2-notifications';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {ClrForm} from '@clr/angular';
 
 /**
  * A modal for creating refuels.
@@ -16,6 +16,12 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
   styleUrls: ['./create-refuel-modal.component.scss']
 })
 export class CreateRefuelModalComponent {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
+
   /**
    * The id of the community in which to create a refuel.
    */
@@ -81,6 +87,8 @@ export class CreateRefuelModalComponent {
         this.isOpen = false;
         this.close();
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrLoadingState} from '@clr/angular';
+import {ClrForm, ClrLoadingState} from '@clr/angular';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {passwordsValidator} from '../../../../utility/validators/passwords.validator';
 import {AuthService} from '../../../../services/core/auth.service';
@@ -17,6 +17,11 @@ import {ActivatedRoute} from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   public resetPasswordForm: FormGroup;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -76,6 +81,8 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       }, () => {
         this.loadingState = ClrLoadingState.DEFAULT;
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

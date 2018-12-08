@@ -7,11 +7,11 @@
       <cbl-tour-box *ngFor="let tour of payoff.tours" [tour]="tour"></cbl-tour-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="payoff.tours?.length == 0" [clrAlertClosable]="false">
-      <div class="alert-item">
+      <clr-alert-item>
         <span class="alert-text">
           In dieser Abrechnung sind keine Fahrten vorhanden.
         </span>
-      </div>
+      </clr-alert-item>
     </clr-alert>
   </div>
 </div>

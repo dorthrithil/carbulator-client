@@ -5,13 +5,13 @@
   <div class="modal-body">
 
     <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false" *ngIf="tour.isForceFinished">
-      <div class="alert-item">
+      <clr-alert-item>
         <span class="alert-text">
           Diese Fahrt wurde nicht ordnungsgemäß als beendet eingetragen.
           <strong>{{tour.forceFinishedBy.username}}</strong> hat die
           Fahrt für <strong>{{tour.owner.username}}</strong> als beendet markiert.
         </span>
-      </div>
+      </clr-alert-item>
     </clr-alert>
 
     <h5>Infos</h5>

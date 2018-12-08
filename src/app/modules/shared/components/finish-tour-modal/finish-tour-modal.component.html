@@ -13,7 +13,7 @@
       </clr-alert-item>
     </clr-alert>
 
-    <form [formGroup]="finishTourForm">
+    <form [formGroup]="finishTourForm" clrForm clrLayout="vertical">
 
       <clr-input-container>
         <label>Kilometerstand</label>
@@ -61,7 +61,7 @@
       Abbrechen
     </button>
     <button type="button" class="btn btn-primary" (click)="finishTour()" [clrLoading]="isLoading"
-            [disabled]="!finishTourForm?.valid || geoLocationLoading">
+            [disabled]="geoLocationLoading">
       Speichern
     </button>
   </div>

@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {usernameValidator} from '../../../../utility/validators/username.validator';
 import {passwordsValidator} from '../../../../utility/validators/passwords.validator';
-import {ClrLoadingState} from '@clr/angular';
+import {ClrForm, ClrLoadingState} from '@clr/angular';
 import {emailRegex} from '../../../../utility/regex/common';
 
 /**
@@ -16,6 +16,11 @@ import {emailRegex} from '../../../../utility/regex/common';
   encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   public registrationForm: FormGroup;
   public registerPressed = false;
@@ -61,6 +66,8 @@ export class RegisterComponent implements OnInit {
       ).subscribe(() => {
         this.loadingState = ClrLoadingState.DEFAULT;
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

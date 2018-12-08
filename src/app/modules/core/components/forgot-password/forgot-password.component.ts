@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrLoadingState} from '@clr/angular';
+import {ClrForm, ClrLoadingState} from '@clr/angular';
 import {AuthCrudService} from '../../../../services/crud/auth-crud.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
@@ -13,6 +13,11 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
+
+  /**
+   * Reference to the clarity form instance.t
+   */
+  @ViewChild(ClrForm) clrForm;
 
   public forgotPasswordForm: FormGroup;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
@@ -53,6 +58,8 @@ export class ForgotPasswordComponent implements OnInit {
       }, () => {
         this.loadingState = ClrLoadingState.DEFAULT;
       });
+    } else {
+      this.clrForm.markAsDirty();
     }
   }
 

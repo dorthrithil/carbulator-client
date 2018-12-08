@@ -4,7 +4,7 @@
   </h3>
   <div class="modal-body">
 
-    <form [formGroup]="refuelForm">
+    <form [formGroup]="refuelForm" clrForm clrLayout="vertical">
 
       <clr-input-container>
         <label>Kosten</label>
@@ -37,8 +37,7 @@
     <button type="button" class="btn btn-outline" (click)="close()">
       Abbrechen
     </button>
-    <button type="button" class="btn btn-primary" (click)="addRefuel()" [clrLoading]="isLoading"
-            [disabled]="!refuelForm?.valid">
+    <button type="button" class="btn btn-primary" (click)="addRefuel()" [clrLoading]="isLoading">
       Speichern
     </button>
   </div>
