@@ -8,7 +8,7 @@
       <span class="spinner">Loading...</span>
     </div>
 
-    <form clrForm [formGroup]="startTourForm" *ngIf="!lastTourLoading">
+    <form [formGroup]="startTourForm" *ngIf="!lastTourLoading">
 
       <clr-input-container>
         <label>Kilometerstand</label>
@@ -24,7 +24,7 @@
     </form>
 
 
-    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false"
+    <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false"
                *ngIf="startKmInconsistencyChecked && startKmInconsistent">
       <clr-alert-item>
         <span class="alert-text">

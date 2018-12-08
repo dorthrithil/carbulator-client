@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {usernameValidator} from '../../../../utility/validators/username.validator';
@@ -12,7 +12,8 @@ import {emailRegex} from '../../../../utility/regex/common';
 @Component({
   selector: 'cbl-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
 

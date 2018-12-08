@@ -44,6 +44,7 @@
 
   <clr-dg-footer>
     <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Gruppen pro Seite</clr-dg-page-size>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
       von {{pagination.totalItems}} Gruppen
     </clr-dg-pagination>

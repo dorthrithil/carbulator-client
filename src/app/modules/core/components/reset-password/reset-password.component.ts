@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClrLoadingState} from '@clr/angular';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
@@ -13,7 +13,8 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'cbl-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  styleUrls: ['./reset-password.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy {
 

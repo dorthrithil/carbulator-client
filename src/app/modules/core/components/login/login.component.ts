@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClrLoadingState} from '@clr/angular';
@@ -9,7 +9,8 @@ import {ClrLoadingState} from '@clr/angular';
 @Component({
   selector: 'cbl-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 

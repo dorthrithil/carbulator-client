@@ -14,7 +14,7 @@
           Aktionen
           <clr-icon shape="caret down"></clr-icon>
         </button>
-        <clr-dropdown-menu clrPosition="bottom-right">
+        <clr-dropdown-menu [clrPosition]="'bottom-right'">
           <div class="dropdown-item" clrDropdownItem (click)="finishTourModal.open(runningTour)">Fahrt beenden</div>
           <div class="dropdown-item" clrDropdownItem (click)="openCancelTourModal()">Fahrt abbrechen</div>
         </clr-dropdown-menu>
@@ -35,26 +35,26 @@
   <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
 </cbl-confirm-modal>
 
-<div class="row">
+<div class="clr-row">
 
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
     <cbl-community-refuel-card [communityId]="communityId"></cbl-community-refuel-card>
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
     <cbl-community-tour-card [communityId]="communityId" #toursCard (tourStarted)="addRunningTour($event)">
     </cbl-community-tour-card>
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
     <cbl-community-payoff-card [communityId]="communityId"></cbl-community-payoff-card>
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
     <cbl-community-member-card [community]="community"></cbl-community-member-card>
   </div>
 
-  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+  <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
     <cbl-community-info-card [community]="community"></cbl-community-info-card>
   </div>
 

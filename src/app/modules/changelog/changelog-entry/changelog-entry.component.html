@@ -4,9 +4,9 @@
     <span class="release-date">vom {{version.releaseDate}}</span>
   </h1>
 
-  <div class="row">
+  <div class="clr-row">
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.added.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.added.length > 0">
       <div class="card">
         <div class="card-header">
           Neu
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.changed.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.changed.length > 0">
       <div class="card">
         <div class="card-header">
           Änderungen
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.deprecated.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.deprecated.length > 0">
       <div class="card">
         <div class="card-header">
           Wird bald entfernt
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.removed.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.removed.length > 0">
       <div class="card">
         <div class="card-header">
           Entfernt
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.fixed.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.fixed.length > 0">
       <div class="card">
         <div class="card-header">
           Behobene Fehler
@@ -81,7 +81,7 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" *ngIf="version.changes.security.length > 0">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngIf="version.changes.security.length > 0">
       <div class="card">
         <div class="card-header">
           Sicherheit
@@ -101,7 +101,7 @@
 </div>
 
 <div *ngIf="loadingError">
-  <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false">
+  <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false">
     <div class="alert-item">
         <span class="alert-text">
             Changelog konnte nicht geladen werden.

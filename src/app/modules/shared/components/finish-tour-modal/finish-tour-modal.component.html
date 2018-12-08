@@ -4,7 +4,7 @@
   </h3>
   <div class="modal-body">
 
-    <clr-alert [clrAlertType]="'alert-warning'" [clrAlertClosable]="false" *ngIf="!isOwner()">
+    <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false" *ngIf="!isOwner()">
       <clr-alert-item>
         <span class="alert-text">
           Diese Fahrt wurde von <strong>{{tour.owner.username}}</strong> gestartet. Beende sie nur wenn du dir sicher
@@ -13,7 +13,7 @@
       </clr-alert-item>
     </clr-alert>
 
-    <form clrForm [formGroup]="finishTourForm">
+    <form [formGroup]="finishTourForm">
 
       <clr-input-container>
         <label>Kilometerstand</label>
@@ -31,8 +31,8 @@
                               *ngIf="isOwner()"></cbl-passenger-selector>
 
       <clr-textarea-container>
-        <label>Kommentar</label>
-        <textarea clrTextarea formControlName="comment" name="comment"></textarea>
+        <label for="comment">Kommentar</label>
+        <textarea clrTextarea formControlName="comment" name="comment" id="comment"></textarea>
       </clr-textarea-container>
 
       <div class="fake-control-container" *ngIf="geoLocationLoading">

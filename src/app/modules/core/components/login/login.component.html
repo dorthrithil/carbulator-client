@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <form class="login" clrForm [formGroup]="loginForm">
+  <form class="login" [formGroup]="loginForm">
     <section class="title">
       <h3 class="welcome">Willkommen beim</h3>
       Carbulator
@@ -8,16 +8,14 @@
     <div class="login-group">
 
       <clr-input-container>
-        <label>Nutzername</label>
-        <input placeholder="Nutzername" clrInput formControlName="username" name="username" required/>
+        <input placeholder="Nutzername" type="text" clrInput formControlName="username" name="username" required/>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
       </clr-input-container>
 
-      <clr-input-container>
-        <label>Passwort</label>
-        <input placeholder="Passwort" clrInput formControlName="password" name="password" type="password" required/>
+      <clr-password-container>
+        <input placeholder="Passwort" clrPassword formControlName="password" name="password" type="password" required/>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-      </clr-input-container>
+      </clr-password-container>
 
       <button type="submit" class="btn btn-primary btn-login" (click)="login()" [clrLoading]="loadingState">Login
       </button>
@@ -47,3 +45,4 @@
     <cbl-data-privacy-statement></cbl-data-privacy-statement>
   </ng-template>
 </cbl-info-modal>
+

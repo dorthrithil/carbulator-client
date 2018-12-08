@@ -1,29 +1,37 @@
-.info-links {
-  border-top: #DDDDDD solid 1px;
-  margin-top: 2rem;
+cbl-login {
 
-  .btn {
-    margin-top: .5rem;
-    float: right;
-    color: #9A9A9A;
+  .info-links {
+    border-top: #DDDDDD solid 1px;
+    margin-top: 2rem;
+
+    .btn {
+      margin-top: .5rem;
+      float: right;
+      color: #9A9A9A;
+    }
+
+    .btn {
+      margin-top: .5rem !important;
+    }
+
   }
 
-}
+  .btn-login {
+    min-height: 1.5rem;
+  }
 
-.btn-login {
-  min-height: 1.5rem;
-}
+  .login-wrapper {
 
-clr-input-container {
-  display: block;
-}
+    max-height: 100%;
 
-.login-wrapper {
+    form {
+      overflow: scroll;
+    }
 
-  max-height: 100%;
+  }
 
-  form {
-    overflow: scroll;
+  .clr-input-group {
+    margin-right: 0 !important;
   }
 
 }
