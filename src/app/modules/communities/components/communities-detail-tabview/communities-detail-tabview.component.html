@@ -1,0 +1,40 @@
+<h1>{{community?.name}}</h1>
+
+<!--TODO add spinner-->
+
+<clr-tabs *ngIf="community">
+  <clr-tab>
+    <button clrTabLink>Fahrten</button>
+    <clr-tab-content *clrIfActive>
+      <cbl-tours-datagrid [tourResource]="tourResource" [communityId]="communityId"></cbl-tours-datagrid>
+    </clr-tab-content>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink>Tankfüllungen</button>
+    <clr-tab-content *clrIfActive>
+      ...
+    </clr-tab-content>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Abrechnungen</button>
+    <clr-tab-content *clrIfActive>
+      ...
+    </clr-tab-content>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Mitglieder</button>
+    <clr-tab-content *clrIfActive>
+      ...
+    </clr-tab-content>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Gruppendetails</button>
+    <clr-tab-content *clrIfActive>
+      ...
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

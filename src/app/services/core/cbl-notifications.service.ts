@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
-import * as MobileDetect from 'mobile-detect';
+import {MobileDetectionService} from './mobile-detection.service';
 
 /**
  * Wrapper service for the angular2-notifications.
@@ -12,7 +12,8 @@ import * as MobileDetect from 'mobile-detect';
 })
 export class CblNotificationsService {
 
-  constructor(private notifications: NotificationsService) {
+  constructor(private notifications: NotificationsService,
+              private mobileDetectionService: MobileDetectionService) {
   }
 
   /**
@@ -21,7 +22,7 @@ export class CblNotificationsService {
    * @param content Notification content.
    */
   public success(title: any, content: any) {
-    if (!this.isMobile()) {
+    if (!this.mobileDetectionService.isMobile()) {
       this.notifications.success(title, content);
     }
   }
@@ -41,17 +42,9 @@ export class CblNotificationsService {
    * @param content Notification content.
    */
   public info(title: any, content: any) {
-    if (!this.isMobile()) {
+    if (!this.mobileDetectionService.isMobile()) {
       this.notifications.info(title, content);
     }
-  }
-
-  /**
-   * Checks if the screen height is probably on a mobile device.
-   */
-  private isMobile(): boolean {
-    const md = new MobileDetect(window.navigator.userAgent);
-    return md.isPhoneSized();
   }
 
 }

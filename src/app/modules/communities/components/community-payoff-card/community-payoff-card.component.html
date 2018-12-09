@@ -19,7 +19,8 @@
   </div>
 
   <div class="card-footer">
-    <a class="btn btn-sm btn-link" (click)="createPayoff()">Abrechnung</a>
+    <a class="btn btn-sm btn-link" (click)="createPayoff()">Neue Abrechnung</a>
+    <a class="btn btn-sm btn-link" [routerLink]="['tabview', 'payoffs']">Alle anzeigen</a>
   </div>
 </div>
 

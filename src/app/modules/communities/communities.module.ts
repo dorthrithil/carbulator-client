@@ -18,6 +18,7 @@ import {CommunityTourCardComponent} from './components/community-tour-card/commu
 import {CommunityRefuelCardComponent} from './components/community-refuel-card/community-refuel-card.component';
 import {CommunityPayoffCardComponent} from './components/community-payoff-card/community-payoff-card.component';
 import {CommunitiesComponent} from './components/communities/communities.component';
+import {CommunitiesDetailTabviewComponent} from './components/communities-detail-tabview/communities-detail-tabview.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import {CommunitiesComponent} from './components/communities/communities.compone
     CommunityRefuelCardComponent,
     CommunityPayoffCardComponent,
     CommunitiesComponent,
+    CommunitiesDetailTabviewComponent,
   ]
 })
 export class CommunitiesModule {

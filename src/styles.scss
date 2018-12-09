@@ -22,14 +22,11 @@ h1 {
 // Datagrid links
 clr-dg-cell {
 
-  a {
+  a, a:link, a:visited, a:active, a:hover {
 
-    &:link, &:visited, &:active, &:hover {
-
-      font-weight: bold;
-      color: #0079b8;
-
-    }
+    font-weight: bold;
+    color: #0079b8;
+    cursor: pointer;
 
   }
 

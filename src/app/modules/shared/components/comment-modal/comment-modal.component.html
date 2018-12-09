@@ -1,0 +1,13 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen" [clrModalSize]="'md'">
+  <h3 class="modal-title">
+    {{tour.owner.username}} Kommentar zu seiner Fahrt
+  </h3>
+  <div class="modal-body">
+    <em>{{tour.comment}}</em>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>
