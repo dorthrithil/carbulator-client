@@ -24,6 +24,7 @@ import {InfoModalComponent} from './components/info-modal/info-modal.component';
 import {InfoModalTextDirective} from './components/info-modal/info-modal-text.directive';
 import {PassengerSelectorComponent} from './components/passenger-selector/passenger-selector.component';
 import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-object-property.pipe';
+import {StartTourModalComponent} from './components/start-tour-modal/start-tour-modal.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     InfoModalTextDirective,
     PassengerSelectorComponent,
     CommaSeparatedObjectPropertyPipe,
+    StartTourModalComponent
   ],
   exports: [
     MomentPipe,
@@ -77,7 +79,9 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     DebtBoxComponent,
     InfoModalComponent,
     InfoModalTextDirective,
-    PassengerSelectorComponent
+    PassengerSelectorComponent,
+    StartTourModalComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
