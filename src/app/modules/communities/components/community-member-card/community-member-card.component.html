@@ -3,6 +3,9 @@
     Mitglieder
   </div>
   <div class="card-block">
+    <ng-container *ngIf="!community">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
     <div *ngFor="let member of community?.users">
       <clr-icon shape="user"></clr-icon>
       {{member.username}}

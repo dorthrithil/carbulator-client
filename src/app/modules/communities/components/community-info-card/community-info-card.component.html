@@ -3,7 +3,10 @@
     Über die Gruppe
   </div>
   <div class="card-block">
-    <ul class="list-unstyled">
+    <ng-container *ngIf="!community">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
+    <ul class="list-unstyled" *ngIf="community">
       <li><strong>Name:</strong> {{community?.name}}</li>
       <li><strong>Mitglieder:</strong> {{community?.users.length}}</li>
       <li><strong>Gruppe erstellt am:</strong> {{community?.timeCreated | moment: 'DD.MM.YYYY'}}</li>

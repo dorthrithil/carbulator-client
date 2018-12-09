@@ -3,6 +3,9 @@
     Letzte Abrechnungen
   </div>
   <div class="card-block">
+    <ng-container *ngIf="!payoffs">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
     <div class="payoff-box-container" *ngIf="payoffs?.length > 0">
       <cbl-payoff-box *ngFor="let payoff of payoffs" [payoff]="payoff"></cbl-payoff-box>
     </div>

@@ -3,6 +3,9 @@
     Letzte Fahrten
   </div>
   <div class="card-block">
+    <ng-container *ngIf="!tours">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
     <div class="tour-box-container" *ngIf="tours?.length > 0">
       <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
     </div>
