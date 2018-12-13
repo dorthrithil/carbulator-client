@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ClrDatagridFilterInterface} from '@clr/angular';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import * as moment from 'moment';
 
 /**
  * A reusabel datagrid filter for filtering timeCreated properties.
  */
 @Component({
-  selector: 'cbl-time-created-filter',
-  templateUrl: './time-created-filter.component.html',
-  styleUrls: ['./time-created-filter.component.scss']
+  selector: 'cbl-moment-filter',
+  templateUrl: './moment-filter.component.html',
+  styleUrls: ['./moment-filter.component.scss']
 })
-export class TimeCreatedFilterComponent implements ClrDatagridFilterInterface<any> {
+export class MomentFilterComponent implements ClrDatagridFilterInterface<any> {
 
   public minDate: Date = null;
   public maxDate: Date = null;

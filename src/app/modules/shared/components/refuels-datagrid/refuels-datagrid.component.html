@@ -17,7 +17,7 @@
   <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
     <ng-container *clrDgHideableColumn="{hidden: false}">Datum</ng-container>
     <clr-dg-filter [clrDgFilter]="dateFilter">
-      <cbl-time-created-filter #dateFilter></cbl-time-created-filter>
+      <cbl-moment-filter #dateFilter></cbl-moment-filter>
     </clr-dg-filter>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'costs'">

@@ -44,13 +44,13 @@
   <clr-dg-column [clrDgField]="'startTime'" class="hide-on-mobile">
     <ng-container *clrDgHideableColumn="{hidden: true}">Startzeit</ng-container>
     <clr-dg-filter [clrDgFilter]="startTimeFilter">
-      <cbl-time-created-filter #startTimeFilter></cbl-time-created-filter>
+      <cbl-moment-filter #startTimeFilter></cbl-moment-filter>
     </clr-dg-filter>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'endTime'" class="hide-on-mobile">
     <ng-container *clrDgHideableColumn="{hidden: true}">Endzeit</ng-container>
     <clr-dg-filter [clrDgFilter]="endTimeFilter">
-      <cbl-time-created-filter #endTimeFilter></cbl-time-created-filter>
+      <cbl-moment-filter #endTimeFilter></cbl-moment-filter>
     </clr-dg-filter>
   </clr-dg-column>
 
