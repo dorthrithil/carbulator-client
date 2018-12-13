@@ -29,6 +29,8 @@ import {ToursDatagridComponent} from './components/tours-datagrid/tours-datagrid
 import {ParkingPositionModalComponent} from './components/parking-position-modal/parking-position-modal.component';
 import {CommentModalComponent} from './components/comment-modal/comment-modal.component';
 import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-datagrid.component';
+import {PayoffsDatagridComponent} from './components/payoffs-datagrid/payoffs-datagrid.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
@@ -36,7 +38,8 @@ import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-da
     FormsModule,
     ReactiveFormsModule,
     ClarityModule,
-    LeafletModule
+    LeafletModule,
+    RouterModule
   ],
   declarations: [
     MomentPipe,
@@ -64,7 +67,8 @@ import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-da
     ToursDatagridComponent,
     ParkingPositionModalComponent,
     CommentModalComponent,
-    RefuelsDatagridComponent
+    RefuelsDatagridComponent,
+    PayoffsDatagridComponent
   ],
   exports: [
     MomentPipe,
@@ -90,7 +94,8 @@ import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-da
     PassengerSelectorComponent,
     StartTourModalComponent,
     ToursDatagridComponent,
-    RefuelsDatagridComponent
+    RefuelsDatagridComponent,
+    PayoffsDatagridComponent
   ]
 })
 export class SharedModule {

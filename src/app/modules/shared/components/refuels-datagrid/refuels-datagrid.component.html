@@ -14,7 +14,7 @@
   <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">
     <ng-container *clrDgHideableColumn="{hidden: true}">ID</ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'startTime'" class="hide-on-mobile">
+  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
     <ng-container *clrDgHideableColumn="{hidden: false}">Datum</ng-container>
     <clr-dg-filter [clrDgFilter]="dateFilter">
       <cbl-time-created-filter #dateFilter></cbl-time-created-filter>

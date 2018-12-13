@@ -12,6 +12,7 @@ export class Payoff {
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
   debts: Debt[];
+  openDebts: number;
   isSettled: boolean;
   tours: Tour[];
   refuels: Refuel[];
@@ -30,6 +31,7 @@ export class Payoff {
     payoff.isSettled = src.is_settled;
     payoff.refuels = src.refuels ? src.refuels.map(refuel => Refuel.fromJson(refuel)) : null;
     payoff.tours = src.tours ? src.tours.map(tour => Tour.fromJson(tour)) : null;
+    payoff.openDebts = payoff.debts.filter(debt => !debt.isSettled).length;
     return payoff;
   }
 

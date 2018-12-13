@@ -12,6 +12,8 @@ import {knownErrors} from '../../../../utility/errors/known-errors';
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
+import {Payoff} from '../../../../models/payoff';
+import {PayoffService} from '../../../../services/crud/payoff.service';
 
 /**
  * Component that shows a tabview for community details.
@@ -28,6 +30,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
   public loadingCommunity = true;
   public tourResource: Observable<Tour[]>;
   public refuelResource: Observable<Refuel[]>;
+  public payoffResource: Observable<Payoff[]>;
 
   public tourTabActive = false;
   public refuelTabActive = false;
@@ -41,6 +44,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
               private tourService: TourService,
               private refuelService: RefuelService,
               private mobileDetectionService: MobileDetectionService,
+              private payoffService: PayoffService,
               private notifications: CblNotificationsService,
               private navNotifications: NavNotificationsService,
               private communityService: CommunityService) {
@@ -65,6 +69,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
         });
         this.tourResource = this.tourService.getCommunityTours(this.communityId);
         this.refuelResource = this.refuelService.getCommunityRefuels(this.communityId);
+        this.payoffResource = this.payoffService.getPayoffs(this.communityId);
       } else {
         this.router.navigate(['/404']);
       }

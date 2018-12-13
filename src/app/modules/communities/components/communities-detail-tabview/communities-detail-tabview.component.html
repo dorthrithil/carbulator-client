@@ -25,7 +25,7 @@
     <button clrTabLink [clrTabLinkInOverflow]="isMobile">Abrechnungen</button>
     <ng-template [(clrIfActive)]="payoffTabActive">
       <clr-tab-content>
-        ...
+        <cbl-payoffs-datagrid [payoffResource]="payoffResource" [communityId]="communityId"></cbl-payoffs-datagrid>
       </clr-tab-content>
     </ng-template>
   </clr-tab>
