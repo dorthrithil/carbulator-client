@@ -3,6 +3,9 @@
     Letzte Tankfüllungen
   </div>
   <div class="card-block">
+    <ng-container *ngIf="!refuels">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
     <div class="refuel-box-container" *ngIf="refuels?.length > 0">
       <cbl-refuel-box *ngFor="let refuel of refuels" [refuel]="refuel"></cbl-refuel-box>
     </div>
@@ -17,6 +20,7 @@
 
   <div class="card-footer">
     <a class="btn btn-sm btn-link" (click)="createRefuelModal.open()">Neue Tankfüllung</a>
+    <a class="btn btn-sm btn-link" [routerLink]="['tabview', 'refuels']">Alle anzeigen</a>
   </div>
 </div>
 

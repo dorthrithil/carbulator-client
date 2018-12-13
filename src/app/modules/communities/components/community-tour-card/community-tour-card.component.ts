@@ -1,8 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
 import {sortTours} from '../../../../utility/sorting/sort-tours';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
+import {AppEventsService} from '../../../../services/core/app-events.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 /**
  * A card that displays tours of a community.
@@ -12,21 +15,19 @@ import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
   templateUrl: './community-tour-card.component.html',
   styleUrls: ['./community-tour-card.component.scss']
 })
-export class CommunityTourCardComponent implements OnInit {
+export class CommunityTourCardComponent implements OnInit, OnDestroy {
 
   /**
    * Id of the community to fetch the tours for.
    */
   @Input() communityId: number;
 
-  /**
-   * Emits newly started tours.
-   */
-  @Output() tourStarted: EventEmitter<Tour> = new EventEmitter();
-
   public tours: Tour[];
 
-  constructor(private tourService: TourService) {
+  private onDestroy: Subject<any> = new Subject();
+
+  constructor(private tourService: TourService,
+              private appEvents: AppEventsService) {
   }
 
   /**
@@ -37,6 +38,16 @@ export class CommunityTourCardComponent implements OnInit {
       this.tours = tours;
       sortAndLimit(this.tours, sortTours, 5, 'DESC');
     });
+    this.appEvents.tourFinished.pipe(takeUntil(this.onDestroy)).subscribe(tour => {
+      this.addTour(tour);
+    });
+  }
+
+  /**
+   * Emits the on destroy event on component destruction.
+   */
+  ngOnDestroy() {
+    this.onDestroy.next();
   }
 
   /**

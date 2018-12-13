@@ -1,0 +1,80 @@
+<div class="title-with-switch">
+  <div>
+    <h1>{{community?.name}}</h1>
+  </div>
+  <div class="dropdown-holder">
+    <clr-dropdown>
+      <button type="button" clrDropdownTrigger>
+        <clr-icon shape="view-list" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen [clrPosition]="'bottom-right'">
+        <label class="dropdown-header">Ansicht wählen</label>
+        <button type="button" clrDropdownItem [routerLink]="['/communities', communityId]">
+          <clr-icon shape="grid-view"></clr-icon>
+          Kacheln
+        </button>
+        <button type="button" clrDropdownItem class="active">
+          <clr-icon shape="view-list"></clr-icon>
+          Listen
+        </button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+<div class="centered-spinner" *ngIf="!community">
+  <span class="spinner"></span>
+</div>
+
+<cbl-community-alerts [communityId]="communityId" *ngIf="communityId"></cbl-community-alerts>
+
+<clr-tabs *ngIf="community">
+  <clr-tab>
+    <button clrTabLink>Fahrten</button>
+    <ng-template [(clrIfActive)]="tourTabActive">
+      <clr-tab-content>
+        <cbl-tours-datagrid [tourResource]="tourResource" [communityId]="communityId"></cbl-tours-datagrid>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink>Tankfüllungen</button>
+    <ng-template [(clrIfActive)]="refuelTabActive">
+      <clr-tab-content>
+        <cbl-refuels-datagrid [refuelResource]="refuelResource" [communityId]="communityId"></cbl-refuels-datagrid>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Abrechnungen</button>
+    <ng-template [(clrIfActive)]="payoffTabActive">
+      <clr-tab-content>
+        <cbl-payoffs-datagrid [payoffResource]="payoffResource" [communityId]="communityId"></cbl-payoffs-datagrid>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Mitglieder</button>
+    <ng-template [(clrIfActive)]="memberTabActive">
+      <clr-tab-content>
+        <cbl-users-datagrid [userResource]="userResource"></cbl-users-datagrid>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+
+  <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Gruppendetails</button>
+    <ng-template [(clrIfActive)]="detailsTabActive">
+      <clr-tab-content>
+        <div class="clr-row">
+          <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
+            <cbl-community-info-card [community]="community" *ngIf="community"></cbl-community-info-card>
+          </div>
+        </div>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+</clr-tabs>

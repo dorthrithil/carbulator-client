@@ -1,0 +1,70 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+
+  <clr-dg-action-bar *ngIf="communityId">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="createPayoff()">
+        <clr-icon shape="plus"></clr-icon>
+        Neue Abrechnung
+      </button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-placeholder>Keine Abrechnungen vorhanden</clr-dg-placeholder>
+
+  <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: true}">ID</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Datum</ng-container>
+    <clr-dg-filter [clrDgFilter]="dateFilter">
+      <cbl-time-created-filter #dateFilter></cbl-time-created-filter>
+    </clr-dg-filter>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Status</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Fahrten</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Tankfüllungen</ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let payoff of payoffs">
+    <clr-dg-action-overflow>
+      <button class="action-item" [routerLink]="['/', 'finances', 'payoffs', payoff.id]">Details</button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell class="hide-on-mobile">{{payoff.id}}</clr-dg-cell>
+    <clr-dg-cell class="hide-on-mobile">{{payoff.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="payoff.isSettled">Schulden beglichen</ng-container>
+      <ng-container *ngIf="!payoff.isSettled">
+        <ng-container *ngIf="payoff.openDebts == 1">1 offene Transaktion</ng-container>
+        <ng-container *ngIf="payoff.openDebts > 1">{{payoff.openDebts}} offene Transaktionen</ng-container>
+      </ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>{{payoff.tours.length}}</clr-dg-cell>
+    <clr-dg-cell>{{payoff.refuels.length}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+    <clr-dg-pagination #pagination [clrDgPageSize]="15">
+      <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Abrechnungen pro Seite</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} von {{pagination.totalItems}} Abrechnungen
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<cbl-confirm-modal [(isOpen)]="confirmPayoffModalOpen"
+                   (confirm)="onPayoffConfirm($event)"
+                   [action]="createPayoffRequest">
+  <ng-template cblConfirmModalTitle>Abrechnung erstellen?</ng-template>
+  <ng-template cblConfirmModalText>Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Fortfahren</ng-template>
+</cbl-confirm-modal>

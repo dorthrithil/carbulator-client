@@ -1,0 +1,13 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen" [clrModalSize]="'lg'">
+  <h3 class="modal-title">
+    Parkplatz
+  </h3>
+  <div class="modal-body">
+    <cbl-parking-position-map [rawParkingPosition]="tour.parkingPosition"></cbl-parking-position-map>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>

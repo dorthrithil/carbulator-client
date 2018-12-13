@@ -1,0 +1,72 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+
+  <clr-dg-action-bar *ngIf="communityId">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="createRefuelModal.open()">
+        <clr-icon shape="plus"></clr-icon>
+        Neue Tankfüllung
+      </button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-placeholder>Keine Tankfüllungen vorhanden</clr-dg-placeholder>
+
+  <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: true}">ID</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Datum</ng-container>
+    <clr-dg-filter [clrDgFilter]="dateFilter">
+      <cbl-time-created-filter #dateFilter></cbl-time-created-filter>
+    </clr-dg-filter>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'costs'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Kosten</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'owner'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Bezahlt von</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'gasStationName'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Tankstelle</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'liters'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Menge</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Abgerechnet</ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let refuel of refuels">
+    <clr-dg-cell class="hide-on-mobile">{{refuel.id}}</clr-dg-cell>
+    <clr-dg-cell class="hide-on-mobile">{{refuel.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{refuel.costs}} €</clr-dg-cell>
+    <clr-dg-cell>{{refuel.owner.username}}</clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="refuel.gasStationName">{{refuel.gasStationName}}</ng-container>
+      <ng-container *ngIf="!refuel.gasStationName">-</ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="refuel.liters">{{refuel.liters}} Liter</ng-container>
+      <ng-container *ngIf="!refuel.liters">-</ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="!refuel.isOpen">Ja</ng-container>
+      <ng-container *ngIf="refuel.isOpen">Nein</ng-container>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+    <clr-dg-pagination #pagination [clrDgPageSize]="15">
+      <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Tankfüllungen pro Seite</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} von {{pagination.totalItems}} Tankfüllungen
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<cbl-create-refuel-modal [communityId]="communityId" #createRefuelModal (refuelAdded)="addRefuel($event)"
+                         *ngIf="communityId">
+</cbl-create-refuel-modal>

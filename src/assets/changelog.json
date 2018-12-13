@@ -3,6 +3,26 @@
     "minor": "0.2",
     "patches": [
       {
+        "patch": "0.2.1",
+        "releaseDate": "TODO",
+        "changes": {
+          "added": [
+            "Ladespinner zu Kartenansichten in Gruppendetailansicht hinzugefügt.",
+            "Listenansichten für Gruppendetails hinzugefügt."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.2.0",
         "releaseDate": "08.12.2018",
         "changes": {

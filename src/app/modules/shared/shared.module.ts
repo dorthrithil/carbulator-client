@@ -24,6 +24,14 @@ import {InfoModalComponent} from './components/info-modal/info-modal.component';
 import {InfoModalTextDirective} from './components/info-modal/info-modal-text.directive';
 import {PassengerSelectorComponent} from './components/passenger-selector/passenger-selector.component';
 import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-object-property.pipe';
+import {StartTourModalComponent} from './components/start-tour-modal/start-tour-modal.component';
+import {ToursDatagridComponent} from './components/tours-datagrid/tours-datagrid.component';
+import {ParkingPositionModalComponent} from './components/parking-position-modal/parking-position-modal.component';
+import {CommentModalComponent} from './components/comment-modal/comment-modal.component';
+import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-datagrid.component';
+import {PayoffsDatagridComponent} from './components/payoffs-datagrid/payoffs-datagrid.component';
+import {RouterModule} from '@angular/router';
+import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid.component';
 
 @NgModule({
   imports: [
@@ -31,7 +39,8 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     FormsModule,
     ReactiveFormsModule,
     ClarityModule,
-    LeafletModule
+    LeafletModule,
+    RouterModule
   ],
   declarations: [
     MomentPipe,
@@ -55,6 +64,13 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     InfoModalTextDirective,
     PassengerSelectorComponent,
     CommaSeparatedObjectPropertyPipe,
+    StartTourModalComponent,
+    ToursDatagridComponent,
+    ParkingPositionModalComponent,
+    CommentModalComponent,
+    RefuelsDatagridComponent,
+    PayoffsDatagridComponent,
+    UsersDatagridComponent
   ],
   exports: [
     MomentPipe,
@@ -77,7 +93,13 @@ import {CommaSeparatedObjectPropertyPipe} from '../../pipes/comma-separated-obje
     DebtBoxComponent,
     InfoModalComponent,
     InfoModalTextDirective,
-    PassengerSelectorComponent
+    PassengerSelectorComponent,
+    StartTourModalComponent,
+    ToursDatagridComponent,
+    RefuelsDatagridComponent,
+    PayoffsDatagridComponent,
+    UsersDatagridComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

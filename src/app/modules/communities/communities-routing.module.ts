@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CommunitiesListComponent} from './components/communities-list/communities-list.component';
 import {CommunitiesDetailComponent} from './components/communities-detail/communities-detail.component';
 import {CommunitiesComponent} from './components/communities/communities.component';
+import {CommunitiesDetailTabviewComponent} from './components/communities-detail-tabview/communities-detail-tabview.component';
 
 const communitiesRoutes: Routes = [
   {
@@ -17,6 +18,10 @@ const communitiesRoutes: Routes = [
       {
         path: ':id',
         component: CommunitiesDetailComponent,
+      },
+      {
+        path: ':id/tabview/:tabid',
+        component: CommunitiesDetailTabviewComponent,
       },
       {
         path: '**',
