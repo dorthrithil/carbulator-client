@@ -67,10 +67,10 @@
       <ng-container *ngIf="tour.passengers.length == 0">-</ng-container>
     </clr-dg-cell>
     <clr-dg-cell>
-      <ng-container *ngIf="tour.parkingPosition != ''">
+      <ng-container *ngIf="tour.parkingPosition">
         <a (click)="parkingPositionModal.open(tour)">Anzeigen</a>
       </ng-container>
-      <ng-container *ngIf="tour.parkingPosition == ''">-</ng-container>
+      <ng-container *ngIf="!tour.parkingPosition">-</ng-container>
     </clr-dg-cell>
     <clr-dg-cell>
       <ng-container *ngIf="tour.comment != ''">
