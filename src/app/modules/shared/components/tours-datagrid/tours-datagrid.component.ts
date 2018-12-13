@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Tour} from '../../../../models/tour';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortTours} from '../../../../utility/sorting/sort-tours';
 import {Observable} from 'rxjs';
+import {StartTourModalComponent} from '../start-tour-modal/start-tour-modal.component';
 
 /**
  * Component for showing a datagrid of tours. As the tour resource is kept as an input, this is reusable for community or user views.
@@ -23,6 +24,11 @@ export class ToursDatagridComponent implements OnInit {
    * ID of a community. If this field is provided, there will be the possibility to start tours via the datagrid action bar.
    */
   @Input() communityId: number;
+
+  /**
+   * Reference to the start tour modal.
+   */
+  @ViewChild('startTourModal') startTourModal: StartTourModalComponent;
 
   public tours: Tour[];
 

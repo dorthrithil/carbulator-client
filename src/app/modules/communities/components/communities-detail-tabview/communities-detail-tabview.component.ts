@@ -10,6 +10,8 @@ import {NavNotificationsService} from '../../../../services/core/nav-notificatio
 import {CommunityService} from '../../../../services/crud/community.service';
 import {knownErrors} from '../../../../utility/errors/known-errors';
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
+import {Refuel} from '../../../../models/refuel';
+import {RefuelService} from '../../../../services/crud/refuel.service';
 
 /**
  * Component that shows a tabview for community details.
@@ -25,11 +27,19 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
   public communityId: number;
   public loadingCommunity = true;
   public tourResource: Observable<Tour[]>;
+  public refuelResource: Observable<Refuel[]>;
+
+  public tourTabActive = false;
+  public refuelTabActive = false;
+  public payoffTabActive = false;
+  public memberTabActive = false;
+  public detailsTabActive = false;
 
   constructor(private route: ActivatedRoute,
               private auth: AuthService,
               private router: Router,
               private tourService: TourService,
+              private refuelService: RefuelService,
               private mobileDetectionService: MobileDetectionService,
               private notifications: CblNotificationsService,
               private navNotifications: NavNotificationsService,
@@ -54,8 +64,26 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
           }
         });
         this.tourResource = this.tourService.getCommunityTours(this.communityId);
+        this.refuelResource = this.refuelService.getCommunityRefuels(this.communityId);
       } else {
         this.router.navigate(['/404']);
+      }
+      const tabid = params['tabid'];
+      switch (tabid) {
+        case 'refuels':
+          this.refuelTabActive = true;
+          break;
+        case 'tours':
+          this.tourTabActive = true;
+          break;
+        case 'payoffs':
+          this.payoffTabActive = true;
+          break;
+        case 'members':
+          this.memberTabActive = true;
+          break;
+        case 'details':
+          this.detailsTabActive = true;
       }
     });
   }

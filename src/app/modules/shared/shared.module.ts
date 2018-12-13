@@ -28,6 +28,7 @@ import {StartTourModalComponent} from './components/start-tour-modal/start-tour-
 import {ToursDatagridComponent} from './components/tours-datagrid/tours-datagrid.component';
 import {ParkingPositionModalComponent} from './components/parking-position-modal/parking-position-modal.component';
 import {CommentModalComponent} from './components/comment-modal/comment-modal.component';
+import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-datagrid.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import {CommentModalComponent} from './components/comment-modal/comment-modal.co
     StartTourModalComponent,
     ToursDatagridComponent,
     ParkingPositionModalComponent,
-    CommentModalComponent
+    CommentModalComponent,
+    RefuelsDatagridComponent
   ],
   exports: [
     MomentPipe,
@@ -87,7 +89,8 @@ import {CommentModalComponent} from './components/comment-modal/comment-modal.co
     InfoModalTextDirective,
     PassengerSelectorComponent,
     StartTourModalComponent,
-    ToursDatagridComponent
+    ToursDatagridComponent,
+    RefuelsDatagridComponent
   ]
 })
 export class SharedModule {
