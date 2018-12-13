@@ -43,7 +43,11 @@
     <button clrTabLink [clrTabLinkInOverflow]="isMobile">Gruppendetails</button>
     <ng-template [(clrIfActive)]="detailsTabActive">
       <clr-tab-content>
-        ...
+        <div class="clr-row">
+          <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
+            <cbl-community-info-card [community]="community" *ngIf="community"></cbl-community-info-card>
+          </div>
+        </div>
       </clr-tab-content>
     </ng-template>
   </clr-tab>
