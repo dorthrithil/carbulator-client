@@ -30,6 +30,7 @@ export class PayoffsDatagridComponent implements OnInit {
   public payoffs: Payoff[];
   public confirmPayoffModalOpen = false;
   public createPayoffRequest: Observable<Payoff>;
+  public isLoading = true;
 
   constructor(private payoffService: PayoffService,
               private notifications: CblNotificationsService,
@@ -42,6 +43,7 @@ export class PayoffsDatagridComponent implements OnInit {
   ngOnInit() {
     this.payoffResource.subscribe(payoffs => {
       this.payoffs = payoffs;
+      this.isLoading = false;
       sortAndLimit(this.payoffs, sortPayoffs, 0, 'DESC');
     });
   }

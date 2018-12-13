@@ -31,6 +31,8 @@ export class ToursDatagridComponent implements OnInit {
   @ViewChild('startTourModal') startTourModal: StartTourModalComponent;
 
   public tours: Tour[];
+  public isLoading = true;
+
 
   /**
    * Loads all tours for the community on component initialization.
@@ -38,6 +40,7 @@ export class ToursDatagridComponent implements OnInit {
   ngOnInit() {
     this.tourResource.subscribe(tours => {
       this.tours = tours;
+      this.isLoading = false;
       sortAndLimit(this.tours, sortTours, 0, 'DESC');
     });
   }

@@ -31,6 +31,7 @@ export class RefuelsDatagridComponent implements OnInit {
   @ViewChild('createRefuelModal') createRefuelModal: CreateRefuelModalComponent;
 
   public refuels: Refuel[];
+  public isLoading = true;
 
   /**
    * Loads all refuels for the community on component initialization.
@@ -38,6 +39,7 @@ export class RefuelsDatagridComponent implements OnInit {
   ngOnInit() {
     this.refuelResource.subscribe(refuels => {
       this.refuels = refuels;
+      this.isLoading = false;
       sortAndLimit(this.refuels, sortRefuels, 0, 'DESC');
     });
   }

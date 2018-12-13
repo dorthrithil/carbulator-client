@@ -14,6 +14,8 @@ import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {Payoff} from '../../../../models/payoff';
 import {PayoffService} from '../../../../services/crud/payoff.service';
+import {UserService} from '../../../../services/crud/user.service';
+import {User} from '../../../../models/user';
 
 /**
  * Component that shows a tabview for community details.
@@ -31,6 +33,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
   public tourResource: Observable<Tour[]>;
   public refuelResource: Observable<Refuel[]>;
   public payoffResource: Observable<Payoff[]>;
+  public userResource: Observable<User[]>;
 
   public tourTabActive = false;
   public refuelTabActive = false;
@@ -42,6 +45,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
               private auth: AuthService,
               private router: Router,
               private tourService: TourService,
+              private userService: UserService,
               private refuelService: RefuelService,
               private mobileDetectionService: MobileDetectionService,
               private payoffService: PayoffService,
@@ -70,6 +74,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
         this.tourResource = this.tourService.getCommunityTours(this.communityId);
         this.refuelResource = this.refuelService.getCommunityRefuels(this.communityId);
         this.payoffResource = this.payoffService.getPayoffs(this.communityId);
+        this.userResource = this.userService.getCommunityUsers(this.communityId);
       } else {
         this.router.navigate(['/404']);
       }

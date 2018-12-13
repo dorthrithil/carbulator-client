@@ -1,0 +1,35 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+
+  <clr-dg-placeholder>Keine Mitglieder vorhanden</clr-dg-placeholder>
+
+
+  <clr-dg-column [clrDgField]="'username'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Benutzername</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'email'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">E-Mail</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: true}">Anmeldedatum</ng-container>
+    <clr-dg-filter [clrDgFilter]="dateFilter">
+      <cbl-time-created-filter #dateFilter></cbl-time-created-filter>
+    </clr-dg-filter>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users">
+    <clr-dg-cell>{{user.username}}</clr-dg-cell>
+    <clr-dg-cell>{{user.email}}</clr-dg-cell>
+    <clr-dg-cell class="hide-on-mobile">{{user.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+    <clr-dg-pagination #pagination [clrDgPageSize]="15">
+      <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Mitglieder pro Seite</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} von {{pagination.totalItems}} Mitgliedern
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

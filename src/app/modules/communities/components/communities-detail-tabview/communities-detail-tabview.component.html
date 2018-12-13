@@ -34,7 +34,7 @@
     <button clrTabLink [clrTabLinkInOverflow]="isMobile">Mitglieder</button>
     <ng-template [(clrIfActive)]="memberTabActive">
       <clr-tab-content>
-        ...
+        <cbl-users-datagrid [userResource]="userResource"></cbl-users-datagrid>
       </clr-tab-content>
     </ng-template>
   </clr-tab>
