@@ -4,6 +4,7 @@ import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortTours} from '../../../../utility/sorting/sort-tours';
 import {Observable} from 'rxjs';
 import {StartTourModalComponent} from '../start-tour-modal/start-tour-modal.component';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * Component for showing a datagrid of tours. As the tour resource is kept as an input, this is reusable for community or user views.
@@ -33,6 +34,9 @@ export class ToursDatagridComponent implements OnInit {
   public tours: Tour[];
   public isLoading = true;
 
+  constructor(private appEvents: AppEventsService) {
+  }
+
 
   /**
    * Loads all tours for the community on component initialization.
@@ -42,6 +46,9 @@ export class ToursDatagridComponent implements OnInit {
       this.tours = tours;
       this.isLoading = false;
       sortAndLimit(this.tours, sortTours, 0, 'DESC');
+    });
+    this.appEvents.tourFinished.subscribe(tour => {
+      this.addTour(tour);
     });
   }
 

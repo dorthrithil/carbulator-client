@@ -102,8 +102,7 @@
   </clr-dg-footer>
 </clr-datagrid>
 
-<cbl-start-tour-modal [communityId]="communityId" #startTourModal (tourStarted)="tourStarted.emit($event)"
-                      *ngIf="communityId">
+<cbl-start-tour-modal [communityId]="communityId" #startTourModal *ngIf="communityId">
 </cbl-start-tour-modal>
 
 <cbl-parking-position-modal #parkingPositionModal></cbl-parking-position-modal>

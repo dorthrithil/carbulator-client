@@ -7,7 +7,8 @@
         "releaseDate": "TODO",
         "changes": {
           "added": [
-            "Ladespinner zu Kartenansichten in Gruppendetailansicht hinzugefügt."
+            "Ladespinner zu Kartenansichten in Gruppendetailansicht hinzugefügt.",
+            "Listenansichten für Gruppendetails hinzugefügt."
           ],
           "changed": [
           ],

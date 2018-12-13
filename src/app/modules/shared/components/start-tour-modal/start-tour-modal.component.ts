@@ -8,6 +8,7 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
 import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 import {User} from '../../../../models/user';
 import {ClrForm} from '@clr/angular';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * A modal for starting a tour.
@@ -44,6 +45,7 @@ export class StartTourModalComponent {
   public passengers: User[] = [];
 
   constructor(private fb: FormBuilder,
+              private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private navNotifications: NavNotificationsService,
               private tourService: TourService) {
@@ -112,6 +114,7 @@ export class StartTourModalComponent {
       newTour.passengers = this.passengers;
       this.tourService.createTour(this.communityId, newTour).subscribe(tour => {
         this.tourStarted.emit(tour);
+        this.appEvents.dispatchTourStartedEvent(tour);
         this.close();
         this.notifications.success('Fahrt gestartet', 'Deine Fahrt wurde als gestartet eingetragen.');
         this.navNotifications.loadNotifications();

@@ -10,6 +10,7 @@ import {toNumber} from '../../../../utility/conversion/to-number';
 import {endKmValidator} from '../../../../utility/validators/end-km.validator';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {ClrForm} from '@clr/angular';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * A modal to finish a tour.
@@ -39,6 +40,7 @@ export class FinishTourModalComponent {
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
+              private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private tourService: TourService) {
   }
@@ -115,6 +117,7 @@ export class FinishTourModalComponent {
       }
       finishRequest.subscribe(tour => {
         this.tourFinished.emit(tour);
+        this.appEvents.dispatchTourFinishedEvent(tour);
         this.close();
         this.notifications.success('Fahrt beendet', 'Die Fahrt wurde erfolgreich als beendet eingetragen.');
       }, () => {

@@ -1,6 +1,32 @@
-<h1>{{community?.name}}</h1>
+<div class="title-with-switch">
+  <div>
+    <h1>{{community?.name}}</h1>
+  </div>
+  <div class="dropdown-holder">
+    <clr-dropdown>
+      <button type="button" clrDropdownTrigger>
+        <clr-icon shape="view-list" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen [clrPosition]="'bottom-right'">
+        <label class="dropdown-header">Ansicht wählen</label>
+        <button type="button" clrDropdownItem [routerLink]="['/communities', communityId]">
+          <clr-icon shape="grid-view"></clr-icon>
+          Kacheln
+        </button>
+        <button type="button" clrDropdownItem class="active">
+          <clr-icon shape="view-list"></clr-icon>
+          Listen
+        </button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+<div class="centered-spinner" *ngIf="!community">
+  <span class="spinner"></span>
+</div>
 
-<!--TODO add spinner-->
+<cbl-community-alerts [communityId]="communityId" *ngIf="communityId"></cbl-community-alerts>
 
 <clr-tabs *ngIf="community">
   <clr-tab>

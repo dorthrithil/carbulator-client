@@ -117,3 +117,19 @@ clr-dg-cell {
   }
 
 }
+
+// A title with a switch on the right side
+.title-with-switch {
+  display: grid;
+  grid-template-columns: auto 1.5rem;
+
+  .dropdown-holder {
+    padding-right: .5rem;
+
+    clr-dropdown {
+      margin-top: .5rem;
+    }
+
+  }
+
+}

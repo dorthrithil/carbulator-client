@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Community} from '../../../../models/community';
 import {Tour} from '../../../../models/tour';
 import {Observable} from 'rxjs';
@@ -23,7 +23,8 @@ import {User} from '../../../../models/user';
 @Component({
   selector: 'cbl-communities-detail-tabview',
   templateUrl: './communities-detail-tabview.component.html',
-  styleUrls: ['./communities-detail-tabview.component.scss']
+  styleUrls: ['./communities-detail-tabview.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CommunitiesDetailTabviewComponent implements OnInit {
 

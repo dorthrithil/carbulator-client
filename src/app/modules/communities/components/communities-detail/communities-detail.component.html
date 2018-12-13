@@ -1,39 +1,29 @@
-<h1>{{community?.name}}</h1>
-
-<clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
-  <clr-alert-item>
-    <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
-      <strong>{{runningTour.owner.username}}</strong> fährt gerade!
-    </span>
-    <span class="alert-text" *ngIf="isLoggedInUser(runningTour.owner)">
-      Du fährst gerade!
-    </span>
-    <div class="alert-actions">
-      <clr-dropdown>
-        <button class="dropdown-toggle" clrDropdownTrigger>
-          Aktionen
-          <clr-icon shape="caret down"></clr-icon>
+<div class="title-with-switch">
+  <div>
+    <h1>{{community?.name}}</h1>
+  </div>
+  <div class="dropdown-holder">
+    <clr-dropdown>
+      <button type="button" clrDropdownTrigger>
+        <clr-icon shape="grid-view" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen [clrPosition]="'bottom-right'">
+        <label class="dropdown-header">Ansicht wählen</label>
+        <button type="button" clrDropdownItem class="active">
+          <clr-icon shape="grid-view"></clr-icon>
+          Kacheln
         </button>
-        <clr-dropdown-menu [clrPosition]="'bottom-right'">
-          <div class="dropdown-item" clrDropdownItem (click)="finishTourModal.open(runningTour)">Fahrt beenden</div>
-          <div class="dropdown-item" clrDropdownItem (click)="openCancelTourModal()">Fahrt abbrechen</div>
-        </clr-dropdown-menu>
-      </clr-dropdown>
-    </div>
-  </clr-alert-item>
-</clr-alert>
+        <button type="button" clrDropdownItem [routerLink]="['tabview', 'tours']">
+          <clr-icon shape="view-list"></clr-icon>
+          Listen
+        </button>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
 
-<cbl-finish-tour-modal #finishTourModal
-                       (tourFinished)="toursCard.addTour($event); clearRunningTour()"></cbl-finish-tour-modal>
-
-<cbl-confirm-modal [(isOpen)]="cancelTourModalOpen" [action]="deleteTourRequest" [confirmButtonIsDanger]="true"
-                   (confirm)="onRunningTourCanceled()">
-  <ng-template cblConfirmModalTitle>Wirklich abbrechen?</ng-template>
-  <ng-template cblConfirmModalText>Die Fahrt wird gelöscht. Dies kann nicht rückgängig gemacht werden.
-  </ng-template>
-  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
-  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
-</cbl-confirm-modal>
+<cbl-community-alerts [communityId]="communityId" *ngIf="communityId"></cbl-community-alerts>
 
 <div class="clr-row">
 
