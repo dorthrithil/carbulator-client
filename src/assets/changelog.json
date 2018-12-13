@@ -10,6 +10,7 @@
             "Option zum Zurücksetzen von Datumsfiltern in Tabellen hinzugefügt."
           ],
           "changed": [
+            "Die Farben der Listenelemente in der Fahrten Kachel der Gruppenansicht wurden entfernt, da diese irritierend sind."
           ],
           "deprecated": [
           ],

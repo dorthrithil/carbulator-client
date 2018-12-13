@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Tour} from '../../../../models/tour';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
-import {getSeverityColor} from '../../../../utility/color/color-scheme-functions';
+import {DomSanitizer} from '@angular/platform-browser';
 
 /**
  * A component that displays a tour in a box.
@@ -19,13 +18,6 @@ export class TourBoxComponent {
   @Input() tour: Tour;
 
   constructor(private sanitizer: DomSanitizer) {
-  }
-
-  /**
-   * Returns a color that is coloured more red the longer the tour was.
-   */
-  public getKmSeverityBorderColor(): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(getSeverityColor(this.tour.totalKm, 0, 250));
   }
 
 }
