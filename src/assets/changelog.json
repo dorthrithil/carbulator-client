@@ -4,7 +4,7 @@
     "patches": [
       {
         "patch": "0.2.1",
-        "releaseDate": "TODO",
+        "releaseDate": "13.12.2018",
         "changes": {
           "added": [
             "Ladespinner zu Kartenansichten in Gruppendetailansicht hinzugefügt.",
