@@ -7,6 +7,7 @@
         "releaseDate": "TODO",
         "changes": {
           "added": [
+            "Option zum Zurücksetzen von Datumsfiltern in Tabellen hinzugefügt."
           ],
           "changed": [
           ],

@@ -1,5 +1,21 @@
-<label for="min-date">Von:</label>
-<input id="min-date" type="date" [(clrDate)]="minDate" (clrDateChange)="onChange()"/>
+<div class="filter-row">
+  <div>
+    <label for="min-date">Von:</label>
+  </div>
+  <div>
+    <input id="min-date" type="date" [(clrDate)]="minDate" (clrDateChange)="onChange()"/>
+  </div>
+</div>
 
-<label for="max-date">Bis:</label>
-<input id="max-date" type="date" [(clrDate)]="maxDate" (clrDateChange)="onChange()"/>
+<div class="filter-row">
+  <div>
+    <label for="max-date">Bis:</label>
+  </div>
+  <div>
+    <input id="max-date" type="date" [(clrDate)]="maxDate" (clrDateChange)="onChange()"/>
+  </div>
+</div>
+
+<div>
+  <button class="btn btn-sm btn-primary-outline" (click)="resetFilter()">Zurücksetzen</button>
+</div>

@@ -55,4 +55,13 @@ export class MomentFilterComponent implements ClrDatagridFilterInterface<any> {
     this.changes.next();
   }
 
+  /**
+   * Resets the filter to it's initial state.
+   */
+  public resetFilter() {
+    this.minDate = null;
+    this.maxDate = null;
+    this.onChange();
+  }
+
 }

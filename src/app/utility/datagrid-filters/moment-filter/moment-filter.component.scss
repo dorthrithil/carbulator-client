@@ -1,0 +1,20 @@
+.filter-row {
+  display: grid;
+  grid-template-columns: 2rem auto;
+
+  div {
+
+    label {
+
+      line-height: 1.5rem;
+      vertical-align: middle;;
+
+    }
+
+  }
+
+}
+
+button {
+  margin-top: .5rem;
+}
