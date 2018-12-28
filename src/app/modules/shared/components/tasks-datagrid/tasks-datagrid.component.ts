@@ -26,6 +26,7 @@ export class TasksDatagridComponent implements OnInit {
 
   public tasks: Task[];
   public isLoading = true;
+  public selectedTask: Task;
 
   /**
    * Loads all tasks for the community on component initialization.
@@ -36,6 +37,14 @@ export class TasksDatagridComponent implements OnInit {
       this.isLoading = false;
       sortAndLimit(this.tasks, sortTasks, 0, 'DESC');
     });
+  }
+
+  /**
+   * Removes the given task from the list of tasks.
+   * @param task Task to remove.
+   */
+  public removeTask(task: Task) {
+    this.tasks.splice(this.tasks.indexOf(task), 1);
   }
 
 }

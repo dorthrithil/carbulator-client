@@ -4,6 +4,7 @@ import {ApiService} from '../core/api.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Task} from '../../models/task';
+import {MessageResponse} from './auth-crud.service';
 
 /**
  * CRUD service for tasks.
@@ -28,6 +29,15 @@ export class TaskService {
         return tasks.map(task => Task.fromJson(task));
       })
     );
+  }
+
+  /**
+   * Deletes the given task.
+   * @param task Task to delete.
+   * @return Observable that resolves to a message response.
+   */
+  public deleteTask(task: Task): Observable<MessageResponse> {
+    return this.http.delete(this.api.task.deleteTask(task.id));
   }
 
 }

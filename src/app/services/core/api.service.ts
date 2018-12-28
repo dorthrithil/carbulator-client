@@ -135,6 +135,12 @@ export class ApiService {
     }
   };
 
+  public task = {
+    deleteTask: (id: number): string => {
+      return `${this.apiHost}tasks/${id}`;
+    }
+  };
+
   public account = {
     getOpenCommunityInvitations: (): string => {
       return `${this.apiHost}account/invitations`;

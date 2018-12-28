@@ -1,10 +1,14 @@
-<clr-datagrid [clrDgLoading]="isLoading">
+<clr-datagrid [clrDgLoading]="isLoading" [(clrDgSingleSelected)]="selectedTask">
 
   <clr-dg-action-bar *ngIf="communityId">
     <div class="btn-group">
       <button type="button" class="btn btn-sm btn-secondary" (click)="createTask()">
         <clr-icon shape="plus"></clr-icon>
         Neue Aufgabe
+      </button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="taskDeleteModal.deleteTask(selectedTask)">
+        <clr-icon shape="trash"></clr-icon>
+        Löschen
       </button>
     </div>
   </clr-dg-action-bar>
@@ -24,7 +28,7 @@
     <ng-container *clrDgHideableColumn="{hidden: false}">Fällig in</ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let task of tasks">
+  <clr-dg-row *clrDgItems="let task of tasks" [clrDgItem]="task">
     <clr-dg-cell class="hide-on-mobile">{{task.id}}</clr-dg-cell>
     <clr-dg-cell>{{task.name}}</clr-dg-cell>
     <clr-dg-cell>
@@ -62,3 +66,4 @@
   </clr-dg-footer>
 </clr-datagrid>
 
+<cbl-task-delete-modal #taskDeleteModal (deleted)="removeTask($event)"></cbl-task-delete-modal>
