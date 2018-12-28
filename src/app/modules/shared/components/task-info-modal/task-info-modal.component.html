@@ -1,0 +1,82 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen" [clrModalSize]="'lg'">
+  <h3 class="modal-title">
+    Aufgaben Details
+  </h3>
+  <div class="modal-body">
+
+    <h5>Infos</h5>
+    <div class="clr-row">
+      <div class="clr-col-md-6">
+        <table class="table table-compact table-noborder">
+          <tbody>
+          <tr>
+            <td class="left">
+              <strong>Name:</strong>
+            </td>
+            <td class="left">
+              {{task.name}}
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Erstellt von:</strong>
+            </td>
+            <td class="left">
+              {{task.owner.username}}
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Erstellt am:</strong>
+            </td>
+            <td class="left">
+              {{task.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="clr-col-md-6">
+        <table class="table table-compact table-noborder">
+          <tbody>
+          <tr>
+            <td class="left">
+              <strong>Intervall:</strong>
+            </td>
+            <td class="left" *ngIf="task.timeInterval">
+              {{task.timeInterval}}
+            </td>
+            <td class="left" *ngIf="task.kmInterval">
+              {{task.kmInterval}} km
+            </td>
+          </tr>
+          <tr>
+            <td class="left">
+              <strong>Fällig in:</strong>
+            </td>
+            <td class="left" *ngIf="task.kmInterval">
+              {{task.kmToNextInstance}} km
+            </td>
+            <td class="left" *ngIf="task.timeInterval">
+              {{task.timeNextInstance | daysRemaining}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ng-container *ngIf="task.description != null && task.description.length > 0">
+      <h5>Beschreibung</h5>
+      <p>
+        {{task.description}}
+      </p>
+    </ng-container>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">
+      Schließen
+    </button>
+  </div>
+</clr-modal>

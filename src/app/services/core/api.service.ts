@@ -61,6 +61,9 @@ export class ApiService {
     getPayoffs: (id: number): string => {
       return `${this.apiHost}communities/${id}/payoffs`;
     },
+    getTasks: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tasks`;
+    },
     createRefuel: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },

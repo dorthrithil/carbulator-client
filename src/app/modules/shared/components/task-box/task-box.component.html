@@ -1,0 +1,18 @@
+<div class="task-box" (click)="taskInfoModal.open()">
+  <div class="task-box-col">
+    <div>
+      <clr-icon shape="wrench"></clr-icon>
+      <strong>{{task.name}}</strong>
+    </div>
+    <div *ngIf="task.description">
+      <clr-icon shape="help-info"></clr-icon>
+      {{task.description}}
+    </div>
+  </div>
+  <div class="task-box-col description">
+    <div *ngIf="task.kmToNextInstance">In {{task.kmToNextInstance}} km</div>
+    <div *ngIf="task.timeInterval">In {{task.timeNextInstance | daysRemaining}}</div>
+  </div>
+</div>
+
+<cbl-task-info-modal #taskInfoModal [task]="task"></cbl-task-info-modal>

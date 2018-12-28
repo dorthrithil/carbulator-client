@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Tour} from '../../../../models/tour';
 
 /**
@@ -19,9 +19,6 @@ export class TourInfoModalComponent {
    * True if the modal is open.
    */
   @Input() isOpen = false;
-
-  constructor() {
-  }
 
   /**
    * Closes the modal.

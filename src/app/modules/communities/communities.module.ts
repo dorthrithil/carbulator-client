@@ -20,6 +20,7 @@ import {CommunityPayoffCardComponent} from './components/community-payoff-card/c
 import {CommunitiesComponent} from './components/communities/communities.component';
 import {CommunitiesDetailTabviewComponent} from './components/communities-detail-tabview/communities-detail-tabview.component';
 import {CommunityAlertsComponent} from './components/community-alerts/community-alerts.component';
+import {CommunityTaskCardComponent} from './components/community-task-card/community-task-card.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {CommunityAlertsComponent} from './components/community-alerts/community-
     CommunitiesComponent,
     CommunitiesDetailTabviewComponent,
     CommunityAlertsComponent,
+    CommunityTaskCardComponent,
   ]
 })
 export class CommunitiesModule {

@@ -32,6 +32,9 @@ import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-da
 import {PayoffsDatagridComponent} from './components/payoffs-datagrid/payoffs-datagrid.component';
 import {RouterModule} from '@angular/router';
 import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid.component';
+import {TaskBoxComponent} from './components/task-box/task-box.component';
+import {DaysRemainingPipe} from '../../pipes/days-remaining.pipe';
+import {TaskInfoModalComponent} from './components/task-info-modal/task-info-modal.component';
 
 @NgModule({
   imports: [
@@ -64,13 +67,16 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
     InfoModalTextDirective,
     PassengerSelectorComponent,
     CommaSeparatedObjectPropertyPipe,
+    DaysRemainingPipe,
     StartTourModalComponent,
     ToursDatagridComponent,
     ParkingPositionModalComponent,
     CommentModalComponent,
     RefuelsDatagridComponent,
     PayoffsDatagridComponent,
-    UsersDatagridComponent
+    UsersDatagridComponent,
+    TaskBoxComponent,
+    TaskInfoModalComponent
   ],
   exports: [
     MomentPipe,
@@ -98,7 +104,9 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
     ToursDatagridComponent,
     RefuelsDatagridComponent,
     PayoffsDatagridComponent,
-    UsersDatagridComponent
+    UsersDatagridComponent,
+    TaskBoxComponent,
+    TaskInfoModalComponent
   ]
 })
 export class SharedModule {

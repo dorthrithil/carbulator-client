@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    Aufgaben
+  </div>
+  <div class="card-block">
+    <ng-container *ngIf="!tasks">
+      <span class="spinner spinner-inline"></span> Lade Daten...
+    </ng-container>
+    <div class="task-box-container" *ngIf="tasks?.length > 0">
+      <cbl-task-box *ngFor="let task of tasks" [task]="task"></cbl-task-box>
+    </div>
+    <clr-alert [clrAlertType]="'info'" *ngIf="tasks?.length == 0" [clrAlertClosable]="false">
+      <clr-alert-item>
+        <span class="alert-text">
+          Es wurden noch keine Aufgaben in dieser Gruppe eingetragen.
+        </span>
+      </clr-alert-item>
+    </clr-alert>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-sm btn-link" (click)="startTaskModal.open()">Neue Aufgabe</a>
+    <a class="btn btn-sm btn-link" [routerLink]="['tabview', 'tasks']">Alle anzeigen</a>
+  </div>
+</div>
+
+<!--<cbl-start-tour-modal [communityId]="communityId" #startTourModal></cbl-start-tour-modal>-->
