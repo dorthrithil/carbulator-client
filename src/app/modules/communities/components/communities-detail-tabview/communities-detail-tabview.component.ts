@@ -16,6 +16,8 @@ import {Payoff} from '../../../../models/payoff';
 import {PayoffService} from '../../../../services/crud/payoff.service';
 import {UserService} from '../../../../services/crud/user.service';
 import {User} from '../../../../models/user';
+import {TaskService} from '../../../../services/crud/task.service';
+import {Task} from '../../../../models/task';
 
 /**
  * Component that shows a tabview for community details.
@@ -35,18 +37,21 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
   public refuelResource: Observable<Refuel[]>;
   public payoffResource: Observable<Payoff[]>;
   public userResource: Observable<User[]>;
+  public taskResource: Observable<Task[]>;
 
   public tourTabActive = false;
   public refuelTabActive = false;
   public payoffTabActive = false;
   public memberTabActive = false;
   public detailsTabActive = false;
+  public tasksTabActive = false;
 
   constructor(private route: ActivatedRoute,
               private auth: AuthService,
               private router: Router,
               private tourService: TourService,
               private userService: UserService,
+              private taskService: TaskService,
               private refuelService: RefuelService,
               private mobileDetectionService: MobileDetectionService,
               private payoffService: PayoffService,
@@ -76,6 +81,7 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
         this.refuelResource = this.refuelService.getCommunityRefuels(this.communityId);
         this.payoffResource = this.payoffService.getPayoffs(this.communityId);
         this.userResource = this.userService.getCommunityUsers(this.communityId);
+        this.taskResource = this.taskService.getCommunityTasks(this.communityId);
       } else {
         this.router.navigate(['/404']);
       }
@@ -95,6 +101,9 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
           break;
         case 'details':
           this.detailsTabActive = true;
+          break;
+        case 'tasks':
+          this.tasksTabActive = true;
       }
     });
   }

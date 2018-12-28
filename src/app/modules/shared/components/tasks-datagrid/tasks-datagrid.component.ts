@@ -1,0 +1,41 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Task} from '../../../../models/task';
+import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
+import {sortTasks} from '../../../../utility/sorting/sort-tasks';
+
+/**
+ * A component for showing a list of tasks.
+ */
+@Component({
+  selector: 'cbl-tasks-datagrid',
+  templateUrl: './tasks-datagrid.component.html',
+  styleUrls: ['./tasks-datagrid.component.scss']
+})
+export class TasksDatagridComponent implements OnInit {
+
+  /**
+   * Observable that resolves to an array of tasks.
+   */
+  @Input() taskResource: Observable<Task[]>;
+
+  /**
+   * ID of a community. If this field is provided, there will be the possibility to add tasks via the datagrid action bar.
+   */
+  @Input() communityId: number;
+
+  public tasks: Task[];
+  public isLoading = true;
+
+  /**
+   * Loads all tasks for the community on component initialization.
+   */
+  ngOnInit() {
+    this.taskResource.subscribe(tasks => {
+      this.tasks = tasks;
+      this.isLoading = false;
+      sortAndLimit(this.tasks, sortTasks, 0, 'DESC');
+    });
+  }
+
+}

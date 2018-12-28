@@ -35,6 +35,7 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
 import {TaskBoxComponent} from './components/task-box/task-box.component';
 import {DaysRemainingPipe} from '../../pipes/days-remaining.pipe';
 import {TaskInfoModalComponent} from './components/task-info-modal/task-info-modal.component';
+import {TasksDatagridComponent} from './components/tasks-datagrid/tasks-datagrid.component';
 
 @NgModule({
   imports: [
@@ -76,7 +77,8 @@ import {TaskInfoModalComponent} from './components/task-info-modal/task-info-mod
     PayoffsDatagridComponent,
     UsersDatagridComponent,
     TaskBoxComponent,
-    TaskInfoModalComponent
+    TaskInfoModalComponent,
+    TasksDatagridComponent
   ],
   exports: [
     MomentPipe,
@@ -106,7 +108,8 @@ import {TaskInfoModalComponent} from './components/task-info-modal/task-info-mod
     PayoffsDatagridComponent,
     UsersDatagridComponent,
     TaskBoxComponent,
-    TaskInfoModalComponent
+    TaskInfoModalComponent,
+    TasksDatagridComponent
   ]
 })
 export class SharedModule {

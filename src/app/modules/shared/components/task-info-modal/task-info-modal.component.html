@@ -44,7 +44,8 @@
               <strong>Intervall:</strong>
             </td>
             <td class="left" *ngIf="task.timeInterval">
-              {{task.timeInterval}}
+              {{task.timeInterval}} Tag
+              <ng-container *ngIf="task.timeInterval > 1">e</ng-container>
             </td>
             <td class="left" *ngIf="task.kmInterval">
               {{task.kmInterval}} km

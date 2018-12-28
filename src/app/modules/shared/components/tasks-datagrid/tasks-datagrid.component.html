@@ -1,0 +1,64 @@
+<clr-datagrid [clrDgLoading]="isLoading">
+
+  <clr-dg-action-bar *ngIf="communityId">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="createTask()">
+        <clr-icon shape="plus"></clr-icon>
+        Neue Aufgabe
+      </button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-placeholder>Keine Aufgaben vorhanden</clr-dg-placeholder>
+
+  <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">
+    <ng-container *clrDgHideableColumn="{hidden: true}">ID</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Intervall</ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden: false}">Fällig in</ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let task of tasks">
+    <clr-dg-cell class="hide-on-mobile">{{task.id}}</clr-dg-cell>
+    <clr-dg-cell>{{task.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="task.timeInterval">
+        {{task.timeInterval}} Tag
+        <ng-container *ngIf="task.timeInterval > 1">e</ng-container>
+      </ng-container>
+      <ng-container *ngIf="task.kmInterval">
+        {{task.kmInterval}} km
+      </ng-container>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <ng-container *ngIf="task.kmInterval">
+        {{task.kmToNextInstance}} km
+      </ng-container>
+      <ng-container *ngIf="task.timeInterval">
+        {{task.timeNextInstance | daysRemaining}}
+      </ng-container>
+    </clr-dg-cell>
+    <clr-dg-row-detail *clrIfExpanded>
+      <ng-container *ngIf="task.description">{{task.description}}</ng-container>
+      <ng-container *ngIf="!task.description">Keine Beschreibung.</ng-container>
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+    <clr-dg-pagination #pagination [clrDgPageSize]="15">
+      <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Aufgaben pro Seite</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} von {{pagination.totalItems}} Aufgaben
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
