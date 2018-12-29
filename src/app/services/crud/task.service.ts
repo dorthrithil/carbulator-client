@@ -40,4 +40,27 @@ export class TaskService {
     return this.http.delete(this.api.task.deleteTask(task.id));
   }
 
+  /**
+   * Creates a task in the given community.
+   * @param communityId The id of the community to create the tasks in.
+   * @param task Task to persist.
+   * @return Observable that resolves to the created task.
+   */
+  public createTask(communityId: number, task: Task): Observable<Task> {
+    return this.http.post(this.api.community.createTask(communityId), Task.toJson(task)).pipe(
+      map(persistedTask => Task.fromJson(persistedTask))
+    );
+  }
+
+  /**
+   * Updates the given task.
+   * @param task Task to persist.
+   * @return Observable that resolves to the updated task.
+   */
+  public updateTask(task: Task): Observable<Task> {
+    return this.http.put(this.api.task.updateTask(task.id), Task.toJson(task)).pipe(
+      map(persistedTask => Task.fromJson(persistedTask))
+    );
+  }
+
 }

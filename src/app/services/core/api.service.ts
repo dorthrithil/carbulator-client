@@ -64,6 +64,9 @@ export class ApiService {
     getTasks: (id: number): string => {
       return `${this.apiHost}communities/${id}/tasks`;
     },
+    createTask: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tasks`;
+    },
     createRefuel: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
@@ -137,6 +140,9 @@ export class ApiService {
 
   public task = {
     deleteTask: (id: number): string => {
+      return `${this.apiHost}tasks/${id}`;
+    },
+    updateTask: (id: number): string => {
       return `${this.apiHost}tasks/${id}`;
     }
   };

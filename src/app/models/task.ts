@@ -43,5 +43,21 @@ export class Task {
     return task;
   }
 
+  /**
+   * Creates a JSON ready representation of the given task as it is expected from the server.
+   * @param src Task to get a representation for.
+   * @return Task representation.
+   */
+  public static toJson(src: Task): any {
+    return {
+      time_next_instance: src.timeNextInstance ? src.timeNextInstance.format() : null,
+      time_interval: src.timeInterval,
+      name: src.name,
+      description: src.description,
+      km_next_instance: src.kmNextInstance,
+      km_interval: src.kmInterval
+    };
+  }
+
 
 }

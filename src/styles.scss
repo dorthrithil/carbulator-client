@@ -133,3 +133,8 @@ clr-dg-cell {
   }
 
 }
+
+// Container for text. Prevents too broad  spaghetti text
+.text-container {
+  max-width: 900px;
+}

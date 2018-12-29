@@ -19,9 +19,9 @@
   </div>
 
   <div class="card-footer">
-    <a class="btn btn-sm btn-link" (click)="startTaskModal.open()">Neue Aufgabe</a>
+    <a class="btn btn-sm btn-link" (click)="taskFormModal.open(formModeCreate)">Neue Aufgabe</a>
     <a class="btn btn-sm btn-link" [routerLink]="['tabview', 'tasks']">Alle anzeigen</a>
   </div>
 </div>
 
-<!--<cbl-start-tour-modal [communityId]="communityId" #startTourModal></cbl-start-tour-modal>-->
+<cbl-task-form-modal [communityId]="communityId" #taskFormModal></cbl-task-form-modal>

@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {Task} from 'src/app/models/task';
 import {TaskService} from '../../../../services/crud/task.service';
 import {sortTasks} from '../../../../utility/sorting/sort-tasks';
+import {FormMode} from '../../../../utility/constants/form-constants';
 
 /**
  * Component that shows a card with the five next due tasks.
@@ -23,6 +24,7 @@ export class CommunityTaskCardComponent implements OnInit, OnDestroy {
   @Input() communityId: number;
 
   public tasks: Task[];
+  public formModeCreate = FormMode.CREATE;
 
   private onDestroy: Subject<any> = new Subject();
 

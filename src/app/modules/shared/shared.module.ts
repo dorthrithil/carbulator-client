@@ -37,6 +37,7 @@ import {DaysRemainingPipe} from '../../pipes/days-remaining.pipe';
 import {TaskInfoModalComponent} from './components/task-info-modal/task-info-modal.component';
 import {TasksDatagridComponent} from './components/tasks-datagrid/tasks-datagrid.component';
 import {TaskDeleteModalComponent} from './components/task-delete-modal/task-delete-modal.component';
+import {TaskFormModalComponent} from './components/task-form-modal/task-form-modal.component';
 
 @NgModule({
   imports: [
@@ -80,7 +81,8 @@ import {TaskDeleteModalComponent} from './components/task-delete-modal/task-dele
     TaskBoxComponent,
     TaskInfoModalComponent,
     TasksDatagridComponent,
-    TaskDeleteModalComponent
+    TaskDeleteModalComponent,
+    TaskFormModalComponent
   ],
   exports: [
     MomentPipe,
@@ -112,7 +114,8 @@ import {TaskDeleteModalComponent} from './components/task-delete-modal/task-dele
     TaskBoxComponent,
     TaskInfoModalComponent,
     TasksDatagridComponent,
-    TaskDeleteModalComponent
+    TaskDeleteModalComponent,
+    TaskFormModalComponent
   ]
 })
 export class SharedModule {

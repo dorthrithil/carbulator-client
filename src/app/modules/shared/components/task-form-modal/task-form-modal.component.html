@@ -1,0 +1,34 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen">
+  <h3 class="modal-title">
+    <ng-container *ngIf="formMode == formModes.CREATE">Neue Aufgabe erstellen</ng-container>
+    <ng-container *ngIf="formMode == formModes.UPDATE">Aufgabe bearbeiten</ng-container>
+  </h3>
+  <div class="modal-body">
+
+    <form [formGroup]="taskForm" clrForm [clrLayout]="'vertical'">
+
+      <clr-input-container>
+        <label>Name</label>
+        <input placeholder="Name" clrInput formControlName="name" name="name"/>
+        <clr-control-helper>Der Name der Aufgabe</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label for="description">Beschreibung</label>
+        <textarea clrTextarea formControlName="description" id="description" name="description"></textarea>
+        <clr-control-helper>Beschreibe die Aufgabe</clr-control-helper>
+      </clr-textarea-container>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="save()" [clrLoading]="isLoading">
+      Speichern
+    </button>
+  </div>
+</clr-modal>
