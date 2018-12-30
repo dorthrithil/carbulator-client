@@ -24,4 +24,4 @@
   </div>
 </div>
 
-<cbl-task-form-modal [communityId]="communityId" #taskFormModal></cbl-task-form-modal>
+<cbl-task-form-modal [communityId]="communityId" #taskFormModal (taskAdded)="addTask($event)"></cbl-task-form-modal>

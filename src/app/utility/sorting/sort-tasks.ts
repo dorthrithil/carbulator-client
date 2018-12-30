@@ -27,7 +27,7 @@ export function sortTasks(t1: Task, t2: Task): number {
  */
 function getTaskSortScore(task: Task): number {
   if (task.timeInterval) {
-    return task.timeNextInstance.diff(moment(), 'days');
+    return task.timeNextInstance.startOf('day').diff(moment().startOf('day'), 'days');
   }
   if (task.kmToNextInstance) {
     return task.kmToNextInstance / 100;

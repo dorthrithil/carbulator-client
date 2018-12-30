@@ -17,7 +17,8 @@
           "removed": [
           ],
           "fixed": [
-            "Fehler behoben der zu leeren Parkplatz Modalen in der Listenansicht von Fahrten führen konnte."
+            "Fehler behoben der zu leeren Parkplatz Modalen in der Listenansicht von Fahrten führen konnte.",
+            "Fehler behoben der das Beenden von Fahrten mit falsch konfigurierter Route ermöglichte."
           ],
           "security": [
           ]

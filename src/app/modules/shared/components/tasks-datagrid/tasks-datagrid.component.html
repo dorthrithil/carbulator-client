@@ -2,7 +2,7 @@
 
   <clr-dg-action-bar *ngIf="communityId">
     <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="createTask()">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="taskFormModal.open(formModes.CREATE)">
         <clr-icon shape="plus"></clr-icon>
         Neue Aufgabe
       </button>
@@ -67,3 +67,5 @@
 </clr-datagrid>
 
 <cbl-task-delete-modal #taskDeleteModal (deleted)="removeTask($event)"></cbl-task-delete-modal>
+
+<cbl-task-form-modal [communityId]="communityId" #taskFormModal (taskAdded)="addTask($event)"></cbl-task-form-modal>

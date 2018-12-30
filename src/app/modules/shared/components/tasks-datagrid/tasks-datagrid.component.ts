@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {Task} from '../../../../models/task';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortTasks} from '../../../../utility/sorting/sort-tasks';
+import {FormMode} from '../../../../utility/constants/form-constants';
 
 /**
  * A component for showing a list of tasks.
@@ -27,6 +28,7 @@ export class TasksDatagridComponent implements OnInit {
   public tasks: Task[];
   public isLoading = true;
   public selectedTask: Task;
+  public formModes = FormMode;
 
   /**
    * Loads all tasks for the community on component initialization.
@@ -45,6 +47,15 @@ export class TasksDatagridComponent implements OnInit {
    */
   public removeTask(task: Task) {
     this.tasks.splice(this.tasks.indexOf(task), 1);
+  }
+
+  /**
+   * Adds a task to the list of tasks.
+   * @param task Task top add.
+   */
+  public addTask(task: Task) {
+    this.tasks.push(task);
+    sortAndLimit(this.tasks, sortTasks, 0, 'DESC');
   }
 
 }

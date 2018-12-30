@@ -19,6 +19,8 @@ export class DaysRemainingPipe implements PipeTransform, OnDestroy {
   private value: moment.Moment;
   private timer: Observable<string>;
 
+  private includeIn = false;
+
   constructor(ref: ChangeDetectorRef) {
     this.async = new AsyncPipe(ref);
   }
@@ -26,10 +28,10 @@ export class DaysRemainingPipe implements PipeTransform, OnDestroy {
   /**
    * Transforms the given date to the wanted string.
    * @param obj The moment object to convert.
-   * @param args Optional arguments.
+   * @param includeIn Add "In" infront of transformed values, as in "In 4 Tagen".
    * @returns Transformed string.
    */
-  public transform(obj: any, ...args: any[]): any {
+  public transform(obj: any, includeIn = false): any {
     if (obj === null) {
       return '';
     }
@@ -38,7 +40,8 @@ export class DaysRemainingPipe implements PipeTransform, OnDestroy {
       throw new Error('DaysRemainingPipe works only with moments');
     }
 
-    this.value = obj;
+    this.value = obj.startOf('day');
+    this.includeIn = includeIn;
 
     if (!this.timer) {
       this.timer = this.getObservable();
@@ -72,12 +75,16 @@ export class DaysRemainingPipe implements PipeTransform, OnDestroy {
    * @returns Days remaining string.
    */
   private remaining(): string {
-    const now = moment();
-    const remaining = Math.ceil(this.value.diff(now) / 1000 / 60 / 60 / 24);
+    const now = moment().startOf('day');
+    const remaining = this.value.diff(now, 'days');
+    const includeIn = this.includeIn ? 'In ' : '';
+    if (remaining === 0) {
+      return 'Heute';
+    }
     if (remaining === 1) {
-      return '1 Tag';
+      return `${includeIn}1 Tag`;
     } else {
-      return `${remaining} Tagen`;
+      return `${includeIn}${remaining} Tagen`;
     }
   }
 }
