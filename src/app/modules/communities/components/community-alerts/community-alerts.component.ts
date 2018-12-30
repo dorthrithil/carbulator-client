@@ -8,6 +8,9 @@ import {User} from '../../../../models/user';
 import {AuthService} from '../../../../services/core/auth.service';
 import {AppEventsService} from '../../../../services/core/app-events.service';
 import {takeUntil} from 'rxjs/operators';
+import {TaskInstanceService} from '../../../../services/crud/task-instance.service';
+import {TaskInstance} from '../../../../models/task-instance';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * Component that shows community alerts.
@@ -27,12 +30,15 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
   public runningTour: Tour;
   public cancelTourModalOpen = false;
   public deleteTourRequest: Observable<MessageResponse>;
+  public openTaskInstances: TaskInstance[];
 
   private onDestroy: Subject<any> = new Subject();
 
   constructor(private tourService: TourService,
               private auth: AuthService,
               private appEvents: AppEventsService,
+              private taskInstanceService: TaskInstanceService,
+              private notifications: CblNotificationsService,
               private navNotifications: NavNotificationsService) {
   }
 
@@ -51,6 +57,9 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
     });
     this.appEvents.tourStarted.pipe(takeUntil(this.onDestroy)).subscribe(tour => {
       this.addRunningTour(tour);
+    });
+    this.taskInstanceService.getOpenCommunityTaskInstances(this.communityId).subscribe(taskInstances => {
+      this.openTaskInstances = taskInstances;
     });
   }
 
@@ -94,6 +103,17 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
    */
   public isLoggedInUser(user: User): boolean {
     return this.auth.isLoggedInUser(user);
+  }
+
+  /**
+   * Marks a task instance as finished.
+   * @param taskInstance Task instance to mark as finished.
+   */
+  public finishTaskInstance(taskInstance: TaskInstance) {
+    this.taskInstanceService.finishTaskInstance(taskInstance).subscribe(() => {
+      this.notifications.success('Aufgabe erledigt', `Die Aufgabe "${taskInstance.task.name}" wurde als erledigt markiert.`);
+      this.openTaskInstances.splice(this.openTaskInstances.indexOf(taskInstance), 1);
+    });
   }
 
 }

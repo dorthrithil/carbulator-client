@@ -1,3 +1,5 @@
+<!--Tour alerts-->
+
 <clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
   <clr-alert-item>
     <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
@@ -31,3 +33,24 @@
   <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
   <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
 </cbl-confirm-modal>
+
+<!--Task alerts-->
+
+<clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false" *ngFor="let taskInstance of openTaskInstances">
+  <clr-alert-item>
+    <span class="alert-text">{{taskInstance.task.name}}</span>
+    <div class="alert-actions">
+      <clr-dropdown>
+        <button class="dropdown-toggle" clrDropdownTrigger>
+          Aktionen
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu [clrPosition]="'bottom-right'">
+          <div class="dropdown-item" clrDropdownItem (click)="finishTaskInstance(taskInstance)">
+            Als erledigt markieren
+          </div>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </clr-alert-item>
+</clr-alert>
