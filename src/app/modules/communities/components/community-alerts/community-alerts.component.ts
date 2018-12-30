@@ -54,10 +54,18 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
     });
     this.appEvents.tourFinished.pipe(takeUntil(this.onDestroy)).subscribe(() => {
       this.runningTour = null;
+      this.loadTaskInstances();
     });
     this.appEvents.tourStarted.pipe(takeUntil(this.onDestroy)).subscribe(tour => {
       this.addRunningTour(tour);
     });
+    this.loadTaskInstances();
+  }
+
+  /**
+   * Loads the current open task instances.
+   */
+  private loadTaskInstances() {
     this.taskInstanceService.getOpenCommunityTaskInstances(this.communityId).subscribe(taskInstances => {
       this.openTaskInstances = taskInstances;
     });

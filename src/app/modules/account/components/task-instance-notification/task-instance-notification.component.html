@@ -1,0 +1,24 @@
+<div class="notification-box">
+  <div class="notification-box-col">
+    <div class="icon-text-cell">
+      <div>
+        <clr-icon shape="bell"></clr-icon>
+      </div>
+      <div>
+        <strong>Neue Aufgabe:</strong> {{taskInstanceNotification.subject.task.name}}
+      </div>
+    </div>
+    <div class="icon-text-cell">
+      <div>
+        <clr-icon shape="event"></clr-icon>
+      </div>
+      <div>
+        {{taskInstanceNotification.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
+      </div>
+    </div>
+  </div>
+  <div class="notification-box-col actions">
+    <button class="btn btn-sm btn-primary" (click)="finish()" [clrLoading]="finishLoading">Als erledigt markieren
+    </button>
+  </div>
+</div>

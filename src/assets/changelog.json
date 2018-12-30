@@ -7,6 +7,7 @@
         "releaseDate": "TODO",
         "changes": {
           "added": [
+            "Möglichkeit hinzugefügt regelmäßige Aufgaben für Gruppen einzutragen. Diese können Zeit- oder Kilometerstand gesteuert sein. Es wird automatisch an die Erledigung der Aufgaben erinnert.",
             "Option zum Zurücksetzen von Datumsfiltern in Tabellen hinzugefügt."
           ],
           "changed": [

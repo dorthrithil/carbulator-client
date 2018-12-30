@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CommunityInvitationNotificationComponent} from './components/community-invitation-notification/community-invitation-notification.component';
 import {AccountRoutingModule} from './account-routing.module';
-import { NotificationsListComponent } from './components/notifications-list/notifications-list.component';
+import {NotificationsListComponent} from './components/notifications-list/notifications-list.component';
 import {ClarityModule} from '@clr/angular';
 import {SharedModule} from '../shared/shared.module';
-import { AccountComponent } from './components/account/account.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { RunningTourNotificationComponent } from './components/running-tour-notification/running-tour-notification.component';
+import {AccountComponent} from './components/account/account.component';
+import {ChangePasswordComponent} from './components/change-password/change-password.component';
+import {RunningTourNotificationComponent} from './components/running-tour-notification/running-tour-notification.component';
+import {TaskInstanceNotificationComponent} from './components/task-instance-notification/task-instance-notification.component';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { RunningTourNotificationComponent } from './components/running-tour-noti
     NotificationsListComponent,
     AccountComponent,
     ChangePasswordComponent,
-    RunningTourNotificationComponent
+    RunningTourNotificationComponent,
+    TaskInstanceNotificationComponent
   ]
 })
-export class AccountModule { }
+export class AccountModule {
+}

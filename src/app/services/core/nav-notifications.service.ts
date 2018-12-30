@@ -26,8 +26,8 @@ export class NavNotificationsService {
     this.auth.onLoginStateChanges.subscribe(isLoggedIn => {
       if (isLoggedIn) {
         this.timerSubscription = timer(0, 20000).subscribe(() => {
-            // Don't reload if on notifications page to prevent rerendering
-          if (this.router.url !== '/account/notifications') {
+          // Don't reload if on notifications page to prevent re-rendering
+          if (this.router.url !== '/account/notifications' || this._count === 0) {
               this.loadNotifications();
             }
           }
@@ -71,12 +71,15 @@ export class NavNotificationsService {
     this._count = 0;
     forkJoin([
       this.accountService.getInvitationNotifications(),
-      this.accountService.getRunningTourNotifications()
-    ]).subscribe(([invitations, runningTours]) => {
+      this.accountService.getRunningTourNotifications(),
+      this.accountService.getTaskInstanceNotifications()
+    ]).subscribe(([invitations, runningTours, taskInstances]) => {
       this._notifications.push(...invitations);
       this._notifications.push(...runningTours);
+      this._notifications.push(...taskInstances);
       this._count += invitations.length;
       this._count += runningTours.length;
+      this._count += taskInstances.length;
       this.notificationsCountChange.next(this._count);
       this.notificationsChange.next(this.notifications);
       this._notifications.sort(sortNotifications);

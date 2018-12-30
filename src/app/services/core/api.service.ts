@@ -160,6 +160,9 @@ export class ApiService {
     getOpenCommunityInvitations: (): string => {
       return `${this.apiHost}account/invitations`;
     },
+    getOpenTaskInstances: (): string => {
+      return `${this.apiHost}account/tasks/instances/open`;
+    },
     changePassword: (): string => {
       return `${this.apiHost}account/change-password`;
     },

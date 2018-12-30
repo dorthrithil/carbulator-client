@@ -6,9 +6,13 @@
                                          && notification.isOpen">
   </cbl-community-invitation-notification>
   <cbl-running-tour-notification [runningTour]="notification"
-                                         *ngIf="notification.type == notificationTypes.RUNNING_TOUR
+                                 *ngIf="notification.type == notificationTypes.RUNNING_TOUR
                                          && notification.isOpen">
   </cbl-running-tour-notification>
+  <cbl-task-instance-notification [taskInstanceNotification]="notification"
+                                  *ngIf="notification.type == notificationTypes.TASK_INSTANCE
+                                         && notification.isOpen">
+  </cbl-task-instance-notification>
 </ng-container>
 
 <clr-alert [clrAlertClosable]="false" class="no-notifications" *ngIf="noOpenNotifications()">
