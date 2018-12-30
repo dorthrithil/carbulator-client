@@ -6,6 +6,11 @@
         <clr-icon shape="plus"></clr-icon>
         Neue Aufgabe
       </button>
+      <button type="button" class="btn btn-sm btn-secondary" [disabled]="!selectedTask"
+              (click)="taskFormModal.open(formModes.UPDATE, selectedTask)">
+        <clr-icon shape="pencil"></clr-icon>
+        Aufgabe bearbeiten
+      </button>
       <button type="button" class="btn btn-sm btn-secondary" (click)="taskDeleteModal.deleteTask(selectedTask)">
         <clr-icon shape="trash"></clr-icon>
         Löschen
@@ -33,8 +38,7 @@
     <clr-dg-cell>{{task.name}}</clr-dg-cell>
     <clr-dg-cell>
       <ng-container *ngIf="task.timeInterval">
-        {{task.timeInterval}} Tag
-        <ng-container *ngIf="task.timeInterval > 1">e</ng-container>
+        {{task.timeInterval}} {{'Tag' | conditionalPlural : 'e' : task.timeInterval > 1}}
       </ng-container>
       <ng-container *ngIf="task.kmInterval">
         {{task.kmInterval}} km

@@ -20,7 +20,6 @@ export class Task {
   name: string;
   description: string;
 
-
   /**
    * Creates a task from a JSON representation.
    * @param src JSON representation of the task.

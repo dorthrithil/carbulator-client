@@ -38,6 +38,7 @@ import {TaskInfoModalComponent} from './components/task-info-modal/task-info-mod
 import {TasksDatagridComponent} from './components/tasks-datagrid/tasks-datagrid.component';
 import {TaskDeleteModalComponent} from './components/task-delete-modal/task-delete-modal.component';
 import {TaskFormModalComponent} from './components/task-form-modal/task-form-modal.component';
+import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
 
 @NgModule({
   imports: [
@@ -82,7 +83,8 @@ import {TaskFormModalComponent} from './components/task-form-modal/task-form-mod
     TaskInfoModalComponent,
     TasksDatagridComponent,
     TaskDeleteModalComponent,
-    TaskFormModalComponent
+    TaskFormModalComponent,
+    ConditionalPluralPipe
   ],
   exports: [
     MomentPipe,

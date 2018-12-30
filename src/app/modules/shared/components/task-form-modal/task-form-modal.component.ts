@@ -15,6 +15,7 @@ import {futureMomentValidator} from '../../../../utility/validators/future-momen
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import * as moment from 'moment';
+import {toNumber} from '../../../../utility/conversion/to-number';
 
 /**
  * Trigger types for tasks.
@@ -82,6 +83,7 @@ export class TaskFormModalComponent implements OnDestroy {
    * Builds the task form.
    */
   private buildForm() {
+    const trigger = this.task.kmInterval ? TaskTrigger.KM : TaskTrigger.TIME;
     this.kmIntervalControl = new FormControl(this.task.kmInterval, [
       numberValidator(),
       numberMinValidator(1),
@@ -97,7 +99,8 @@ export class TaskFormModalComponent implements OnDestroy {
       Validators.min(1),
       Validators.required
     ]);
-    this.timeNextInstanceControl = new FormControl(this.task.timeNextInstance, [
+    const timeNextInstance = this.task.timeNextInstance ? this.task.timeNextInstance.format('DD.MM.YYYY') : null;
+    this.timeNextInstanceControl = new FormControl(timeNextInstance, [
       momentValidator('DD.MM.YYYY'),
       futureMomentValidator('DD.MM.YYYY'),
       Validators.required
@@ -105,13 +108,12 @@ export class TaskFormModalComponent implements OnDestroy {
     this.taskForm = this.fb.group({
       name: [this.task.name, [Validators.required]],
       description: [this.task.description],
-      timeInterval: this.timeIntervalControl,
-      timeNextInstance: this.timeNextInstanceControl,
-      trigger: [TaskTrigger.TIME]
+      trigger: [trigger]
     });
     this.taskForm.get('trigger').valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {
       this.setTriggerFormControls();
     });
+    this.setTriggerFormControls();
   }
 
   /**
@@ -148,7 +150,9 @@ export class TaskFormModalComponent implements OnDestroy {
     this.formMode = formMode;
     this.tourService.getLatestCommunityTour(this.communityId).subscribe(latestTour => {
       this.lastEndKm = latestTour.endKm;
-      this.task.kmNextInstance = this.lastEndKm + 1;
+      if (this.formMode === FormMode.CREATE) {
+        this.task.kmNextInstance = toNumber(this.lastEndKm) + 1;
+      }
       this.lastTourLoading = false;
       this.buildForm();
     }, err => {
@@ -202,6 +206,7 @@ export class TaskFormModalComponent implements OnDestroy {
 
       if (this.formMode === FormMode.UPDATE) {
         this.taskService.updateTask(this.task).subscribe(task => {
+          console.log(task);
           this.taskUpdated.emit(task);
           this.close();
           this.notifications.success('Aufgabe gespeichert', 'Die Änderungen wurden übernommen.');
