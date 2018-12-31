@@ -6,6 +6,7 @@ import {sortPayoffs} from '../../../../utility/sorting/sort-payoffs';
 import {PayoffService} from '../../../../services/crud/payoff.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {Router} from '@angular/router';
+import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 
 /**
  * A component that shows a datagrid of payoffs.
@@ -33,6 +34,7 @@ export class PayoffsDatagridComponent implements OnInit {
   public isLoading = true;
 
   constructor(private payoffService: PayoffService,
+              public mobileDetection: MobileDetectionService,
               private notifications: CblNotificationsService,
               private router: Router) {
   }

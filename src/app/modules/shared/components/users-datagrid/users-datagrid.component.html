@@ -9,7 +9,7 @@
   <clr-dg-column [clrDgField]="'email'">
     <ng-container *clrDgHideableColumn="{hidden: false}">E-Mail</ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
+  <clr-dg-column [clrDgField]="'timeCreated'">
     <ng-container *clrDgHideableColumn="{hidden: true}">Anmeldedatum</ng-container>
     <clr-dg-filter [clrDgFilter]="dateFilter">
       <cbl-moment-filter #dateFilter></cbl-moment-filter>
@@ -19,7 +19,7 @@
   <clr-dg-row *clrDgItems="let user of users">
     <clr-dg-cell>{{user.username}}</clr-dg-cell>
     <clr-dg-cell>{{user.email}}</clr-dg-cell>
-    <clr-dg-cell class="hide-on-mobile">{{user.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{user.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>

@@ -3,9 +3,8 @@ import {CommunityService} from '../../../../services/crud/community.service';
 import {Community} from '../../../../models/community';
 import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
-import {tap} from 'rxjs/operators';
-import {NotificationsService} from 'angular2-notifications';
 import {CommunitiesRenameModalComponent} from '../communities-rename-modal/communities-rename-modal.component';
+import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 
 @Component({
   selector: 'cbl-communities-list',
@@ -21,7 +20,8 @@ export class CommunitiesListComponent implements OnInit {
   public confirmDeletionModalOpen = false;
   public deleteCommunityRequest: Observable<MessageResponse> = null;
 
-  constructor(private communityService: CommunityService) {
+  constructor(private communityService: CommunityService,
+              public mobileDetection: MobileDetectionService) {
   }
 
   /**

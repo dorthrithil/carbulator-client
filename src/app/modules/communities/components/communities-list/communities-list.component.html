@@ -13,10 +13,14 @@
 
   <clr-dg-placeholder>Du bist noch in keiner Gruppe!</clr-dg-placeholder>
 
-  <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">Gruppen ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
-    Erstellungsdatum
+  <clr-dg-column [clrDgField]="'id'">
+    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Gruppen ID</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn="{hidden: false}">Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'timeCreated'">
+    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Erstellungsdatum</ng-container>
     <clr-dg-filter [clrDgFilter]="timeCreatedFilter">
       <cbl-moment-filter #timeCreatedFilter></cbl-moment-filter>
     </clr-dg-filter>
@@ -37,12 +41,16 @@
         Details
       </button>
     </clr-dg-action-overflow>
-    <clr-dg-cell class="hide-on-mobile">{{community.id}}</clr-dg-cell>
+    <clr-dg-cell>{{community.id}}</clr-dg-cell>
     <clr-dg-cell><a [routerLink]="['/communities',community.id]">{{community.name}}</a></clr-dg-cell>
-    <clr-dg-cell class="hide-on-mobile">{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
     <clr-dg-pagination #pagination [clrDgPageSize]="15">
       <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Gruppen pro Seite</clr-dg-page-size>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}

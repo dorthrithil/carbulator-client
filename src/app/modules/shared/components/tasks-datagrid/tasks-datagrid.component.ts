@@ -4,6 +4,7 @@ import {Task} from '../../../../models/task';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortTasks} from '../../../../utility/sorting/sort-tasks';
 import {FormMode} from '../../../../utility/constants/form-constants';
+import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 
 /**
  * A component for showing a list of tasks.
@@ -29,6 +30,9 @@ export class TasksDatagridComponent implements OnInit {
   public isLoading = true;
   public selectedTask: Task;
   public formModes = FormMode;
+
+  constructor(public mobileDetection: MobileDetectionService) {
+  }
 
   /**
    * Loads all tasks for the community on component initialization.

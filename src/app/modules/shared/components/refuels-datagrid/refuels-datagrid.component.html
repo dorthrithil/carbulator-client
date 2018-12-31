@@ -4,17 +4,17 @@
     <div class="btn-group">
       <button type="button" class="btn btn-sm btn-secondary" (click)="createRefuelModal.open()">
         <clr-icon shape="plus"></clr-icon>
-        Neue Tankfüllung
+        Neu
       </button>
     </div>
   </clr-dg-action-bar>
 
   <clr-dg-placeholder>Keine Tankfüllungen vorhanden</clr-dg-placeholder>
 
-  <clr-dg-column [clrDgField]="'id'" class="hide-on-mobile">
+  <clr-dg-column [clrDgField]="'id'">
     <ng-container *clrDgHideableColumn="{hidden: true}">ID</ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'timeCreated'" class="hide-on-mobile">
+  <clr-dg-column [clrDgField]="'timeCreated'">
     <ng-container *clrDgHideableColumn="{hidden: false}">Datum</ng-container>
     <clr-dg-filter [clrDgFilter]="dateFilter">
       <cbl-moment-filter #dateFilter></cbl-moment-filter>
@@ -27,18 +27,18 @@
     <ng-container *clrDgHideableColumn="{hidden: false}">Bezahlt von</ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'gasStationName'">
-    <ng-container *clrDgHideableColumn="{hidden: false}">Tankstelle</ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Tankstelle</ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'liters'">
-    <ng-container *clrDgHideableColumn="{hidden: false}">Menge</ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Menge</ng-container>
   </clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn="{hidden: false}">Abgerechnet</ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Abgerechnet</ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let refuel of refuels">
-    <clr-dg-cell class="hide-on-mobile">{{refuel.id}}</clr-dg-cell>
-    <clr-dg-cell class="hide-on-mobile">{{refuel.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{refuel.id}}</clr-dg-cell>
+    <clr-dg-cell>{{refuel.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
     <clr-dg-cell>{{refuel.costs}} €</clr-dg-cell>
     <clr-dg-cell>{{refuel.owner.username}}</clr-dg-cell>
     <clr-dg-cell>
