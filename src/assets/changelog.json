@@ -4,7 +4,7 @@
     "patches": [
       {
         "patch": "0.3.0",
-        "releaseDate": "TODO",
+        "releaseDate": "31.12.2018",
         "changes": {
           "added": [
             "Möglichkeit hinzugefügt regelmäßige Aufgaben für Gruppen einzutragen. Diese können Zeit- oder Kilometerstand gesteuert sein. Es wird automatisch an die Erledigung der Aufgaben erinnert.",

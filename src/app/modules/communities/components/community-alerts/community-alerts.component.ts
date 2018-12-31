@@ -121,6 +121,8 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
     this.taskInstanceService.finishTaskInstance(taskInstance).subscribe(() => {
       this.notifications.success('Aufgabe erledigt', `Die Aufgabe "${taskInstance.task.name}" wurde als erledigt markiert.`);
       this.openTaskInstances.splice(this.openTaskInstances.indexOf(taskInstance), 1);
+      this.appEvents.dispatchTaskInstanceFinishedEvent(taskInstance);
+      this.navNotifications.loadNotifications();
     });
   }
 

@@ -3,6 +3,7 @@ import {Notification} from '../../../../models/notification';
 import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {TaskInstanceService} from '../../../../services/crud/task-instance.service';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * A notification container for task instances. Offers a possibility to finish the task instance.
@@ -20,6 +21,7 @@ export class TaskInstanceNotificationComponent {
 
   constructor(private taskInstanceService: TaskInstanceService,
               private navNotifications: NavNotificationsService,
+              private appEvents: AppEventsService,
               private notifications: CblNotificationsService) {
   }
 
@@ -34,6 +36,7 @@ export class TaskInstanceNotificationComponent {
         ` als erledigt markiert.`);
       this.taskInstanceNotification.isOpen = false;
       this.navNotifications.decrementNotificationsCount();
+      this.appEvents.dispatchTaskInstanceFinishedEvent(this.taskInstanceNotification.subject);
     });
   }
 

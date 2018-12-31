@@ -5,6 +5,7 @@ import {forkJoin, Subject, Subscription, timer} from 'rxjs';
 import {sortNotifications} from '../../utility/sorting/sort-notifications';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
+import {AppEventsService} from './app-events.service';
 
 /**
  * Service for loading different notifications.
@@ -21,6 +22,7 @@ export class NavNotificationsService {
   private timerSubscription: Subscription;
 
   constructor(private accountService: AccountService,
+              private appEvents: AppEventsService,
               private auth: AuthService,
               private router: Router) {
     this.auth.onLoginStateChanges.subscribe(isLoggedIn => {
