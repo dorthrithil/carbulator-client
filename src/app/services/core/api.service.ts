@@ -61,6 +61,12 @@ export class ApiService {
     getPayoffs: (id: number): string => {
       return `${this.apiHost}communities/${id}/payoffs`;
     },
+    getTasks: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tasks`;
+    },
+    createTask: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tasks`;
+    },
     createRefuel: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
@@ -84,6 +90,9 @@ export class ApiService {
     },
     getRunningTours: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/running`;
+    },
+    getOpenTaskInstances: (id: number): string => {
+      return `${this.apiHost}communities/${id}/tasks/instances/open`;
     },
     deleteTour: (communityId: number, tourId: number): string => {
       return `${this.apiHost}communities/${communityId}/tours/${tourId}`;
@@ -132,9 +141,27 @@ export class ApiService {
     }
   };
 
+  public task = {
+    deleteTask: (id: number): string => {
+      return `${this.apiHost}tasks/${id}`;
+    },
+    updateTask: (id: number): string => {
+      return `${this.apiHost}tasks/${id}`;
+    }
+  };
+
+  public taskInstance = {
+    finish: (id: number): string => {
+      return `${this.apiHost}tasks/instances/${id}/finish`;
+    }
+  };
+
   public account = {
     getOpenCommunityInvitations: (): string => {
       return `${this.apiHost}account/invitations`;
+    },
+    getOpenTaskInstances: (): string => {
+      return `${this.apiHost}account/tasks/instances/open`;
     },
     changePassword: (): string => {
       return `${this.apiHost}account/change-password`;

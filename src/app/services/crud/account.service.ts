@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {Notification, NotificationType} from '../../models/notification';
 import {MessageResponse} from './auth-crud.service';
 import {Tour} from '../../models/tour';
+import {TaskInstance} from '../../models/task-instance';
 
 /**
  * Service for performing CRUD actions on account resources.
@@ -62,6 +63,24 @@ export class AccountService {
           notification.subject = Tour.fromJson(tour);
           notification.timeCreated = notification.subject.timeCreated;
           notification.type = NotificationType.RUNNING_TOUR;
+          return notification;
+        });
+      })
+    );
+  }
+
+  /**
+   * Fetches all open task instance for a user from the server.
+   * @return Observable that resolves to an array of notifications.
+   */
+  public getTaskInstanceNotifications(): Observable<Notification[]> {
+    return this.http.get(this.api.account.getOpenTaskInstances()).pipe(
+      map(taskInstances => {
+        return taskInstances.map(taskInstance => {
+          const notification = new Notification();
+          notification.subject = TaskInstance.fromJson(taskInstance);
+          notification.timeCreated = notification.subject.timeCreated;
+          notification.type = NotificationType.TASK_INSTANCE;
           return notification;
         });
       })

@@ -57,6 +57,15 @@
   </clr-tab>
 
   <clr-tab>
+    <button clrTabLink [clrTabLinkInOverflow]="isMobile">Aufgaben</button>
+    <ng-template [(clrIfActive)]="tasksTabActive">
+      <clr-tab-content>
+        <cbl-tasks-datagrid [taskResource]="taskResource" [communityId]="communityId"></cbl-tasks-datagrid>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+
+  <clr-tab>
     <button clrTabLink [clrTabLinkInOverflow]="isMobile">Mitglieder</button>
     <ng-template [(clrIfActive)]="memberTabActive">
       <clr-tab-content>

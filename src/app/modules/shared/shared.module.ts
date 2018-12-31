@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MomentPipe} from '../../pipes/moment.pipe';
-import {TimeCreatedFilterComponent} from '../../utility/datagrid-filters/time-created-filter/time-created-filter.component';
+import {MomentFilterComponent} from '../../utility/datagrid-filters/moment-filter/moment-filter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClarityModule} from '@clr/angular';
 import {TypeaheadComponent} from './components/typeahead/typeahead.component';
@@ -32,6 +32,13 @@ import {RefuelsDatagridComponent} from './components/refuels-datagrid/refuels-da
 import {PayoffsDatagridComponent} from './components/payoffs-datagrid/payoffs-datagrid.component';
 import {RouterModule} from '@angular/router';
 import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid.component';
+import {TaskBoxComponent} from './components/task-box/task-box.component';
+import {DaysRemainingPipe} from '../../pipes/days-remaining.pipe';
+import {TaskInfoModalComponent} from './components/task-info-modal/task-info-modal.component';
+import {TasksDatagridComponent} from './components/tasks-datagrid/tasks-datagrid.component';
+import {TaskDeleteModalComponent} from './components/task-delete-modal/task-delete-modal.component';
+import {TaskFormModalComponent} from './components/task-form-modal/task-form-modal.component';
+import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
 
 @NgModule({
   imports: [
@@ -44,7 +51,7 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
   ],
   declarations: [
     MomentPipe,
-    TimeCreatedFilterComponent,
+    MomentFilterComponent,
     TypeaheadComponent,
     ConfirmModalComponent,
     ConfirmModalTextDirective,
@@ -64,17 +71,24 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
     InfoModalTextDirective,
     PassengerSelectorComponent,
     CommaSeparatedObjectPropertyPipe,
+    DaysRemainingPipe,
     StartTourModalComponent,
     ToursDatagridComponent,
     ParkingPositionModalComponent,
     CommentModalComponent,
     RefuelsDatagridComponent,
     PayoffsDatagridComponent,
-    UsersDatagridComponent
+    UsersDatagridComponent,
+    TaskBoxComponent,
+    TaskInfoModalComponent,
+    TasksDatagridComponent,
+    TaskDeleteModalComponent,
+    TaskFormModalComponent,
+    ConditionalPluralPipe
   ],
   exports: [
     MomentPipe,
-    TimeCreatedFilterComponent,
+    MomentFilterComponent,
     FormsModule,
     ReactiveFormsModule,
     ClarityModule,
@@ -98,7 +112,12 @@ import {UsersDatagridComponent} from './components/users-datagrid/users-datagrid
     ToursDatagridComponent,
     RefuelsDatagridComponent,
     PayoffsDatagridComponent,
-    UsersDatagridComponent
+    UsersDatagridComponent,
+    TaskBoxComponent,
+    TaskInfoModalComponent,
+    TasksDatagridComponent,
+    TaskDeleteModalComponent,
+    TaskFormModalComponent
   ]
 })
 export class SharedModule {

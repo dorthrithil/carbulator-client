@@ -93,5 +93,26 @@ export const knownErrors: ErrorDictionary = {
     message: 'EMAIL_INVALID',
     title: 'Ungültige E-Mail Adresse',
     description: 'Die verwendete E-Mail Adresse ist nicht gültig.'
+  },
+  TASK_DOESNT_EXIST: {
+    message: 'TASK_DOESNT_EXIST',
+    title: 'Aufgabe nicht gefunden',
+    description: 'Die angeforderte Aufgabe wurde nicht gefunden.'
+  },
+  TASK_MUST_BE_EITHER_TIME_OR_KM_TRIGGERED: {
+    message: 'TASK_MUST_BE_EITHER_TIME_OR_KM_TRIGGERED',
+    title: 'Aufgaben Auslöser fehlerhaft',
+    description: 'Eine Aufgabe muss entweder Zeit- oder Kilometerstand gesteuert sein.'
+  },
+  TASK_KM_NEXT_INSTANCE_MUST_BE_HIGHER_THEN_CURRENT_KM: {
+    message: 'TASK_KM_NEXT_INSTANCE_MUST_BE_HIGHER_THEN_CURRENT_KM',
+    title: 'Aufgaben Auslöser fehlerhaft',
+    description: 'Eine Kilometerstand gesteuerte Aufgabe benötigt einen Startkilometerstand welcher höher als der aktuelle' +
+      ' Kilometerstand ist.'
+  },
+  TASK_TIME_NEXT_INSTANCE_MUST_BE_HIGHER_THEN_CURRENT_TIME: {
+    message: 'TASK_TIME_NEXT_INSTANCE_MUST_BE_HIGHER_THEN_CURRENT_TIME',
+    title: 'Aufgaben Auslöser fehlerhaft',
+    description: 'Eine Zeit gesteuerte Aufgabe kann nicht in der Vergangenheit starten.'
   }
 };

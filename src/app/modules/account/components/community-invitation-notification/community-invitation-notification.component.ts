@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Notification} from '../../../../models/notification';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
@@ -27,7 +27,7 @@ export class CommunityInvitationNotificationComponent {
   /**
    * Accept the community invitation.
    */
-  accept() {
+  public accept() {
     this.acceptLoading = true;
     this.communityService.acceptCommunityInvitation(this.invitation.subject).subscribe(() => {
       this.acceptLoading = false;
@@ -40,7 +40,7 @@ export class CommunityInvitationNotificationComponent {
   /**
    * Reject the community invitation.
    */
-  reject() {
+  public reject() {
     this.rejectLoading = true;
     this.communityService.declineCommunityInvitation(this.invitation.subject).subscribe(() => {
       this.rejectLoading = false;

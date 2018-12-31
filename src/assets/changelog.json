@@ -1,5 +1,33 @@
 [
   {
+    "minor": "0.3",
+    "patches": [
+      {
+        "patch": "0.3.0",
+        "releaseDate": "31.12.2018",
+        "changes": {
+          "added": [
+            "Möglichkeit hinzugefügt regelmäßige Aufgaben für Gruppen einzutragen. Diese können Zeit- oder Kilometerstand gesteuert sein. Es wird automatisch an die Erledigung der Aufgaben erinnert.",
+            "Option zum Zurücksetzen von Datumsfiltern in Tabellen hinzugefügt."
+          ],
+          "changed": [
+            "Die Farben der Listenelemente in der Fahrten Kachel der Gruppenansicht wurden entfernt, da diese irritierend sind."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler behoben der zu leeren Parkplatz Modalen in der Listenansicht von Fahrten führen konnte.",
+            "Fehler behoben der das Beenden von Fahrten mit falsch konfigurierter Route ermöglichte."
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  },
+  {
     "minor": "0.2",
     "patches": [
       {

@@ -18,7 +18,7 @@ import {ClrForm} from '@clr/angular';
 export class CreateRefuelModalComponent {
 
   /**
-   * Reference to the clarity form instance.t
+   * Reference to the clarity form instance.
    */
   @ViewChild(ClrForm) clrForm;
 

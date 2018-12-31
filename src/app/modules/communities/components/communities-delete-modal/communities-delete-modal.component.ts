@@ -1,10 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Community} from '../../../../models/community';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
 import {CommunityService} from '../../../../services/crud/community.service';
-import {NotificationsService} from 'angular2-notifications';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
@@ -20,7 +19,7 @@ export class CommunitiesDeleteModalComponent {
   /**
    * Emits the community after it has been successfully deleted.
    */
-  @Output('deleted') deleted: EventEmitter<Community> = new EventEmitter();
+  @Output() deleted: EventEmitter<Community> = new EventEmitter();
 
   public confirmDeletionModalOpen = false;
   public deleteCommunityRequest: Observable<MessageResponse> = null;
