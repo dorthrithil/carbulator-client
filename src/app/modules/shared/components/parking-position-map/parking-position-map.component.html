@@ -1,6 +1,9 @@
 <div class="map"
      *ngIf="renderMap"
      leaflet
+     (leafletClick)="onLeafletClick($event)"
      [leafletLayers]="layers"
+     [leafletZoom]="zoom"
+     [leafletCenter]="leafletCenter"
      [leafletOptions]="options">
 </div>
