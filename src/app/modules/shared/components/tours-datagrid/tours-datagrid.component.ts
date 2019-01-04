@@ -5,6 +5,7 @@ import {sortTours} from '../../../../utility/sorting/sort-tours';
 import {Observable} from 'rxjs';
 import {StartTourModalComponent} from '../start-tour-modal/start-tour-modal.component';
 import {AppEventsService} from '../../../../services/core/app-events.service';
+import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 
 /**
  * Component for showing a datagrid of tours. As the tour resource is kept as an input, this is reusable for community or user views.
@@ -34,7 +35,8 @@ export class ToursDatagridComponent implements OnInit {
   public tours: Tour[];
   public isLoading = true;
 
-  constructor(private appEvents: AppEventsService) {
+  constructor(private appEvents: AppEventsService,
+              public mobileDetection: MobileDetectionService) {
   }
 
 

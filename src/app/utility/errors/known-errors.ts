@@ -114,5 +114,10 @@ export const knownErrors: ErrorDictionary = {
     message: 'TASK_TIME_NEXT_INSTANCE_MUST_BE_HIGHER_THEN_CURRENT_TIME',
     title: 'Aufgaben Auslöser fehlerhaft',
     description: 'Eine Zeit gesteuerte Aufgabe kann nicht in der Vergangenheit starten.'
+  },
+  NO_GEOCODING_RESULTS: {
+    message: 'NO_GEOCODING_RESULTS',
+    title: 'Keine Suchergebnisse',
+    description: 'Für die Suchanfrage wurde keine passende Adresse gefunden.'
   }
 };

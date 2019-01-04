@@ -36,6 +36,12 @@ export class ApiService {
     }
   };
 
+  public geocoding = {
+    geocode: (query): string => {
+      return `${this.apiHost}geocode/${query}`;
+    }
+  };
+
   public community = {
     getCommunities: (): string => {
       return `${this.apiHost}account/communities`;

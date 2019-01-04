@@ -4,6 +4,7 @@ import {Refuel} from '../../../../models/refuel';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortRefuels} from '../../../../utility/sorting/sort-refuels';
 import {CreateRefuelModalComponent} from '../create-refuel-modal/create-refuel-modal.component';
+import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 
 /**
  * A component that shows a table of refuels.
@@ -32,6 +33,9 @@ export class RefuelsDatagridComponent implements OnInit {
 
   public refuels: Refuel[];
   public isLoading = true;
+
+  constructor(public mobileDetection: MobileDetectionService) {
+  }
 
   /**
    * Loads all refuels for the community on component initialization.

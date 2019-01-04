@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {icon, latLng, marker, tileLayer} from 'leaflet';
+import {icon, LatLng, latLng, marker, tileLayer} from 'leaflet';
 import {timer} from 'rxjs';
 
 /**
@@ -21,39 +21,74 @@ export class ParkingPositionMapComponent implements OnInit {
    * initialized only after opening the modal.
    */
   @Input() deferredRenderingTime: 0;
+  /**
+   * If set to true, the marker can be repositioned by clicking on the map.
+   */
+  @Input() dynamic = false;
 
   public options;
   public layers;
   public renderMap = false;
+  public leafletCenter: LatLng = null;
+  public zoom = 5;
 
   /**
-   *
+   * Initializes the parking position if passed from component input params and configures the leaflet map.
    */
   ngOnInit() {
-    const coords = this.rawParkingPosition.split(', ');
+
+    if (this.rawParkingPosition) {
+      const coords = this.rawParkingPosition.split(', ');
+      this.setMapCoords(latLng(Number(coords[0]), Number(coords[1])));
+    } else {
+      this.setMapCoords(latLng(50.897909, 10.791994), 5, false);
+    }
+
     this.options = {
       layers: [
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
-      ],
-      zoom: 15,
-      center: latLng(Number(coords[0]), Number(coords[1]))
+      ]
     };
-
-    this.layers = [
-      marker([Number(coords[0]), Number(coords[1])], {
-        icon: icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'leaflet/marker-icon.png',
-          shadowUrl: 'leaflet/marker-shadow.png'
-        })
-      })
-    ];
 
     // Deferred rendering to work around tiles not loading bug when width changes
     timer(this.deferredRenderingTime).subscribe(() => {
       this.renderMap = true;
     });
+  }
+
+  /**
+   * Sets new coordinates for the map.
+   * @param coords Coordinates to use.
+   * @param zoom Zoom level.
+   * @param setMarker If true, a marker will be shown at the coordinates.
+   */
+  public setMapCoords(coords: LatLng, zoom = 15, setMarker = true) {
+    this.leafletCenter = coords;
+    this.zoom = zoom;
+    if (setMarker) {
+      this.layers = [
+        marker(coords, {
+          icon: icon({
+            iconSize: [25, 41],
+            iconAnchor: [13, 41],
+            iconUrl: 'leaflet/marker-icon.png',
+            shadowUrl: 'leaflet/marker-shadow.png'
+          })
+        })
+      ];
+    } else {
+      this.layers = [];
+    }
+  }
+
+  /**
+   * Sets the map coordinates to the point of click if the map is set to dynamic mode.
+   * @param event Leaflet event.
+   */
+  public onLeafletClick(event) {
+    if (this.dynamic) {
+      this.setMapCoords(event.latlng);
+    }
   }
 
 }

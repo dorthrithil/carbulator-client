@@ -35,25 +35,46 @@
         <textarea clrTextarea formControlName="comment" name="comment" id="comment"></textarea>
       </clr-textarea-container>
 
-      <div class="fake-control-container" *ngIf="geoLocationLoading">
+    </form>
+
+
+    <div class="map-section">
+
+      <div class="fake-control-container">
         <span class="clr-control-label">Parkplatz</span>
-        <div>
-          <span class="spinner spinner-inline">Loading...</span> Lade Geodaten...
+        <div class="action-bar">
+          <div *ngIf="geoLocationLoading || geoCodingLoading" class="spinner-container">
+            <span class="spinner spinner-inline">Loading...</span> Lade Geodaten...
+          </div>
+          <div class="action-bar-options" *ngIf="!geoLocationLoading && !geoCodingLoading">
+            <form class="clr-form inline-form">
+              <input placeholder="Adresse eingeben" name="geocoding-query" class="clr-input"
+                     [(ngModel)]="geocodingQuery"/>
+            </form>
+            <button class="btn btn-sm btn-primary-outline" (click)="geocode()" [disabled]="geocodingQuery == ''">
+              <clr-icon shape="search"></clr-icon>
+              Suchen
+            </button>
+            <button class="btn btn-sm btn-icon btn-primary-outline" (click)="getGeoLocation()"
+                    *ngIf="!geoLocationLoading">
+              <clr-icon shape="target"></clr-icon>
+            </button>
+          </div>
         </div>
       </div>
-      <clr-input-container *ngIf="!geoLocationLoading">
-        <label>Parkplatz</label>
-        <input placeholder="Latitude, Longitude" clrInput formControlName="parkingPosition" name="parkingPosition"/>
-        <clr-control-helper>Latitude, Longitude</clr-control-helper>
-        <clr-control-error *clrIfError="'latlong'">Koordinaten im Format "Latitude, Longitude" angeben
-          (z.B. 123.45, 67.89)
-        </clr-control-error>
-      </clr-input-container>
-      <button class="btn btn-sm btn-primary-outline" (click)="getGeoLocation()" *ngIf="!geoLocationLoading">
-        Aktualisieren
-      </button>
 
-    </form>
+      <div *ngFor="let geocodingResult of geocodingResults" class="geocoding-result-container"
+           (click)="parkingPositionMap.setMapCoords(geocodingResult.latLng)">
+        <div>
+          {{geocodingResult.address}}
+        </div>
+      </div>
+
+      <cbl-parking-position-map [deferredRenderingTime]="200" #parkingPositionMap
+                                [dynamic]="true"></cbl-parking-position-map>
+
+    </div>
+
 
   </div>
   <div class="modal-footer">

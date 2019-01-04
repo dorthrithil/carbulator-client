@@ -11,6 +11,10 @@ import {endKmValidator} from '../../../../utility/validators/end-km.validator';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {ClrForm} from '@clr/angular';
 import {AppEventsService} from '../../../../services/core/app-events.service';
+import {ParkingPositionMapComponent} from '../parking-position-map/parking-position-map.component';
+import {latLng} from 'leaflet';
+import {GeocodingService} from '../../../../services/crud/geocoding.service';
+import {GeocodingResult} from '../../../../models/geocoding-result';
 
 /**
  * A modal to finish a tour.
@@ -23,9 +27,13 @@ import {AppEventsService} from '../../../../services/core/app-events.service';
 export class FinishTourModalComponent {
 
   /**
-   * Reference to the clarity form instance.t
+   * Reference to the clarity form instance.
    */
   @ViewChild(ClrForm) clrForm;
+  /**
+   * Reference to the parking position map component.
+   */
+  @ViewChild(ParkingPositionMapComponent) parkingPositionMap;
 
   /**
    * Emits the finished tour.
@@ -37,9 +45,13 @@ export class FinishTourModalComponent {
   public isLoading = false;
   public tour: Tour;
   public geoLocationLoading: boolean;
+  public geoCodingLoading: boolean;
+  public geocodingQuery = '';
+  public geocodingResults: GeocodingResult[] = [];
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
+              private geocodingServie: GeocodingService,
               private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private tourService: TourService) {
@@ -65,8 +77,6 @@ export class FinishTourModalComponent {
     this.tour = tour;
     this.isOpen = true;
     this.buildForm();
-    this.getGeoLocation();
-
   }
 
   /**
@@ -79,6 +89,7 @@ export class FinishTourModalComponent {
         this.geoLocationLoading = false;
         const lng = position.coords.longitude;
         const lat = position.coords.latitude;
+        this.parkingPositionMap.setMapCoords(latLng(lat, lng));
         this.finishTourForm.get('parkingPosition').setValue(`${lat}, ${lng}`);
       }, err => {
         console.error(err);
@@ -133,6 +144,19 @@ export class FinishTourModalComponent {
    */
   public isOwner(): boolean {
     return this.auth.isLoggedInUser(this.tour.owner);
+  }
+
+  /**
+   * Geocodes the geocoding query.
+   */
+  public geocode() {
+    this.geoCodingLoading = true;
+    this.geocodingServie.geocode(this.geocodingQuery).subscribe(res => {
+      this.geocodingResults = res;
+      this.geoCodingLoading = false;
+    }, err => {
+      this.geoCodingLoading = false;
+    });
   }
 
 }

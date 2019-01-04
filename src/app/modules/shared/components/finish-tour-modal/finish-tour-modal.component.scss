@@ -1,3 +1,36 @@
-.fake-control-container{
+.fake-control-container {
   margin-top: 1rem;
+}
+
+.inline-form {
+  display: inline-block;
+}
+
+.spinner-container {
+  padding: .25rem;
+  min-height: 1.0625rem;
+}
+
+.map-section {
+  padding: 0 .25rem .25rem .25rem;
+}
+
+.geocoding-result-container {
+  font-weight: bold;
+  border: 1px solid #DDDDDD;
+  margin: .5rem 0 .5rem 0;
+  border-radius: .125rem;
+  display: grid;
+  grid-template-columns: auto 4.5rem;
+  border-right: .25rem solid;
+  background-color: #FAFAFA;
+  padding: .25rem;
+
+  &:hover {
+    border-color: #0065AB !important;
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: border 0.2s ease, transform 0.2s ease;
+  }
+
 }

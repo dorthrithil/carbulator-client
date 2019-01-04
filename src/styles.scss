@@ -59,17 +59,6 @@ clr-dg-cell {
   text-align: center;
 }
 
-// Utility for hiding elements on mobile screens
-@media screen and (max-width: 768px) {
-
-  .hide-on-mobile{
-
-    display: none;
-
-  }
-
-}
-
 .margin-top-1-rem{
   margin-top: 1rem;
 }
@@ -137,4 +126,30 @@ clr-dg-cell {
 // Container for text. Prevents too broad  spaghetti text
 .text-container {
   max-width: 900px;
+}
+
+// Styles for notification boxes
+.notification-box {
+  border: 1px solid #DDDDDD;
+  margin: .5rem 0 .5rem 0;
+  border-radius: .125rem;
+  border-right: .25rem solid #0079b8;
+  display: grid;
+  grid-template-columns: 75% auto;
+  background-color: #F2F2F2;
+
+  .notification-box-col {
+    padding: .25rem;
+  }
+
+  .icon-text-cell {
+    display: grid;
+    grid-template-columns: 1rem auto;
+  }
+
+  .actions {
+    align-self: center;
+    justify-self: right;
+  }
+
 }

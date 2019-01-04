@@ -3,6 +3,32 @@
     "minor": "0.3",
     "patches": [
       {
+        "patch": "0.3.1",
+        "releaseDate": "04.01.2018",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+            "Tabellenansichten für mobile Ansicht verbessert.",
+            "Das Parkplatz Eingabefeld beim Beenden einer Fahrt wurde verbessert.",
+            "Die Reihenfolge der Kacheln in Gruppendetailansicht wurde angepasst."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "minor": "0.3",
+    "patches": [
+      {
         "patch": "0.3.0",
         "releaseDate": "31.12.2018",
         "changes": {
