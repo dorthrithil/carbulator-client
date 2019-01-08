@@ -39,7 +39,8 @@
           ],
           "fixed": [
             "Kleinere Rechtschreibungskorrekturen.",
-            "Das Aufgaben Formular wird nun korrekt zurückgesetzt, nachdem eine Aufgabe erstellt wurde."
+            "Das Aufgaben Formular wird nun korrekt zurückgesetzt, nachdem eine Aufgabe erstellt wurde.",
+            "Kleinere Fehler bei ungültigem Login behoben."
           ],
           "security": [
           ]
