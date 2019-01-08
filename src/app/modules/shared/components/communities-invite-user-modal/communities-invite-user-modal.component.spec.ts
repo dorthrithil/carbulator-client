@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommunitiesInviteUserModalComponent } from './communities-invite-user-modal.component';
+import {CommunitiesInviteUserModalComponent} from './communities-invite-user-modal.component';
 
 describe('CommunitiesInviteUserModalComponent', () => {
   let component: CommunitiesInviteUserModalComponent;

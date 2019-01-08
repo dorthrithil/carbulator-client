@@ -39,6 +39,8 @@ import {TasksDatagridComponent} from './components/tasks-datagrid/tasks-datagrid
 import {TaskDeleteModalComponent} from './components/task-delete-modal/task-delete-modal.component';
 import {TaskFormModalComponent} from './components/task-form-modal/task-form-modal.component';
 import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
+import {CommunitiesInviteUserModalComponent} from './components/communities-invite-user-modal/communities-invite-user-modal.component';
+import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
 
 @NgModule({
   imports: [
@@ -84,7 +86,9 @@ import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
     TasksDatagridComponent,
     TaskDeleteModalComponent,
     TaskFormModalComponent,
-    ConditionalPluralPipe
+    ConditionalPluralPipe,
+    CommunitiesUserSearchComponent,
+    CommunitiesInviteUserModalComponent
   ],
   exports: [
     MomentPipe,
@@ -117,7 +121,9 @@ import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
     TaskInfoModalComponent,
     TasksDatagridComponent,
     TaskDeleteModalComponent,
-    TaskFormModalComponent
+    TaskFormModalComponent,
+    CommunitiesInviteUserModalComponent,
+    CommunitiesUserSearchComponent
   ]
 })
 export class SharedModule {

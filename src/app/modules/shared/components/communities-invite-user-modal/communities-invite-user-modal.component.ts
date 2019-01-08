@@ -1,10 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Community} from '../../../../models/community';
-import {mergeMap} from 'rxjs/operators';
-import {forkJoin, of} from 'rxjs';
+import {forkJoin} from 'rxjs';
 import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
 import {CommunityService} from '../../../../services/crud/community.service';
-import {NotificationsService} from 'angular2-notifications';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**

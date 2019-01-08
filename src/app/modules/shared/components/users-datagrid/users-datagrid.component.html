@@ -1,7 +1,15 @@
 <clr-datagrid [clrDgLoading]="isLoading">
 
-  <clr-dg-placeholder>Keine Mitglieder vorhanden</clr-dg-placeholder>
+  <clr-dg-action-bar *ngIf="community">
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="inviteUserModal.open()">
+        <clr-icon shape="plus"></clr-icon>
+        Einladen
+      </button>
+    </div>
+  </clr-dg-action-bar>
 
+  <clr-dg-placeholder>Keine Mitglieder vorhanden</clr-dg-placeholder>
 
   <clr-dg-column [clrDgField]="'username'">
     <ng-container *clrDgHideableColumn="{hidden: false}">Benutzername</ng-container>
@@ -33,3 +41,6 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+
+<cbl-communities-invite-user-modal [community]="community" #inviteUserModal (invitationsSent)="updateInvitedUsers()">
+</cbl-communities-invite-user-modal>
