@@ -148,6 +148,7 @@ export class TaskFormModalComponent implements OnDestroy {
     this.isOpen = true;
     this.task = task;
     this.formMode = formMode;
+    this.lastTourLoading = true;
     this.tourService.getLatestCommunityTour(this.communityId).subscribe(latestTour => {
       this.lastEndKm = latestTour.endKm;
       if (this.formMode === FormMode.CREATE) {

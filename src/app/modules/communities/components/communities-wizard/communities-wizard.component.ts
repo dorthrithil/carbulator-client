@@ -7,7 +7,7 @@ import {CommunityService} from '../../../../services/crud/community.service';
 import {forkJoin, of} from 'rxjs';
 import {ClrWizard, ClrWizardPage} from '@clr/angular';
 import {Community} from '../../../../models/community';
-import {CommunitiesUserSearchComponent} from '../communities-user-search/communities-user-search.component';
+import {CommunitiesUserSearchComponent} from '../../../shared/components/communities-user-search/communities-user-search.component';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**

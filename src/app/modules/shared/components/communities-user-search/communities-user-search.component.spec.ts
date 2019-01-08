@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CommunitiesUserSearchComponent } from './communities-wizard-users.component';
+import {CommunitiesUserSearchComponent} from './communities-wizard-users.component';
 
 describe('CommunitiesWizardUsersComponent', () => {
   let component: CommunitiesUserSearchComponent;

@@ -57,7 +57,7 @@ export const knownErrors: ErrorDictionary = {
   UNAUTHORIZED: {
     message: 'UNAUTHORIZED',
     title: 'Nicht autorisiert',
-    description: 'Für diese Aktion fehlen dir die nötigen Rechte.'
+    description: 'Eventuell ist dein Login nicht mehr gültig. Bitte logge dich neu ein.'
   },
   CANT_START_TOUR_WHEN_HAVING_UNFINISHED_TOURS_IN_COMMUNITY: {
     message: 'CANT_START_TOUR_WHEN_HAVING_UNFINISHED_TOURS_IN_COMMUNITY',

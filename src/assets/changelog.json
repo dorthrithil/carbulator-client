@@ -22,6 +22,29 @@
           "security": [
           ]
         }
+      },
+      {
+        "patch": "0.3.2",
+        "releaseDate": "TBA",
+        "changes": {
+          "added": [
+            "Neue Gruppenmitglieder können aus der Gruppenmitglieder Listenansicht per Button hinzugefügt werden.",
+            "Die Gruppenmitglieder Listenansicht zeigt nun auch Mitglieder mit nicht bestätigter Einladung."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Kleinere Rechtschreibungskorrekturen.",
+            "Das Aufgaben Formular wird nun korrekt zurückgesetzt, nachdem eine Aufgabe erstellt wurde.",
+            "Kleinere Fehler bei ungültigem Login behoben."
+          ],
+          "security": [
+          ]
+        }
       }
     ]
   },
