@@ -42,5 +42,14 @@
   </clr-dg-footer>
 </clr-datagrid>
 
+<div *ngIf="community">
+  <h6>Warte auf Einladungsbestätigung von:</h6>
+  <ul class="list">
+    <li *ngFor="let user of invitedUsers">
+      {{user.username}}
+    </li>
+  </ul>
+</div>
+
 <cbl-communities-invite-user-modal [community]="community" #inviteUserModal (invitationsSent)="updateInvitedUsers()">
 </cbl-communities-invite-user-modal>
