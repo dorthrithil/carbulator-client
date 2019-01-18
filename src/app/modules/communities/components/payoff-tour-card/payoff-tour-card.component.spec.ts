@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PayoffTourCardComponent } from './payoff-tour-card.component';
+import {PayoffTourCardComponent} from './payoff-tour-card.component';
 
 describe('PayoffTourCardComponent', () => {
   let component: PayoffTourCardComponent;

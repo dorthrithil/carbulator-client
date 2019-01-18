@@ -1,75 +1,81 @@
-<h1>Gruppen</h1>
+<div class="content-container">
+  <div class="content-area">
 
-<clr-datagrid [clrDgLoading]="isLoading">
+    <h1>Gruppen</h1>
 
-  <clr-dg-action-bar>
-    <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()">
-        <clr-icon shape="plus"></clr-icon>
-        Neue Gruppe
-      </button>
-    </div>
-  </clr-dg-action-bar>
+    <clr-datagrid [clrDgLoading]="isLoading">
 
-  <clr-dg-placeholder>Du bist noch in keiner Gruppe!</clr-dg-placeholder>
+      <clr-dg-action-bar>
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()">
+            <clr-icon shape="plus"></clr-icon>
+            Neue Gruppe
+          </button>
+        </div>
+      </clr-dg-action-bar>
 
-  <clr-dg-column [clrDgField]="'id'">
-    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Gruppen ID</ng-container>
-  </clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'">
-    <ng-container *clrDgHideableColumn="{hidden: false}">Name</ng-container>
-  </clr-dg-column>
-  <clr-dg-column [clrDgField]="'timeCreated'">
-    <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Erstellungsdatum</ng-container>
-    <clr-dg-filter [clrDgFilter]="timeCreatedFilter">
-      <cbl-moment-filter #timeCreatedFilter></cbl-moment-filter>
-    </clr-dg-filter>
-  </clr-dg-column>
+      <clr-dg-placeholder>Du bist noch in keiner Gruppe!</clr-dg-placeholder>
 
-  <clr-dg-row *clrDgItems="let community of communities">
-    <clr-dg-action-overflow>
-      <button class="action-item" (click)="deleteModal.deleteCommunity(community)" *ngIf="community.isDeletable">
-        <clr-icon shape="trash"></clr-icon>
-        Löschen
-      </button>
-      <button class="action-item" (click)="renameModal.open(community)" *ngIf="community.isEditable">
-        <clr-icon shape="pencil"></clr-icon>
-        Umbenennen
-      </button>
-      <button class="action-item" [routerLink]="['/communities',community.id]" *ngIf="community.isEditable">
-        <clr-icon shape="eye"></clr-icon>
-        Details
-      </button>
-    </clr-dg-action-overflow>
-    <clr-dg-cell>{{community.id}}</clr-dg-cell>
-    <clr-dg-cell><a [routerLink]="['/communities',community.id]">{{community.name}}</a></clr-dg-cell>
-    <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
-  </clr-dg-row>
+      <clr-dg-column [clrDgField]="'id'">
+        <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Gruppen ID</ng-container>
+      </clr-dg-column>
+      <clr-dg-column [clrDgField]="'name'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">Name</ng-container>
+      </clr-dg-column>
+      <clr-dg-column [clrDgField]="'timeCreated'">
+        <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Erstellungsdatum</ng-container>
+        <clr-dg-filter [clrDgFilter]="timeCreatedFilter">
+          <cbl-moment-filter #timeCreatedFilter></cbl-moment-filter>
+        </clr-dg-filter>
+      </clr-dg-column>
 
-  <clr-dg-footer>
-    <clr-dg-column-toggle>
-      <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
-      <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
-    </clr-dg-column-toggle>
-    <clr-dg-pagination #pagination [clrDgPageSize]="15">
-      <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Gruppen pro Seite</clr-dg-page-size>
-      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-      von {{pagination.totalItems}} Gruppen
-    </clr-dg-pagination>
-  </clr-dg-footer>
-</clr-datagrid>
+      <clr-dg-row *clrDgItems="let community of communities">
+        <clr-dg-action-overflow>
+          <button class="action-item" (click)="deleteModal.deleteCommunity(community)" *ngIf="community.isDeletable">
+            <clr-icon shape="trash"></clr-icon>
+            Löschen
+          </button>
+          <button class="action-item" (click)="renameModal.open(community)" *ngIf="community.isEditable">
+            <clr-icon shape="pencil"></clr-icon>
+            Umbenennen
+          </button>
+          <button class="action-item" [routerLink]="['/communities',community.id]" *ngIf="community.isEditable">
+            <clr-icon shape="eye"></clr-icon>
+            Details
+          </button>
+        </clr-dg-action-overflow>
+        <clr-dg-cell>{{community.id}}</clr-dg-cell>
+        <clr-dg-cell><a [routerLink]="['/communities', community.id]">{{community.name}}</a></clr-dg-cell>
+        <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+      </clr-dg-row>
 
-<cbl-communities-wizard #communitiesWizard (communityCreated)="addNewCommunity($event)"></cbl-communities-wizard>
+      <clr-dg-footer>
+        <clr-dg-column-toggle>
+          <clr-dg-column-toggle-title>Spalten wählen:</clr-dg-column-toggle-title>
+          <clr-dg-column-toggle-button>Alle auswählen</clr-dg-column-toggle-button>
+        </clr-dg-column-toggle>
+        <clr-dg-pagination #pagination [clrDgPageSize]="15">
+          <clr-dg-page-size [clrPageSizeOptions]="[15,30,50,100]">Gruppen pro Seite</clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+          von {{pagination.totalItems}} Gruppen
+        </clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
 
-<cbl-confirm-modal [(isOpen)]="confirmDeletionModalOpen" [action]="deleteCommunityRequest">
-  <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
-  <ng-template cblConfirmModalText>Die Gruppe wird gelöscht und alle Mitglieder daraus entfernt. Dies kann nicht
-    rückgängig gemacht werden.
-  </ng-template>
-  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
-  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
-</cbl-confirm-modal>
+    <cbl-communities-wizard #communitiesWizard (communityCreated)="addNewCommunity($event)"></cbl-communities-wizard>
 
-<cbl-communities-rename-modal #renameModal></cbl-communities-rename-modal>
+    <cbl-confirm-modal [(isOpen)]="confirmDeletionModalOpen" [action]="deleteCommunityRequest">
+      <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
+      <ng-template cblConfirmModalText>Die Gruppe wird gelöscht und alle Mitglieder daraus entfernt. Dies kann nicht
+        rückgängig gemacht werden.
+      </ng-template>
+      <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+      <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+    </cbl-confirm-modal>
 
-<cbl-communities-delete-modal #deleteModal (deleted)="onCommunityDeleted($event)"></cbl-communities-delete-modal>
+    <cbl-communities-rename-modal #renameModal></cbl-communities-rename-modal>
+
+    <cbl-communities-delete-modal #deleteModal (deleted)="onCommunityDeleted($event)"></cbl-communities-delete-modal>
+
+  </div>
+</div>

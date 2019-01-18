@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PayoffService} from '../../../../services/crud/payoff.service';
-import {NotificationsService} from 'angular2-notifications';
 import {Payoff} from '../../../../models/payoff';
 import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortPayoffs} from '../../../../utility/sorting/sort-payoffs';
@@ -66,7 +65,7 @@ export class CommunityPayoffCardComponent implements OnInit {
   public onPayoffConfirm(payoff) {
     this.addPayoff(payoff);
     this.notifications.success('Abrechnung fertig', 'Alle offenen Fahrten und Tankfüllungen wurden verrechnet.');
-    this.router.navigate(['finances', 'payoffs', payoff.id]);
+    this.router.navigate(['communities', this.communityId, 'details', 'payoffs', payoff.id]);
   }
 
 }

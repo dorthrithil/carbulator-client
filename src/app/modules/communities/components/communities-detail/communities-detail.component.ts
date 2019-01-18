@@ -35,7 +35,7 @@ export class CommunitiesDetailComponent implements OnInit {
    * to 401 happens.
    */
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
+    this.route.parent.parent.params.subscribe((params: Params) => {
       const id = params['id'];
       if (Number(id)) {
         this.communityId = id;

@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Payoff} from '../../../../models/payoff';
-import {Debt} from '../../../../models/debt';
 
 /**
  * A card that shows a list of debts.

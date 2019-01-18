@@ -32,7 +32,9 @@
 
   <clr-dg-row *clrDgItems="let payoff of payoffs">
     <clr-dg-action-overflow>
-      <button class="action-item" [routerLink]="['/', 'finances', 'payoffs', payoff.id]">Details</button>
+      <button class="action-item" [routerLink]="['/', 'communities', communityId, 'details', 'payoffs', payoff.id]">
+        Details
+      </button>
     </clr-dg-action-overflow>
     <clr-dg-cell>{{payoff.id}}</clr-dg-cell>
     <clr-dg-cell>{{payoff.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>

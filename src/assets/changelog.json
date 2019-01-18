@@ -1,5 +1,30 @@
 [
   {
+    "minor": "0.4",
+    "patches": [
+      {
+        "patch": "0.4.0",
+        "releaseDate": "TODO",
+        "changes": {
+          "added": [
+            "Gruppenkalender hinzugefügt."
+          ],
+          "changed": [
+            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  },
+  {
     "minor": "0.3",
     "patches": [
       {
@@ -45,12 +70,7 @@
           "security": [
           ]
         }
-      }
-    ]
-  },
-  {
-    "minor": "0.3",
-    "patches": [
+      },
       {
         "patch": "0.3.0",
         "releaseDate": "31.12.2018",

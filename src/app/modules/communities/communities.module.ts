@@ -19,6 +19,13 @@ import {CommunitiesComponent} from './components/communities/communities.compone
 import {CommunitiesDetailTabviewComponent} from './components/communities-detail-tabview/communities-detail-tabview.component';
 import {CommunityAlertsComponent} from './components/community-alerts/community-alerts.component';
 import {CommunityTaskCardComponent} from './components/community-task-card/community-task-card.component';
+import {PayoffDetailComponent} from './components/payoff-detail/payoff-detail.component';
+import {PayoffDebtCardComponent} from './components/payoff-debt-card/payoff-debt-card.component';
+import {PayoffTourCardComponent} from './components/payoff-tour-card/payoff-tour-card.component';
+import {PayoffRefuelCardComponent} from './components/payoff-refuel-card/payoff-refuel-card.component';
+import {CommunitiesDetailSubnavComponent} from './components/communities-detail-subnav/communities-detail-subnav.component';
+import {CommunityCalendarComponent} from './components/community-calendar/community-calendar.component';
+import {CommunitiesDetailWrapperComponent} from './components/communities-detail-wrapper/communities-detail-wrapper.component';
 
 @NgModule({
   imports: [
@@ -28,6 +35,10 @@ import {CommunityTaskCardComponent} from './components/community-task-card/commu
     SharedModule
   ],
   declarations: [
+    PayoffDetailComponent,
+    PayoffDebtCardComponent,
+    PayoffTourCardComponent,
+    PayoffRefuelCardComponent,
     CommunitiesListComponent,
     CommunitiesWizardComponent,
     CommunitiesWizardNameComponent,
@@ -44,6 +55,9 @@ import {CommunityTaskCardComponent} from './components/community-task-card/commu
     CommunitiesDetailTabviewComponent,
     CommunityAlertsComponent,
     CommunityTaskCardComponent,
+    CommunitiesDetailSubnavComponent,
+    CommunityCalendarComponent,
+    CommunitiesDetailWrapperComponent,
   ]
 })
 export class CommunitiesModule {

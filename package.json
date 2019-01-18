@@ -29,10 +29,12 @@
     "@webcomponents/custom-elements": "^1.2.1",
     "angular2-notifications": "^2.0.0",
     "core-js": "^2.6.2",
+    "fullcalendar": "^4.0.0-alpha.2",
     "jwt-decode": "^2.2.0",
     "leaflet": "^1.4.0",
     "mobile-detect": "^1.4.3",
     "moment": "^2.23.0",
+    "primeng": "^7.0.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.3",
     "zone.js": "~0.8.27"
