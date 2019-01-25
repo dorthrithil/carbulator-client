@@ -115,7 +115,7 @@ export class CommunityCalendarComponent implements OnInit {
   /**
    * Opens the event modal for event creation.
    */
-  private addNewEvent() {
+  public addNewEvent() {
     this.calendarEventModal.open(FormMode.CREATE);
   }
 

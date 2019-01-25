@@ -21,6 +21,25 @@
           "security": [
           ]
         }
+      },
+      {
+        "patch": "0.4.1",
+        "releaseDate": "TODO",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+            "Verbesserungen bei der Validierung einiger Formularfelder."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
       }
     ]
   },

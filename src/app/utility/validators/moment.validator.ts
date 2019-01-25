@@ -7,6 +7,9 @@ import * as moment from 'moment';
  */
 export function momentValidator(formattingPattern: string): ValidatorFn {
   return (ctrl: AbstractControl): { [key: string]: any } => {
+    if (ctrl.value === null) {
+      return null;
+    }
     return moment(ctrl.value, formattingPattern).isValid() ? null : {'moment': true};
   };
 }
