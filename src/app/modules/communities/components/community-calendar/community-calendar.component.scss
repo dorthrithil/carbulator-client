@@ -1,0 +1,54 @@
+cbl-community-calendar {
+
+  .calendar-toolbar {
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    margin-bottom: .25rem;
+
+    div {
+      text-align: center;
+    }
+
+  }
+
+  clr-button-group {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    margin-right: 0 !important;
+  }
+
+  .width-limiter {
+    max-width: 1000px;
+  }
+
+  h1 {
+    display: inline-block;
+  }
+
+
+  .calendar-wrapper {
+    position: relative;
+
+    .spinner-overlay {
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+
+  .fc-today {
+    .fc-day-number {
+      font-weight: bold;
+    }
+  }
+
+}

@@ -1,15 +1,16 @@
-<nav class="subnav" [clr-nav-level]="2">
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="'details'" routerLinkActive="active">Details</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="'calendar'" routerLinkActive="active">Kalender</a>
-    </li>
-  </ul>
-</nav>
-
 <div class="content-container">
+
+  <clr-vertical-nav [clr-nav-level]="2">
+    <a clrVerticalNavLink [routerLink]="'details'" routerLinkActive="active">
+      <clr-icon shape="details"></clr-icon>
+      Details
+    </a>
+    <a clrVerticalNavLink [routerLink]="'calendar'" routerLinkActive="active">
+      <clr-icon shape="calendar"></clr-icon>
+      Kalender
+    </a>
+  </clr-vertical-nav>
+
   <div class="content-area">
     <router-outlet></router-outlet>
   </div>

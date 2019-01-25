@@ -63,7 +63,7 @@ export class CalendarEventService {
    * @param to End of time interval to retrieve events for.
    * @return Observable that resolves to an array of CalendarEvents.
    */
-  public getEvents(communityId: number, from: moment.Moment, to: moment.Moment): Observable<CalendarEvent> {
+  public getEvents(communityId: number, from: moment.Moment, to: moment.Moment): Observable<CalendarEvent[]> {
     return this.http.get(this.api.events.getEvents(communityId, from.format(), to.format())).pipe(
       map(eventsJson => {
         return eventsJson.map(eventJson => CalendarEvent.fromJson(eventJson));

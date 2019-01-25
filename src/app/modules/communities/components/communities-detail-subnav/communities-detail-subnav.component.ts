@@ -9,5 +9,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./communities-detail-subnav.component.scss']
 })
 export class CommunitiesDetailSubnavComponent {
-
 }

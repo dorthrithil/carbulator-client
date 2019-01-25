@@ -4,7 +4,7 @@
     "patches": [
       {
         "patch": "0.4.0",
-        "releaseDate": "TODO",
+        "releaseDate": "25.01.2019",
         "changes": {
           "added": [
             "Gruppenkalender hinzugefügt."

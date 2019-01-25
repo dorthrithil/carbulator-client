@@ -26,13 +26,16 @@ import {PayoffRefuelCardComponent} from './components/payoff-refuel-card/payoff-
 import {CommunitiesDetailSubnavComponent} from './components/communities-detail-subnav/communities-detail-subnav.component';
 import {CommunityCalendarComponent} from './components/community-calendar/community-calendar.component';
 import {CommunitiesDetailWrapperComponent} from './components/communities-detail-wrapper/communities-detail-wrapper.component';
+import {FullCalendarModule} from 'primeng/fullcalendar';
+import {CalendarEventModalComponent} from './components/calendar-event-modal/calendar-event-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CommunitiesRoutingModule,
     ClarityModule,
-    SharedModule
+    SharedModule,
+    FullCalendarModule
   ],
   declarations: [
     PayoffDetailComponent,
@@ -58,6 +61,7 @@ import {CommunitiesDetailWrapperComponent} from './components/communities-detail
     CommunitiesDetailSubnavComponent,
     CommunityCalendarComponent,
     CommunitiesDetailWrapperComponent,
+    CalendarEventModalComponent,
   ]
 })
 export class CommunitiesModule {

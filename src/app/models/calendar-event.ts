@@ -10,9 +10,19 @@ export class CalendarEvent {
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
   title: string;
-  start: moment.Moment;
-  end: moment.Moment;
+  titleModel: string; // This is what is stored in the DB, the other property is for display in the calendar UI
+  startMoment: moment.Moment;
+  start: Date;
+  endMoment: moment.Moment;
+  end: Date;
   owner: User;
+
+  constructor() {
+    this.startMoment = moment().startOf('day');
+    this.endMoment = moment().endOf('day');
+    this.start = this.startMoment.toDate();
+    this.end = this.endMoment.toDate();
+  }
 
   /**
    * Creates an event from a JSON representation.
@@ -22,12 +32,35 @@ export class CalendarEvent {
   public static fromJson(src: any): CalendarEvent {
     const event = new CalendarEvent();
     event.id = src.id;
-    event.title = src.title;
+    event.titleModel = src.title;
     event.owner = User.fromJson(src.owner);
-    event.timeCreated = moment.utc(src.time_created);
-    event.timeUpdated = moment.utc(src.time_updated);
-    event.start = moment.utc(src.start);
-    event.end = moment.utc(src.end);
+    event.timeCreated = moment(src.time_created);
+    event.timeUpdated = moment(src.time_updated);
+    event.startMoment = moment(src.start);
+    event.endMoment = moment(src.end);
+    event.start = event.startMoment.toDate();
+    event.end = event.endMoment.toDate();
+    event.title = `${src.owner.username}: ${src.title}`;
+    return event;
+  }
+
+  /**
+   * Parses a FullCalendar event object into a CalendarEvent.
+   * @param src FullCalendar EventApi event object.
+   * @return Parsed CalendarEvent.
+   */
+  public static fromFullCalendarEvent(src: any): CalendarEvent {
+    const event = new CalendarEvent();
+    event.id = Number(src.def.publicId);
+    event.title = src.def.title;
+    event.timeCreated = src.def.extendedProps.timeCreated;
+    event.timeUpdated = src.def.extendedProps.timeUpdated;
+    event.titleModel = src.def.extendedProps.titleModel;
+    event.owner = src.def.extendedProps.owner;
+    event.startMoment = moment(src.start);
+    event.endMoment = moment(src.end);
+    event.start = src.start;
+    event.end = src.end;
     return event;
   }
 
@@ -38,9 +71,9 @@ export class CalendarEvent {
    */
   public static toJson(src: CalendarEvent): any {
     return {
-      title: src.title,
-      start: src.start,
-      end: src.end
+      title: src.titleModel,
+      start: src.startMoment.format(),
+      end: src.endMoment.format()
     };
   }
 

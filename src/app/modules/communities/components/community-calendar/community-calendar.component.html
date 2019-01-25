@@ -1,3 +1,47 @@
-<p>
-  community-calendar works!
-</p>
+<div class="clr-row">
+  <div class="clr-col-xl-8 clr-col-lg-10 clr-col-md-12 clr-col-sm-12 clr-col-12">
+    <div class="width-limiter">
+
+      <div class="calendar-toolbar">
+        <div>
+          <button class="btn btn-primary" (click)="addNewEvent()">
+            <clr-icon shape="plus"></clr-icon>
+            Neu
+          </button>
+        </div>
+        <div>
+          <h1>{{currentMonth}} {{currentYear}}</h1>
+        </div>
+        <div>
+          <div>
+            <clr-button-group class="btn-primary">
+              <clr-button (click)="prev()">
+                <clr-icon shape="angle" [dir]="'left'"></clr-icon>
+              </clr-button>
+              <clr-button (click)="today()" [disabled]="todayInView">
+                Heute
+              </clr-button>
+              <clr-button (click)="next()">
+                <clr-icon shape="angle" [dir]="'right'"></clr-icon>
+              </clr-button>
+            </clr-button-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-wrapper">
+        <p-fullCalendar [events]="events" [options]="options" #calendar></p-fullCalendar>
+        <div class="spinner-overlay" *ngIf="isLoading">
+          <span class="spinner"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<cbl-calendar-event-modal #calendarEventModal
+                          [communityId]="communityId"
+                          (calendarEventSaved)="loadEvents()"
+                          (calendarEventDeleted)="loadEvents()">
+</cbl-calendar-event-modal>
