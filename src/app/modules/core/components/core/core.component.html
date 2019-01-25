@@ -2,6 +2,7 @@
 
 <clr-main-container>
   <cbl-navigation *ngIf="auth.getIsLoggedIn() | async"></cbl-navigation>
+  <!--<cbl-subnavigation *ngIf="auth.getIsLoggedIn() | async"></cbl-subnavigation>-->
   <router-outlet></router-outlet>
 </clr-main-container>
 

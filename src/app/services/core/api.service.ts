@@ -177,4 +177,22 @@ export class ApiService {
     }
   };
 
+  public events = {
+    createEvent: (communityId: number): string => {
+      return `${this.apiHost}communities/${communityId}/events`;
+    },
+    getEvents: (communityId: number, from: string, to: string): string => {
+      return `${this.apiHost}communities/${communityId}/events/from/${from}/to/${to}`;
+    },
+    getEvent: (eventId: number): string => {
+      return `${this.apiHost}events/${eventId}`;
+    },
+    updateEvent: (eventId: number): string => {
+      return `${this.apiHost}events/${eventId}`;
+    },
+    deleteEvent: (eventId: number): string => {
+      return `${this.apiHost}events/${eventId}`;
+    }
+  };
+
 }

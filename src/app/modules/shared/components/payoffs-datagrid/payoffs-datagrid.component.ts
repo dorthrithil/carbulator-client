@@ -64,7 +64,7 @@ export class PayoffsDatagridComponent implements OnInit {
    */
   public onPayoffConfirm(payoff) {
     this.notifications.success('Abrechnung fertig', 'Alle offenen Fahrten und Tankfüllungen wurden verrechnet.');
-    this.router.navigate(['finances', 'payoffs', payoff.id]);
+    this.router.navigate(['communities', this.communityId, 'details', 'payoffs', payoff.id]);
   }
 
 

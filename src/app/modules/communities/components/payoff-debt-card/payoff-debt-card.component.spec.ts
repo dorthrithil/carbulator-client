@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PayoffDebtCardComponent } from './payoff-debt-card.component';
+import {PayoffDebtCardComponent} from './payoff-debt-card.component';
 
 describe('PayoffDebtCardComponent', () => {
   let component: PayoffDebtCardComponent;

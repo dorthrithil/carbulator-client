@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Payoff} from '../../../../models/payoff';
 import {Router} from '@angular/router';
 
@@ -16,6 +16,10 @@ export class PayoffBoxComponent {
    * The payoff to show in the box.
    */
   @Input() payoff: Payoff;
+  /**
+   * The id of the community the payoff is in.
+   */
+  @Input() communityId: number;
 
   constructor(private router: Router) {
   }
@@ -31,7 +35,7 @@ export class PayoffBoxComponent {
    * Navigates to the payoff detail page.
    */
   public navigateToPayoffDetail(): void {
-    this.router.navigate(['finances', 'payoffs', this.payoff.id]);
+    this.router.navigate(['communities', this.communityId, 'details', 'payoffs', this.payoff.id]);
   }
 
 }

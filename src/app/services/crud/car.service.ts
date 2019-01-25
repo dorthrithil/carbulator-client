@@ -13,7 +13,6 @@ import {Car} from '../../models/car';
 })
 export class CarService {
 
-
   constructor(private http: ErrorMappingHttpService,
               private api: ApiService) {
   }

@@ -20,11 +20,6 @@ const coreRoutes: Routes = [
     canActivate: [IsLoggedInGuard]
   },
   {
-    path: 'finances',
-    loadChildren: '../finances/finances.module#FinancesModule',
-    canActivate: [IsLoggedInGuard]
-  },
-  {
     path: 'account',
     loadChildren: '../account/account.module#AccountModule',
     canActivate: [IsLoggedInGuard]

@@ -32,11 +32,15 @@
               "node_modules/@clr/icons/clr-icons.min.css",
               "node_modules/@clr/ui/clr-ui.min.css",
               "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/fullcalendar/dist/fullcalendar.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
               "src/styles.scss"
             ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-              "node_modules/mobile-detect/mobile-detect.js"
+              "node_modules/mobile-detect/mobile-detect.js",
+              "node_modules/fullcalendar/dist/fullcalendar.min.js"
             ],
             "i18nLocale": "de"
           },

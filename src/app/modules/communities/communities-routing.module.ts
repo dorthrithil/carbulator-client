@@ -5,6 +5,10 @@ import {CommunitiesListComponent} from './components/communities-list/communitie
 import {CommunitiesDetailComponent} from './components/communities-detail/communities-detail.component';
 import {CommunitiesComponent} from './components/communities/communities.component';
 import {CommunitiesDetailTabviewComponent} from './components/communities-detail-tabview/communities-detail-tabview.component';
+import {PayoffDetailComponent} from './components/payoff-detail/payoff-detail.component';
+import {CommunitiesDetailSubnavComponent} from './components/communities-detail-subnav/communities-detail-subnav.component';
+import {CommunityCalendarComponent} from './components/community-calendar/community-calendar.component';
+import {CommunitiesDetailWrapperComponent} from './components/communities-detail-wrapper/communities-detail-wrapper.component';
 
 const communitiesRoutes: Routes = [
   {
@@ -17,15 +21,35 @@ const communitiesRoutes: Routes = [
       },
       {
         path: ':id',
-        component: CommunitiesDetailComponent,
-      },
-      {
-        path: ':id/tabview/:tabid',
-        component: CommunitiesDetailTabviewComponent,
-      },
-      {
-        path: '**',
-        redirectTo: '/404'
+        component: CommunitiesDetailSubnavComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'details'
+          },
+          {
+            path: 'details',
+            component: CommunitiesDetailWrapperComponent,
+            children: [
+              {
+                path: '',
+                component: CommunitiesDetailComponent
+              },
+              {
+                path: 'tabview/:tabid',
+                component: CommunitiesDetailTabviewComponent,
+              },
+              {
+                path: 'payoffs/:payoffid',
+                component: PayoffDetailComponent,
+              },
+            ]
+          },
+          {
+            path: 'calendar',
+            component: CommunityCalendarComponent
+          }
+        ]
       }
     ]
   }

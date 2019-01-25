@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PayoffDetailComponent } from './payoff-detail.component';
+import {PayoffDetailComponent} from './payoff-detail.component';
 
 describe('PayoffDetailComponent', () => {
   let component: PayoffDetailComponent;

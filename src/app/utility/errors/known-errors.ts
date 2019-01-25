@@ -119,5 +119,20 @@ export const knownErrors: ErrorDictionary = {
     message: 'NO_GEOCODING_RESULTS',
     title: 'Keine Suchergebnisse',
     description: 'Für die Suchanfrage wurde keine passende Adresse gefunden.'
-  }
+  },
+  END_MUST_BE_AFTER_START: {
+    message: 'END_MUST_BE_AFTER_START',
+    title: 'Termin Ende muss nach Termin Anfang sein',
+    description: 'Der Endzeitpunkt eines Termins darf nicht vor dem Anfangszeitpunkt liegen.'
+  },
+  EVENT_DOESNT_EXIST: {
+    message: 'EVENT_DOESNT_EXIST',
+    title: 'Termin nicht gefunden',
+    description: 'Der angeforderte Termin wurde nicht gefunden.'
+  },
+  TO_MUST_BE_AFTER_FROM: {
+    message: 'TO_MUST_BE_AFTER_FROM',
+    title: 'Falscher Suchzeitraum',
+    description: 'Der Suchzeitraum wurde nicht richtig konfiguriert. "Bis" muss nach "Von" liegen.'
+  },
 };

@@ -1,17 +1,16 @@
 [
   {
-    "minor": "0.3",
+    "minor": "0.4",
     "patches": [
       {
-        "patch": "0.3.1",
-        "releaseDate": "04.01.2019",
+        "patch": "0.4.0",
+        "releaseDate": "25.01.2019",
         "changes": {
           "added": [
+            "Gruppenkalender hinzugefügt."
           ],
           "changed": [
-            "Tabellenansichten für mobile Ansicht verbessert.",
-            "Das Parkplatz Eingabefeld beim Beenden einer Fahrt wurde verbessert.",
-            "Die Reihenfolge der Kacheln in Gruppendetailansicht wurde angepasst."
+            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
           ],
           "deprecated": [
           ],
@@ -22,7 +21,12 @@
           "security": [
           ]
         }
-      },
+      }
+    ]
+  },
+  {
+    "minor": "0.3",
+    "patches": [
       {
         "patch": "0.3.2",
         "releaseDate": "08.01.2019",
@@ -45,12 +49,28 @@
           "security": [
           ]
         }
-      }
-    ]
-  },
-  {
-    "minor": "0.3",
-    "patches": [
+      },
+      {
+        "patch": "0.3.1",
+        "releaseDate": "04.01.2019",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+            "Tabellenansichten für mobile Ansicht verbessert.",
+            "Das Parkplatz Eingabefeld beim Beenden einer Fahrt wurde verbessert.",
+            "Die Reihenfolge der Kacheln in Gruppendetailansicht wurde angepasst."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
       {
         "patch": "0.3.0",
         "releaseDate": "31.12.2018",
