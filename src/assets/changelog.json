@@ -3,14 +3,14 @@
     "minor": "0.4",
     "patches": [
       {
-        "patch": "0.4.0",
-        "releaseDate": "25.01.2019",
+        "patch": "0.4.1",
+        "releaseDate": "TODO",
         "changes": {
           "added": [
-            "Gruppenkalender hinzugefügt."
+            "Zurück Button auf der Registrierungs- und Passwort vergessen Seite hinzugefügt."
           ],
           "changed": [
-            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
+            "Verbesserungen bei der Validierung einiger Formularfelder."
           ],
           "deprecated": [
           ],
@@ -23,13 +23,14 @@
         }
       },
       {
-        "patch": "0.4.1",
-        "releaseDate": "TODO",
+        "patch": "0.4.0",
+        "releaseDate": "25.01.2019",
         "changes": {
           "added": [
+            "Gruppenkalender hinzugefügt."
           ],
           "changed": [
-            "Verbesserungen bei der Validierung einiger Formularfelder."
+            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
           ],
           "deprecated": [
           ],
