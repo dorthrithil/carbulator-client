@@ -18,6 +18,7 @@
           "removed": [
           ],
           "fixed": [
+            "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen."
           ],
           "security": [
           ]
