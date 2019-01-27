@@ -18,7 +18,8 @@
           "removed": [
           ],
           "fixed": [
-            "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen."
+            "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen.",
+            "Textüberlauf bei einigen Texten in mobiler Ansicht verhindert."
           ],
           "security": [
           ]
