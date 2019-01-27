@@ -10,7 +10,8 @@
             "Zurück Button auf der Registrierungs- und Passwort vergessen Seite hinzugefügt."
           ],
           "changed": [
-            "Verbesserungen bei der Validierung einiger Formularfelder."
+            "Verbesserungen bei der Validierung einiger Formularfelder.",
+            "Ladezeit der Applikation verbessert."
           ],
           "deprecated": [
           ],
