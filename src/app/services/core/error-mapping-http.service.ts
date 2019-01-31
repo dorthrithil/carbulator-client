@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 /**
  * Wrapper of the http client that maps errors to simple strings for easier handling.

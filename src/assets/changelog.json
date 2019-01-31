@@ -19,7 +19,9 @@
           ],
           "fixed": [
             "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen.",
-            "Textüberlauf bei einigen Texten in mobiler Ansicht verhindert."
+            "Textüberlauf bei einigen Texten in mobiler Ansicht verhindert.",
+            "Fehler bei der Auslösung von Zeitgesteuerten Aufgaben behoben.",
+            "Fehler bei Authentifizierung nach längerer App Inaktivität behoben."
           ],
           "security": [
           ]
@@ -33,7 +35,7 @@
             "Gruppenkalender hinzugefügt."
           ],
           "changed": [
-            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
+            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzenrubrik."
           ],
           "deprecated": [
           ],

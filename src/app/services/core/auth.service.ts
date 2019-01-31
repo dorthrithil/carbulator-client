@@ -172,7 +172,7 @@ export class AuthService {
    * Unpacks the values of a login response and starts the refresh timer is a new access token is found.
    * @param loginResponse Login response from the server that may contain a refresh and an access token.
    */
-  private unpackLoginResponse(loginResponse: LoginResponse) {
+  public unpackLoginResponse(loginResponse: LoginResponse) {
     if (loginResponse.refresh_token !== null) {
       this._refreshToken = loginResponse.refresh_token;
       const refreshTokenDecoded: DecodedJWT = JWT(loginResponse.refresh_token);
@@ -233,13 +233,22 @@ export class AuthService {
   }
 
   /**
-   * Checks if access and refresh token are valid.
-   * @return Returns True if both are valid, False otherwise.
+   * Checks if refresh token is valid.
+   * @return Returns True if the token is valid, False otherwise.
    */
   private checkRefreshTokenValidity(): boolean {
     const now = moment();
     // We remove one minute as the login request also takes some time. The token shouldn't expire during that time
     return this._refreshTokenExpires.isAfter(now.subtract(1, 'm'));
+  }
+
+  /**
+   * Checks if access token is valid.
+   * @return Returns True if the token is valid, False otherwise.
+   */
+  public checkAccessTokenValidity(): boolean {
+    const now = moment();
+    return this.accessTokenExpires.isAfter(now);
   }
 
   /**

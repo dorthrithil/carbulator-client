@@ -22,6 +22,7 @@ import {DataPrivacyStatementComponent} from './components/data-privacy-statement
 import {AboutComponent} from './components/about/about.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component';
+import {TokenRefreshInterceptor} from '../../utility/http-interceptors/token-refresh.interceptor';
 
 @NgModule({
   imports: [
@@ -65,6 +66,11 @@ import {ResetPasswordComponent} from './components/reset-password/reset-password
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenRefreshInterceptor,
       multi: true
     }
   ],
