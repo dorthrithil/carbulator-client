@@ -4,7 +4,7 @@
     "patches": [
       {
         "patch": "0.4.1",
-        "releaseDate": "TODO",
+        "releaseDate": "31.01.2019",
         "changes": {
           "added": [
             "Zurück Button auf der Registrierungs- und Passwort vergessen Seite hinzugefügt."
