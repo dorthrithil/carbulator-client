@@ -115,7 +115,7 @@ export class CommunityCalendarComponent implements OnInit {
   /**
    * Opens the event modal for event creation.
    */
-  private addNewEvent() {
+  public addNewEvent() {
     this.calendarEventModal.open(FormMode.CREATE);
   }
 
@@ -132,9 +132,11 @@ export class CommunityCalendarComponent implements OnInit {
    */
   public loadEvents() {
     this.isLoading = true;
-    const currentRange = this.calendarInstance.state.dateProfile.currentRange;
-    this.rangeStart = moment(currentRange.start);
-    this.rangeEnd = moment(currentRange.end);
+    const activeRange = this.calendarInstance.state.dateProfile.activeRange;
+    // Add and subtract one day to prevent errors resulting from incorrect FullCalendar timezone handling
+    // (e.g. activeRange.start is 01:00 CET but should be 00:00)
+    this.rangeStart = moment(activeRange.start).subtract(1, 'day');
+    this.rangeEnd = moment(activeRange.end).add(1, 'day');
     this.eventService.getEvents(this.communityId, this.rangeStart, this.rangeEnd).subscribe(events => {
       this.events = events;
       this.currentMonth = this.rangeStart.locale('de').format('MMMM');

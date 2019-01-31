@@ -27,7 +27,7 @@ export class PayoffDetailComponent implements OnInit {
    */
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      const id = params['id'];
+      const id = params['payoffid'];
       if (Number(id)) {
         this.payoffService.getPayoff(id).subscribe(payoff => {
           this.payoff = payoff;

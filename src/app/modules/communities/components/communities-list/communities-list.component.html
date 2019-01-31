@@ -9,7 +9,7 @@
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-secondary" (click)="communitiesWizard.open()">
             <clr-icon shape="plus"></clr-icon>
-            Neue Gruppe
+            Neu
           </button>
         </div>
       </clr-dg-action-bar>
@@ -39,7 +39,7 @@
             <clr-icon shape="pencil"></clr-icon>
             Umbenennen
           </button>
-          <button class="action-item" [routerLink]="['/communities',community.id]" *ngIf="community.isEditable">
+          <button class="action-item" [routerLink]="['/communities',community.id]">
             <clr-icon shape="eye"></clr-icon>
             Details
           </button>

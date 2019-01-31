@@ -3,6 +3,32 @@
     "minor": "0.4",
     "patches": [
       {
+        "patch": "0.4.1",
+        "releaseDate": "31.01.2019",
+        "changes": {
+          "added": [
+            "Zurück Button auf der Registrierungs- und Passwort vergessen Seite hinzugefügt."
+          ],
+          "changed": [
+            "Verbesserungen bei der Validierung einiger Formularfelder.",
+            "Ladezeit der Applikation verbessert."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen.",
+            "Textüberlauf bei einigen Texten in mobiler Ansicht verhindert.",
+            "Fehler bei der Auslösung von Zeitgesteuerten Aufgaben behoben.",
+            "Fehler bei Authentifizierung nach längerer App Inaktivität behoben.",
+            "Fehlerhafte Links zu Abrechnungen korrigiert."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.4.0",
         "releaseDate": "25.01.2019",
         "changes": {
@@ -10,7 +36,7 @@
             "Gruppenkalender hinzugefügt."
           ],
           "changed": [
-            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzen Rubrik."
+            "Abrechnungen sind nun unter der Gruppenrubrik zu finden, nicht mehr unter der Finanzenrubrik."
           ],
           "deprecated": [
           ],

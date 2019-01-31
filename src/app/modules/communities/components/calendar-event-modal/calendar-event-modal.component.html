@@ -1,0 +1,72 @@
+<clr-modal [(clrModalOpen)]="isOpen" *ngIf="isOpen">
+  <h3 class="modal-title">
+    <ng-container *ngIf="mode == formModes.CREATE">Neuen Termin eintragen</ng-container>
+    <ng-container *ngIf="mode == formModes.UPDATE">Termin bearbeiten</ng-container>
+  </h3>
+  <div class="modal-body">
+
+    <form [formGroup]="eventForm" clrForm clrLayout="vertical">
+
+      <clr-input-container>
+        <label>Titel</label>
+        <input placeholder="Titel" clrInput formControlName="title" name="title"/>
+        <clr-control-helper>Der Titel des Termins</clr-control-helper>
+      </clr-input-container>
+
+      <ng-container *ngIf="!fromTo">
+
+        <clr-date-container>
+          <label for="date">Datum</label>
+          <input id="date" type="date" clrDate formControlName="start" name="start"/>
+          <clr-control-helper>Das Datum des Termins</clr-control-helper>
+          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'moment'">Gib ein gültiges Datum ein, z.B. 28.02.2042</clr-control-error>
+        </clr-date-container>
+
+      </ng-container>
+
+      <ng-container *ngIf="fromTo">
+
+        <clr-date-container>
+          <label for="start">Start</label>
+          <input id="start" type="date" clrDate formControlName="start" name="start"/>
+          <clr-control-helper>Der Beginn des Termins</clr-control-helper>
+          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'moment'">Gib ein gültiges Datum ein, z.B. 28.02.2042</clr-control-error>
+        </clr-date-container>
+
+        <clr-date-container>
+          <label for="end">Ende</label>
+          <input id="end" type="date" clrDate formControlName="end" name="end"/>
+          <clr-control-helper>Das Ende des Termins</clr-control-helper>
+          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'moment'">Gib ein gültiges Datum ein, z.B. 28.02.2042</clr-control-error>
+          <clr-control-error *clrIfError="'endAfterStart'">Das Enddatum muss nach dem Startdatum liegen
+          </clr-control-error>
+        </clr-date-container>
+
+      </ng-container>
+
+      <clr-checkbox-container>
+        <label>Optionen</label>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox name="fromTo" value="fromTo" formControlName="fromTo"/>
+          <label>Mehrtägiger Termin</label>
+        </clr-checkbox-wrapper>
+      </clr-checkbox-container>
+
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="close()">
+      Abbrechen
+    </button>
+    <button type="button" class="btn btn-danger-outline" (click)="deleteEvent()" *ngIf="mode == formModes.UPDATE">
+      Löschen
+    </button>
+    <button type="button" class="btn btn-primary" (click)="saveEvent()" [clrLoading]="isLoading">
+      Speichern
+    </button>
+  </div>
+</clr-modal>
