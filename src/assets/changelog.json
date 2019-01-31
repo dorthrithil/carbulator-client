@@ -21,7 +21,8 @@
             "Es werden nun auch Termine angezeigt, die im ausgegrauten Kalender Bereich liegen.",
             "Textüberlauf bei einigen Texten in mobiler Ansicht verhindert.",
             "Fehler bei der Auslösung von Zeitgesteuerten Aufgaben behoben.",
-            "Fehler bei Authentifizierung nach längerer App Inaktivität behoben."
+            "Fehler bei Authentifizierung nach längerer App Inaktivität behoben.",
+            "Fehlerhafte Links zu Abrechnungen korrigiert."
           ],
           "security": [
           ]
