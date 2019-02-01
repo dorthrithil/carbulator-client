@@ -37,7 +37,7 @@
       </button>
     </clr-dg-action-overflow>
     <clr-dg-cell>{{payoff.id}}</clr-dg-cell>
-    <clr-dg-cell>{{payoff.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{payoff.timeCreated | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
     <clr-dg-cell>
       <ng-container *ngIf="payoff.isSettled">Schulden beglichen</ng-container>
       <ng-container *ngIf="!payoff.isSettled">

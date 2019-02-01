@@ -22,8 +22,8 @@ export class Debt {
   public static fromJson(src: any): Debt {
     const debt = new Debt();
     debt.id = src.id;
-    debt.timeCreated = moment.utc(src.time_created);
-    debt.timeUpdated = moment.utc(src.time_updated);
+    debt.timeCreated = moment(src.time_created);
+    debt.timeUpdated = moment(src.time_updated);
     debt.debtee = User.fromJson(src.debtee);
     debt.recepient = User.fromJson(src.recepient);
     debt.isSettled = src.is_settled;

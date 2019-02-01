@@ -32,10 +32,10 @@ export class Tour {
   public static fromJson(src: any): Tour {
     const tour = new Tour();
     tour.id = src.id;
-    tour.timeCreated = moment.utc(src.time_created);
-    tour.timeUpdated = moment.utc(src.time_updated);
-    tour.startTime = moment.utc(src.start_time);
-    tour.endTime = moment.utc(src.end_time);
+    tour.timeCreated = moment(src.time_created);
+    tour.timeUpdated = moment(src.time_updated);
+    tour.startTime = moment(src.start_time);
+    tour.endTime = moment(src.end_time);
     tour.owner = User.fromJson(src.owner);
     tour.community = Community.fromJson(src.community);
     tour.startKm = src.start_km;

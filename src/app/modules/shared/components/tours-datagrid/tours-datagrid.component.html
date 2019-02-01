@@ -86,8 +86,8 @@
       <ng-container *ngIf="!tour.isForceFinished">Ja</ng-container>
       <ng-container *ngIf="tour.isForceFinished">Nein</ng-container>
     </clr-dg-cell>
-    <clr-dg-cell>{{tour.startTime | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
-    <clr-dg-cell>{{tour.endTime | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{tour.startTime | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{tour.endTime | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
   </clr-dg-row>
 
   <clr-dg-footer>

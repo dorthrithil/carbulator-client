@@ -38,7 +38,7 @@
 
   <clr-dg-row *clrDgItems="let refuel of refuels">
     <clr-dg-cell>{{refuel.id}}</clr-dg-cell>
-    <clr-dg-cell>{{refuel.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+    <clr-dg-cell>{{refuel.timeCreated | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
     <clr-dg-cell>{{refuel.costs}} €</clr-dg-cell>
     <clr-dg-cell>{{refuel.owner.username}}</clr-dg-cell>
     <clr-dg-cell>

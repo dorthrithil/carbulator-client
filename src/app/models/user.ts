@@ -21,8 +21,8 @@ export class User {
     user.id = src.id;
     user.username = src.username;
     user.email = src.email;
-    user.timeCreated = moment.utc(src.time_created);
-    user.timeUpdated = moment.utc(src.time_updated);
+    user.timeCreated = moment(src.time_created);
+    user.timeUpdated = moment(src.time_updated);
     return user;
   }
 

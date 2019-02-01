@@ -23,8 +23,8 @@ export class Car {
     car.name = src.name;
     car.make = src.make;
     car.model = src.model;
-    car.timeCreated = moment.utc(src.time_created);
-    car.timeUpdated = moment.utc(src.time_updated);
+    car.timeCreated = moment(src.time_created);
+    car.timeUpdated = moment(src.time_updated);
     return car;
   }
 
