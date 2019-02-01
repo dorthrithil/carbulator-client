@@ -10,12 +10,14 @@
         <input placeholder="Nutzername" clrInput formControlName="username" name="username" required/>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
         <clr-control-error *clrIfError="'minlength'">Mindestlänge: 3 Zeichen</clr-control-error>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
         <clr-control-error *clrIfError="'username'">Erlaubte Zeichen: a-z, A-Z, 0-9</clr-control-error>
       </clr-input-container>
 
       <clr-input-container>
         <input placeholder="E-Mail" clrInput formControlName="email" name="email" required/>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
         <clr-control-error *clrIfError="'pattern'">Bitte eine gültige E-Mail Adresse eingeben. Beispiel
           <em>test@example.com</em></clr-control-error>
       </clr-input-container>
@@ -26,6 +28,7 @@
           <input placeholder="Passwort" clrPassword formControlName="password" name="password" type="password"
                  required/>
           <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
           <clr-control-error *clrIfError="'minlength'">Mindestlänge: 8 Zeichen</clr-control-error>
         </clr-password-container>
 
@@ -33,6 +36,7 @@
           <input placeholder="Passwort bestätigen" clrPassword formControlName="passwordConfirm"
                  name="password-confirm" type="password" required/>
           <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+          <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
           <clr-control-error *clrIfError="'minlength'">Mindestlänge: 8 Zeichen</clr-control-error>
         </clr-password-container>
 

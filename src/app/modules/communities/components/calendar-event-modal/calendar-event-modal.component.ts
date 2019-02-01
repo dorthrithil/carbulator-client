@@ -81,7 +81,7 @@ export class CalendarEventModalComponent implements OnInit, OnDestroy {
       [momentValidator('DD.MM.YYYY'), endAfterStartValidator('DD.MM.YYYY'), Validators.required
       ]);
     this.eventForm = this.fb.group({
-      title: [event.title],
+      title: [event.title, [Validators.maxLength(120)]],
       fromTo: [false],
       start: [event.startMoment.format('DD.MM.YYYY'), [momentValidator('DD.MM.YYYY'), Validators.required]]
     });

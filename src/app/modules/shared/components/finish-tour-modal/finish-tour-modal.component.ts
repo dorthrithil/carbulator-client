@@ -64,7 +64,7 @@ export class FinishTourModalComponent {
   private buildForm() {
     this.finishTourForm = this.fb.group({
       endKm: [this.tour.startKm, [Validators.required, numberValidator(), endKmValidator(this.tour.startKm)]],
-      comment: [''],
+      comment: ['', [Validators.maxLength(120)]],
       parkingPosition: [null, [latlongValidator(true)]]
     });
   }

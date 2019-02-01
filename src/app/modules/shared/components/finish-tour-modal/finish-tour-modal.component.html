@@ -33,6 +33,7 @@
       <clr-textarea-container>
         <label for="comment">Kommentar</label>
         <textarea clrTextarea formControlName="comment" name="comment" id="comment"></textarea>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-textarea-container>
 
     </form>

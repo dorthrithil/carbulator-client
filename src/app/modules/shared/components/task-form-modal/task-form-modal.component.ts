@@ -106,8 +106,8 @@ export class TaskFormModalComponent implements OnDestroy {
       Validators.required
     ]);
     this.taskForm = this.fb.group({
-      name: [this.task.name, [Validators.required]],
-      description: [this.task.description],
+      name: [this.task.name, [Validators.required, Validators.maxLength(120)]],
+      description: [this.task.description, Validators.maxLength(120)],
       trigger: [trigger]
     });
     this.taskForm.get('trigger').valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {

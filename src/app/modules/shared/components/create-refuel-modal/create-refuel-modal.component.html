@@ -28,6 +28,7 @@
         <label>Tankstelle</label>
         <input placeholder="Tankstelle" clrInput formControlName="gasStationName" name="gasStationName"/>
         <clr-control-helper>Der Name der Tankstelle</clr-control-helper>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-input-container>
 
     </form>

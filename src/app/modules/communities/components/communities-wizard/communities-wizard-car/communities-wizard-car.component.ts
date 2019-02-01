@@ -50,9 +50,9 @@ export class CommunitiesWizardCarComponent implements OnInit, OnDestroy {
    */
   private buildForm() {
     this.carForm = this.fb.group({
-      'name': ['', []],
-      'make': ['', [Validators.required]],
-      'model': ['', [Validators.required]]
+      'name': ['', [Validators.maxLength(120)]],
+      'make': ['', [Validators.required, Validators.maxLength(120)]],
+      'model': ['', [Validators.required, Validators.maxLength(120)]]
     });
     this.carForm.valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {
       this.isValid = this.carForm.valid;

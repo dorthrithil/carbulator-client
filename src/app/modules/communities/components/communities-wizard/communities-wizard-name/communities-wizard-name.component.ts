@@ -50,7 +50,7 @@ export class CommunitiesWizardNameComponent implements OnInit, OnDestroy {
    */
   private buildForm() {
     this.nameForm = this.fb.group({
-      'name': ['', [Validators.required, Validators.minLength(3)]]
+      'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]]
     });
     this.nameForm.valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {
       this.isValid = this.nameForm.valid;

@@ -36,7 +36,7 @@ export class CommunitiesRenameModalComponent {
    */
   buildForm() {
     this.communityForm = this.fb.group({
-      'name': [this.community.name, [Validators.required, Validators.minLength(3)]]
+      'name': [this.community.name, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]]
     });
   }
 
