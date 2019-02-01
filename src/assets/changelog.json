@@ -18,7 +18,8 @@
           ],
           "fixed": [
             "Interne Behandlung von Datum und Uhrzeiten verbesert.",
-            "Fehlerhafte Darstellung von Uhrzeiten behoben."
+            "Fehlerhafte Darstellung von Uhrzeiten behoben.",
+            "Fehlerhafte Navigation zu Tabellenansicht von Gruppendetails behoben."
           ],
           "security": [
           ]

@@ -85,26 +85,28 @@ export class CommunitiesDetailTabviewComponent implements OnInit {
       } else {
         this.router.navigate(['/404']);
       }
-      const tabid = params['tabid'];
-      switch (tabid) {
-        case 'refuels':
-          this.refuelTabActive = true;
-          break;
-        case 'tours':
-          this.tourTabActive = true;
-          break;
-        case 'payoffs':
-          this.payoffTabActive = true;
-          break;
-        case 'members':
-          this.memberTabActive = true;
-          break;
-        case 'details':
-          this.detailsTabActive = true;
-          break;
-        case 'tasks':
-          this.tasksTabActive = true;
-      }
+      this.route.params.subscribe((childParams: Params) => {
+        const tabid = childParams['tabid'];
+        switch (tabid) {
+          case 'refuels':
+            this.refuelTabActive = true;
+            break;
+          case 'tours':
+            this.tourTabActive = true;
+            break;
+          case 'payoffs':
+            this.payoffTabActive = true;
+            break;
+          case 'members':
+            this.memberTabActive = true;
+            break;
+          case 'details':
+            this.detailsTabActive = true;
+            break;
+          case 'tasks':
+            this.tasksTabActive = true;
+        }
+      });
     });
   }
 
