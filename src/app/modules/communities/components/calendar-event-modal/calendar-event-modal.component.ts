@@ -81,7 +81,8 @@ export class CalendarEventModalComponent implements OnInit, OnDestroy {
       [momentValidator('DD.MM.YYYY'), endAfterStartValidator('DD.MM.YYYY'), Validators.required
       ]);
     this.eventForm = this.fb.group({
-      title: [event.title, [Validators.maxLength(120)]],
+      title: [event.titleModel, [Validators.maxLength(120)]],
+      description: [event.description],
       fromTo: [false],
       start: [event.startMoment.format('DD.MM.YYYY'), [momentValidator('DD.MM.YYYY'), Validators.required]]
     });
@@ -120,6 +121,7 @@ export class CalendarEventModalComponent implements OnInit, OnDestroy {
       this.isLoading = true;
       this.eventToEdit.titleModel = this.eventForm.get('title').value;
       this.eventToEdit.title = `${this.auth.loggedInUser.username}: ${this.eventForm.get('title').value}`;
+      this.eventToEdit.description = this.eventForm.get('description').value;
       this.eventToEdit.startMoment = moment(this.eventForm.get('start').value, 'DD.MM.YYYY');
       if (this.fromTo) {
         this.eventToEdit.endMoment = moment(this.eventForm.get('end').value, 'DD.MM.YYYY').endOf('day');
