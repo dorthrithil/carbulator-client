@@ -46,7 +46,7 @@
         </clr-dg-action-overflow>
         <clr-dg-cell>{{community.id}}</clr-dg-cell>
         <clr-dg-cell><a [routerLink]="['/communities', community.id]">{{community.name}}</a></clr-dg-cell>
-        <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY hh:mm'}}</clr-dg-cell>
+        <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
       </clr-dg-row>
 
       <clr-dg-footer>

@@ -10,6 +10,7 @@ export class CalendarEvent {
   timeCreated: moment.Moment;
   timeUpdated: moment.Moment;
   title: string;
+  description: string;
   titleModel: string; // This is what is stored in the DB, the other property is for display in the calendar UI
   startMoment: moment.Moment;
   start: Date;
@@ -41,6 +42,7 @@ export class CalendarEvent {
     event.start = event.startMoment.toDate();
     event.end = event.endMoment.toDate();
     event.title = `${src.owner.username}: ${src.title}`;
+    event.description = src.description;
     return event;
   }
 
@@ -56,6 +58,7 @@ export class CalendarEvent {
     event.timeCreated = src.def.extendedProps.timeCreated;
     event.timeUpdated = src.def.extendedProps.timeUpdated;
     event.titleModel = src.def.extendedProps.titleModel;
+    event.description = src.def.extendedProps.description;
     event.owner = src.def.extendedProps.owner;
     event.startMoment = moment(src.start);
     event.endMoment = moment(src.end);
@@ -72,6 +75,7 @@ export class CalendarEvent {
   public static toJson(src: CalendarEvent): any {
     return {
       title: src.titleModel,
+      description: src.description,
       start: src.startMoment.format(),
       end: src.endMoment.format()
     };

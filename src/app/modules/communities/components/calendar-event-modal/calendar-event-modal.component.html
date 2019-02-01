@@ -11,6 +11,7 @@
         <label>Titel</label>
         <input placeholder="Titel" clrInput formControlName="title" name="title"/>
         <clr-control-helper>Der Titel des Termins</clr-control-helper>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-input-container>
 
       <ng-container *ngIf="!fromTo">
@@ -54,6 +55,11 @@
           <label>Mehrtägiger Termin</label>
         </clr-checkbox-wrapper>
       </clr-checkbox-container>
+
+      <clr-textarea-container>
+        <label>Kommentar</label>
+        <textarea clrTextarea formControlName="description" name="description"></textarea>
+      </clr-textarea-container>
 
     </form>
 

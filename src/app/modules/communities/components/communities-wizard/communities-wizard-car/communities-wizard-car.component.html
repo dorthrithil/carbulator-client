@@ -4,6 +4,7 @@
     <label>Spitzname</label>
     <input placeholder="Spitzname" clrInput formControlName="name" name="name" />
     <clr-control-helper>Hat dein Auto einen Spitznamen?</clr-control-helper>
+    <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
   </clr-input-container>
 
   <clr-input-container>
@@ -11,6 +12,7 @@
     <input placeholder="Hersteller" clrInput formControlName="make" name="make" />
     <clr-control-helper>z.B. VW</clr-control-helper>
     <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+    <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
   </clr-input-container>
 
   <clr-input-container>
@@ -18,6 +20,7 @@
     <input placeholder="Modell" clrInput formControlName="model" name="model" />
     <clr-control-helper>z.B. T1</clr-control-helper>
     <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+    <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
   </clr-input-container>
 
 </form>

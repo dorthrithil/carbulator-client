@@ -28,9 +28,9 @@ export class Task {
   public static fromJson(src: any): Task {
     const task = new Task();
     task.id = src.id;
-    task.timeCreated = moment.utc(src.time_created);
-    task.timeUpdated = moment.utc(src.time_updated);
-    task.timeNextInstance = moment.utc(src.time_next_instance);
+    task.timeCreated = moment(src.time_created);
+    task.timeUpdated = moment(src.time_updated);
+    task.timeNextInstance = moment(src.time_next_instance);
     task.timeInterval = src.time_interval;
     task.owner = User.fromJson(src.owner);
     task.community = Community.fromJson(src.community);

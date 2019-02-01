@@ -12,12 +12,14 @@
         <input placeholder="Name" clrInput formControlName="name" name="name"/>
         <clr-control-helper>Der Name der Aufgabe</clr-control-helper>
         <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-input-container>
 
       <clr-textarea-container>
         <label for="description">Beschreibung</label>
         <textarea clrTextarea formControlName="description" id="description" name="description"></textarea>
         <clr-control-helper>Beschreibe die Aufgabe</clr-control-helper>
+        <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-textarea-container>
 
       <clr-select-container>
