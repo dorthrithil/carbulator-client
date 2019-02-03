@@ -15,6 +15,7 @@ export class Community {
   isEditable: boolean;
   isDeletable: boolean;
   users: User[];
+  isFavourite: boolean;
 
   /**
    * Creates a community from a JSON representation.
@@ -27,6 +28,7 @@ export class Community {
     community.name = src.name;
     community.isEditable = src.is_editable;
     community.isDeletable = src.is_deletable;
+    community.isFavourite = src.is_favourite ? src.is_favourite : null;
     community.timeCreated = moment(src.time_created);
     community.timeUpdated = moment(src.time_updated);
     community.car = src.car ? Car.fromJson(src.car) : null;

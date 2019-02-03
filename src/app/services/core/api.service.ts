@@ -49,6 +49,9 @@ export class ApiService {
     getCommunity: (id: number): string => {
       return `${this.apiHost}communities/${id}`;
     },
+    markCommunityAsFavourite: (id: number): string => {
+      return `${this.apiHost}communities/${id}/mark-as-favourite`;
+    },
     createCommunity: (): string => {
       return `${this.apiHost}communities`;
     },
