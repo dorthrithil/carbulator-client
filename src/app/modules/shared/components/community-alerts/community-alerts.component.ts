@@ -11,6 +11,7 @@ import {takeUntil} from 'rxjs/operators';
 import {TaskInstanceService} from '../../../../services/crud/task-instance.service';
 import {TaskInstance} from '../../../../models/task-instance';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {Community} from '../../../../models/community';
 
 /**
  * Component that shows community alerts.
@@ -23,9 +24,13 @@ import {CblNotificationsService} from '../../../../services/core/cbl-notificatio
 export class CommunityAlertsComponent implements OnInit, OnDestroy {
 
   /**
-   * ID of the community to show the alerts for.
+   * The community to show the alerts for.
    */
-  @Input() communityId: number;
+  @Input() community: Community;
+  /**
+   * If true, the community name is displayed in every alert.
+   */
+  @Input() showCommunityName = false;
 
   public runningTour: Tour;
   public cancelTourModalOpen = false;
@@ -46,7 +51,7 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
    * Checks for running tours and observes changes in running tours.
    */
   ngOnInit() {
-    this.tourService.getRunningCommunityTours(this.communityId).subscribe(runningTours => {
+    this.tourService.getRunningCommunityTours(this.community.id).subscribe(runningTours => {
       this.runningTour = runningTours[0];
       if (this.runningTour) {
         this.deleteTourRequest = this.tourService.deleteTour(this.runningTour);
@@ -66,7 +71,7 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
    * Loads the current open task instances.
    */
   private loadTaskInstances() {
-    this.taskInstanceService.getOpenCommunityTaskInstances(this.communityId).subscribe(taskInstances => {
+    this.taskInstanceService.getOpenCommunityTaskInstances(this.community.id).subscribe(taskInstances => {
       this.openTaskInstances = taskInstances;
     });
   }

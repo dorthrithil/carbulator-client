@@ -43,6 +43,16 @@ export class CommunityService {
   }
 
   /**
+   * Fetches the favourite community of the user from the server.
+   * @return Observable that resolves to a community.
+   */
+  public getFavouriteCommunity(): Observable<Community> {
+    return this.http.get(this.api.community.getFavouriteCommunity()).pipe(
+      map(community => Community.fromJson(community))
+    );
+  }
+
+  /**
    * Persists the given community on the server.
    * @param community Community to persist.
    * @return Observable that resolves to a Community.

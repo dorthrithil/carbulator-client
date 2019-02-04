@@ -3,9 +3,11 @@
 <clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
   <clr-alert-item>
     <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
+      <strong *ngIf="showCommunityName">{{community.name}}:</strong>
       <strong>{{runningTour.owner.username}}</strong> fährt gerade!
     </span>
     <span class="alert-text" *ngIf="isLoggedInUser(runningTour.owner)">
+      <strong *ngIf="showCommunityName">{{community.name}}:</strong>
       Du fährst gerade!
     </span>
     <div class="alert-actions">
@@ -38,7 +40,10 @@
 
 <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false" *ngFor="let taskInstance of openTaskInstances">
   <clr-alert-item>
-    <span class="alert-text">{{taskInstance.task.name}}</span>
+    <span class="alert-text">
+      <strong *ngIf="showCommunityName">{{community.name}}:</strong>
+      {{taskInstance.task.name}}
+    </span>
     <div class="alert-actions">
       <clr-dropdown>
         <button class="dropdown-toggle" clrDropdownTrigger>

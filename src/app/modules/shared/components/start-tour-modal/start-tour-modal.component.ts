@@ -51,7 +51,6 @@ export class StartTourModalComponent {
               private tourService: TourService) {
   }
 
-
   /**
    * Builds the start tour form.
    */

@@ -41,6 +41,7 @@ import {TaskFormModalComponent} from './components/task-form-modal/task-form-mod
 import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
 import {CommunitiesInviteUserModalComponent} from './components/communities-invite-user-modal/communities-invite-user-modal.component';
 import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
+import {CommunityAlertsComponent} from './components/community-alerts/community-alerts.component';
 
 @NgModule({
   imports: [
@@ -88,7 +89,8 @@ import {CommunitiesUserSearchComponent} from './components/communities-user-sear
     TaskFormModalComponent,
     ConditionalPluralPipe,
     CommunitiesUserSearchComponent,
-    CommunitiesInviteUserModalComponent
+    CommunitiesInviteUserModalComponent,
+    CommunityAlertsComponent
   ],
   exports: [
     MomentPipe,
@@ -123,7 +125,9 @@ import {CommunitiesUserSearchComponent} from './components/communities-user-sear
     TaskDeleteModalComponent,
     TaskFormModalComponent,
     CommunitiesInviteUserModalComponent,
-    CommunitiesUserSearchComponent
+    CommunitiesUserSearchComponent,
+    CommunityAlertsComponent,
+    ParkingPositionMapComponent
   ]
 })
 export class SharedModule {

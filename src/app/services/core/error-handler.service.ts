@@ -19,10 +19,12 @@ export class ErrorHandlerService {
    * @param  error The error to handle.
    */
   public handleHttpError(error: HttpErrorResponse) {
-    console.error(error);
-    if (error.error['message'] && error.error['message'] in knownErrors) {
+    if (error.error['message'] && error.error['message'] in knownErrors && !knownErrors[error.error['message']].silent) {
       const errorDescription = knownErrors[error.error['message']];
       this.notifications.error(errorDescription.title, errorDescription.description);
+      console.error(error);
+    } else if (!(error.error['message'] || error.error['message'] in knownErrors)) {
+      console.error(error);
     }
   }
 
