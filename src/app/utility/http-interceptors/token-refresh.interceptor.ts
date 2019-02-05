@@ -22,15 +22,17 @@ export class TokenRefreshInterceptor implements HttpInterceptor {
    * @return Returns an Observable that resolves to an http event.
    */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!this.authService.checkAccessTokenValidity()) {
-      return this.authCrudService.loginRefresh(this.authService.refreshToken).pipe(
-        switchMap((loginResponse: LoginResponse) => {
-          this.authService.unpackLoginResponse(loginResponse);
-          return next.handle(request);
-        })
-      );
-    }
-    return next.handle(request);
+    return this.authService.getIsLoggedIn().pipe(switchMap(isLoggedIn => {
+      if (isLoggedIn && !this.authService.checkAccessTokenValidity()) {
+        return this.authCrudService.loginRefresh(this.authService.refreshToken).pipe(
+          switchMap((loginResponse: LoginResponse) => {
+            this.authService.unpackLoginResponse(loginResponse);
+            return next.handle(request);
+          })
+        );
+      }
+      return next.handle(request);
+    }));
   }
 
 }

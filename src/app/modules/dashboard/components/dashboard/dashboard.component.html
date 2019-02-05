@@ -1,40 +1,59 @@
 <div class="content-container">
   <div class="content-area">
 
-    <div class="clr-row">
+    <h1>Carbulator Dashboard</h1>
 
-      <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
-        <div class="card">
-          <div class="card-header">
-            Swafels
-          </div>
-          <div class="card-block">
-            Hier steht irgendwwas interessantes
-          </div>
+    <div class="clr-row" *ngIf="community">
 
-          <div class="card-footer">
-            <a class="btn btn-sm btn-link">Fahrt beginnen</a>
-            <a class="btn btn-sm btn-link">Zur Community</a>
-          </div>
-        </div>
+      <div class="clr-col-lg-12 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+        <cbl-community-alerts [community]="community" [showCommunityName]="true"></cbl-community-alerts>
       </div>
 
       <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
         <div class="card">
           <div class="card-header">
-            Letzte Fahrten
+            {{community.name}}
           </div>
           <div class="card-block">
-            Hier kommt ein tolles Diagramm hin
+            <ng-container *ngIf="!latestTour">
+              <span class="spinner spinner-inline"></span> Lade Daten...
+            </ng-container>
+            <ng-container *ngIf="latestTour">
+              <strong>Letzte Fahrt:</strong> {{latestTour.endTime | moment : 'DD.MM.YYYY [um] HH:mm'}}<br>
+              <strong>Fahrer/-in:</strong> {{latestTour.owner.username}}<br>
+              <ng-container *ngIf="latestTour.comment">
+                <strong>Kommentar:</strong> {{latestTour.comment}}<br>
+              </ng-container>
+              <ng-container *ngIf="latestTour.parkingPosition">
+                <strong>Parkplatz:</strong>
+                <cbl-parking-position-map [rawParkingPosition]="latestTour.parkingPosition"></cbl-parking-position-map>
+              </ng-container>
+            </ng-container>
           </div>
 
           <div class="card-footer">
-            <a class="btn btn-sm btn-link">Details</a>
+            <a class="btn btn-sm btn-link" (click)="startTourModal.open()">Neue Fahrt</a>
+            <a class="btn btn-sm btn-link" (click)="createRefuelModal.open()">Neue Tankfüllung</a>
+            <a class="btn btn-sm btn-link" [routerLink]="['/', 'communities', community.id]">Zur Gruppe</a>
           </div>
         </div>
       </div>
+
+      <cbl-start-tour-modal [communityId]="community.id" #startTourModal>
+      </cbl-start-tour-modal>
+
+      <cbl-create-refuel-modal #createRefuelModal [communityId]="community.id">
+      </cbl-create-refuel-modal>
 
     </div>
+
+    <clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="noFavouriteCommunity">
+      <clr-alert-item>
+        <span class="alert-text">
+            Noch keine Gruppe als Favorit markiert. Dashboard Aktionen sind erst mit einer favorisierten Gruppe möglich.
+        </span>
+      </clr-alert-item>
+    </clr-alert>
 
   </div>
 </div>

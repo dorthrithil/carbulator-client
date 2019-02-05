@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
-  constructor(private auth: AuthService, private fb: FormBuilder) {
+  constructor(private auth: AuthService,
+              private fb: FormBuilder) {
   }
 
   /**

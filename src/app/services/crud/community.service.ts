@@ -4,7 +4,6 @@ import {ErrorMappingHttpService} from '../core/error-mapping-http.service';
 import {Observable} from 'rxjs';
 import {Community} from '../../models/community';
 import {map} from 'rxjs/operators';
-import {Car} from '../../models/car';
 import {CommunityInvitation} from '../../modules/communities/components/communities-wizard/communities-wizard.component';
 import {MessageResponse} from './auth-crud.service';
 
@@ -39,6 +38,16 @@ export class CommunityService {
    */
   public getCommunity(id: number): Observable<Community> {
     return this.http.get(this.api.community.getCommunity(id)).pipe(
+      map(community => Community.fromJson(community))
+    );
+  }
+
+  /**
+   * Fetches the favourite community of the user from the server.
+   * @return Observable that resolves to a community.
+   */
+  public getFavouriteCommunity(): Observable<Community> {
+    return this.http.get(this.api.community.getFavouriteCommunity()).pipe(
       map(community => Community.fromJson(community))
     );
   }
@@ -104,6 +113,15 @@ export class CommunityService {
    */
   public declineCommunityInvitation(community: Community): Observable<any> {
     return this.http.delete<MessageResponse>(this.api.communityInvitation.declineOrDelete(community.id));
+  }
+
+  /**
+   * Marks the given community as favourite and unmarks all other user communities as favourite.
+   * @param community Community to mark as favourite.
+   * @return Observable that resolves to a MessageResponse
+   */
+  public markCommunityAsFavourite(community: Community): Observable<any> {
+    return this.http.put<MessageResponse>(this.api.community.markCommunityAsFavourite(community.id), {});
   }
 
 }

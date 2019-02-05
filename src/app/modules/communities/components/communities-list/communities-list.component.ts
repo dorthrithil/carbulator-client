@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {MessageResponse} from '../../../../services/crud/auth-crud.service';
 import {CommunitiesRenameModalComponent} from '../communities-rename-modal/communities-rename-modal.component';
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
+import {NotificationsService} from 'angular2-notifications';
 
 @Component({
   selector: 'cbl-communities-list',
@@ -21,6 +22,7 @@ export class CommunitiesListComponent implements OnInit {
   public deleteCommunityRequest: Observable<MessageResponse> = null;
 
   constructor(private communityService: CommunityService,
+              private notifications: NotificationsService,
               public mobileDetection: MobileDetectionService) {
   }
 
@@ -28,6 +30,14 @@ export class CommunitiesListComponent implements OnInit {
    * Loads all communities for a user on component initialization.
    */
   ngOnInit() {
+    this.loadCommunities();
+  }
+
+  /**
+   * Loads the list of communities.
+   */
+  loadCommunities() {
+    this.isLoading = true;
     this.communityService.getCommunities().subscribe(communities => {
       this.communities = communities;
       this.isLoading = false;
@@ -48,6 +58,18 @@ export class CommunitiesListComponent implements OnInit {
    */
   public onCommunityDeleted(community: Community) {
     this.communities.splice(this.communities.indexOf(community), 1);
+  }
+
+  /**
+   * Marks the given community as favourite and then reloads the data.
+   * @param community Community to mark as favourite.
+   */
+  public markAsFavourite(community: Community) {
+    this.isLoading = true;
+    this.communityService.markCommunityAsFavourite(community).subscribe(() => {
+      this.notifications.success('Gruppe als Favorit markiert', 'Die Gruppe ist ab jetzt im Dashboard verfügbar.');
+      this.loadCommunities();
+    });
   }
 
 }

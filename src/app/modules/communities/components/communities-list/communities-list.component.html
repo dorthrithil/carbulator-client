@@ -22,6 +22,9 @@
       <clr-dg-column [clrDgField]="'name'">
         <ng-container *clrDgHideableColumn="{hidden: false}">Name</ng-container>
       </clr-dg-column>
+      <clr-dg-column [clrDgField]="'isFavourite'">
+        <ng-container *clrDgHideableColumn="{hidden: false}">Favorit</ng-container>
+      </clr-dg-column>
       <clr-dg-column [clrDgField]="'timeCreated'">
         <ng-container *clrDgHideableColumn="{hidden: mobileDetection.isMobile()}">Erstellungsdatum</ng-container>
         <clr-dg-filter [clrDgFilter]="timeCreatedFilter">
@@ -39,6 +42,10 @@
             <clr-icon shape="pencil"></clr-icon>
             Umbenennen
           </button>
+          <button class="action-item" (click)="markAsFavourite(community)" [disabled]="community.isFavourite">
+            <clr-icon shape="star" class="is-solid"></clr-icon>
+            Als Favorit markieren
+          </button>
           <button class="action-item" [routerLink]="['/communities',community.id]">
             <clr-icon shape="eye"></clr-icon>
             Details
@@ -46,6 +53,14 @@
         </clr-dg-action-overflow>
         <clr-dg-cell>{{community.id}}</clr-dg-cell>
         <clr-dg-cell><a [routerLink]="['/communities', community.id]">{{community.name}}</a></clr-dg-cell>
+        <clr-dg-cell>
+          <ng-container *ngIf="community.isFavourite">
+            <clr-icon shape="star" class="is-solid"></clr-icon>
+          </ng-container>
+          <ng-container *ngIf="!community.isFavourite">
+            <clr-icon shape="star" (click)="markAsFavourite(community)" class="icon-button"></clr-icon>
+          </ng-container>
+        </clr-dg-cell>
         <clr-dg-cell>{{community.timeCreated | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
       </clr-dg-row>
 
