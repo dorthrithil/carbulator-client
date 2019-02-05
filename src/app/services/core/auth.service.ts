@@ -112,7 +112,7 @@ export class AuthService {
         this.notificationsService.success('Login erfolgreich', 'Du bist jetzt eingelogt.');
         return true;
       }),
-      catchError(() => {
+      catchError((err) => {
         return of(false);
       })
     );
