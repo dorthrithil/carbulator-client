@@ -6,7 +6,7 @@ import * as moment from 'moment';
  * If it's not a valid moment, the validator doesn't fail. Use moment validator for this case.
  * @return Validator function for moments.
  */
-export function futureMomentValidator(formattingPattern: string): ValidatorFn {
+export function futureMomentValidator(formattingPattern: string | string[]): ValidatorFn {
   return (ctrl: AbstractControl): { [key: string]: any } => {
     const parsedMoment = moment(ctrl.value, formattingPattern);
     if (!parsedMoment.isValid()) {

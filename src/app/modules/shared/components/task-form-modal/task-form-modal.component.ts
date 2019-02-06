@@ -4,7 +4,7 @@ import {Task} from '../../../../models/task';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {TaskService} from '../../../../services/crud/task.service';
-import {FormMode} from '../../../../utility/constants/form-constants';
+import {DATEPICKER_FORMATS, FormMode} from '../../../../utility/constants/form-constants';
 import {TourService} from '../../../../services/crud/tour.service';
 import {numberValidator} from '../../../../utility/validators/number.validator';
 import {integerValidator} from '../../../../utility/validators/integer.validator';
@@ -101,8 +101,8 @@ export class TaskFormModalComponent implements OnDestroy {
     ]);
     const timeNextInstance = this.task.timeNextInstance ? this.task.timeNextInstance.format('DD.MM.YYYY') : null;
     this.timeNextInstanceControl = new FormControl(timeNextInstance, [
-      momentValidator('DD.MM.YYYY'),
-      futureMomentValidator('DD.MM.YYYY'),
+      momentValidator(DATEPICKER_FORMATS),
+      futureMomentValidator(DATEPICKER_FORMATS),
       Validators.required
     ]);
     this.taskForm = this.fb.group({
@@ -185,7 +185,7 @@ export class TaskFormModalComponent implements OnDestroy {
         this.task.kmNextInstance = null;
         this.task.kmInterval = null;
         this.task.timeInterval = this.taskForm.get('timeInterval').value;
-        this.task.timeNextInstance = moment(this.taskForm.get('timeNextInstance').value, 'DD.MM.YYYY');
+        this.task.timeNextInstance = moment(this.taskForm.get('timeNextInstance').value, DATEPICKER_FORMATS);
       }
       if (this.taskForm.get('trigger').value === TaskTrigger.KM) {
         this.task.kmNextInstance = this.taskForm.get('kmNextInstance').value;

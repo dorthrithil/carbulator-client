@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {FormMode} from '../../../../utility/constants/form-constants';
+import {DATEPICKER_FORMATS, FormMode} from '../../../../utility/constants/form-constants';
 import {CalendarEvent} from '../../../../models/calendar-event';
 import {ClrForm} from '@clr/angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -78,13 +78,13 @@ export class CalendarEventModalComponent implements OnInit, OnDestroy {
    */
   private buildForm(event: CalendarEvent) {
     this.endFormControl = this.fb.control(event.endMoment.format('DD.MM.YYYY'),
-      [momentValidator('DD.MM.YYYY'), endAfterStartValidator('DD.MM.YYYY'), Validators.required
+      [momentValidator(DATEPICKER_FORMATS), endAfterStartValidator(DATEPICKER_FORMATS), Validators.required
       ]);
     this.eventForm = this.fb.group({
-      title: [event.titleModel, [Validators.maxLength(120)]],
+      title: [event.titleModel, [Validators.maxLength(120), Validators.required]],
       description: [event.description],
       fromTo: [false],
-      start: [event.startMoment.format('DD.MM.YYYY'), [momentValidator('DD.MM.YYYY'), Validators.required]]
+      start: [event.startMoment.format('DD.MM.YYYY'), [momentValidator(DATEPICKER_FORMATS), Validators.required]]
     });
     this.eventForm.get('fromTo').valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(value => {
       this.fromTo = value;
@@ -122,9 +122,9 @@ export class CalendarEventModalComponent implements OnInit, OnDestroy {
       this.eventToEdit.titleModel = this.eventForm.get('title').value;
       this.eventToEdit.title = `${this.auth.loggedInUser.username}: ${this.eventForm.get('title').value}`;
       this.eventToEdit.description = this.eventForm.get('description').value;
-      this.eventToEdit.startMoment = moment(this.eventForm.get('start').value, 'DD.MM.YYYY');
+      this.eventToEdit.startMoment = moment(this.eventForm.get('start').value, DATEPICKER_FORMATS);
       if (this.fromTo) {
-        this.eventToEdit.endMoment = moment(this.eventForm.get('end').value, 'DD.MM.YYYY').endOf('day');
+        this.eventToEdit.endMoment = moment(this.eventForm.get('end').value, DATEPICKER_FORMATS).endOf('day');
       } else {
         this.eventToEdit.endMoment = moment(this.eventToEdit.startMoment).endOf('day');
       }
