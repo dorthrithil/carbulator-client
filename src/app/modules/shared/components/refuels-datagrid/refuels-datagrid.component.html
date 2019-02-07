@@ -37,6 +37,11 @@
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let refuel of refuels">
+
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="deleteRefuel(refuel)" [disabled]="!refuel.isOpen">Löschen</button>
+    </clr-dg-action-overflow>
+
     <clr-dg-cell>{{refuel.id}}</clr-dg-cell>
     <clr-dg-cell>{{refuel.timeCreated | moment : 'DD.MM.YYYY HH:mm'}}</clr-dg-cell>
     <clr-dg-cell>{{refuel.costs}} €</clr-dg-cell>

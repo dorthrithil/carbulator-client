@@ -7,7 +7,8 @@
         "releaseDate": "TODO",
         "changes": {
           "added": [
-            "Als beglichen markierte Schulden können nun wieder als nicht beglichen markiert werden."
+            "Als beglichen markierte Schulden können nun wieder als nicht beglichen markiert werden.",
+            "Möglichkeit zum Löschen von Tankfüllungen hinzugefügt."
           ],
           "changed": [
           ],

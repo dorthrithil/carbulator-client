@@ -14,6 +14,7 @@ export class Refuel {
   costs: number;
   liters: number;
   gasStationName: string;
+  communityId: number;
 
   /**
    * Creates a refuel from a JSON representation.
@@ -30,6 +31,7 @@ export class Refuel {
     refuel.costs = src.costs;
     refuel.liters = src.liters;
     refuel.gasStationName = src.gas_station_name;
+    refuel.communityId = src.community_id;
     return refuel;
   }
 

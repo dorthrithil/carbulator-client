@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Tour} from '../../../../models/tour';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Refuel} from '../../../../models/refuel';
+import {RefuelService} from '../../../../services/crud/refuel.service';
+import {NotificationsService} from 'angular2-notifications';
 
 /**
  * A modal that shows information about a refuel.
@@ -21,7 +22,13 @@ export class RefuelInfoModalComponent {
    */
   @Input() isOpen = false;
 
-  constructor() {
+  /**
+   * EventEmitter that emits the refuel when it was deleted.
+   */
+  @Output() refuelDeleted: EventEmitter<Refuel> = new EventEmitter();
+
+  constructor(private refuelService: RefuelService,
+              private notifications: NotificationsService) {
   }
 
   /**
@@ -36,6 +43,17 @@ export class RefuelInfoModalComponent {
    */
   open() {
     this.isOpen = true;
+  }
+
+  /**
+   * Deletes the refuel and closes the modal.
+   */
+  deleteRefuel() {
+    this.refuelService.deleteRefuel(this.refuel).subscribe(() => {
+      this.notifications.success('Tankfüllung gelöscht', 'Die Tankfüllung wurde erfolgreich gelöscht.');
+      this.refuelDeleted.emit(this.refuel);
+      this.close();
+    });
   }
 
 }

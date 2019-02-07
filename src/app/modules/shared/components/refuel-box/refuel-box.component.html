@@ -25,4 +25,4 @@
   </div>
 </div>
 
-<cbl-refuel-info-modal #refuelInfoModal [refuel]="refuel" ></cbl-refuel-info-modal>
+<cbl-refuel-info-modal #refuelInfoModal [refuel]="refuel" (refuelDeleted)="onDeleted()"></cbl-refuel-info-modal>

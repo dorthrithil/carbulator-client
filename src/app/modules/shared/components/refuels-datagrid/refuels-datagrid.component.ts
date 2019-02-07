@@ -5,6 +5,8 @@ import {sortAndLimit} from '../../../../utility/sorting/sort-and-limit';
 import {sortRefuels} from '../../../../utility/sorting/sort-refuels';
 import {CreateRefuelModalComponent} from '../create-refuel-modal/create-refuel-modal.component';
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
+import {RefuelService} from '../../../../services/crud/refuel.service';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
 /**
  * A component that shows a table of refuels.
@@ -34,7 +36,9 @@ export class RefuelsDatagridComponent implements OnInit {
   public refuels: Refuel[];
   public isLoading = true;
 
-  constructor(public mobileDetection: MobileDetectionService) {
+  constructor(public mobileDetection: MobileDetectionService,
+              public notifications: CblNotificationsService,
+              public refuelService: RefuelService) {
   }
 
   /**
@@ -55,6 +59,17 @@ export class RefuelsDatagridComponent implements OnInit {
   public addRefuel(refuel: Refuel) {
     this.refuels.push(refuel);
     sortAndLimit(this.refuels, sortRefuels, 0, 'DESC');
+  }
+
+  /**
+   * Deletes the given refuel and removes it from the list.
+   * @param refuel Refuel to delete.
+   */
+  public deleteRefuel(refuel: Refuel) {
+    this.refuelService.deleteRefuel(refuel).subscribe(() => {
+      this.notifications.success('Tankfüllung gelöscht', 'Die Tankfüllung wurde erfolgreich gelöscht.');
+      this.refuels.splice(this.refuels.indexOf(refuel), 1);
+    });
   }
 
 }

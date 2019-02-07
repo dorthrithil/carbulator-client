@@ -58,6 +58,9 @@
     </table>
   </div>
   <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteRefuel()" [disabled]="!refuel.isOpen">
+      Löschen
+    </button>
     <button type="button" class="btn btn-primary" (click)="close()">
       Schließen
     </button>
