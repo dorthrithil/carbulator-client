@@ -120,6 +120,9 @@ export class ApiService {
   public debts = {
     settleDebt: (id: number): string => {
       return `${this.apiHost}debts/${id}/settle`;
+    },
+    unsettleDebt: (id: number): string => {
+      return `${this.apiHost}debts/${id}/unsettle`;
     }
   };
 

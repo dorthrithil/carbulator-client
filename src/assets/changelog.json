@@ -3,6 +3,25 @@
     "minor": "0.5",
     "patches": [
       {
+        "patch": "0.5.2",
+        "releaseDate": "TODO",
+        "changes": {
+          "added": [
+            "Als beglichen markierte Schulden können nun wieder als nicht beglichen markiert werden."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.5.1",
         "releaseDate": "07.02.2019",
         "changes": {

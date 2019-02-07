@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Tour} from '../../models/tour';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ErrorMappingHttpService} from '../core/error-mapping-http.service';
@@ -58,6 +57,16 @@ export class PayoffService {
    */
   public settleDebt(debt: Debt): Observable<Debt> {
     return this.http.put(this.api.debts.settleDebt(debt.id), {}).pipe(
+      map(debtJson => Debt.fromJson(debtJson))
+    );
+  }
+
+  /**
+   * Marks a debt as unsettled on the server.
+   * @param debt Debt to unsettle.
+   */
+  public unsettleDebt(debt: Debt): Observable<Debt> {
+    return this.http.put(this.api.debts.unsettleDebt(debt.id), {}).pipe(
       map(debtJson => Debt.fromJson(debtJson))
     );
   }
