@@ -19,6 +19,7 @@ export class Task {
   timeNextInstance: moment.Moment;
   name: string;
   description: string;
+  isReocurrent: boolean;
 
   /**
    * Creates a task from a JSON representation.
@@ -39,6 +40,7 @@ export class Task {
     task.kmInterval = src.km_interval;
     task.kmNextInstance = src.km_next_instance;
     task.kmToNextInstance = src.km_to_next_instance;
+    task.isReocurrent = src.is_reocurrent;
     return task;
   }
 
@@ -54,7 +56,8 @@ export class Task {
       name: src.name,
       description: src.description,
       km_next_instance: src.kmNextInstance,
-      km_interval: src.kmInterval
+      km_interval: src.kmInterval,
+      is_reocurrent: src.isReocurrent
     };
   }
 

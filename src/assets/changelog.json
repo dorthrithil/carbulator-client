@@ -4,9 +4,10 @@
     "patches": [
       {
         "patch": "0.5.1",
-        "releaseDate": "TODO",
+        "releaseDate": "07.02.2019",
         "changes": {
           "added": [
+            "Es gibt nun die Möglichkeit einmalige Aufgaben einzutragen.",
             "Laufende Fahrten können nun auch direkt in der Notification Ansicht abgebrochen werden."
           ],
           "changed": [

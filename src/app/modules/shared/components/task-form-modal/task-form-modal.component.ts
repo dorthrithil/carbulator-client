@@ -16,6 +16,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import * as moment from 'moment';
 import {toNumber} from '../../../../utility/conversion/to-number';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * Trigger types for tasks.
@@ -46,7 +47,7 @@ export class TaskFormModalComponent implements OnDestroy {
   @Input() communityId: number;
 
   /**
-   * Emits the created task.
+   * Emits the created task if it is a reocurrent task.
    */
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
   /**
@@ -75,6 +76,7 @@ export class TaskFormModalComponent implements OnDestroy {
 
   constructor(private fb: FormBuilder,
               private tourService: TourService,
+              private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private taskService: TaskService) {
   }
@@ -108,27 +110,31 @@ export class TaskFormModalComponent implements OnDestroy {
     this.taskForm = this.fb.group({
       name: [this.task.name, [Validators.required, Validators.maxLength(120)]],
       description: [this.task.description, Validators.maxLength(120)],
-      trigger: [trigger]
+      trigger: [trigger],
+      isReocurrent: [false],
     });
     this.taskForm.get('trigger').valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {
+      this.setTriggerFormControls();
+    });
+    this.taskForm.get('isReocurrent').valueChanges.pipe(takeUntil(this.onDestroy)).subscribe(() => {
       this.setTriggerFormControls();
     });
     this.setTriggerFormControls();
   }
 
   /**
-   * Sets the forms trigger specific fields based on the current trigger value.
+   * Sets the forms trigger specific fields based on the current trigger value and reocurrence state.
    */
   public setTriggerFormControls() {
-    if (this.taskForm.get('trigger').value === TaskTrigger.TIME) {
-      this.taskForm.removeControl('kmInterval');
-      this.taskForm.removeControl('kmNextInstance');
+    this.taskForm.removeControl('timeInterval');
+    this.taskForm.removeControl('timeNextInstance');
+    this.taskForm.removeControl('kmInterval');
+    this.taskForm.removeControl('kmNextInstance');
+    if (this.taskForm.get('isReocurrent').value && this.taskForm.get('trigger').value === TaskTrigger.TIME) {
       this.taskForm.addControl('timeInterval', this.timeIntervalControl);
       this.taskForm.addControl('timeNextInstance', this.timeNextInstanceControl);
     }
-    if (this.taskForm.get('trigger').value === TaskTrigger.KM) {
-      this.taskForm.removeControl('timeInterval');
-      this.taskForm.removeControl('timeNextInstance');
+    if (this.taskForm.get('isReocurrent').value && this.taskForm.get('trigger').value === TaskTrigger.KM) {
       this.taskForm.addControl('kmInterval', this.kmIntervalControl);
       this.taskForm.addControl('kmNextInstance', this.kmNextInstanceControl);
     }
@@ -181,24 +187,31 @@ export class TaskFormModalComponent implements OnDestroy {
       this.isLoading = true;
       this.task.name = this.taskForm.get('name').value;
       this.task.description = this.taskForm.get('description').value;
-      if (this.taskForm.get('trigger').value === TaskTrigger.TIME) {
-        this.task.kmNextInstance = null;
-        this.task.kmInterval = null;
-        this.task.timeInterval = this.taskForm.get('timeInterval').value;
-        this.task.timeNextInstance = moment(this.taskForm.get('timeNextInstance').value, DATEPICKER_FORMATS);
-      }
-      if (this.taskForm.get('trigger').value === TaskTrigger.KM) {
-        this.task.kmNextInstance = this.taskForm.get('kmNextInstance').value;
-        this.task.kmInterval = this.taskForm.get('kmInterval').value;
-        this.task.timeInterval = null;
-        this.task.timeNextInstance = null;
+      this.task.isReocurrent = this.taskForm.get('isReocurrent').value;
+      if (this.task.isReocurrent) {
+        if (this.taskForm.get('trigger').value === TaskTrigger.TIME) {
+          this.task.kmNextInstance = null;
+          this.task.kmInterval = null;
+          this.task.timeInterval = this.taskForm.get('timeInterval').value;
+          this.task.timeNextInstance = moment(this.taskForm.get('timeNextInstance').value, DATEPICKER_FORMATS);
+        }
+        if (this.taskForm.get('trigger').value === TaskTrigger.KM) {
+          this.task.kmNextInstance = this.taskForm.get('kmNextInstance').value;
+          this.task.kmInterval = this.taskForm.get('kmInterval').value;
+          this.task.timeInterval = null;
+          this.task.timeNextInstance = null;
+        }
       }
 
       if (this.formMode === FormMode.CREATE) {
         this.taskService.createTask(this.communityId, this.task).subscribe(task => {
-          this.taskAdded.emit(task);
           this.close();
           this.notifications.success('Aufgabe erstellt', 'Die Aufgabe wurde erstellt.');
+          if (!task.isReocurrent) {
+            this.appEvents.dispatchNonReocurrentTaskAddedEvent(task);
+          } else {
+            this.taskAdded.emit(task);
+          }
         }, () => {
           this.isOpen = false;
           this.close();
@@ -207,7 +220,6 @@ export class TaskFormModalComponent implements OnDestroy {
 
       if (this.formMode === FormMode.UPDATE) {
         this.taskService.updateTask(this.task).subscribe(task => {
-          console.log(task);
           this.taskUpdated.emit(task);
           this.close();
           this.notifications.success('Aufgabe gespeichert', 'Die Änderungen wurden übernommen.');

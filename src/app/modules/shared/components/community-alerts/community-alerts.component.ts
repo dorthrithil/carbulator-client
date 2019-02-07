@@ -64,6 +64,9 @@ export class CommunityAlertsComponent implements OnInit, OnDestroy {
     this.appEvents.tourStarted.pipe(takeUntil(this.onDestroy)).subscribe(tour => {
       this.addRunningTour(tour);
     });
+    this.appEvents.nonReocurrentTaskAdded.pipe(takeUntil(this.onDestroy)).subscribe(() => {
+      this.loadTaskInstances();
+    });
     this.loadTaskInstances();
   }
 

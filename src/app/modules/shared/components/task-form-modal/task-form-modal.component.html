@@ -22,54 +22,66 @@
         <clr-control-error *clrIfError="'maxlength'">Maximal erlaubte Zeichen: 120</clr-control-error>
       </clr-textarea-container>
 
-      <clr-select-container>
-        <label>Auslöser</label>
-        <select clrSelect name="options" formControlName="trigger" required>
-          <option [value]="trigger" *ngFor="let trigger of taskTriggers">{{trigger}}</option>
-        </select>
-        <clr-control-helper>Aufgaben können Zeit oder Kilometerstand gesteuert sein</clr-control-helper>
-      </clr-select-container>
+      <clr-checkbox-container>
+        <label>Optionen</label>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox name="isReocurrent" value="isReocurrent" formControlName="isReocurrent"/>
+          <label>Regelmäßige Aufgabe</label>
+        </clr-checkbox-wrapper>
+      </clr-checkbox-container>
 
-      <ng-container *ngIf="taskForm.get('trigger').value == taskTriggers[0]">
+      <ng-container *ngIf="taskForm.get('isReocurrent').value">
 
-        <clr-input-container>
-          <label>Intervall (Tage)</label>
-          <input clrInput type="text" formControlName="timeInterval" name="timeInterval"/>
-          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-          <clr-control-error *clrIfError="'integer'">Gib bitte eine ganze Zahl ein</clr-control-error>
-          <clr-control-error *clrIfError="'min'">Minimum: 1 Tag</clr-control-error>
-        </clr-input-container>
+        <clr-select-container>
+          <label>Auslöser</label>
+          <select clrSelect name="options" formControlName="trigger" required>
+            <option [value]="trigger" *ngFor="let trigger of taskTriggers">{{trigger}}</option>
+          </select>
+          <clr-control-helper>Aufgaben können Zeit oder Kilometerstand gesteuert sein</clr-control-helper>
+        </clr-select-container>
 
-        <clr-date-container>
-          <label for="timeNextInstance">Nächste Fälligkeit</label>
-          <input id="timeNextInstance" type="date" clrDate formControlName="timeNextInstance"/>
-          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-          <clr-control-error *clrIfError="'moment'">Gib ein gültiges Datum ein, z.B. 28.02.2042</clr-control-error>
-          <clr-control-error *clrIfError="'futureMoment'">Muss in der Zukunft sein</clr-control-error>
-        </clr-date-container>
+        <ng-container *ngIf="taskForm.get('trigger').value == taskTriggers[0]">
 
-      </ng-container>
+          <clr-input-container>
+            <label>Intervall (Tage)</label>
+            <input clrInput type="text" formControlName="timeInterval" name="timeInterval"/>
+            <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+            <clr-control-error *clrIfError="'integer'">Gib bitte eine ganze Zahl ein</clr-control-error>
+            <clr-control-error *clrIfError="'min'">Minimum: 1 Tag</clr-control-error>
+          </clr-input-container>
 
-      <ng-container *ngIf="taskForm.get('trigger').value == taskTriggers[1]">
+          <clr-date-container>
+            <label for="timeNextInstance">Nächste Fälligkeit</label>
+            <input id="timeNextInstance" type="date" clrDate formControlName="timeNextInstance"/>
+            <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+            <clr-control-error *clrIfError="'moment'">Gib ein gültiges Datum ein, z.B. 28.02.2042</clr-control-error>
+            <clr-control-error *clrIfError="'futureMoment'">Muss in der Zukunft sein</clr-control-error>
+          </clr-date-container>
 
-        <clr-input-container>
-          <label>Intervall (km)</label>
-          <input clrInput type="text" formControlName="kmInterval" name="kmInterval"/>
-          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-          <clr-control-error *clrIfError="'numberMin'">Minimum: 1 km</clr-control-error>
-          <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
-          </clr-control-error>
-        </clr-input-container>
+        </ng-container>
 
-        <clr-input-container>
-          <label>Nächste Fälligkeit (km)</label>
-          <input clrInput type="text" formControlName="kmNextInstance" name="kmNextInstance"/>
-          <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
-          <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
-          </clr-control-error>
-          <clr-control-error *clrIfError="'endKm'">Muss größer als der letzte Kilometerstand sein ({{lastEndKm}} km)
-          </clr-control-error>
-        </clr-input-container>
+        <ng-container *ngIf="taskForm.get('trigger').value == taskTriggers[1]">
+
+          <clr-input-container>
+            <label>Intervall (km)</label>
+            <input clrInput type="text" formControlName="kmInterval" name="kmInterval"/>
+            <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+            <clr-control-error *clrIfError="'numberMin'">Minimum: 1 km</clr-control-error>
+            <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
+            </clr-control-error>
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Nächste Fälligkeit (km)</label>
+            <input clrInput type="text" formControlName="kmNextInstance" name="kmNextInstance"/>
+            <clr-control-error *clrIfError="'required'">Pflichtfeld</clr-control-error>
+            <clr-control-error *clrIfError="'number'">Gib bitte eine Zahl mit maximal zwei Nachkommastellen ein
+            </clr-control-error>
+            <clr-control-error *clrIfError="'endKm'">Muss größer als der letzte Kilometerstand sein ({{lastEndKm}} km)
+            </clr-control-error>
+          </clr-input-container>
+
+        </ng-container>
 
       </ng-container>
 
