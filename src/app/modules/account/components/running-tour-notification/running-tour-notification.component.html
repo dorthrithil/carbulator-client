@@ -19,9 +19,19 @@
   </div>
   <div class="notification-box-col actions">
     <button class="btn btn-sm btn-primary" (click)="finishTourModal.open(runningTour.subject)">Fahrt beenden</button>
+    <button class="btn btn-sm btn-danger" (click)="openCancelTourModal(runningTour.subject)">Fahrt abbrechen</button>
   </div>
 </div>
 
 <cbl-finish-tour-modal #finishTourModal
-                       (tourFinished)="onTourFinished()">
+                       (tourFinished)="onTourFinishedOrCanceled()">
 </cbl-finish-tour-modal>
+
+<cbl-confirm-modal [(isOpen)]="cancelTourModalOpen" [action]="deleteTourRequest" [confirmButtonIsDanger]="true"
+                   (confirm)="onTourFinishedOrCanceled()">
+  <ng-template cblConfirmModalTitle>Wirklich abbrechen?</ng-template>
+  <ng-template cblConfirmModalText>Die Fahrt wird gelöscht. Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>

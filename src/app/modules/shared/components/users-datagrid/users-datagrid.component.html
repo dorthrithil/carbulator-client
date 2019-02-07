@@ -42,7 +42,7 @@
   </clr-dg-footer>
 </clr-datagrid>
 
-<div *ngIf="community">
+<div *ngIf="community && invitedUsers.length > 0">
   <h6>Warte auf Einladungsbestätigung von:</h6>
   <ul class="list">
     <li *ngFor="let user of invitedUsers">

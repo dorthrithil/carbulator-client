@@ -6,7 +6,7 @@ import * as moment from 'moment';
  * @param formattingPattern The
  * @return Validator function for calendar events.
  */
-export function endAfterStartValidator(formattingPattern: string): ValidatorFn {
+export function endAfterStartValidator(formattingPattern: string | string[]): ValidatorFn {
   return (ctrl: AbstractControl): { [key: string]: any } => {
     if (!ctrl.parent) { // If the control is not attached to the parent control this would fail
       return null;

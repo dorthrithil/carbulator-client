@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {Tour} from '../../models/tour';
 import {TaskInstance} from '../../models/task-instance';
+import {Task} from '../../models/task';
 
 /**
  * Service for distributing app wide events.
@@ -19,6 +20,9 @@ export class AppEventsService {
 
   private _taskInstanceFinished: Subject<TaskInstance> = new Subject();
   public taskInstanceFinished: Observable<TaskInstance> = this._taskInstanceFinished.asObservable();
+
+  private _nonReocurrentTaskAdded: Subject<Task> = new Subject();
+  public nonReocurrentTaskAdded: Observable<Task> = this._nonReocurrentTaskAdded.asObservable();
 
   /**
    * Dispatches a tourFinished event over the tourFinished subject stream.
@@ -42,6 +46,14 @@ export class AppEventsService {
    */
   public dispatchTaskInstanceFinishedEvent(taskInstance: TaskInstance) {
     this._taskInstanceFinished.next(taskInstance);
+  }
+
+  /**
+   * Dispatches a nonReocurrentTaskAdded event over the nonReocurrentTaskAdded subject stream.
+   * @param task Added task.
+   */
+  public dispatchNonReocurrentTaskAddedEvent(task: Task) {
+    this._nonReocurrentTaskAdded.next(task);
   }
 
 }
