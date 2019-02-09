@@ -59,4 +59,12 @@ export class CommunityTourCardComponent implements OnInit, OnDestroy {
     sortAndLimit(this.tours, sortTours, 5, 'DESC');
   }
 
+  /**
+   * Removes the given tour from the list of tours.
+   * @param tour Tour to remove.
+   */
+  public removeTour(tour: Tour) {
+    this.tours.splice(this.tours.indexOf(tour), 1);
+  }
+
 }

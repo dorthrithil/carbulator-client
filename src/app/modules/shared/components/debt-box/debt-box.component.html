@@ -10,6 +10,10 @@
               (click)="settleDebtModalOpen = true">
         Bezahlen
       </button>
+      <button class="btn btn-sm btn-link" *ngIf="debt.isSettled && isDebteeOrReceiver()"
+              (click)="unsettleDebtModalOpen = true">
+        Als nicht bezahlt markieren
+      </button>
     </div>
   </div>
   <div class="debt-box-col costs">
@@ -30,6 +34,14 @@
 <cbl-confirm-modal [action]="settleDebtAction" [(isOpen)]="settleDebtModalOpen" (confirm)="replaceDebt($event)">
   <ng-template cblConfirmModalTitle>Schulden bezahlen</ng-template>
   <ng-template cblConfirmModalText>Willst du die Schulden als beglichen markieren?
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>OK</ng-template>
+</cbl-confirm-modal>
+
+<cbl-confirm-modal [action]="unsettleDebtAction" [(isOpen)]="unsettleDebtModalOpen" (confirm)="replaceDebt($event)">
+  <ng-template cblConfirmModalTitle>Schulden als nicht bezahlt markieren</ng-template>
+  <ng-template cblConfirmModalText>Willst du die Schulden als nicht beglichen markieren?
   </ng-template>
   <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
   <ng-template cblConfirmModalOKButtonText>OK</ng-template>

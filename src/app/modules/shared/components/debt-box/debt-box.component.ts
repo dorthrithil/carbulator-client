@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Debt} from '../../../../models/debt';
 import {PayoffService} from '../../../../services/crud/payoff.service';
 import {Observable} from 'rxjs';
-import {NotificationsService} from 'angular2-notifications';
 import {AuthService} from '../../../../services/core/auth.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 
@@ -25,8 +24,12 @@ export class DebtBoxComponent implements OnInit {
    * An Observable that will settle the debt of the component when subscribed to.
    */
   public settleDebtAction: Observable<Debt>;
-
+  /**
+   * An Observable that will unsettle the debt of the component when subscribed to.
+   */
+  public unsettleDebtAction: Observable<Debt>;
   public settleDebtModalOpen = false;
+  public unsettleDebtModalOpen = false;
 
   constructor(private payoffService: PayoffService,
               private auth: AuthService,
@@ -38,6 +41,7 @@ export class DebtBoxComponent implements OnInit {
    */
   ngOnInit() {
     this.settleDebtAction = this.payoffService.settleDebt(this.debt);
+    this.unsettleDebtAction = this.payoffService.unsettleDebt(this.debt);
   }
 
   /**
@@ -46,7 +50,14 @@ export class DebtBoxComponent implements OnInit {
    */
   public replaceDebt(debt: Debt) {
     this.debt = debt;
-    this.notifications.success('Schulden als bezahlt markiert', 'Die Schulden wurden erfolgreich als bezahlt markiert.');
+    if (debt.isSettled) {
+      this.notifications.success('Schulden als bezahlt markiert', 'Die Schulden wurden erfolgreich als bezahlt markiert.');
+    } else {
+      this.notifications.success(
+        'Schulden als nicht beglichen markiert',
+        'Die Schulden wurden erfolgreich als nicht beglichen markiert.'
+      );
+    }
   }
 
   /**

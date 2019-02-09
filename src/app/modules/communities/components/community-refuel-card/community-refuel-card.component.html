@@ -7,7 +7,8 @@
       <span class="spinner spinner-inline"></span> Lade Daten...
     </ng-container>
     <div class="refuel-box-container" *ngIf="refuels?.length > 0">
-      <cbl-refuel-box *ngFor="let refuel of refuels" [refuel]="refuel"></cbl-refuel-box>
+      <cbl-refuel-box *ngFor="let refuel of refuels" [refuel]="refuel"
+                      (deleted)="removeRefuel($event)"></cbl-refuel-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="refuels?.length == 0" [clrAlertClosable]="false">
       <clr-alert-item>

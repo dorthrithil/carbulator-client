@@ -11,6 +11,9 @@ import {Payoff} from '../../../../models/payoff';
 })
 export class PayoffTourCardComponent {
 
+  /**
+   * The payoff to show the tours for.
+   */
   @Input() payoff: Payoff;
 
 }

@@ -82,6 +82,9 @@ export class ApiService {
     createRefuel: (id: number): string => {
       return `${this.apiHost}communities/${id}/refuels`;
     },
+    deleteRefuel: (communityId: number, refuelId): string => {
+      return `${this.apiHost}communities/${communityId}/refuels/${refuelId}`;
+    },
     getLatestCommunityTour: (id: number): string => {
       return `${this.apiHost}communities/${id}/tours/latest`;
     },
@@ -120,6 +123,9 @@ export class ApiService {
   public debts = {
     settleDebt: (id: number): string => {
       return `${this.apiHost}debts/${id}/settle`;
+    },
+    unsettleDebt: (id: number): string => {
+      return `${this.apiHost}debts/${id}/unsettle`;
     }
   };
 

@@ -31,4 +31,5 @@
   </div>
 </div>
 
-<cbl-tour-info-modal #tourInfoModal [tour]="tour"></cbl-tour-info-modal>
+<cbl-tour-info-modal #tourInfoModal [tour]="tour" (delete)="onDelete($event)" [showDeleteOption]="showDeleteOption">
+</cbl-tour-info-modal>

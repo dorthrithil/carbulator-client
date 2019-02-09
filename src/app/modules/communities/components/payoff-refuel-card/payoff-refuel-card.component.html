@@ -4,7 +4,8 @@
   </div>
   <div class="card-block">
     <div class="debt-box-container" *ngIf="payoff.refuels?.length > 0">
-      <cbl-refuel-box *ngFor="let refuel of payoff.refuels" [refuel]="refuel"></cbl-refuel-box>
+      <cbl-refuel-box *ngFor="let refuel of payoff.refuels" [refuel]="refuel"
+                      [showDeleteOption]="false"></cbl-refuel-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="payoff.refuels?.length == 0" [clrAlertClosable]="false">
       <clr-alert-item>

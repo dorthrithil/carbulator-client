@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Tour} from '../../models/tour';
 import {map} from 'rxjs/operators';
 import {Refuel} from '../../models/refuel';
 import {ErrorMappingHttpService} from '../core/error-mapping-http.service';
 import {ApiService} from '../core/api.service';
+import {MessageResponse} from './auth-crud.service';
 
 /**
  * CRUD service for refuels.
@@ -41,6 +41,15 @@ export class RefuelService {
     return this.http.post(this.api.community.createRefuel(communityId), Refuel.toJson(refuel)).pipe(
       map(refuelJson => Refuel.fromJson(refuelJson))
     );
+  }
+
+  /**
+   * Deletes a refuel on the server.
+   * @param refuel Refuel to delete.
+   * @return Observable that resolves to a MessageResponse.
+   */
+  public deleteRefuel(refuel: Refuel): Observable<MessageResponse> {
+    return this.http.delete(this.api.community.deleteRefuel(refuel.communityId, refuel.id));
   }
 
 }
