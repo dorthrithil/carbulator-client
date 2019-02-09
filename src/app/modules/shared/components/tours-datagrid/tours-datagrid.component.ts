@@ -6,6 +6,9 @@ import {Observable} from 'rxjs';
 import {StartTourModalComponent} from '../start-tour-modal/start-tour-modal.component';
 import {AppEventsService} from '../../../../services/core/app-events.service';
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
+import {TourService} from '../../../../services/crud/tour.service';
+import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {AuthService} from '../../../../services/core/auth.service';
 
 /**
  * Component for showing a datagrid of tours. As the tour resource is kept as an input, this is reusable for community or user views.
@@ -36,6 +39,9 @@ export class ToursDatagridComponent implements OnInit {
   public isLoading = true;
 
   constructor(private appEvents: AppEventsService,
+              private notifications: CblNotificationsService,
+              private tourService: TourService,
+              public auth: AuthService,
               public mobileDetection: MobileDetectionService) {
   }
 
@@ -61,6 +67,17 @@ export class ToursDatagridComponent implements OnInit {
   public addTour(tour: Tour) {
     this.tours.push(tour);
     sortAndLimit(this.tours, sortTours, 0, 'DESC');
+  }
+
+  /**
+   * Deletes the given tour and removes it from the list.
+   * @param tour Tour to delete.
+   */
+  public deleteTour(tour: Tour) {
+    this.tourService.deleteTour(tour).subscribe(() => {
+      this.tours.splice(this.tours.indexOf(tour), 1);
+      this.notifications.success('Fahrt gelöscht', 'Die Fahrt wurde erfolgreich gelöscht.');
+    });
   }
 
 }

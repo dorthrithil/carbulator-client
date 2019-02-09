@@ -55,6 +55,14 @@
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let tour of tours">
+
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="deleteTour(tour)"
+              [disabled]="!tour.isOpen || !auth.isLoggedInUser(tour.owner)">
+        Löschen
+      </button>
+    </clr-dg-action-overflow>
+
     <clr-dg-cell>{{tour.id}}</clr-dg-cell>
     <clr-dg-cell>{{tour.owner.username}}</clr-dg-cell>
     <clr-dg-cell>{{tour.totalKm}} km</clr-dg-cell>

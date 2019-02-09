@@ -15,6 +15,10 @@ export class RefuelBoxComponent {
    * The refuel to show in the box.
    */
   @Input() refuel: Refuel;
+  /**
+   * If true, the delete button is shown in the refuel detail modal.
+   */
+  @Input() showDeleteOption = true;
 
   /**
    * EventEmitter that emits the refuel when it was deleted.

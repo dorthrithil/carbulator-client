@@ -4,11 +4,12 @@
     "patches": [
       {
         "patch": "0.5.2",
-        "releaseDate": "TODO",
+        "releaseDate": "09.02.2019",
         "changes": {
           "added": [
             "Als beglichen markierte Schulden können nun wieder als nicht beglichen markiert werden.",
-            "Möglichkeit zum Löschen von Tankfüllungen hinzugefügt."
+            "Möglichkeit zum Löschen von Tankfüllungen hinzugefügt.",
+            "Möglichkeit zum Löschen von beendeten Fahrten hinzugefügt."
           ],
           "changed": [
           ],

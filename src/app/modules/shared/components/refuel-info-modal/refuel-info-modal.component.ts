@@ -21,6 +21,11 @@ export class RefuelInfoModalComponent {
    * True if the modal is open.
    */
   @Input() isOpen = false;
+  /**
+   * If true, the delete button is shown. If the modal is shown in a payoff view, the button will always be disabled. In this case
+   * this option should be set to false.
+   */
+  @Input() showDeleteOption = true;
 
   /**
    * EventEmitter that emits the refuel when it was deleted.

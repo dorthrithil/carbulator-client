@@ -7,7 +7,7 @@
       <span class="spinner spinner-inline"></span> Lade Daten...
     </ng-container>
     <div class="tour-box-container" *ngIf="tours?.length > 0">
-      <cbl-tour-box *ngFor="let tour of tours" [tour]="tour"></cbl-tour-box>
+      <cbl-tour-box *ngFor="let tour of tours" [tour]="tour" (delete)="removeTour($event)"></cbl-tour-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="tours?.length == 0" [clrAlertClosable]="false">
       <clr-alert-item>

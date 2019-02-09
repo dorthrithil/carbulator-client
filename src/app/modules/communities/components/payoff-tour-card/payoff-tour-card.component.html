@@ -4,7 +4,7 @@
   </div>
   <div class="card-block">
     <div class="tour-box-container" *ngIf="payoff.tours?.length > 0">
-      <cbl-tour-box *ngFor="let tour of payoff.tours" [tour]="tour"></cbl-tour-box>
+      <cbl-tour-box *ngFor="let tour of payoff.tours" [tour]="tour" [showDeleteOption]="false"></cbl-tour-box>
     </div>
     <clr-alert [clrAlertType]="'info'" *ngIf="payoff.tours?.length == 0" [clrAlertClosable]="false">
       <clr-alert-item>
