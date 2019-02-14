@@ -73,7 +73,7 @@ export class ToursDatagridComponent implements OnInit {
   }
 
   /**
-   * Deletes the given tour and removes it from the list.
+   * Deletes the given tour and removes it from the list. A confirmation step via confirmation model is prepended to this action.
    * @param tour Tour to delete.
    */
   public deleteTour(tour: Tour) {

@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Refuel} from '../../../../models/refuel';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {NotificationsService} from 'angular2-notifications';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 /**
  * A modal that shows information about a refuel.
@@ -32,6 +34,9 @@ export class RefuelInfoModalComponent {
    */
   @Output() refuelDeleted: EventEmitter<Refuel> = new EventEmitter();
 
+  public deleteRefuelModalOpen = false;
+  public deleteRefuelRequest: Observable<void>;
+
   constructor(private refuelService: RefuelService,
               private notifications: NotificationsService) {
   }
@@ -51,14 +56,24 @@ export class RefuelInfoModalComponent {
   }
 
   /**
-   * Deletes the refuel and closes the modal.
+   * Opens the confirm delete refuel modal.
    */
   deleteRefuel() {
-    this.refuelService.deleteRefuel(this.refuel).subscribe(() => {
+    this.close();
+    this.deleteRefuelModalOpen = true;
+    this.deleteRefuelRequest = this.refuelService.deleteRefuel(this.refuel).pipe(map(() => {
       this.notifications.success('Tankfüllung gelöscht', 'Die Tankfüllung wurde erfolgreich gelöscht.');
       this.refuelDeleted.emit(this.refuel);
       this.close();
-    });
+    }));
+  }
+
+  /**
+   * Reopens the info modal when the deletion process is canceled.
+   */
+  onDeleteCancel() {
+    this.deleteRefuelModalOpen = false;
+    this.open();
   }
 
 }

@@ -3,6 +3,8 @@ import {Tour} from '../../../../models/tour';
 import {TourService} from '../../../../services/crud/tour.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {AuthService} from '../../../../services/core/auth.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 /**
  * A modal that displays tour details.
@@ -33,6 +35,9 @@ export class TourInfoModalComponent {
    */
   @Output() delete: EventEmitter<Tour> = new EventEmitter();
 
+  public deleteTourModalOpen = false;
+  public deleteTourRequest: Observable<void>;
+
   constructor(private tourService: TourService,
               public auth: AuthService,
               private notifications: CblNotificationsService) {
@@ -53,14 +58,24 @@ export class TourInfoModalComponent {
   }
 
   /**
-   * Deletes the tour and closes the modal.
+   * Opens the confirm delete tour modal.
    */
   deleteTour() {
-    this.tourService.deleteTour(this.tour).subscribe(() => {
+    this.close();
+    this.deleteTourModalOpen = true;
+    this.deleteTourRequest = this.tourService.deleteTour(this.tour).pipe(map(() => {
       this.notifications.success('Fahrt gelöscht', 'Die Fahrt wurde erfolgreich gelöscht.');
       this.delete.emit(this.tour);
       this.close();
-    });
+    }));
+  }
+
+  /**
+   * Reopens the info modal when the deletion process is canceled.
+   */
+  onDeleteCancel() {
+    this.deleteTourModalOpen = false;
+    this.open();
   }
 
 }

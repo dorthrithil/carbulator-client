@@ -65,7 +65,7 @@ export class RefuelsDatagridComponent implements OnInit {
   }
 
   /**
-   * Deletes the given refuel and removes it from the list.
+   * Deletes the given refuel and removes it from the list. A confirmation step via confirmation model is prepended to this action.
    * @param refuel Refuel to delete.
    */
   public deleteRefuel(refuel: Refuel) {

@@ -3,6 +3,25 @@
     "minor": "0.5",
     "patches": [
       {
+        "patch": "0.5.3",
+        "releaseDate": "14.02.2019",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+            "Bestätigungsdialoge vor dem Löschen von Fahrten und Tankfüllungen hinzugefügt."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.5.2",
         "releaseDate": "09.02.2019",
         "changes": {
