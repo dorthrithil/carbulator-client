@@ -17,6 +17,7 @@
           "removed": [
           ],
           "fixed": [
+            "Fehler behoben, bei dem der falsche Monatsname im Kalender angezeigt wurde."
           ],
           "security": [
           ]
