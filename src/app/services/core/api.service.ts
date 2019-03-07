@@ -185,7 +185,13 @@ export class ApiService {
       return `${this.apiHost}account/change-password`;
     },
     getRunningTours: (): string => {
-      return `${this.apiHost}account/tours/running/`;
+      return `${this.apiHost}account/tours/running`;
+    },
+    getSettings: (): string => {
+      return `${this.apiHost}account/settings`;
+    },
+    editSettings: (): string => {
+      return `${this.apiHost}account/settings`;
     }
   };
 

@@ -8,6 +8,7 @@ import {Notification, NotificationType} from '../../models/notification';
 import {MessageResponse} from './auth-crud.service';
 import {Tour} from '../../models/tour';
 import {TaskInstance} from '../../models/task-instance';
+import {AccountSettings} from '../../models/account-settings';
 
 /**
  * Service for performing CRUD actions on account resources.
@@ -84,6 +85,27 @@ export class AccountService {
           return notification;
         });
       })
+    );
+  }
+
+  /**
+   * Fetches the account settings from the server.
+   * @return Observable that resolves to AccountSettings.
+   */
+  public getAccountSettings(): Observable<AccountSettings> {
+    return this.http.get(this.api.account.getSettings()).pipe(
+      map(accountSettingsJson => AccountSettings.fromJson(accountSettingsJson))
+    );
+  }
+
+  /**
+   * Updates account settings on the server.
+   * @param settings Settings to be persisted.
+   * @return Observable that resolves to the updated account settings.
+   */
+  public editAccountSettings(settings: AccountSettings): Observable<AccountSettings> {
+    return this.http.put(this.api.account.editSettings(), AccountSettings.toJsonReadyFormat(settings)).pipe(
+      map(accountSettingsJson => AccountSettings.fromJson(accountSettingsJson))
     );
   }
 

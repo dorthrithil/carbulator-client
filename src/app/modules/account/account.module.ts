@@ -9,6 +9,7 @@ import {AccountComponent} from './components/account/account.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
 import {RunningTourNotificationComponent} from './components/running-tour-notification/running-tour-notification.component';
 import {TaskInstanceNotificationComponent} from './components/task-instance-notification/task-instance-notification.component';
+import {AccountSettingsComponent} from './components/account-settings/account-settings.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {TaskInstanceNotificationComponent} from './components/task-instance-noti
     AccountComponent,
     ChangePasswordComponent,
     RunningTourNotificationComponent,
-    TaskInstanceNotificationComponent
+    TaskInstanceNotificationComponent,
+    AccountSettingsComponent
   ]
 })
 export class AccountModule {

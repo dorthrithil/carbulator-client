@@ -4,9 +4,10 @@
     "patches": [
       {
         "patch": "0.5.3",
-        "releaseDate": "14.02.2019",
+        "releaseDate": "FUTURE",
         "changes": {
           "added": [
+            "Seite für Account Einstellungen hinzugefügt."
           ],
           "changed": [
             "Bestätigungsdialoge vor dem Löschen von Fahrten und Tankfüllungen hinzugefügt."
