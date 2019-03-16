@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ClrForm, ClrLoadingState} from '@clr/angular';
+import {Router} from '@angular/router';
 
 /**
  * Component that shows a login screen.
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
   constructor(private auth: AuthService,
+              private router: Router,
               private fb: FormBuilder) {
   }
 
@@ -52,8 +54,11 @@ export class LoginComponent implements OnInit {
       this.auth.login(
         this.loginForm.get('username').value,
         this.loginForm.get('password').value
-      ).subscribe(() => {
+      ).subscribe(success => {
         this.loadingState = ClrLoadingState.DEFAULT;
+        if (success) {
+          this.router.navigate(['']);
+        }
       });
     } else {
       this.clrForm.markAsDirty();

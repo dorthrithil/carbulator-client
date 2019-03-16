@@ -3,6 +3,31 @@
     "minor": "0.6",
     "patches": [
       {
+        "patch": "0.6.1",
+        "releaseDate": "16.03.2019",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Darstellungsfehler des Loginhintegrundbildes behoben.",
+            "In der Gruppenliste werden nun keine Gruppen mehr angezeigt, für die man die Einladung noch nicht bestätigt hat.",
+            "Darstellungsfehler im Dialog zum Beenden einer Fahrt behoben.",
+            "Fehler im Registrierungsformular behoben.",
+            "Mobile Ansicht von Abrechungen optimiert.",
+            "Fehler in Notifications Anzeige behoben.",
+            "Mobile Ansicht von Notifications optimiert."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.6.0",
         "releaseDate": "16.03.2019",
         "changes": {

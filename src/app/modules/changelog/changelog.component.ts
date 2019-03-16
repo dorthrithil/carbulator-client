@@ -1,6 +1,6 @@
 import {Component, HostBinding, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ChangelogService, MinorVersion} from './changelog.service';
+import {ChangelogService, MinorVersion} from '../../services/core/changelog.service';
 
 /**
  * A component that shows the changelog navigation and entries.

@@ -1,5 +1,5 @@
-<div class="debt-box" [ngClass]="{'is-settled': debt.isSettled, 'is-not-settled': !debt.isSettled}">
-  <div class="debt-box-col">
+<div class="debt-box clr-row" [ngClass]="{'is-settled': debt.isSettled, 'is-not-settled': !debt.isSettled}">
+  <div class="debt-box-col clr-col-md-8 clr-col-sm-12">
     <div>
       {{debt.debtee.username}}
       <clr-icon shape="arrow" dir="right"></clr-icon>
@@ -16,7 +16,7 @@
       </button>
     </div>
   </div>
-  <div class="debt-box-col costs">
+  <div class="debt-box-col costs clr-col-md-4 clr-col-sm-12">
     <div>{{debt.amount}} €</div>
     <div>
       <div class="settled" *ngIf="debt.isSettled">

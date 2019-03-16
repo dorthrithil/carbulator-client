@@ -30,7 +30,7 @@ export class NavNotificationsService {
         this.timerSubscription = timer(0, 20000).subscribe(() => {
           // Don't reload if on notifications page to prevent re-rendering
           if (this.router.url !== '/account/notifications' || this._count === 0) {
-              this.loadNotifications();
+            this.loadNotifications();
             }
           }
         );

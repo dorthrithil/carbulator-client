@@ -5,6 +5,7 @@ import {usernameValidator} from '../../../../utility/validators/username.validat
 import {passwordsValidator} from '../../../../utility/validators/passwords.validator';
 import {ClrForm, ClrLoadingState} from '@clr/angular';
 import {emailRegex} from '../../../../utility/regex/common';
+import {Router} from '@angular/router';
 
 /**
  * Component that shows a registration screen.
@@ -26,7 +27,9 @@ export class RegisterComponent implements OnInit {
   public registerPressed = false;
   public loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
 
-  constructor(private auth: AuthService, private fb: FormBuilder) {
+  constructor(private auth: AuthService,
+              private router: Router,
+              private fb: FormBuilder) {
   }
 
   /**
@@ -63,8 +66,11 @@ export class RegisterComponent implements OnInit {
         this.registrationForm.get('username').value,
         this.registrationForm.get('email').value,
         this.registrationForm.get('passwords.password').value
-      ).subscribe(() => {
+      ).subscribe(success => {
         this.loadingState = ClrLoadingState.DEFAULT;
+        if (success) {
+          this.router.navigate(['']);
+        }
       });
     } else {
       this.clrForm.markAsDirty();

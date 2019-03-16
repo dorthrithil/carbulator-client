@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
 import {initCustomIcons} from '../../../../utility/icons/icon-config';
-import {NavNotificationsService} from '../../../../services/core/nav-notifications.service';
 
 /**
  * The core component of the application.
@@ -18,9 +17,10 @@ export class CoreComponent implements OnInit {
    */
   public notificationOptions = {
     timeOut: 5000,
+    preventDuplicates: true
   };
 
-  constructor(public auth: AuthService, private navNotifications: NavNotificationsService) {
+  constructor(public auth: AuthService) {
     initCustomIcons();
   }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChangelogService, MinorVersion, PatchVersion} from '../changelog.service';
+import {ChangelogService, MinorVersion, PatchVersion} from '../../../services/core/changelog.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 
