@@ -15,7 +15,8 @@
           "removed": [
           ],
           "fixed": [
-            "Darstellungsfehler des Loginhintegrundbildes behoben."
+            "Darstellungsfehler des Loginhintegrundbildes behoben.",
+            "In der Gruppenliste werden nun keine Gruppen mehr angezeigt, für die man die Einladung noch nicht bestätigt hat."
           ],
           "security": [
           ]
