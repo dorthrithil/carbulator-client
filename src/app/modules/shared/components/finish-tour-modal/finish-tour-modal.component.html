@@ -44,20 +44,18 @@
       <div class="fake-control-container">
         <span class="clr-control-label">Parkplatz</span>
         <div class="action-bar">
-          <div *ngIf="geoLocationLoading || geoCodingLoading" class="spinner-container">
-            <span class="spinner spinner-inline">Loading...</span> Lade Geodaten...
-          </div>
-          <div class="action-bar-options" *ngIf="!geoLocationLoading && !geoCodingLoading">
+          <div class="action-bar-options">
             <form class="clr-form inline-form">
               <input placeholder="Adresse eingeben" name="geocoding-query" class="clr-input"
-                     [(ngModel)]="geocodingQuery"/>
+                     [disabled]="geoLocationLoading || geoCodingLoading" [(ngModel)]="geocodingQuery"/>
             </form>
-            <button class="btn btn-sm btn-primary-outline" (click)="geocode()" [disabled]="geocodingQuery == ''">
+            <button class="btn btn-sm btn-primary-outline" (click)="geocode()"
+                    [clrLoading]="geoCodingLoading" [disabled]="geocodingQuery == '' || geoLocationLoading">
               <clr-icon shape="search"></clr-icon>
               Suchen
             </button>
             <button class="btn btn-sm btn-icon btn-primary-outline" (click)="getGeoLocation()"
-                    *ngIf="!geoLocationLoading">
+                    [clrLoading]="geoLocationLoading">
               <clr-icon shape="target"></clr-icon>
             </button>
           </div>
