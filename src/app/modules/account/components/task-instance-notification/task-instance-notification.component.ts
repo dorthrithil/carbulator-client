@@ -15,6 +15,9 @@ import {AppEventsService} from '../../../../services/core/app-events.service';
 })
 export class TaskInstanceNotificationComponent {
 
+  /**
+   * The notification to display.
+   */
   @Input() taskInstanceNotification: Notification;
 
   public finishLoading = false;

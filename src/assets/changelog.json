@@ -7,6 +7,7 @@
         "releaseDate": "16.03.2019",
         "changes": {
           "added": [
+            "Gruppennamen zu Benachrichtigungen für Aufgaben hinzugefügt."
           ],
           "changed": [
             "Abrechnungen beziehen nun die gesamte Historie mit ein. So wird das Problem behoben, dass der Stand des Tanks bei jeder Abrechnung anders ist, was ungenaue Abrechnunen zu Folge haben konnte."
