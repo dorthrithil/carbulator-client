@@ -147,7 +147,6 @@ export class AuthService {
     this._isLoggedIn = true;
     this.loginStateChangesSubject.next(this._isLoggedIn);
     this.onLoginSubject.next(true);
-    this.router.navigate(['']);
     this.startRefreshTokenAboutToExpireTimer();
   }
 
