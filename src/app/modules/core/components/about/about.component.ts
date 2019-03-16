@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AppSettings} from '../../config/app-settings';
+import {ChangelogService} from '../../../../services/core/changelog.service';
 
 /**
  * A component for displaying an about page.
@@ -9,8 +9,20 @@ import {AppSettings} from '../../config/app-settings';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
 
-  public version = AppSettings.VERSION;
+  public version: string;
+
+  constructor(private changelohService: ChangelogService) {
+  }
+
+  /**
+   * Loads the latest version on component initialization.
+   */
+  ngOnInit(): void {
+    this.changelohService.getLatestVersion(this.changelohService.getVersions()).subscribe(version => {
+      this.version = version;
+    });
+  }
 
 }
