@@ -3,6 +3,25 @@
     "minor": "0.6",
     "patches": [
       {
+        "patch": "0.6.1",
+        "releaseDate": "FUTURE",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Darstellungsfehler des Loginhintegrundbildes behoben."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.6.0",
         "releaseDate": "16.03.2019",
         "changes": {
