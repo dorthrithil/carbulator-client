@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {forkJoin, Observable, of, Subject, timer} from 'rxjs';
+import {BehaviorSubject, forkJoin, Observable, of, Subject, timer} from 'rxjs';
 import {Router} from '@angular/router';
 import {AuthCrudService, LoginResponse} from '../crud/auth-crud.service';
 import {catchError, map, takeUntil, takeWhile} from 'rxjs/operators';
@@ -35,7 +35,7 @@ export class AuthService {
   private accessTokenExpires: moment.Moment = null;
   private _refreshToken: string = null;
   private _refreshTokenExpires: moment.Moment = null;
-  private loginStateChangesSubject: Subject<boolean>;
+  private loginStateChangesSubject: BehaviorSubject<boolean>;
   private onRefreshTokenAboutToExpireSubject: Subject<number>;
   private onLogoutSubject: Subject<boolean>;
   private onLoginSubject: Subject<boolean>;
@@ -51,7 +51,7 @@ export class AuthService {
   constructor(private router: Router,
               private notificationsService: CblNotificationsService,
               private authCrud: AuthCrudService) {
-    this.loginStateChangesSubject = new Subject<boolean>();
+    this.loginStateChangesSubject = new BehaviorSubject<boolean>(false);
     this.onLoginStateChanges = this.loginStateChangesSubject.asObservable();
     this.loginStateChangesSubject.next(this._isLoggedIn);
     this.onRefreshTokenAboutToExpireSubject = new Subject();
@@ -224,6 +224,7 @@ export class AuthService {
         localStorage.setItem('CarbulatorAuth', null);
         this.triedAutoLogin = true;
         this.autoLoginResult.next(this._isLoggedIn);
+        this.loginStateChangesSubject.next(this._isLoggedIn);
       }
     } else {
       this.triedAutoLogin = true;
