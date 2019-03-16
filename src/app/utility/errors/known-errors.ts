@@ -80,10 +80,10 @@ export const knownErrors: ErrorDictionary = {
     description: 'Die angegebene Gruppe existiert nicht im System.',
     silent: false
   },
-  CANT_CREATE_PAYOFF_WITHOUT_REFUELS_AND_TOURS: {
-    message: 'CANT_CREATE_PAYOFF_WITHOUT_REFUELS_AND_TOURS',
+  CANT_CREATE_PAYOFF_WITHOUT_NEW_REFUELS_AND_TOURS: {
+    message: 'CANT_CREATE_PAYOFF_WITHOUT_NEW_REFUELS_AND_TOURS',
     title: 'Abrechnung nicht möglich',
-    description: 'Eine Abrechnung ohne Fahrten und Tankfüllungen ist nicht möglich.',
+    description: 'Eine Abrechnung ohne neue Fahrten und Tankfüllungen ist nicht möglich.',
     silent: false
   },
   CANT_CREATE_PAYOFF_WHEN_UNFINISHED_TOURS_EXIST: {

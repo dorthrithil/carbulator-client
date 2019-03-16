@@ -3,8 +3,8 @@
 <clr-alert [clrAlertType]="'info'" [clrAlertClosable]="false" *ngIf="runningTour">
   <clr-alert-item>
     <span class="alert-text" *ngIf="!isLoggedInUser(runningTour.owner)">
-      <strong *ngIf="showCommunityName">{{community.name}}:</strong>
-      <strong>{{runningTour.owner.username}}</strong> fährt gerade!
+      <strong *ngIf="showCommunityName">{{community.name}}:</strong> <strong>
+      {{runningTour.owner.username}}</strong> fährt gerade!
     </span>
     <span class="alert-text" *ngIf="isLoggedInUser(runningTour.owner)">
       <strong *ngIf="showCommunityName">{{community.name}}:</strong>
