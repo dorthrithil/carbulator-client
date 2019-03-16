@@ -63,9 +63,7 @@ export class RegisterComponent implements OnInit {
         this.registrationForm.get('username').value,
         this.registrationForm.get('email').value,
         this.registrationForm.get('passwords.password').value
-      ).subscribe(() => {
-        this.loadingState = ClrLoadingState.DEFAULT;
-      });
+      ).subscribe();
     } else {
       this.clrForm.markAsDirty();
     }

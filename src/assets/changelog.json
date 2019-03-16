@@ -17,7 +17,8 @@
           "fixed": [
             "Darstellungsfehler des Loginhintegrundbildes behoben.",
             "In der Gruppenliste werden nun keine Gruppen mehr angezeigt, für die man die Einladung noch nicht bestätigt hat.",
-            "Darstellungsfehler im Dialog zum Beenden einer Fahrt behoben."
+            "Darstellungsfehler im Dialog zum Beenden einer Fahrt behoben.",
+            "Fehler im Registrierungsformular behoben."
           ],
           "security": [
           ]
