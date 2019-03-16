@@ -15,6 +15,7 @@ import {ParkingPositionMapComponent} from '../parking-position-map/parking-posit
 import {latLng} from 'leaflet';
 import {GeocodingService} from '../../../../services/crud/geocoding.service';
 import {GeocodingResult} from '../../../../models/geocoding-result';
+import {AccountSettingsService} from '../../../../services/core/account-settings.service';
 
 /**
  * A modal to finish a tour.
@@ -52,6 +53,7 @@ export class FinishTourModalComponent {
   constructor(private fb: FormBuilder,
               private auth: AuthService,
               private geocodingServie: GeocodingService,
+              private accountSettingsService: AccountSettingsService,
               private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private tourService: TourService) {
@@ -77,6 +79,11 @@ export class FinishTourModalComponent {
     this.tour = tour;
     this.isOpen = true;
     this.buildForm();
+    this.accountSettingsService.getSettings().subscribe(settings => {
+      if (settings.autoLoadParkingPlaceGPSLocation) {
+        this.getGeoLocation();
+      }
+    });
   }
 
   /**

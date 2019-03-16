@@ -139,8 +139,10 @@ export class CommunityCalendarComponent implements OnInit {
     this.rangeEnd = moment(activeRange.end).add(1, 'day');
     this.eventService.getEvents(this.communityId, this.rangeStart, this.rangeEnd).subscribe(events => {
       this.events = events;
-      this.currentMonth = this.rangeStart.locale('de').format('MMMM');
-      this.currentYear = this.rangeStart.format('YYYY');
+      const rangeDifference = this.rangeEnd.diff(this.rangeStart, 'days');
+      const rangeMiddle = this.rangeStart.add(Math.round(rangeDifference / 2), 'days');
+      this.currentMonth = rangeMiddle.locale('de').format('MMMM');
+      this.currentYear = rangeMiddle.format('YYYY');
       this.todayInView = moment().isBetween(this.rangeStart, this.rangeEnd);
       this.isLoading = false;
     });

@@ -42,6 +42,8 @@ import {ConditionalPluralPipe} from '../../pipes/conditional-plural.pipe';
 import {CommunitiesInviteUserModalComponent} from './components/communities-invite-user-modal/communities-invite-user-modal.component';
 import {CommunitiesUserSearchComponent} from './components/communities-user-search/communities-user-search.component';
 import {CommunityAlertsComponent} from './components/community-alerts/community-alerts.component';
+import {KmSinceLastPayoffBarChartComponent} from './components/km-since-last-payoff-barchart/km-since-last-payoff-bar-chart.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -50,7 +52,8 @@ import {CommunityAlertsComponent} from './components/community-alerts/community-
     ReactiveFormsModule,
     ClarityModule,
     LeafletModule,
-    RouterModule
+    RouterModule,
+    NgxChartsModule
   ],
   declarations: [
     MomentPipe,
@@ -90,7 +93,8 @@ import {CommunityAlertsComponent} from './components/community-alerts/community-
     ConditionalPluralPipe,
     CommunitiesUserSearchComponent,
     CommunitiesInviteUserModalComponent,
-    CommunityAlertsComponent
+    CommunityAlertsComponent,
+    KmSinceLastPayoffBarChartComponent
   ],
   exports: [
     MomentPipe,
@@ -127,7 +131,8 @@ import {CommunityAlertsComponent} from './components/community-alerts/community-
     CommunitiesInviteUserModalComponent,
     CommunitiesUserSearchComponent,
     CommunityAlertsComponent,
-    ParkingPositionMapComponent
+    ParkingPositionMapComponent,
+    KmSinceLastPayoffBarChartComponent
   ]
 })
 export class SharedModule {

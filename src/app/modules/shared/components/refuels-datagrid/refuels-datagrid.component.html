@@ -75,3 +75,11 @@
 <cbl-create-refuel-modal [communityId]="communityId" #createRefuelModal (refuelAdded)="addRefuel($event)"
                          *ngIf="communityId">
 </cbl-create-refuel-modal>
+
+<cbl-confirm-modal [(isOpen)]="deleteRefuelModalOpen" [action]="deleteRefuelRequest" [confirmButtonIsDanger]="true">
+  <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
+  <ng-template cblConfirmModalText>Die Tankfüllung wird gelöscht. Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>

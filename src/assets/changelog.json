@@ -3,6 +3,28 @@
     "minor": "0.5",
     "patches": [
       {
+        "patch": "0.5.3",
+        "releaseDate": "16.03.2019",
+        "changes": {
+          "added": [
+            "Seite für Account Einstellungen hinzugefügt.",
+            "Gruppenstatistik zum Dashboard hinzugefügt."
+          ],
+          "changed": [
+            "Bestätigungsdialoge vor dem Löschen von Fahrten und Tankfüllungen hinzugefügt."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler behoben, bei dem der falsche Monatsname im Kalender angezeigt wurde."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.5.2",
         "releaseDate": "09.02.2019",
         "changes": {

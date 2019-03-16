@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NotificationsListComponent} from './components/notifications-list/notifications-list.component';
 import {AccountComponent} from './components/account/account.component';
 import {ChangePasswordComponent} from './components/change-password/change-password.component';
+import {AccountSettingsComponent} from './components/account-settings/account-settings.component';
 
 const accountRoutes: Routes = [
   {
@@ -17,6 +18,10 @@ const accountRoutes: Routes = [
       {
         path: 'change-password',
         component: ChangePasswordComponent,
+      },
+      {
+        path: 'settings',
+        component: AccountSettingsComponent,
       },
       {
         path: '**',

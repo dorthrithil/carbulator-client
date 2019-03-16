@@ -126,3 +126,12 @@
     </button>
   </div>
 </clr-modal>
+
+<cbl-confirm-modal [(isOpen)]="deleteTourModalOpen" [action]="deleteTourRequest" [confirmButtonIsDanger]="true"
+                   (cancel)="onDeleteCancel()">
+  <ng-template cblConfirmModalTitle>Wirklich löschen?</ng-template>
+  <ng-template cblConfirmModalText>Die Fahrt wird gelöscht. Dies kann nicht rückgängig gemacht werden.
+  </ng-template>
+  <ng-template cblConfirmModalCancelButtonText>Abbrechen</ng-template>
+  <ng-template cblConfirmModalOKButtonText>Löschen</ng-template>
+</cbl-confirm-modal>

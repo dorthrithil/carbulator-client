@@ -1,0 +1,32 @@
+<h1>Account Einstellungen</h1>
+
+<form clrForm [formGroup]="accountSettingsForm" [clrLayout]="'vertical'">
+
+  <div class="clr-row">
+    <div class="clr-col-lg-4 clr-col-md-6 clr-col-12">
+
+      <div class="card">
+        <div class="card-header">
+          Fahrten
+        </div>
+        <div class="card-block" *ngIf="accountSettings">
+
+          <clr-toggle-container>
+            <clr-toggle-wrapper>
+              <input type="checkbox" clrToggle name="autoLoadParkingPlaceGPSLocation"
+                     id="autoLoadParkingPlaceGPSLocation" formControlName="autoLoadParkingPlaceGPSLocation"/>
+              <label for="autoLoadParkingPlaceGPSLocation">Parkplatz Position automatisch laden</label>
+            </clr-toggle-wrapper>
+          </clr-toggle-container>
+
+        </div>
+        <div class="card-block" *ngIf="!accountSettings">
+          <span class="spinner spinner-inline"></span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</form>

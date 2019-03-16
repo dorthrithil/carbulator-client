@@ -7,6 +7,7 @@ import {CreateRefuelModalComponent} from '../create-refuel-modal/create-refuel-m
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 import {RefuelService} from '../../../../services/crud/refuel.service';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
+import {map} from 'rxjs/operators';
 
 /**
  * A component that shows a table of refuels.
@@ -35,6 +36,8 @@ export class RefuelsDatagridComponent implements OnInit {
 
   public refuels: Refuel[];
   public isLoading = true;
+  public deleteRefuelModalOpen = false;
+  public deleteRefuelRequest: Observable<void>;
 
   constructor(public mobileDetection: MobileDetectionService,
               public notifications: CblNotificationsService,
@@ -62,14 +65,15 @@ export class RefuelsDatagridComponent implements OnInit {
   }
 
   /**
-   * Deletes the given refuel and removes it from the list.
+   * Deletes the given refuel and removes it from the list. A confirmation step via confirmation model is prepended to this action.
    * @param refuel Refuel to delete.
    */
   public deleteRefuel(refuel: Refuel) {
-    this.refuelService.deleteRefuel(refuel).subscribe(() => {
+    this.deleteRefuelModalOpen = true;
+    this.deleteRefuelRequest = this.refuelService.deleteRefuel(refuel).pipe(map(() => {
       this.notifications.success('Tankfüllung gelöscht', 'Die Tankfüllung wurde erfolgreich gelöscht.');
       this.refuels.splice(this.refuels.indexOf(refuel), 1);
-    });
+    }));
   }
 
 }

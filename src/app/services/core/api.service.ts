@@ -49,6 +49,12 @@ export class ApiService {
     getCommunity: (id: number): string => {
       return `${this.apiHost}communities/${id}`;
     },
+    getStatistic: (id: number, from: string, to: string): string => {
+      return `${this.apiHost}communities/${id}/statistics/from/${from}/to/${to}`;
+    },
+    getStatisticCurrentPayoffIntervall: (id: number): string => {
+      return `${this.apiHost}communities/${id}/statistics/current-payoff-intervall`;
+    },
     getFavouriteCommunity: (): string => {
       return `${this.apiHost}account/communities/favourite`;
     },
@@ -185,7 +191,13 @@ export class ApiService {
       return `${this.apiHost}account/change-password`;
     },
     getRunningTours: (): string => {
-      return `${this.apiHost}account/tours/running/`;
+      return `${this.apiHost}account/tours/running`;
+    },
+    getSettings: (): string => {
+      return `${this.apiHost}account/settings`;
+    },
+    editSettings: (): string => {
+      return `${this.apiHost}account/settings`;
     }
   };
 
