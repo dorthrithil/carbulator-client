@@ -23,7 +23,7 @@ export class AccountSettingsComponent implements OnInit {
   @ViewChild(ClrForm) clrForm;
 
   public accountSettingsForm: FormGroup = new FormGroup({});
-  private accountSettings: AccountSettings;
+  public accountSettings: AccountSettings;
 
   constructor(private accountSettingsService: AccountSettingsService,
               private notifications: CblNotificationsService,

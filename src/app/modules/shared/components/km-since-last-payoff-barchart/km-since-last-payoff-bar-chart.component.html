@@ -1,0 +1,19 @@
+<div class="chart-container">
+  <ngx-charts-bar-vertical
+    [results]="series"
+    [gradient]="false"
+    [xAxis]="true"
+    [yAxis]="true"
+    [roundEdges]="false"
+    [legend]="false"
+    [showXAxisLabel]="false"
+    [showYAxisLabel]="false"
+    [yAxisTickFormatting]="formatXAxisTick">
+  </ngx-charts-bar-vertical>
+</div>
+
+<clr-toggle-wrapper>
+  <input type="checkbox" clrToggle [(ngModel)]="accountForPassengers" (ngModelChange)="setSeries()"
+         name="accountForPassengers" id="accountForPassengers"/>
+  <label for="accountForPassengers">Kilometer auf Passagiere aufteilen</label>
+</clr-toggle-wrapper>

@@ -12,7 +12,7 @@
       <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
         <div class="card">
           <div class="card-header">
-            {{community.name}}
+            {{community.name}} Infos
           </div>
           <div class="card-block">
             <ng-container *ngIf="!latestTour">
@@ -36,6 +36,18 @@
             <a class="btn btn-sm btn-link" (click)="createRefuelModal.open()">Neue Tankfüllung</a>
             <a class="btn btn-sm btn-link" [routerLink]="['/', 'communities', community.id]">Zur Gruppe</a>
           </div>
+        </div>
+      </div>
+
+      <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            Kilometer seit letzter Abrechnung
+          </div>
+          <div class="card-block">
+            <cbl-km-since-last-payoff-barchart [communityId]="community.id"></cbl-km-since-last-payoff-barchart>
+          </div>
+
         </div>
       </div>
 
