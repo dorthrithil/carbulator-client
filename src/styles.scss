@@ -148,7 +148,8 @@ clr-dg-cell {
 
   .actions {
     align-self: center;
-    justify-self: right;
+    display: flex;
+    justify-content: flex-end;
   }
 
 }
