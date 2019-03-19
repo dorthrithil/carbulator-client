@@ -39,6 +39,7 @@
             ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+              "node_modules/@clr/icons/clr-icons.min.js",
               "node_modules/mobile-detect/mobile-detect.js",
               "node_modules/fullcalendar/dist/fullcalendar.min.js"
             ],
