@@ -7,6 +7,7 @@
         "releaseDate": "FUTURE",
         "changes": {
           "added": [
+            "Option in den Account Einstellungen hinzugefügt, beim Beenden einer Fahrt den Parkplatz als Pflichtfeld zu markieren."
           ],
           "changed": [
           ],

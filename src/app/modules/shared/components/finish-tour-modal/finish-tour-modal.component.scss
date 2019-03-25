@@ -8,6 +8,24 @@
 
 .map-section {
   padding: 0 .25rem .25rem .25rem;
+
+  .clr-subtext {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    margin-right: .5rem;
+  }
+
+  &.clr-error cbl-parking-position-map {
+    border: 1px solid #c92100;
+  }
+
+  &:not(.clr-error) .clr-subtext {
+    display: none;
+  }
+
 }
 
 .geocoding-result-container {

@@ -47,12 +47,12 @@ export class AccountSettingsComponent implements OnInit {
    */
   private buildForm() {
     this.accountSettingsForm = this.fb.group({
-      'autoLoadParkingPlaceGPSLocation': [this.accountSettings.autoLoadParkingPlaceGPSLocation]
+      'autoLoadParkingPlaceGPSLocation': [this.accountSettings.autoLoadParkingPlaceGPSLocation],
+      'parkingPlaceRequired': [this.accountSettings.parkingPlaceRequired]
     });
     this.accountSettingsForm.valueChanges.pipe(
       debounceTime(750)
     ).subscribe(() => {
-      console.log(42);
       this.saveAccountSettings();
     });
   }
@@ -63,6 +63,7 @@ export class AccountSettingsComponent implements OnInit {
   private saveAccountSettings() {
     this.accountSettingsForm.disable({emitEvent: false});
     this.accountSettings.autoLoadParkingPlaceGPSLocation = this.accountSettingsForm.get('autoLoadParkingPlaceGPSLocation').value;
+    this.accountSettings.parkingPlaceRequired = this.accountSettingsForm.get('parkingPlaceRequired').value;
     this.accountService.editAccountSettings(this.accountSettings).subscribe(settings => {
       this.accountSettingsService.updateSettings(settings);
       this.notifications.success('Einstellungen gespeichert', 'Die Account Einstellungen wurden erfolgreich gespeichert.');
