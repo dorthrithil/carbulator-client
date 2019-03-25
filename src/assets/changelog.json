@@ -3,6 +3,27 @@
     "minor": "0.6",
     "patches": [
       {
+        "patch": "0.6.2",
+        "releaseDate": "25.03.2019",
+        "changes": {
+          "added": [
+            "Option in den Account Einstellungen hinzugefügt, beim Beenden einer Fahrt den Parkplatz als Pflichtfeld zu markieren.",
+            "Warnung hinzugefügt, falls die gefahrenen Kilometer beim beenden einer Fahrt ungewöhnlich hoch wären (über 1000)."
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Falsche Ausrichtung von Buttons in Notifications korrigiert."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
         "patch": "0.6.1",
         "releaseDate": "16.03.2019",
         "changes": {

@@ -83,6 +83,13 @@ export class FinishTourModalComponent {
       if (settings.autoLoadParkingPlaceGPSLocation) {
         this.getGeoLocation();
       }
+      if (settings.parkingPlaceRequired) {
+        this.finishTourForm.get('parkingPosition').setValidators([
+          Validators.required,
+          latlongValidator(true)
+        ]);
+        this.finishTourForm.get('parkingPosition').updateValueAndValidity();
+      }
     });
   }
 
@@ -143,6 +150,7 @@ export class FinishTourModalComponent {
       });
     } else {
       this.clrForm.markAsDirty();
+      this.finishTourForm.get('parkingPosition').markAsDirty();
     }
   }
 
@@ -161,7 +169,7 @@ export class FinishTourModalComponent {
     this.geocodingServie.geocode(this.geocodingQuery).subscribe(res => {
       this.geocodingResults = res;
       this.geoCodingLoading = false;
-    }, err => {
+    }, () => {
       this.geoCodingLoading = false;
     });
   }

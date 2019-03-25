@@ -27,6 +27,16 @@
         </clr-control-error>
       </clr-input-container>
 
+      <clr-alert [clrAlertType]="'warning'" [clrAlertClosable]="false"
+                 *ngIf="finishTourForm.get('endKm').value - tour.startKm >= 1000">
+        <clr-alert-item>
+        <span class="alert-text">
+          Ungewöhnlich lange Fahrt ({{finishTourForm.get('endKm').value - tour.startKm}} km)! Bitte prüfe, ob du dich
+          nicht vertippt hast.
+        </span>
+        </clr-alert-item>
+      </clr-alert>
+
       <cbl-passenger-selector [passengers]="tour.passengers" [communityId]="tour.community.id"
                               *ngIf="isOwner()"></cbl-passenger-selector>
 
@@ -39,16 +49,15 @@
     </form>
 
 
-    <div class="map-section">
+    <div class="map-section" [ngClass]="{'clr-error': finishTourForm.get('parkingPosition').hasError('required') &&
+    finishTourForm.get('parkingPosition').dirty}">
 
       <div class="fake-control-container">
         <span class="clr-control-label">Parkplatz</span>
         <div class="action-bar">
           <div class="action-bar-options">
-            <form class="clr-form inline-form">
-              <input placeholder="Adresse eingeben" name="geocoding-query" class="clr-input"
-                     [disabled]="geoLocationLoading || geoCodingLoading" [(ngModel)]="geocodingQuery"/>
-            </form>
+            <input placeholder="Adresse eingeben" name="geocoding-query" class="clr-input"
+                   [disabled]="geoLocationLoading || geoCodingLoading" [(ngModel)]="geocodingQuery"/>
             <button class="btn btn-sm btn-primary-outline" (click)="geocode()"
                     [clrLoading]="geoCodingLoading" [disabled]="geocodingQuery == '' || geoLocationLoading">
               <clr-icon shape="search"></clr-icon>
@@ -61,6 +70,8 @@
           </div>
         </div>
       </div>
+
+      <div class="clr-subtext">Gib einen Parkplatz an</div>
 
       <div *ngFor="let geocodingResult of geocodingResults" class="geocoding-result-container"
            (click)="parkingPositionMap.setMapCoords(geocodingResult.latLng)">

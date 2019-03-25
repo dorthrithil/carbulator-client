@@ -4,6 +4,7 @@
 export class AccountSettings {
 
   public autoLoadParkingPlaceGPSLocation: boolean;
+  public parkingPlaceRequired: boolean;
 
   /**
    * Parses account settings from JSON to an AccountSettings object.
@@ -13,6 +14,7 @@ export class AccountSettings {
   public static fromJson(src: any): AccountSettings {
     const accountSettings = new AccountSettings();
     accountSettings.autoLoadParkingPlaceGPSLocation = src['auto_load_parking_place_gps_location'];
+    accountSettings.parkingPlaceRequired = src['parking_place_required'];
     return accountSettings;
   }
 
@@ -23,7 +25,8 @@ export class AccountSettings {
    */
   public static toJsonReadyFormat(src: AccountSettings): any {
     return {
-      'auto_load_parking_place_gps_location': src.autoLoadParkingPlaceGPSLocation
+      'auto_load_parking_place_gps_location': src.autoLoadParkingPlaceGPSLocation,
+      'parking_place_required': src.parkingPlaceRequired
     };
   }
 

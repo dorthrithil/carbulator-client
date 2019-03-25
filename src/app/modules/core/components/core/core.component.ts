@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../../services/core/auth.service';
-import {initCustomIcons} from '../../../../utility/icons/icon-config';
 
 /**
  * The core component of the application.
@@ -21,7 +20,6 @@ export class CoreComponent implements OnInit {
   };
 
   constructor(public auth: AuthService) {
-    initCustomIcons();
   }
 
   /**
