@@ -1,5 +1,5 @@
-<div class="tour-box" (click)="tourInfoModal.open()">
-  <div class="tour-box-col">
+<div class="tour-box clr-row" (click)="tourInfoModal.open()">
+  <div class="tour-box-col clr-col-6">
     <div>
       <clr-icon shape="event"></clr-icon>
       {{tour.endTime | moment: 'DD.MM.YYYY HH:mm'}}
@@ -12,7 +12,7 @@
         *ngIf="tour.passengers.length > 0">(mit {{tour.passengers | commaSeparatedObjectProperty : 'username' }})</span>
     </div>
   </div>
-  <div class="tour-box-col distance">
+  <div class="tour-box-col distance clr-col-6">
     <div>{{tour.totalKm}} km</div>
     <div>
       <div class="payed" *ngIf="!tour.isOpen">
