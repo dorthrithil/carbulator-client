@@ -1,5 +1,5 @@
-<div class="task-box" (click)="taskInfoModal.open()">
-  <div class="task-box-col">
+<div class="task-box clr-row" (click)="taskInfoModal.open()">
+  <div class="task-box-col clr-col-sm-8">
     <div>
       <clr-icon shape="wrench"></clr-icon>
       <strong>{{task.name}}</strong>
@@ -9,7 +9,7 @@
       {{task.description}}
     </div>
   </div>
-  <div class="task-box-col description">
+  <div class="task-box-col description clr-col-sm-4">
     <div *ngIf="task.kmToNextInstance">In {{task.kmToNextInstance}} km</div>
     <div *ngIf="task.timeInterval">{{task.timeNextInstance | daysRemaining : true}}</div>
   </div>

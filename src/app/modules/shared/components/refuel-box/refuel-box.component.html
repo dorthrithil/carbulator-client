@@ -1,5 +1,5 @@
-<div class="refuel-box" (click)="refuelInfoModal.open()">
-  <div class="refuel-box-col">
+<div class="refuel-box clr-row" (click)="refuelInfoModal.open()">
+  <div class="refuel-box-col clr-col-7">
     <div>
       <clr-icon shape="event"></clr-icon>
       {{refuel.timeCreated | moment: 'DD.MM.YYYY HH:mm'}}
@@ -9,7 +9,7 @@
       {{refuel.owner.username}}
     </div>
   </div>
-  <div class="refuel-box-col costs">
+  <div class="refuel-box-col costs clr-col-5">
     <div>{{refuel.costs}} €</div>
     <div>
       <div class="gas-station" *ngIf="refuel.gasStationName && refuel.gasStationName.length > 0">
