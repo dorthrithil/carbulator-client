@@ -12,6 +12,14 @@ interface KmPerUser {
 }
 
 /**
+ * Interface for an object containing a user and the costs he had in a timespan.
+ */
+interface CostsPerUser {
+  costs: number;
+  user: User;
+}
+
+/**
  * Model of a statistics collection for a community.
  */
 export class CommunityStatistic {
@@ -20,6 +28,7 @@ export class CommunityStatistic {
   public start: moment.Moment;
   public end: moment.Moment;
   public kmPerUser: KmPerUser[];
+  public costsPerUser: CostsPerUser[];
 
   /**
    * Parses a community statistic in JSON format to a CommunityStatistic object.
@@ -36,6 +45,12 @@ export class CommunityStatistic {
         km: kmPerUserJson.km,
         kmAccountedForPassengers: kmPerUserJson.km_accounted_for_passengers,
         user: User.fromJson(kmPerUserJson.user)
+      };
+    });
+    statistic.costsPerUser = src.costs_per_user.map(costsPerUserJson => {
+      return {
+        costs: costsPerUserJson.costs,
+        user: User.fromJson(costsPerUserJson.user)
       };
     });
     return statistic;

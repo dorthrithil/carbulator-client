@@ -3,6 +3,7 @@ import {CommunityService} from '../../../../services/crud/community.service';
 import {Community} from '../../../../models/community';
 import {TourService} from '../../../../services/crud/tour.service';
 import {Tour} from '../../../../models/tour';
+import {StatisticsService} from '../../../../services/crud/statistics.service';
 
 /**
  * Dashboard that enables quick actions in the favourite community.
@@ -10,7 +11,8 @@ import {Tour} from '../../../../models/tour';
 @Component({
   selector: 'cbl-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [StatisticsService]
 })
 export class DashboardComponent implements OnInit {
 
