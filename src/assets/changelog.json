@@ -1,5 +1,29 @@
 [
   {
+    "minor": "0.7",
+    "patches": [
+      {
+        "patch": "0.7.0",
+        "releaseDate": "FUTURE",
+        "changes": {
+          "added": [
+          ],
+          "changed": [
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler im Kalender behoben bei dem Termine nicht angeklickt werden konnten."
+          ],
+          "security": [
+          ]
+        }
+      }
+    ]
+  },
+  {
     "minor": "0.6",
     "patches": [
       {

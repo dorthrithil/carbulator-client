@@ -124,6 +124,7 @@ export class CommunityCalendarComponent implements OnInit {
    * @param event Event to update.
    */
   private editEvent(event: any) {
+    console.log(event);
     this.calendarEventModal.open(FormMode.UPDATE, CalendarEvent.fromFullCalendarEvent(event.event));
   }
 
