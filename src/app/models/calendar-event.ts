@@ -53,13 +53,13 @@ export class CalendarEvent {
    */
   public static fromFullCalendarEvent(src: any): CalendarEvent {
     const event = new CalendarEvent();
-    event.id = Number(src.def.publicId);
-    event.title = src.def.title;
-    event.timeCreated = src.def.extendedProps.timeCreated;
-    event.timeUpdated = src.def.extendedProps.timeUpdated;
-    event.titleModel = src.def.extendedProps.titleModel;
-    event.description = src.def.extendedProps.description;
-    event.owner = src.def.extendedProps.owner;
+    event.id = Number(src.id);
+    event.title = src.title;
+    event.timeCreated = src.extendedProps.timeCreated;
+    event.timeUpdated = src.extendedProps.timeUpdated;
+    event.titleModel = src.extendedProps.titleModel;
+    event.description = src.extendedProps.description;
+    event.owner = src.extendedProps.owner;
     event.startMoment = moment(src.start);
     event.endMoment = moment(src.end);
     event.start = src.start;

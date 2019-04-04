@@ -44,6 +44,7 @@ import {CommunitiesUserSearchComponent} from './components/communities-user-sear
 import {CommunityAlertsComponent} from './components/community-alerts/community-alerts.component';
 import {KmSinceLastPayoffBarChartComponent} from './components/km-since-last-payoff-barchart/km-since-last-payoff-bar-chart.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {CostsSinceLastPayoffBarChartComponent} from './components/costs-since-last-payoff-bar-chart/costs-since-last-payoff-bar-chart.component';
 
 @NgModule({
   imports: [
@@ -94,7 +95,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     CommunitiesUserSearchComponent,
     CommunitiesInviteUserModalComponent,
     CommunityAlertsComponent,
-    KmSinceLastPayoffBarChartComponent
+    KmSinceLastPayoffBarChartComponent,
+    CostsSinceLastPayoffBarChartComponent
   ],
   exports: [
     MomentPipe,
@@ -132,7 +134,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     CommunitiesUserSearchComponent,
     CommunityAlertsComponent,
     ParkingPositionMapComponent,
-    KmSinceLastPayoffBarChartComponent
+    KmSinceLastPayoffBarChartComponent,
+    CostsSinceLastPayoffBarChartComponent
   ]
 })
 export class SharedModule {

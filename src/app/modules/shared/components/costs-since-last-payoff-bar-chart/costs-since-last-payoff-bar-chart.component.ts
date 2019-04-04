@@ -1,17 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StatisticsService} from '../../../../services/crud/statistics.service';
-import {CommunityStatistic} from '../../../../models/community-statistic';
 import {Series} from '../../../../models/series.interface';
+import {CommunityStatistic} from '../../../../models/community-statistic';
+import {StatisticsService} from '../../../../services/crud/statistics.service';
 
 /**
- * A component that displays community km statistics.
+ * A component that displays community cost statistics.
  */
 @Component({
-  selector: 'cbl-km-since-last-payoff-bar-chart',
-  templateUrl: './km-since-last-payoff-bar-chart.component.html',
-  styleUrls: ['./km-since-last-payoff-bar-chart.component.scss']
+  selector: 'cbl-costs-since-last-payoff-bar-chart',
+  templateUrl: './costs-since-last-payoff-bar-chart.component.html',
+  styleUrls: ['./costs-since-last-payoff-bar-chart.component.scss']
 })
-export class KmSinceLastPayoffBarChartComponent implements OnInit {
+export class CostsSinceLastPayoffBarChartComponent implements OnInit {
 
   /**
    * The ID of the community to load the statistics for.
@@ -19,7 +19,6 @@ export class KmSinceLastPayoffBarChartComponent implements OnInit {
   @Input() communityId: number;
 
   public series: Series[];
-  public accountForPassengers = true;
 
   private statistic: CommunityStatistic;
 
@@ -40,11 +39,10 @@ export class KmSinceLastPayoffBarChartComponent implements OnInit {
    * Sets the current series based on the accountForPassengers flag.
    */
   public setSeries() {
-    const value = this.accountForPassengers ? 'kmAccountedForPassengers' : 'km';
-    this.series = this.statistic.kmPerUser.map(kmPerUser => {
+    this.series = this.statistic.costsPerUser.map(costPerUser => {
       return {
-        name: kmPerUser.user.username,
-        value: Math.round(kmPerUser[value] * 100) / 100
+        name: costPerUser.user.username,
+        value: Math.round(costPerUser['costs'] * 100) / 100
       };
     });
   }
@@ -55,7 +53,7 @@ export class KmSinceLastPayoffBarChartComponent implements OnInit {
    * @return Formatted tick.
    */
   public formatYAxisTick(tick: string) {
-    return `${tick} km`;
+    return `${tick} €`;
   }
 
 }

@@ -72,6 +72,20 @@ export class CalendarEventService {
   }
 
   /**
+   * Retrieves The next n events that end in the future.
+   * @param communityId ID of the community to load events for.
+   * @param n Number of events to fetch.
+   * @return Observable that resolves to an array of CalendarEvents.
+   */
+  public getNextEvents(communityId: number, n: number): Observable<CalendarEvent[]> {
+    return this.http.get(this.api.events.getNextEvents(communityId, n)).pipe(
+      map(eventsJson => {
+        return eventsJson.map(eventJson => CalendarEvent.fromJson(eventJson));
+      })
+    );
+  }
+
+  /**
    * Deletes the given event from the server.
    * @param event Event to delete.
    * @return Observable that resolves to a MessageResponse.

@@ -42,12 +42,49 @@
       <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
         <div class="card">
           <div class="card-header">
+            Nächste Termine
+          </div>
+          <div class="card-block">
+            <ng-container *ngIf="eventsLoading">
+              <span class="spinner spinner-inline"></span> Lade Daten...
+            </ng-container>
+            <div class="event-container" *ngIf="events.length > 0">
+              <p *ngFor="let event of events">
+                {{event.startMoment | moment : 'DD.MM.YYYY'}}
+                <span *ngIf="isMultidayEvent(event)"> - {{event.endMoment | moment : 'DD.MM.YYYY'}}</span>
+                <strong> {{event.title}}</strong><br *ngIf="event.description"><em>{{event.description}}</em>
+              </p>
+            </div>
+            <clr-alert [clrAlertSizeSmall]="true" *ngIf="events?.length == 0" [clrAlertClosable]="false">
+              <clr-alert-item>Keine anstehenden Termine.</clr-alert-item>
+            </clr-alert>
+          </div>
+          <div class="card-footer">
+            <a class="btn btn-sm btn-link" [routerLink]="['/', 'communities', community.id, 'calendar']">Zum
+              Kalender</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
+        <div class="card">
+          <div class="card-header">
             Kilometer seit letzter Abrechnung
           </div>
           <div class="card-block">
-            <cbl-km-since-last-payoff-barchart [communityId]="community.id"></cbl-km-since-last-payoff-barchart>
+            <cbl-km-since-last-payoff-bar-chart [communityId]="community.id"></cbl-km-since-last-payoff-bar-chart>
           </div>
+        </div>
+      </div>
 
+      <div class="clr-col-lg-4 clr-col-md-6 clr-col-sm-6 clr-col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            Ausgaben seit letzter Abrechnung
+          </div>
+          <div class="card-block">
+            <cbl-costs-since-last-payoff-bar-chart [communityId]="community.id"></cbl-costs-since-last-payoff-bar-chart>
+          </div>
         </div>
       </div>
 
