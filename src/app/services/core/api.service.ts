@@ -208,6 +208,9 @@ export class ApiService {
     getEvents: (communityId: number, from: string, to: string): string => {
       return `${this.apiHost}communities/${communityId}/events/from/${from}/to/${to}`;
     },
+    getNextEvents: (communityId: number, n: number): string => {
+      return `${this.apiHost}communities/${communityId}/events/next/${n}`;
+    },
     getEvent: (eventId: number): string => {
       return `${this.apiHost}events/${eventId}`;
     },

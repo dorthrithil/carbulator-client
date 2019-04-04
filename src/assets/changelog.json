@@ -4,10 +4,11 @@
     "patches": [
       {
         "patch": "0.7.0",
-        "releaseDate": "FUTURE",
+        "releaseDate": "04.04.2019",
         "changes": {
           "added": [
-            "Diagramm für Ausgaben seit letzter Abrechnung im Dashboard hinzugefügt."
+            "Diagramm für Ausgaben seit letzter Abrechnung im Dashboard hinzugefügt.",
+            "Liste an kommenden Terminen im Dashboard hinzugefügt."
           ],
           "changed": [
           ],
