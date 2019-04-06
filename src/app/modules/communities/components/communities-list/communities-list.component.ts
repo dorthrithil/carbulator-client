@@ -7,6 +7,9 @@ import {CommunitiesRenameModalComponent} from '../communities-rename-modal/commu
 import {MobileDetectionService} from '../../../../services/core/mobile-detection.service';
 import {NotificationsService} from 'angular2-notifications';
 
+/**
+ * A datagrid showing all communities that a user is part of.
+ */
 @Component({
   selector: 'cbl-communities-list',
   templateUrl: './communities-list.component.html',
@@ -14,6 +17,9 @@ import {NotificationsService} from 'angular2-notifications';
 })
 export class CommunitiesListComponent implements OnInit {
 
+  /**
+   * Reference to the renaming modal.
+   */
   @ViewChild('renameModal') renameModal: CommunitiesRenameModalComponent;
 
   public communities: Community[] = [];
