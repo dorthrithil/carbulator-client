@@ -34,10 +34,11 @@ export class StatisticsService {
   /**
    * Fetch the community statistic for the current payoff interval from the server. If it is not yet cached, it will be cached.
    * @param communityId The id of the community for which to get the statistic.
+   * @param refreshCache If true, the cache will be cleared before loading statistics.
    * @return Observable that resolves to a community statistic.
    */
-  public getCommunityStatisticCurrentPayoffIntervall(communityId: number): Observable<CommunityStatistic> {
-    if (!this.currentPayoffIntervallCache) {
+  public getCommunityStatisticCurrentPayoffIntervall(communityId: number, refreshCache: boolean = false): Observable<CommunityStatistic> {
+    if (!this.currentPayoffIntervallCache || refreshCache) {
       this.currentPayoffIntervallCache = this.requestCommunityStatisticCurrentPayoffIntervall(communityId).pipe(
         shareReplay(1)
       );

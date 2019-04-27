@@ -7,6 +7,27 @@
         "releaseDate": "04.04.2019",
         "changes": {
           "added": [
+            "Die erste Gruppe der man beitritt ist nun automatisch als Favorit markiert."
+          ],
+          "changed": [
+            "Kleine Verbesserungen im Dashboard."
+          ],
+          "deprecated": [
+          ],
+          "removed": [
+          ],
+          "fixed": [
+            "Fehler im Dashboard behoben wenn noch keine Abrechnungen und Fahrten vorhanden sind."
+          ],
+          "security": [
+          ]
+        }
+      },
+      {
+        "patch": "0.7.0",
+        "releaseDate": "04.04.2019",
+        "changes": {
+          "added": [
             "Diagramm für Ausgaben seit letzter Abrechnung im Dashboard hinzugefügt.",
             "Liste an kommenden Terminen im Dashboard hinzugefügt."
           ],

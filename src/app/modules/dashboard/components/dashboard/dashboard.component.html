@@ -15,10 +15,10 @@
             {{community.name}} Infos
           </div>
           <div class="card-block">
-            <ng-container *ngIf="!latestTour">
+            <ng-container *ngIf="latestTourLoading">
               <span class="spinner spinner-inline"></span> Lade Daten...
             </ng-container>
-            <ng-container *ngIf="latestTour">
+            <ng-container *ngIf="!latestTourLoading && latestTour">
               <strong>Letzte Fahrt:</strong> {{latestTour.endTime | moment : 'DD.MM.YYYY [um] HH:mm'}}<br>
               <strong>Fahrer/-in:</strong> {{latestTour.owner.username}}<br>
               <ng-container *ngIf="latestTour.comment">
@@ -29,6 +29,9 @@
                 <cbl-parking-position-map [rawParkingPosition]="latestTour.parkingPosition"></cbl-parking-position-map>
               </ng-container>
             </ng-container>
+            <clr-alert [clrAlertSizeSmall]="true" *ngIf="!latestTourLoading && !latestTour" [clrAlertClosable]="false">
+              <clr-alert-item>Es wurden bisher keine Fahrten eingetragen.</clr-alert-item>
+            </clr-alert>
           </div>
 
           <div class="card-footer">
@@ -48,7 +51,7 @@
             <ng-container *ngIf="eventsLoading">
               <span class="spinner spinner-inline"></span> Lade Daten...
             </ng-container>
-            <div class="event-container" *ngIf="events.length > 0">
+            <div class="event-container" *ngIf="events?.length > 0">
               <p *ngFor="let event of events">
                 {{event.startMoment | moment : 'DD.MM.YYYY'}}
                 <span *ngIf="isMultidayEvent(event)"> - {{event.endMoment | moment : 'DD.MM.YYYY'}}</span>

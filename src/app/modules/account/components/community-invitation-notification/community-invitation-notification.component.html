@@ -1,11 +1,11 @@
-<div class="notification-box">
-  <div class="notification-box-col">
+<div class="notification-box clr-row">
+  <div class="notification-box-col clr-col-md-8 clr-col-sm-12">
     <div class="icon-text-cell">
       <div>
         <clr-icon shape="bell"></clr-icon>
       </div>
       <div>
-        <strong>Neue Gruppneinladung:</strong> {{invitation.subject.name}}
+        <strong>Neue Gruppeneinladung:</strong> {{invitation.subject.name}}
       </div>
     </div>
     <div class="icon-text-cell">
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="notification-box-col actions">
+  <div class="notification-box-col actions  clr-col-md-4 clr-col-sm-12">
       <button class="btn btn-sm btn-primary" (click)="accept()" [clrLoading]="acceptLoading">Annehmen</button>
       <button class="btn btn-sm btn-danger" (click)="reject()" [clrLoading]="rejectLoading">Ablehnen</button>
   </div>

@@ -1,7 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {StatisticsService} from '../../../../services/crud/statistics.service';
 import {CommunityStatistic} from '../../../../models/community-statistic';
 import {Series} from '../../../../models/series.interface';
+import {AppEventsService} from '../../../../services/core/app-events.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 /**
  * A component that displays community km statistics.
@@ -11,7 +14,7 @@ import {Series} from '../../../../models/series.interface';
   templateUrl: './km-since-last-payoff-bar-chart.component.html',
   styleUrls: ['./km-since-last-payoff-bar-chart.component.scss']
 })
-export class KmSinceLastPayoffBarChartComponent implements OnInit {
+export class KmSinceLastPayoffBarChartComponent implements OnInit, OnDestroy {
 
   /**
    * The ID of the community to load the statistics for.
@@ -22,18 +25,38 @@ export class KmSinceLastPayoffBarChartComponent implements OnInit {
   public accountForPassengers = true;
 
   private statistic: CommunityStatistic;
+  private onDestroy: Subject<any> = new Subject();
 
-  constructor(private statisticsService: StatisticsService) {
+  constructor(private statisticsService: StatisticsService,
+              private appEvents: AppEventsService) {
   }
 
   /**
    * Loads the statistic on component initialization.
    */
   ngOnInit() {
-    this.statisticsService.getCommunityStatisticCurrentPayoffIntervall(this.communityId).subscribe(stats => {
+    this.loadStatistics();
+    this.appEvents.tourFinished.pipe(takeUntil(this.onDestroy)).subscribe(() => {
+      this.loadStatistics(true);
+    });
+  }
+
+  /**
+   * Loads the statistics.
+   * @param refreshCache If true, the cache will be cleared before loading statistics.
+   */
+  private loadStatistics(refreshCache: boolean = false) {
+    this.statisticsService.getCommunityStatisticCurrentPayoffIntervall(this.communityId, true).subscribe(stats => {
       this.statistic = stats;
       this.setSeries();
     });
+  }
+
+  /**
+   * Fires a destruction event.
+   */
+  ngOnDestroy(): void {
+    this.onDestroy.next();
   }
 
   /**
