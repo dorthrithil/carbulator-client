@@ -6,6 +6,7 @@ import {numberValidator} from '../../../../utility/validators/number.validator';
 import {toNumber} from '../../../../utility/conversion/to-number';
 import {CblNotificationsService} from '../../../../services/core/cbl-notifications.service';
 import {ClrForm} from '@clr/angular';
+import {AppEventsService} from '../../../../services/core/app-events.service';
 
 /**
  * A modal for creating refuels.
@@ -37,6 +38,7 @@ export class CreateRefuelModalComponent {
   public isLoading = false;
 
   constructor(private fb: FormBuilder,
+              private appEvents: AppEventsService,
               private notifications: CblNotificationsService,
               private refuelService: RefuelService) {
   }
@@ -81,6 +83,7 @@ export class CreateRefuelModalComponent {
       newRefuel.gasStationName = this.refuelForm.get('gasStationName').value;
       this.refuelService.createRefuel(this.communityId, newRefuel).subscribe(refuel => {
         this.refuelAdded.emit(refuel);
+        this.appEvents.dispatchRefuelEnteredEvent(refuel);
         this.close();
         this.notifications.success('Tankfüllung eingetragen', 'Die Tankfüllung wurde eingetragen.');
       }, () => {

@@ -3,6 +3,7 @@ import {Observable, Subject} from 'rxjs';
 import {Tour} from '../../models/tour';
 import {TaskInstance} from '../../models/task-instance';
 import {Task} from '../../models/task';
+import {Refuel} from '../../models/refuel';
 
 /**
  * Service for distributing app wide events.
@@ -14,6 +15,9 @@ export class AppEventsService {
 
   private _tourFinished: Subject<Tour> = new Subject();
   public tourFinished: Observable<Tour> = this._tourFinished.asObservable();
+
+  private _refuelEntered: Subject<Refuel> = new Subject();
+  public refuelEntered: Observable<Refuel> = this._refuelEntered.asObservable();
 
   private _tourStarted: Subject<Tour> = new Subject();
   public tourStarted: Observable<Tour> = this._tourStarted.asObservable();
@@ -30,6 +34,14 @@ export class AppEventsService {
    */
   public dispatchTourFinishedEvent(tour: Tour) {
     this._tourFinished.next(tour);
+  }
+
+  /**
+   * Dispatches a refuelEntered event over the refuelEntered subject stream.
+   * @param refuel New Refuel.
+   */
+  public dispatchRefuelEnteredEvent(refuel: Refuel) {
+    this._refuelEntered.next(refuel);
   }
 
   /**

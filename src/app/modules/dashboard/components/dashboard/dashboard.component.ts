@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommunityService} from '../../../../services/crud/community.service';
 import {Community} from '../../../../models/community';
 import {TourService} from '../../../../services/crud/tour.service';
@@ -6,6 +6,9 @@ import {Tour} from '../../../../models/tour';
 import {StatisticsService} from '../../../../services/crud/statistics.service';
 import {CalendarEventService} from '../../../../services/crud/calendar-event.service';
 import {CalendarEvent} from '../../../../models/calendar-event';
+import {AppEventsService} from '../../../../services/core/app-events.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 /**
  * Dashboard that enables quick actions in the favourite community.
@@ -16,17 +19,21 @@ import {CalendarEvent} from '../../../../models/calendar-event';
   styleUrls: ['./dashboard.component.scss'],
   providers: [StatisticsService]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   public community: Community;
   public isLoading = true;
   public noFavouriteCommunity = false;
   public latestTour: Tour;
+  public latestTourLoading = true;
   public eventsLoading = true;
   public events: CalendarEvent[];
 
+  private onDestroy: Subject<any> = new Subject();
+
   constructor(private communityService: CommunityService,
               private eventService: CalendarEventService,
+              private appEvents: AppEventsService,
               private tourService: TourService) {
   }
 
@@ -40,6 +47,11 @@ export class DashboardComponent implements OnInit {
       this.noFavouriteCommunity = false;
       this.tourService.getLatestCommunityTour(this.community.id).subscribe(tour => {
         this.latestTour = tour;
+        this.latestTourLoading = false;
+      }, err => {
+        if (err === 'NO_TOUR_EXISTING') {
+          this.latestTourLoading = false;
+        }
       });
       this.eventService.getNextEvents(this.community.id, 5).subscribe(events => {
         this.eventsLoading = false;
@@ -49,6 +61,26 @@ export class DashboardComponent implements OnInit {
       if (err === 'NO_FAVOURITE_COMMUNITY_FOUND') {
         this.noFavouriteCommunity = true;
       }
+    });
+    this.subscribeToAppEvents();
+  }
+
+  /**
+   * Fires a destruction event.
+   */
+  ngOnDestroy(): void {
+    this.onDestroy.next();
+  }
+
+  /**
+   * Subscribes to app events to update the view on finished tours.
+   */
+  subscribeToAppEvents() {
+    this.appEvents.tourFinished.pipe(takeUntil(this.onDestroy)).subscribe(() => {
+      this.tourService.getLatestCommunityTour(this.community.id).subscribe(tour => {
+        this.latestTour = tour;
+        this.latestTourLoading = false;
+      });
     });
   }
 
